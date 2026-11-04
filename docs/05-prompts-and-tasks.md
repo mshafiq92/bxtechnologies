@@ -40,7 +40,7 @@ Tip: save this block as `CLAUDE.md` at the repo root (task T00) so it loads auto
 > repo layout from `docs/02-tech-stack.md`, the commands (`npm run dev/build/lint/test`), and the branch
 > workflow. Keep it under 80 lines. Update `readme.md` with a short project intro and links to `docs/`.
 
-**T01 · Monorepo scaffold**
+**T01 · Project scaffold**
 > Scaffold a **single standard Next.js app at the repo root** (no monorepo) as described in
 > `docs/02-tech-stack.md`: npm, latest stable Next.js App Router, React 19, TypeScript strict, Tailwind
 > v4, no `src/` folder, the folder layout from `docs/02`. Set `output: "standalone"` and add a multi-stage
@@ -194,32 +194,32 @@ Template prompt, swap the bracketed parts:
 
 | ID | Task | Branch | PR | Status |
 |---|---|---|---|---|
-| T00 | Project memory | | | ☐ |
-| T01 | Monorepo scaffold | | | ☐ |
-| T02 | Tooling and hooks | | | ☐ |
-| T03 | CI pipeline | | | ☐ |
-| T04 | Design tokens | | | ☐ |
-| T05 | Fonts and typography | | | ☐ |
-| T06 | Guard rails | | | ☐ |
-| T10 | Layout primitives | | | ☐ |
-| T11 | Atoms and buttons | | | ☐ |
-| T12 | Content blocks | | | ☐ |
-| T13 | Header and menus | | | ☐ |
-| T14 | Footer, band, layout | | | ☐ |
-| T20 | Content schemas | | | ☐ |
-| T21 | Extract content | | | ☐ |
-| T22 | Content repository | | | ☐ |
-| T30 | Home | | | ☐ |
-| T31 | Services | | | ☐ |
-| T32 | Service Detail | | | ☐ |
-| T33 | Work | | | ☐ |
-| T34 | Insights | | | ☐ |
-| T35 | Article | | | ☐ |
-| T36 | About | | | ☐ |
-| T37 | Industries | | | ☐ |
-| T38 | Careers + Role | | | ☐ |
-| T39 | Apply, Contact, Legal | | | ☐ |
-| T40 | Forms | | | ☐ |
+| T00 | Project memory | | | ☑ Done, awaiting commit |
+| T01 | Project scaffold | | | ☑ Done, awaiting commit |
+| T02 | Tooling and hooks | | | ☑ Done, awaiting commit |
+| T03 | CI pipeline | | | ☑ Done, awaiting commit |
+| T04 | Design tokens | | | ☑ Done, awaiting commit |
+| T05 | Fonts and typography | | | ☑ Done, awaiting commit |
+| T06 | Guard rails | | | ☑ Done, awaiting commit |
+| T10 | Layout primitives | | | ☑ Done, awaiting commit |
+| T11 | Atoms and buttons | | | ☑ Done, awaiting commit |
+| T12 | Content blocks | | | ☑ Done, awaiting commit |
+| T13 | Header and menus | | | ☑ Done, awaiting commit |
+| T14 | Footer, band, layout | | | ☑ Done, awaiting commit |
+| T20 | Content schemas | | | ☑ Done, awaiting commit |
+| T21 | Extract content | | | ☑ Done, awaiting commit |
+| T22 | Content repository | | | ☑ Done, awaiting commit |
+| T30 | Home | | | ☑ Done, awaiting commit |
+| T31 | Services | | | ☑ Done, awaiting commit |
+| T32 | Service Detail | | | ☑ Done, awaiting commit |
+| T33 | Work | | | ☑ Done, awaiting commit |
+| T34 | Insights | | | ☑ Done, awaiting commit |
+| T35 | Article | | | ☑ Done, awaiting commit |
+| T36 | About | | | ☑ Done, awaiting commit |
+| T37 | Industries | | | ☑ Done, awaiting commit |
+| T38 | Careers + Role | | | ☑ Done, awaiting commit |
+| T39 | Apply, Contact, Legal | | | ☑ Done, awaiting commit |
+| T40 | Forms | | | ☑ Done, awaiting commit |
 | T41 | Quality gates | | | ☐ |
 | T42 | SEO | | | ☐ |
 | T43 | Redirects | | | ☐ |

@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/*
+ * Global base styles for the bX Light site.
+ * No raw colours here: everything comes from styles/tokens.css.
+ */
+
+@layer base {
+  html {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+
+  /* Headings balance, paragraphs avoid orphans (DESIGN-TOKENS-V2: Typography) */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dd,
+  blockquote {
+    text-wrap: pretty;
+  }
+
+  /* Links inherit by default; components decide link colour */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Focus: 2px outline, 2px offset; colour switches inside navy bands */
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--selected-fill);
+    color: var(--text);
+  }
+
+  /* Anchor offsets: 72px under the header, 126px when the page has a jump bar */
+  :where([id]) {
+    scroll-margin-top: var(--anchor-offset);
+  }
+
+  html:has([data-jump-bar]) :where([id]) {
+    scroll-margin-top: var(--anchor-offset-jump);
+  }
+
+  /* Navy bands set their own text colour */
+  [data-tone="deep"] {
+    color: var(--on-deep);
+  }
+}
+
+/* Reduced motion: no transitions and no animation anywhere (marquee stays static) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utilities ------------------------------------------------------------------ */
+
+/* Eyebrow / label typography: mono 13/18, 500, 0.14em, uppercase.
+   Colour is chosen by <Eyebrow> (blue on light, accent on navy, muted or success). */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Signature rule fill (use through <SignatureRule />) */
+@utility bg-signature {
+  background-image: var(--signature);
+}
+
+/* Hero grid backdrop: 56px hairline grid, masked toward the top right */
+@utility bg-hero-grid {
+  background-image:
+    linear-gradient(var(--hero-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid-line) 1px, transparent 1px);
+  background-size: var(--hero-grid-size) var(--hero-grid-size);
+  background-position: right -1px top -1px;
+  mask-image: var(--hero-grid-mask);
+}
+
+/* Readable line length for running text */
+@utility measure {
+  max-width: 68ch;
+}

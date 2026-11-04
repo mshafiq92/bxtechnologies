@@ -1,0 +1,51 @@
+{/*
+Article body. Copy verbatim from bX v2 - Article.dc.html.
+Metadata (title, date, author, related service) lives in content/insights.ts.
+Components (H2, H3, PullQuote, Note) are provided by the article renderer (task T35).
+*/}
+
+Every failed AI pilot we have been asked to review had the same shape. A model was chosen carefully. Prompts were iterated for weeks. Someone demoed it to a steering group and it went well. Then it met the real queue, and nobody could say whether it was doing better or worse than the people it was meant to help, because no one had written down what better meant.
+
+The pilots that reach production look different from week one. Before any model is picked, there is a set of real cases with agreed correct outcomes, and a harness that runs the system against them and produces a number. Everything after that is engineering against a target rather than argument about a demo.
+
+<H2 id="s1">Write the test set with the people who do the job</H2>
+
+The test set is not a technical artefact. It is the operational knowledge of the team that currently handles the work, written down for the first time. In the claims triage engagement we built it by sitting with three adjusters for two days and going through a hundred and twenty historical cases: what they would have classified each as, what they would have escalated, and, most usefully, where two of them disagreed.
+
+Those disagreements are the valuable part. **A case the experts disagree about is a case the system should escalate, not guess at.** If you build the test set alone from documentation, you get a clean set with no ambiguity in it, and the first thing the real world sends you is ambiguity.
+
+- A hundred or so cases is usually enough to be useful and few enough to label properly.
+- Include the awkward ones deliberately: the malformed input, the duplicate, the one that should have gone to a different department entirely.
+- Record the reason for each label, not just the label. You will need it when the system gets it wrong in an interesting way.
+
+<PullQuote>
+  An agent without an evaluation harness is a demo that happens to run in production.
+</PullQuote>
+
+<H2 id="s2">Measure the workflow, not the model</H2>
+
+Model accuracy on a benchmark tells you almost nothing about whether a workflow improves. What matters is the end-to-end outcome the business already measures: time to first response, rework rate, escalation volume, cost per case. Those are the numbers someone is already accountable for, which is why they are the ones worth moving.
+
+<H3>Three numbers we track on most agent work</H3>
+
+- **Correct and confident.** The proportion of cases handled end to end with no human correction. This is the number that pays for the project.
+- **Correctly escalated.** Cases the system declined to handle that a human agreed were genuinely ambiguous. A high number here is a healthy system, not a failing one.
+- **Wrong and confident.** The only number that has to be near zero. Everything else is a tuning conversation; this one is a trust problem.
+
+That third number is why we run new automation in shadow mode first: it processes the real queue, produces its answer, and the answer is compared against what the humans actually did, without ever reaching a customer.
+
+<H2 id="s3">Make the harness cheap to run</H2>
+
+If evaluating a change takes an afternoon, it happens once a week and the project moves at the speed of that cadence. If it takes four minutes, it happens on every change, and behaviour stops regressing quietly. We wire the harness into the pipeline on day one for the same reason we wire up deployment on day one: the discipline only holds if the tooling makes it the easy path.
+
+<Note title="What this looks like in a six-week pilot">
+  Week one is the test set and the harness. Weeks two to four build the agent against it. Week five
+  runs in shadow beside the existing process. Week six is the go/no-go conversation, with the
+  numbers on the table rather than an opinion about whether it felt good.
+</Note>
+
+<H2 id="s4">When the honest answer is no</H2>
+
+Two pilots we ran ended with a recommendation not to proceed. In one, the automation was accurate but the process around it took longer than the manual path it replaced. In the other, the volume was too low for the saving to cover the maintenance. Both took six weeks and a fixed fee to find out, which is a considerably better outcome than finding out two years into a programme.
+
+The harness is what makes that conversation possible. Without a number, stopping a project becomes a matter of whose judgement carries more weight in the room, and projects in that position rarely stop.

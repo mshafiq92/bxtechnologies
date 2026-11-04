@@ -59,7 +59,7 @@ bxtechnologies/
 │  ├─ forms/                # server actions, mail, storage, spam checks
 │  └─ seo/                  # metadata helpers, JSON-LD
 ├─ styles/                  # tokens.css (.theme-bx-light), globals.css
-├─ public/                  # fonts, logo, client logos, icons
+├─ public/                  # brand mark, client logos (fonts live in app/fonts), icons
 ├─ tests/                   # Playwright e2e + visual
 ├─ docs/                    # these planning docs
 ├─ .claude/design-handoff/  # design source of truth (read only)

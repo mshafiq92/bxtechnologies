@@ -1,0 +1,88 @@
+{/*
+Cookies policy prose. Copy verbatim from bX v2 - Cookies.dc.html (carried over from v1).
+Title block, table of contents and contact band: content/pages/legal.ts.
+Components (H2, Note, DataTable) are provided by the legal renderer (task T39).
+
+OPEN: this text describes a consent banner and four cookies. The planned build uses
+cookieless analytics and no banner, so this page must be rewritten to match the real
+implementation in task T44 (see content/pages/legal.ts).
+*/}
+
+<Note title="Short version">
+  Two essential cookies keep the site working and remember your cookie choice. One analytics cookie
+  counts page views in aggregate, and it is off until you accept it. There are no advertising,
+  social or cross-site tracking cookies on this site.
+</Note>
+
+<H2 id="what">What a cookie is</H2>
+
+A cookie is a small text file a website asks your browser to store, so that it can recognise the same browser on a later page or visit. Some are necessary for the site to function; others are optional and only run with your permission. The same rules apply to similar technologies such as local storage, which we use in one case noted below.
+
+<H2 id="essential">Essential cookies</H2>
+
+These are set because the site cannot work properly without them. They carry no personal data beyond a random identifier and require no consent.
+
+<DataTable
+  columns={["Name", "Purpose", "Expires"]}
+  codeColumn={0}
+  rows={[
+    [
+      "bx_session",
+      "Keeps form entries together across a page load so a submitted enquiry or application is not lost.",
+      "End of session",
+    ],
+    [
+      "bx_consent",
+      "Records your cookie choice so the banner does not reappear on every page.",
+      "12 months",
+    ],
+    ["bx_csrf", "Security token that prevents forged form submissions.", "End of session"],
+  ]}
+/>
+
+<H2 id="analytics">Analytics cookies</H2>
+
+One optional cookie tells us which pages are read and roughly where readers are, in aggregate. It is set only after you accept, and it is what lets us decide which articles to write next.
+
+<DataTable
+  columns={["Name", "Purpose", "Expires"]}
+  codeColumn={0}
+  rows={[
+    [
+      "bx_stats",
+      "Counts page views, referring source and approximate region. No individual profile is built and the identifier is not shared with anyone.",
+      "13 months",
+    ],
+  ]}
+/>
+
+We also use browser local storage in one place: image placeholders on design pages remember a dropped file so it survives a reload. That entry stays on your own device and is never sent to us.
+
+<H2 id="none">What we do not use</H2>
+
+- **No advertising cookies.** We do not run ads and we do not place retargeting pixels.
+- **No social embeds that track.** Links to LinkedIn, Facebook and X are plain links, not embedded widgets, so those networks do not see your visit.
+- **No cross-site identifiers or data-broker tags,** and no session recording or heat-mapping.
+- **No fingerprinting** as a substitute for the cookies you declined.
+
+<H2 id="control">Turning them off</H2>
+
+The banner on your first visit lets you accept or decline the analytics cookie; declining leaves only the three essential ones in place, and nothing on the site stops working. You can change your mind at any time, reopen the cookie settings from the link in the footer, or clear the `bx_consent` cookie and the banner will ask again.
+
+Essential cookies cannot be switched off from here, because the forms and their security checks depend on them. You can still block them in your browser, but enquiry and application forms will then fail to submit.
+
+<H2 id="browser">Browser controls</H2>
+
+Every major browser lets you see the cookies a site has set, delete them, and refuse new ones, usually under Settings, then Privacy. You can also browse in a private window, which discards cookies when you close it. Blocking all cookies affects most websites, not only this one.
+
+If you use a Do Not Track or Global Privacy Control signal, we treat it as a decline and do not set the analytics cookie.
+
+<H2 id="changes">Changes</H2>
+
+If we add or remove a cookie, this page is updated before the change goes live and the date at the top changes with it. Where a new cookie needs consent, the banner will ask again rather than relying on your earlier choice. What we do with the data collected is covered by our [privacy policy](/privacy).
+
+<Note title="Needs a real audit" tone="warning" internal>
+  The cookie names and lifetimes above describe the intended implementation. Once the new site is on
+  your hosting, scan it and correct this table against what is actually set, including anything your
+  host or analytics provider adds by default.
+</Note>

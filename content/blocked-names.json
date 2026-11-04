@@ -1,0 +1,4 @@
+{
+  "$comment": "Client names that must never appear in site content (BUSINESS-RULES-V2 §2). Projects read 'Sector · Region · NDA'. Add names here; scripts/guardrails.mjs fails the build if one appears under content/. The clients logo strip is exempt by decision.",
+  "names": []
+}

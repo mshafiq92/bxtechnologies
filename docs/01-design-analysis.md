@@ -117,3 +117,6 @@ All values live in `DESIGN-TOKENS-V2.md`; the acceptance criteria forbid hex val
 | G4 | Form back end needed without a CMS | Contact / Apply / Subscribe need to send somewhere | Resend email; CV as attachment until file storage is decided |
 | G5 | Footer social links point to generic `facebook.com` / `x.com` | Wrong links at launch | Supply real profile URLs |
 | G6 | Legal text carried over from the old site | Must match the new hosting, analytics and form processors (GDPR) | Legal review before launch |
+| G7 | **Design notes written as page copy** (About people and story intros, Work, Industries and Insights placeholder notes, Services stack note, Careers roles note) | Sentences addressed to bX ("Send us the real names...") would show to visitors | Kept verbatim and marked in content files; replace before launch |
+| G8 | **Cookies policy describes a consent banner and four cookies** the planned build does not set (cookieless analytics) | Legal text would be inaccurate | Rewrite in T44 with legal review; "Needs your lawyer" notes are marked `internal` |
+| G9 | **Home lists three insight titles that are not on the Insights page** | Home and Insights would disagree | Kept verbatim; decide in T30 whether Home shows the latest real articles |
