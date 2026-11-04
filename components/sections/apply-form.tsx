@@ -288,7 +288,7 @@ export function ApplyForm({ copy, roles, initialRole }: Props & { initialRole?: 
             {copy.preferEmail.before}{" "}
             <SmartLink
               href={`mailto:${copy.preferEmail.email}`}
-              className="text-link transition-colors hover:text-ink"
+              className="text-link underline decoration-1 underline-offset-2 transition-colors hover:text-ink"
             >
               {copy.preferEmail.email}
             </SmartLink>

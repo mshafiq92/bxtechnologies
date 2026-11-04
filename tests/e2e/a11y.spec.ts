@@ -15,8 +15,7 @@ for (const route of routes) {
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa", "best-practice"])
       .analyze();
     const summary = results.violations.map(
-      (v) =>
-        `${v.id} (${v.impact}): ${v.nodes.length} node(s), e.g. ${v.nodes[0]?.target.join(" ")}`,
+      (v) => `${v.id} (${v.impact}): ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`,
     );
     expect(summary).toEqual([]);
   });

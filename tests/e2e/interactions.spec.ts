@@ -26,7 +26,9 @@ test.describe("header", () => {
   test("mobile menu opens, traps focus and closes on Escape", async ({ page }, info) => {
     test.skip(!isMobile(info.project.name), "menu button is mobile only");
     await page.goto("/");
-    const button = page.getByRole("button", { name: "Menu" });
+    // The label changes from "Menu" to "Close", so locate the button by what it controls.
+    const button = page.locator('button[aria-controls="bx-mobile-nav"]');
+    await expect(button).toHaveText("Menu");
     await button.click();
     await expect(page.locator("#bx-mobile-nav")).toBeVisible();
     await expect(button).toHaveText("Close");
@@ -40,7 +42,8 @@ test.describe("header", () => {
 
     await page.keyboard.press("Escape");
     await expect(page.locator("#bx-mobile-nav")).toBeHidden();
-    await expect(page.getByRole("button", { name: "Menu" })).toBeFocused();
+    await expect(button).toHaveText("Menu");
+    await expect(button).toBeFocused();
   });
 
   test("skip link moves focus to the main content", async ({ page }, info) => {

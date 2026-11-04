@@ -1,9 +1,21 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 /*
  * Real submissions against the production build. The test server runs with FORMS_DRY_RUN, so
  * the server actions validate and "send" (log) without Resend or Turnstile.
+ *
+ * The rate limit still applies (5 sends per form per IP per 10 minutes, in memory), so
+ * `--repeat-each` above 2 makes later submissions fail with the rate-limit error. That is the
+ * limiter working; each normal run starts a fresh server.
  */
+
+/**
+ * The apply form reads ?role= in the browser, so the prerendered form is a Suspense fallback
+ * that React swaps for the live one after hydration. Files set before the swap are lost.
+ */
+async function waitForLiveForm(page: Page) {
+  await page.waitForLoadState("networkidle");
+}
 
 test("home contact form sends an enquiry", async ({ page }) => {
   await page.goto("/#contact");
@@ -38,6 +50,7 @@ test("contact form shows the work-email error, then sends", async ({ page }) => 
 
 test("application with a PDF CV is sent", async ({ page }) => {
   await page.goto("/careers/apply?role=ai-engineer");
+  await waitForLiveForm(page);
   const form = page.getByRole("form", { name: "Send application" });
   await expect(form.getByLabel("Applying for")).toHaveValue("ai-engineer");
   await form.getByLabel("Full name").fill("Test Applicant");
@@ -59,6 +72,7 @@ test("application with a PDF CV is sent", async ({ page }) => {
 
 test("application rejects a non-PDF CV", async ({ page }) => {
   await page.goto("/careers/apply");
+  await waitForLiveForm(page);
   const form = page.getByRole("form", { name: "Send application" });
   await form.locator('input[type="file"]').setInputFiles({
     name: "photo.png",

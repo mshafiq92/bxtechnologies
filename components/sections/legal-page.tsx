@@ -74,7 +74,6 @@ export async function LegalPage({ slug }: { slug: LegalSlug }) {
       <Section
         id="policy"
         tone="surface"
-        aria-label={page.title}
         className="border-b-0 pt-[clamp(48px,6vw,72px)] pb-(--section)"
         spacing="none"
       >

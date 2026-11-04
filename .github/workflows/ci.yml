@@ -66,5 +66,76 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  # e2e:        Playwright + axe + visual snapshots   (added in T41)
-  # lighthouse: Lighthouse CI budgets                 (added in T41)
+  e2e:
+    name: E2E (Playwright + axe)
+    runs-on: ubuntu-latest
+    needs: quality
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      # Same settings the Playwright web server uses at runtime (noindex is read at build time).
+      - name: Build (test settings)
+        run: npm run build
+        env:
+          SITE_NOINDEX: "true"
+          NEXT_PUBLIC_SITE_URL: http://localhost:3100
+
+      # Desktop 1440 + mobile 390: smoke, axe, interactions, forms (dry run).
+      # Visual snapshots are not run here: baselines are per platform and kept on Windows.
+      - name: Run E2E
+        run: npm run test:e2e
+
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+
+  lighthouse:
+    name: Lighthouse budgets
+    runs-on: ubuntu-latest
+    needs: quality
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # Indexable build so the SEO category is measured as production will be.
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: http://localhost:3200
+
+      # Mobile, median of 3 runs. A11y / Best Practices / SEO must be 100; performance warns
+      # under 95 and fails under 90 (see lighthouserc.json).
+      - name: Run Lighthouse CI
+        run: npm run lighthouse
+
+      - name: Upload Lighthouse reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/reports/
+          retention-days: 14

@@ -55,12 +55,15 @@ export default function ContactPage() {
                 {page.aside.hiring.before}{" "}
                 <SmartLink
                   href={`mailto:${page.aside.hiring.email}`}
-                  className="text-link transition-colors hover:text-ink"
+                  className="text-link underline decoration-1 underline-offset-2 transition-colors hover:text-ink"
                 >
                   {page.aside.hiring.email}
                 </SmartLink>
                 . See{" "}
-                <SmartLink href="/careers" className="text-link transition-colors hover:text-ink">
+                <SmartLink
+                  href="/careers"
+                  className="text-link underline decoration-1 underline-offset-2 transition-colors hover:text-ink"
+                >
                   {page.aside.hiring.rolesLink}
                 </SmartLink>
                 .

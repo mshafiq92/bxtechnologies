@@ -68,7 +68,7 @@ export default function ApplyPage() {
               {page.aside.accommodations.before}{" "}
               <SmartLink
                 href={`mailto:${page.aside.accommodations.email}`}
-                className="text-link transition-colors hover:text-ink"
+                className="text-link underline decoration-1 underline-offset-2 transition-colors hover:text-ink"
               >
                 {page.aside.accommodations.email}
               </SmartLink>{" "}

@@ -158,6 +158,11 @@ Template prompt, swap the bracketed parts:
 > Add Playwright E2E for navigation, mega menu, mobile menu, FAQ, filters and forms; axe on every route;
 > visual snapshots at 1440/390; Lighthouse CI with budgets (Perf ≥95, A11y/SEO/BP 100). Enable these
 > jobs in CI.
+>
+> *Done:* `tests/e2e/` (smoke, a11y, interactions, forms, visual), `lighthouserc.json`, CI jobs `e2e` and
+> `lighthouse`. Visual baselines are Windows-only (`__screenshots__/win32/`) and run locally, not in CI.
+> Lighthouse performance warns under 95 and fails under 90 (simulated mobile CPU varies by machine);
+> A11y, Best Practices and SEO must be 100. Measured locally: perf 95 to 99 on all ten audited pages.
 
 **T42 · SEO**
 > Per-route metadata and canonicals, `sitemap.ts`, `robots.ts` (noindex on staging), JSON-LD
@@ -194,33 +199,33 @@ Template prompt, swap the bracketed parts:
 
 | ID | Task | Branch | PR | Status |
 |---|---|---|---|---|
-| T00 | Project memory | | | ☑ Done, awaiting commit |
-| T01 | Project scaffold | | | ☑ Done, awaiting commit |
-| T02 | Tooling and hooks | | | ☑ Done, awaiting commit |
-| T03 | CI pipeline | | | ☑ Done, awaiting commit |
-| T04 | Design tokens | | | ☑ Done, awaiting commit |
-| T05 | Fonts and typography | | | ☑ Done, awaiting commit |
-| T06 | Guard rails | | | ☑ Done, awaiting commit |
-| T10 | Layout primitives | | | ☑ Done, awaiting commit |
-| T11 | Atoms and buttons | | | ☑ Done, awaiting commit |
-| T12 | Content blocks | | | ☑ Done, awaiting commit |
-| T13 | Header and menus | | | ☑ Done, awaiting commit |
-| T14 | Footer, band, layout | | | ☑ Done, awaiting commit |
-| T20 | Content schemas | | | ☑ Done, awaiting commit |
-| T21 | Extract content | | | ☑ Done, awaiting commit |
-| T22 | Content repository | | | ☑ Done, awaiting commit |
-| T30 | Home | | | ☑ Done, awaiting commit |
-| T31 | Services | | | ☑ Done, awaiting commit |
-| T32 | Service Detail | | | ☑ Done, awaiting commit |
-| T33 | Work | | | ☑ Done, awaiting commit |
-| T34 | Insights | | | ☑ Done, awaiting commit |
-| T35 | Article | | | ☑ Done, awaiting commit |
-| T36 | About | | | ☑ Done, awaiting commit |
-| T37 | Industries | | | ☑ Done, awaiting commit |
-| T38 | Careers + Role | | | ☑ Done, awaiting commit |
-| T39 | Apply, Contact, Legal | | | ☑ Done, awaiting commit |
-| T40 | Forms | | | ☑ Done, awaiting commit |
-| T41 | Quality gates | | | ☐ |
+| T00 | Project memory | | | ☑ Done (`090c2a2`) |
+| T01 | Project scaffold | | | ☑ Done (`090c2a2`) |
+| T02 | Tooling and hooks | | | ☑ Done (`090c2a2`) |
+| T03 | CI pipeline | | | ☑ Done (`090c2a2`) |
+| T04 | Design tokens | | | ☑ Done (`090c2a2`) |
+| T05 | Fonts and typography | | | ☑ Done (`090c2a2`) |
+| T06 | Guard rails | | | ☑ Done (`090c2a2`) |
+| T10 | Layout primitives | | | ☑ Done (`090c2a2`) |
+| T11 | Atoms and buttons | | | ☑ Done (`090c2a2`) |
+| T12 | Content blocks | | | ☑ Done (`090c2a2`) |
+| T13 | Header and menus | | | ☑ Done (`090c2a2`) |
+| T14 | Footer, band, layout | | | ☑ Done (`090c2a2`) |
+| T20 | Content schemas | | | ☑ Done (`090c2a2`) |
+| T21 | Extract content | | | ☑ Done (`090c2a2`) |
+| T22 | Content repository | | | ☑ Done (`090c2a2`) |
+| T30 | Home | | | ☑ Done (`090c2a2`) |
+| T31 | Services | | | ☑ Done (`090c2a2`) |
+| T32 | Service Detail | | | ☑ Done (`090c2a2`) |
+| T33 | Work | | | ☑ Done (`090c2a2`) |
+| T34 | Insights | | | ☑ Done (`090c2a2`) |
+| T35 | Article | | | ☑ Done (`090c2a2`) |
+| T36 | About | | | ☑ Done (`090c2a2`) |
+| T37 | Industries | | | ☑ Done (`090c2a2`) |
+| T38 | Careers + Role | | | ☑ Done (`090c2a2`) |
+| T39 | Apply, Contact, Legal | | | ☑ Done (`090c2a2`) |
+| T40 | Forms | | | ☑ Done (`090c2a2`) |
+| T41 | Quality gates | | | ☑ Done, awaiting commit |
 | T42 | SEO | | | ☐ |
 | T43 | Redirects | | | ☐ |
 | T44 | Analytics and monitoring | | | ☐ |

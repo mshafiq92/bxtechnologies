@@ -83,10 +83,13 @@ function Fact({ term, children }: { term: string; children: ReactNode }) {
 
 /** Data table (cookie lists). `codeColumn` renders that column in mono. */
 function DataTable({
+  label,
   columns,
   rows,
   codeColumn,
 }: {
+  /** Names the scroll region; must be unique on the page (axe: landmark-unique). */
+  label: string;
   columns: string[];
   rows: string[][];
   codeColumn?: number;
@@ -95,7 +98,7 @@ function DataTable({
     // A horizontally scrollable region must be focusable so keyboard users can scroll it
     // (axe: scrollable-region-focusable); it is labelled as a region for that reason.
     // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-    <div className="overflow-x-auto" role="region" aria-label={columns.join(", ")} tabIndex={0}>
+    <div className="overflow-x-auto" role="region" aria-label={label} tabIndex={0}>
       <table className="w-full border-collapse text-[15px] leading-6">
         <thead>
           <tr>

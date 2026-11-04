@@ -44,7 +44,16 @@ export function Header({ nav }: { nav: Navigation }) {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobilePanelRef = useRef<HTMLDivElement>(null);
 
+  // Set while Escape returns focus to the Services trigger, so that focus does not reopen the menu.
+  const returningFocus = useRef(false);
   const openMega = () => setMegaOpen(true);
+  const onServicesFocus = () => {
+    if (returningFocus.current) {
+      returningFocus.current = false;
+      return;
+    }
+    setMegaOpen(true);
+  };
   const closeMega = () => setMegaOpen(false);
   const closeAll = () => {
     setMegaOpen(false);
@@ -58,7 +67,11 @@ export function Header({ nav }: { nav: Navigation }) {
       if (e.key !== "Escape") return;
       if (megaOpen) {
         setMegaOpen(false);
-        if (headerRef.current?.contains(document.activeElement)) servicesRef.current?.focus();
+        if (headerRef.current?.contains(document.activeElement)) {
+          returningFocus.current = true;
+          servicesRef.current?.focus();
+          returningFocus.current = false;
+        }
       }
       if (menuOpen) {
         setMenuOpen(false);
@@ -134,7 +147,7 @@ export function Header({ nav }: { nav: Navigation }) {
                 ref={servicesRef}
                 href="/services"
                 onMouseEnter={openMega}
-                onFocus={openMega}
+                onFocus={onServicesFocus}
                 onClick={closeAll}
                 aria-expanded={megaOpen}
                 aria-controls={MEGA_ID}

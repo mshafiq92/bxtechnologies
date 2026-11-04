@@ -63,6 +63,9 @@ npm run typecheck   # tsc --noEmit
 npm run test        # Vitest
 npm run guard       # guard rails (raw colours, green on links/metrics, dashes, counts, blocked names)
 npm run check       # everything CI runs except build
+npm run test:e2e    # Playwright desktop 1440 + mobile 390: smoke, axe, interactions, forms (builds first, port 3100)
+npm run test:visual # full-page screenshots vs tests/e2e/__screenshots__/win32 (add -- --update-snapshots after review)
+npm run lighthouse  # Lighthouse CI budgets against the current build (port 3200; build without SITE_NOINDEX)
 ```
 
 ## Workflow
