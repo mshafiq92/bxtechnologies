@@ -27,7 +27,7 @@ Tip: save this block as `CLAUDE.md` at the repo root (task T00) so it loads auto
 | D4 | Single repo with npm, no monorepo; Vercel for dev/testing only | bX | Done |
 | D5 | Production host: DigitalOcean / Hostinger VPS / other (needed before T51) | bX | Pending |
 | D6 | Approve the three added tokens (`#33C1F3`, `#E6F4FB`, `#5B7690`) | Design owner | Pending |
-| D7 | Mail provider (Resend or existing SMTP) and object storage (DO Spaces / R2), needed before T40 | bX | Pending |
+| D7 | Email: Resend (done). File storage for CVs: decide later; CV goes as an email attachment until then | bX | Partly done |
 | D8 | Share `teamData.js`, or approve the design's stack lists as they are | bX | Pending |
 | D9 | Domain + DNS access; GitHub branch protection on `main` and `dev` | bX | Pending |
 
@@ -149,7 +149,7 @@ Template prompt, swap the bracketed parts:
 > Build the shared form kit (RHF + Zod, `RadioPillGroup` with `role="radio"` and arrow keys,
 > `FileDropZone`, `FieldError` with `Error:` prefix, `SuccessMessage` with dot and words). Wire Home
 > contact, Contact, Apply and Subscribe to Server Actions. Deliver via Resend to the addresses in
-> `.env`, upload CVs to object storage, add Turnstile, honeypot and rate limiting. Payloads must match
+> `.env`, send the CV as an attachment (size and type limited; no file storage yet), add Turnstile, honeypot and rate limiting. Payloads must match
 > the `Enquiry`, `Application` and `Subscriber` models in `DATA-MODEL.md`.
 
 ## Phase 5 · Hardening

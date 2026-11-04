@@ -75,7 +75,7 @@ Each page PR includes: Playwright screenshot at 1440 and 390, axe scan, and meta
 | ID | Task |
 |---|---|
 | 4.1 | Shared form kit: RHF + Zod, `RadioPillGroup` (`role="radio"`, arrow-key nav), `FileDropZone`, `FieldError` (`Error:` prefix), `SuccessMessage` (dot + words) |
-| 4.2 | Server Actions: `submitEnquiry` (Home + Contact), `submitApplication` (Apply, CV to object storage), `subscribe` (Insights) |
+| 4.2 | Server Actions: `submitEnquiry` (Home + Contact), `submitApplication` (Apply, CV as an email attachment for now), `subscribe` (Insights) |
 | 4.3 | Delivery via Resend to info@ / jobs@, auto-reply to sender; Turnstile + honeypot + rate limit |
 | 4.4 | Payload shape matches future `Enquiry` / `Application` / `Subscriber` models so the console can take over without changing the UI |
 

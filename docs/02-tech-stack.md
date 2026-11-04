@@ -20,8 +20,8 @@ testing and on our **own server (VPS)** in production.
 | Interactivity | Small client components only (mega menu, mobile menu, FAQ, filters, marquee, forms). **No animation library** | Motion is CSS-only per spec |
 | Content (now) | Typed TypeScript content files + **MDX** for articles and legal pages, validated with **Zod**, behind a `lib/content` module | Ships without a CMS; this module is the one place to switch to a CMS/database later |
 | Forms | **React Hook Form + Zod**, submitted to Next.js **Server Actions** | Same schema validates client and server |
-| Form email | **Resend** (or SMTP via Nodemailer, e.g. the existing mail host) to info@ / jobs@ | Provider-neutral wrapper, so either works on Vercel and on the VPS |
-| CV uploads | **S3-compatible object storage** (DigitalOcean Spaces or Cloudflare R2) | Works from any host; no Vercel-only storage |
+| Form email | **Resend** to info@ / jobs@ (decided) | Simple API, works the same on Vercel and the VPS |
+| CV uploads | **To be decided later** (kept out of the stack for now) | Until then, the Apply form can send the CV as an email attachment via Resend |
 | Spam protection | **Cloudflare Turnstile** + honeypot + rate limit | Privacy-friendly, no cookie banner needed |
 | SEO | Next Metadata API, `sitemap.ts`, `robots.ts`, JSON-LD (Organization, Service, Article, JobPosting, BreadcrumbList), dynamic OG images | Industry-standard technical SEO |
 | Analytics | **Plausible** (EU, cookieless; cloud or self-hosted on the same VPS) | Host-independent; GDPR friendly |

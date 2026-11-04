@@ -114,6 +114,6 @@ All values live in `DESIGN-TOKENS-V2.md`; the acceptance criteria forbid hex val
 | G1 | **`teamData.js`** (stack grounding source) is not in the repo | Low: "What we build with" lists can't be cross-checked | Treat the design's stack lists as approved unless the file is shared |
 | G2 | 9 of 12 Service Detail pages have **no content** | Template only; those rows link to contact until written | Content task (OPEN-DECISIONS #4) |
 | G3 | Raster logo mark only | Blurry on high-DPI; no favicon set | Supply SVG mark (OPEN-DECISIONS #8) |
-| G4 | Form back end needed without a CMS | Contact / Apply / Subscribe need to send somewhere | Email delivery + object storage (see tech stack) |
+| G4 | Form back end needed without a CMS | Contact / Apply / Subscribe need to send somewhere | Resend email; CV as attachment until file storage is decided |
 | G5 | Footer social links point to generic `facebook.com` / `x.com` | Wrong links at launch | Supply real profile URLs |
 | G6 | Legal text carried over from the old site | Must match the new hosting, analytics and form processors (GDPR) | Legal review before launch |

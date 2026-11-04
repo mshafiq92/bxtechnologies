@@ -26,7 +26,7 @@ OG images). That rules out plain shared/static hosting.
 
 | Option | Fit | Notes |
 |---|---|---|
-| **DigitalOcean Droplet** (2 GB RAM+, Frankfurt or Amsterdam) | Recommended | Simple, predictable price, Spaces (S3) for CV uploads in the same account, good docs |
+| **DigitalOcean Droplet** (2 GB RAM+, Frankfurt or Amsterdam) | Recommended | Simple, predictable price, good docs |
 | **Hostinger VPS** (KVM plan, EU location) | Good | Cheaper; full root access; same Docker setup |
 | DigitalOcean App Platform | Possible | Managed (no server admin), deploys the same Dockerfile; costs more than a Droplet |
 | Hostinger shared / "web hosting" plans | **Not suitable** | No reliable long-running Node.js process for Next.js server features |
@@ -44,7 +44,7 @@ Cloudflare (DNS, TLS, cache, WAF)
 - **Image**: multi-stage `Dockerfile` using `output: "standalone"`, non-root user, health check on `/api/health`.
 - **Registry**: GitHub Container Registry (`ghcr.io`).
 - **Server hardening**: SSH keys only, firewall (80/443/22), automatic security updates, fail2ban, non-root deploy user.
-- **Backups**: VPS snapshots weekly; nothing stateful lives on the server (uploads go to object storage, content is in git).
+- **Backups**: VPS snapshots weekly; nothing stateful lives on the server (content is in git; CVs arrive by email).
 
 ## 3. CI/CD pipeline (GitHub Actions)
 
@@ -75,9 +75,8 @@ Never in git. Template in `.env.example`. Stored in Vercel (preview/staging), Gi
 | Variable | Use |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | Canonical URLs, sitemap, OG |
-| `MAIL_PROVIDER`, `RESEND_API_KEY` or `SMTP_HOST/PORT/USER/PASS` | Form delivery |
+| `RESEND_API_KEY` | Form delivery |
 | `MAIL_TO_ENQUIRIES`, `MAIL_TO_CAREERS`, `MAIL_FROM` | Form routing |
-| `S3_ENDPOINT`, `S3_BUCKET`, `S3_ACCESS_KEY`, `S3_SECRET_KEY`, `S3_REGION` | CV uploads (DO Spaces / R2) |
 | `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` | Spam protection |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | Analytics |
 | `SENTRY_DSN`, `SENTRY_AUTH_TOKEN` | Error monitoring |
@@ -112,7 +111,7 @@ Mail domain: SPF, DKIM and DMARC records for the sending domain before forms go 
 - [ ] Remaining service detail content, or rows link to contact
 - [ ] Vector bX mark, favicon set, OG image
 - [ ] Real social profile URLs (footer currently points to generic facebook.com / x.com)
-- [ ] Privacy and Cookies pages list the actual processors (hosting provider, mail, Plausible, Cloudflare, Sentry, object storage)
+- [ ] Privacy and Cookies pages list the actual processors (hosting provider, Resend, Plausible, Cloudflare, Sentry)
 
 **Technical**
 - [ ] Production rehearsal on the VPS passed
