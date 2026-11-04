@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Services · bX Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0;background:#F4F8FB;color:#0A1F33;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;height:auto;min-height:100%}
+.sc-host{height:auto!important}
+*{box-sizing:border-box}
+a{color:#006EA3;text-decoration:none;transition:color 150ms,background-color 150ms,border-color 150ms}
+a:hover{color:#0A1F33}
+:focus-visible{outline:2px solid #006EA3;outline-offset:2px}
+[data-deep] :focus-visible{outline-color:#5BC8F5}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{text-wrap:pretty;margin:0}
+section[id]{scroll-margin-top:126px}
+.g4{display:grid;grid-template-columns:minmax(0,1fr);gap:40px 24px}@media (min-width:660px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1140px){.g4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.svrow{display:grid;grid-template-columns:40px minmax(0,1fr) 24px;gap:8px 24px;align-items:start;padding:24px 0;border-top:1px solid #DCE6EF;color:#0A1F33}
+@media (min-width:900px){.svrow{grid-template-columns:40px minmax(0,1fr) minmax(0,1.3fr) 24px}}
+.svrow .desc{grid-column:2/3}@media (min-width:900px){.svrow .desc{grid-column:auto}}
+.jumpbar::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</helmet>
+
+<dc-import name="BxHeader" active="services" style="position:sticky;top:0;z-index:20" hint-size="100%,73px"></dc-import>
+
+<main>
+<section id="top" data-screen-label="Hero" style="position:relative;isolation:isolate;overflow:hidden;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px) clamp(48px,6vw,64px)">
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(#DCE6EF 1px,transparent 1px),linear-gradient(90deg,#DCE6EF 1px,transparent 1px);background-size:56px 56px;background-position:right -1px top -1px;-webkit-mask-image:radial-gradient(ellipse 75% 100% at 100% 0%,#000 25%,transparent 72%);mask-image:radial-gradient(ellipse 75% 100% at 100% 0%,#000 25%,transparent 72%)"></div>
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <nav aria-label="Breadcrumb" style="display:flex;gap:8px;font-size:14px;line-height:22px;color:#4A5B6C"><a href="bX v2 - Home.dc.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Services</span></nav>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Services</span>
+        <h1 style="font-size:clamp(34px,4vw,48px);line-height:1.125;font-weight:600;letter-spacing:-0.03em;max-width:18ch">Four groups of services, one delivery team.</h1>
+        <p style="font-size:18px;line-height:28px;color:#4A5B6C;max-width:58ch">We are an engineering firm, not a marketplace of unrelated skills. The AI work is built by the same people who maintain the systems it plugs into, which is why it survives contact with production.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <dl style="margin:0;display:flex;flex-wrap:wrap;gap:16px 40px;border-top:1px solid #DCE6EF;padding-top:24px">
+          <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">delivering since</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em">2019</dd></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">countries served</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em;color:#0A1F33">4</dd></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">on-time delivery</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em;color:#0A1F33">94%</dd></div>
+        </dl>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#contact" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;background:#00AEEF;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#33C1F3;color:#0A1F33">Book a technical call</a>
+          <a href="#engagement" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;border:1px solid #6B7F93;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#FFFFFF;color:#0A1F33">Engagement models <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav aria-label="Jump to" style="position:sticky;top:73px;z-index:15;background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:0 clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:4px 8px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;min-height:52px" class="jumpbar">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#4A5B6C;flex:none;margin-right:8px">Jump to</span>
+    <sc-for list="{{ jump }}" as="j" hint-placeholder-count="6">
+      <a href="{{ j.href }}" style="flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;white-space:nowrap;font-size:15px;font-weight:500;color:#0A1F33" style-hover="background:#F4F8FB;color:#006EA3">{{ j.label }}</a>
+    </sc-for>
+  </div>
+</nav>
+
+<sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+<section id="{{ g.id }}" data-screen-label="{{ g.title }}" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px) 0">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;color:#006EA3">{{ g.num }}</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">{{ g.title }}</h2>
+      <p style="font-size:18px;line-height:28px;color:#4A5B6C">{{ g.intro }}</p>
+    </div>
+    <div style="border-bottom:1px solid #DCE6EF">
+      <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3">
+        <a class="svrow" href="{{ it.href }}" style-hover="background:#FFFFFF;color:#0A1F33">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:28px;color:#006EA3">{{ it.n }}</span>
+          <span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ it.t }}</span><span style="font-size:16px;line-height:24px;color:#4A5B6C">{{ it.sub }}</span></span>
+          <span class="desc" style="display:flex;flex-direction:column;gap:12px"><span style="font-size:15px;line-height:24px;color:#4A5B6C">{{ it.d }}</span><span style="display:flex;flex-wrap:wrap;gap:6px"><sc-for list="{{ it.stack }}" as="s" hint-placeholder-count="3"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;padding:3px 8px;border-radius:4px;background:#FFFFFF;border:1px solid #DCE6EF;color:#4A5B6C;white-space:nowrap">{{ s }}</span></sc-for></span></span>
+          <span aria-hidden="true" style="font-size:18px;line-height:28px;color:#006EA3;text-align:right">→</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-for>
+
+<section id="stack" data-screen-label="Stack" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Stack</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">What we build with</h2>
+      </div>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C;max-width:52ch">Drawn from the skills your team profiles already list. Confirm and extend this before launch. It should name only what your engineers have shipped and supported in production.</p>
+    </div>
+    <div class="g4">
+      <sc-for list="{{ stack }}" as="st" hint-placeholder-count="4">
+        <div style="border-top:1px solid #0A1F33;padding-top:20px;display:flex;flex-direction:column;gap:16px">
+          <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ st.t }}</h3>
+          <ul style="list-style:none;margin:0;padding:0">
+            <sc-for list="{{ st.items }}" as="x" hint-placeholder-count="5">
+              <li style="font-family:'JetBrains Mono',monospace;font-size:14px;line-height:22px;padding:8px 0;border-top:1px solid #DCE6EF">{{ x }}</li>
+            </sc-for>
+          </ul>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="engagement" data-screen-label="Engagement models" style="background:#FFFFFF;border-top:1px solid #DCE6EF;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:48px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Engagement models</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Pick the shape that fits the problem</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C;max-width:48ch">Fixed scope when requirements are clear, a dedicated team when they are not, a bounded pilot when the question is whether AI helps at all, and a smaller monthly track for startups and growing businesses.</p>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px">Talk through the options <span aria-hidden="true">→</span></a>
+    </div>
+    <ul style="list-style:none;margin:0;padding:0;border-bottom:1px solid #DCE6EF">
+      <sc-for list="{{ models }}" as="m" hint-placeholder-count="4">
+        <li style="border-top:1px solid #DCE6EF;padding:24px 0;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px">
+            <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ m.title }}</h3>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid #DCE6EF;background:#F4F8FB;color:#4A5B6C;white-space:nowrap">{{ m.tag }}</span>
+          </div>
+          <p style="font-size:16px;line-height:26px;color:#4A5B6C;max-width:62ch">{{ m.text }}</p>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+</main>
+
+<dc-import name="BxContactBand" eyebrow="Start a project" title="Not sure which service you need?" text="Describe what is slow, manual or breaking. A 30-minute call with the engineers who would do the work. You leave with an approach, whether or not you hire us." cta="Book a technical call" cta-href="bX v2 - Contact.dc.html" secondary="Read our insights →" secondary-href="bX v2 - Insights.dc.html" hint-size="100%,330px"></dc-import>
+<dc-import name="BxFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const C = '#contact';
+    const groups = [
+      { id: 'ai', num: '01', title: 'AI & Autonomy', intro: 'Systems that decide and generate, wired into the software you already run. In production for insurance, education and SaaS clients.', items: [
+        { n: '01', t: 'Agentic AI & agents', sub: 'Planner and executor agents that take actions, not just answer questions', d: 'Orchestration, tool calling into ERP and CRM, retrieval, policy guardrails, human handoff, and the regression evals that tell you when a prompt change broke something.', stack: ['Claude · OpenAI', 'LangGraph', 'pgvector'], href: 'bX v2 - Service Detail.dc.html' },
+        { n: '02', t: 'Generative AI integration', sub: 'Retrieval and copilots inside the screens your team already uses', d: 'Document ingestion and chunking, hybrid search over your own content, copilots embedded in existing UI, and evaluation before anything reaches a customer.', stack: ['RAG', 'Vector search', 'Node.js'], href: C },
+        { n: '03', t: 'AI/ML engineering', sub: 'Models trained on your data, and the pipeline that keeps them honest', d: 'Forecasting, classification, computer vision and anomaly detection, with feature stores, retraining schedules, drift monitoring and versioned deployment.', stack: ['Python', 'Forecasting', 'Computer vision'], href: C }] },
+      { id: 'data', num: '02', title: 'Data & Cloud', intro: 'The foundation the AI layer stands on. In production for utilities, logistics and SaaS clients.', items: [
+        { n: '04', t: 'Data engineering & analytics', sub: 'Pipelines and warehouses your reporting can be trusted on', d: 'Ingestion from operational systems, dimensional modelling, scheduled orchestration, data quality tests, and dashboards that reconcile with the source of truth.', stack: ['SQL Server', 'MySQL', 'MongoDB', 'Reporting'], href: C },
+        { n: '05', t: 'Cloud & DevOps', sub: 'Landing zones, pipelines and the cost discipline to go with them', d: 'AWS and Azure architecture, infrastructure as code, CI/CD, containerised deployment, observability, disaster recovery, and cloud spend brought back under control.', stack: ['AWS', 'Azure', 'Docker', 'CI/CD'], href: 'bX v2 - Service Detail - Cloud DevOps.dc.html' },
+        { n: '06', t: 'IoT & embedded', sub: 'Device fleets and the telemetry operators actually watch', d: 'Firmware integration, message-broker ingestion at scale, time-series storage, alerting rules, over-the-air update paths and operator dashboards.', stack: ['MQTT', 'Telemetry', 'Dashboards'], href: C }] },
+      { id: 'product', num: '03', title: 'Product Engineering', intro: 'The core practice since 2019. In production for facilities, automotive and retail clients.', items: [
+        { n: '07', t: 'Custom software development', sub: 'Line-of-business systems built to be handed over', d: 'Domain modelling, API design, integrations with what you already run, and documentation thorough enough that another team could take it on.', stack: ['C# / ASP.NET', 'Node.js', 'Python', 'SQL Server'], href: 'bX v2 - Service Detail - Custom Software.dc.html' },
+        { n: '08', t: 'Web & mobile applications', sub: 'From mock-up to store release, on one codebase where it makes sense', d: 'Responsive web products, cross-platform mobile apps, design systems, accessibility, and the release engineering behind store submissions.', stack: ['React.js', 'Tailwind', 'Responsive web', 'Mobile apps'], href: C },
+        { n: '09', t: 'QA & test automation', sub: 'Independent testing, including safety-adjacent automotive work', d: 'Functional, regression, performance, security and API testing; automation suites in your pipeline; infotainment validation delivered with our German partner.', stack: ['Functional', 'Performance', 'Security', 'API'], href: C }] },
+      { id: 'teams', num: '04', title: 'Teams & Advisory', intro: 'When the gap is capacity or direction rather than a defined build. In production for automotive, education and fintech clients.', items: [
+        { n: '10', t: 'Dedicated teams', sub: 'Named engineers in your standups, your board and your repo', d: 'You interview and pick the engineers. They work your process and your hours, scale monthly, and we handle employment, equipment and cover.', stack: ['Your process', 'CET overlap', 'Monthly scaling'], href: C },
+        { n: '11', t: 'Digital transformation consulting', sub: 'Assessment and roadmap, then the migration work itself', d: 'Current-state review, target architecture, a sequenced roadmap with costs, and, unlike a pure advisory, the team that executes it afterwards.', stack: ['Assessment', 'Roadmap', 'Legacy migration'], href: C },
+        { n: '12', t: 'Blockchain & distributed systems', sub: 'Contracts and settlement flows, audited before they touch money', d: 'Smart contract development and review, wallet integration, token and settlement flows, plus the off-chain services and indexing around them.', stack: ['Smart contracts', 'Wallets', 'Settlement'], href: C }] }
+    ];
+    return {
+      groups,
+      jump: [['#ai','AI & Autonomy'],['#data','Data & Cloud'],['#product','Product Engineering'],['#teams','Teams & Advisory'],['#stack','Stack'],['#engagement','Engagement']].map(([href,label])=>({href,label})),
+      stack: [
+        { t: 'AI & data', items: ['Claude', 'OpenAI', 'LangGraph', 'MCP', 'pgvector', 'Python'] },
+        { t: 'Backend', items: ['C# / ASP.NET', 'Node.js', 'Express', 'Python', 'C / C++', 'MongoDB', 'SQL Server', 'MySQL'] },
+        { t: 'Frontend & mobile', items: ['React.js', 'JavaScript', 'HTML / CSS', 'Tailwind', 'Bootstrap'] },
+        { t: 'Platform & QA', items: ['Git / GitHub', 'Bitbucket', 'Docker', 'AWS', 'Azure'] }
+      ],
+      models: [
+        { title: 'Fixed price', tag: 'Clear scope', text: 'Cost set during requirements and analysis. Change requests accepted late in the process. Best when the specification is stable.' },
+        { title: 'Dedicated team', tag: 'Evolving scope', text: 'Named engineers, your process, monthly scaling. Direct interaction with the team, no hiring overhead, lower total cost of ownership.' },
+        { title: 'AI pilot', tag: 'New', text: 'Six weeks, one workflow, a working agent behind an evaluation harness and a go/no-go number at the end. Fixed fee.' },
+        { title: 'Startup & SMB track', tag: 'Smaller budgets', text: "Two engineers on a monthly retainer, one priority at a time, cancellable with a month's notice. For an MVP that has to reach users, or a manual process that needs to become a system without a six-figure programme around it." }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

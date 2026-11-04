@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-da26c3f4-0ce6-45da-a3ed-4d7ef0a32267/styles.css">
+<script src="_ds/industry-da26c3f4-0ce6-45da-a3ed-4d7ef0a32267/_ds_bundle.js"></script>
+<style>
+html,body{height:auto;min-height:100%}
+body{margin:0;background:var(--color-bg);color:var(--color-text)}
+.sc-host,#root>div{height:auto!important;min-height:100%}
+a{color:var(--color-accent);text-decoration:none}
+a:hover{color:var(--color-accent-600)}
+.btn{white-space:nowrap}
+.navtoggle{display:none}
+.shell{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}
+.shell:has(.navtoggle:checked){grid-template-columns:minmax(0,1fr)}
+.shell:has(.navtoggle:checked) .side{display:none}
+.navbtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--color-divider);border-radius:var(--radius-md);cursor:pointer;font-size:14px;color:var(--color-text);flex:none}
+.navbtn:hover{background:color-mix(in srgb,var(--color-text) 7%,transparent)}
+@media (max-width:900px){.shell{grid-template-columns:minmax(0,1fr)}.side{display:none}}
+.side{overflow-y:auto;border-right:1px solid var(--color-divider);padding:var(--space-4) var(--space-3);display:flex;flex-direction:column;gap:var(--space-4);position:sticky;top:0;align-self:start;height:100vh;box-sizing:border-box}
+.navsec{display:flex;flex-direction:column;gap:2px}
+.navlab{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:6px}
+.navitem{display:flex;align-items:center;gap:9px;padding:6px 10px;font-size:13.5px;color:var(--color-text);border-radius:var(--radius-md)}
+.navitem:hover{background:color-mix(in srgb,var(--color-text) 6%,transparent);color:var(--color-text)}
+.navitem[aria-current="page"]{background:var(--color-accent);color:var(--color-bg)}
+.topbar{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);position:sticky;top:0;background:var(--color-bg);z-index:5;flex-wrap:wrap}
+.main{padding:var(--space-4);display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:var(--space-3);align-items:start}
+.panel{border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)}
+.ptitle{font-family:var(--font-heading);font-size:16px;line-height:1.2}
+.hint{font-size:11.5px;color:var(--color-neutral-700)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;color:color-mix(in srgb,var(--color-text) 70%,transparent)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.chk{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;line-height:1.5;padding:6px 0}
+.chk input{accent-color:var(--color-accent);margin-top:2px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.swatch{display:flex;align-items:center;gap:10px;font-size:12.5px;padding:8px 0;border-bottom:1px solid var(--color-divider)}
+.swatch:last-of-type{border-bottom:none}
+.sw{width:26px;height:26px;border-radius:4px;border:1px solid var(--color-divider);flex:none}
+.rep{border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:var(--space-3);display:flex;flex-direction:column;gap:10px}
+.rephead{display:flex;align-items:center;gap:8px;font-size:12.5px;color:color-mix(in srgb,var(--color-text) 60%,transparent)}
+.grip{color:color-mix(in srgb,var(--color-text) 40%,transparent);font-size:12px;cursor:grab}
+.warn{border:1px solid var(--color-accent);border-radius:var(--radius-md);padding:var(--space-3);font-size:12.5px;line-height:1.55;background:var(--color-accent-100);color:var(--color-accent-800)}
+.logorow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--color-divider);font-size:13px}
+.logorow:last-child{border-bottom:none}
+</style>
+</helmet>
+
+<div class="shell">
+  <input class="navtoggle" id="navtoggle" type="checkbox">
+  <aside class="side">
+    <div style="display:flex;align-items:baseline;gap:8px">
+      <span style="font-family:var(--font-heading);font-size:20px;letter-spacing:-.01em">bX</span>
+      <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Console</span>
+      <label class="navbtn" for="navtoggle" title="Collapse sidebar" style="margin-left:auto">‹</label>
+    </div>
+    <div class="navsec">
+      <span class="navlab">Overview</span>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Dashboard</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Enquiries</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Applications</a>
+      <a class="navitem" href="#">Proposals</a>
+    </div>
+    <div class="navsec">
+      <span class="navlab">Content</span>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Pages</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Navigation &amp; footer</a>
+      <a class="navitem" href="bX Admin v2 - Media Library.dc.html">Media library</a>
+      <a class="navitem" href="bX Admin v2 - Services.dc.html">Services</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Industries</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Work / projects</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Insights</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Careers</a>
+    </div>
+    <div class="navsec">
+      <span class="navlab">Delivery</span>
+      <a class="navitem" href="#">Projects</a>
+      <a class="navitem" href="#">People &amp; allocation</a>
+    </div>
+    <div class="navsec" style="margin-top:auto">
+      <a class="navitem" href="#top" aria-current="page">Site settings</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Users &amp; permissions</a>
+      <a class="navitem" href="bX v2 - Home.dc.html">View website ↗</a>
+    </div>
+  </aside>
+
+  <div id="top">
+    <div class="topbar">
+      <label class="navbtn" for="navtoggle" title="Show or hide sidebar">☰</label>
+      <div>
+        <h1 style="font-size:20px;margin:0;line-height:1.2">Site settings</h1>
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 58%,transparent);margin-top:3px">Company details, SEO defaults, forms and integrations</div>
+      </div>
+      <div class="bar" style="margin-left:auto">
+        <a class="btn btn-secondary" href="#">Discard changes</a>
+        <a class="btn btn-primary" href="#">Save settings</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="panel">
+        <span class="ptitle">Company</span>
+        <div class="field"><label for="legal">Legal name</label><input class="input" id="legal" type="text" value="bX Technologies Pvt Ltd"></div>
+        <div class="two">
+          <div class="field"><label for="inc">Incorporated</label><input class="input" id="inc" type="text" value="March 2019"></div>
+          <div class="field"><label for="dom">Primary domain</label><input class="input" id="dom" type="text" value="bxtechnologies.net"></div>
+        </div>
+        <div class="field"><label for="blurb">Footer blurb</label><textarea class="input" id="blurb" style="min-height:72px">Full-stack software development, AI engineering and technology consulting. Incorporated March 2019.</textarea></div>
+        <div class="field"><label for="reg">Registrations line</label><textarea class="input" id="reg" style="min-height:60px">Registered with SECP · Member, Pakistan Software Export Board · Partner, Vis Group (Germany)</textarea><span class="hint">Shown in the footer legal bar on every page.</span></div>
+      </div>
+
+      <div class="panel">
+        <span class="ptitle">Contact</span>
+        <div class="two">
+          <div class="field"><label for="em">General email</label><input class="input" id="em" type="email" value="info@bxtechnologies.net"></div>
+          <div class="field"><label for="jobs">Careers email</label><input class="input" id="jobs" type="email" value="jobs@bxtechnologies.net"></div>
+        </div>
+        <div class="field"><label for="ph">Phone</label><input class="input" id="ph" type="tel" value="+49 203 34689340"></div>
+        <div class="hint">These feed the footer, the contact page and both role and apply pages — change once, updates everywhere.</div>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;align-items:center;gap:10px"><span class="ptitle" style="font-size:14px">Offices</span><a class="btn btn-ghost" href="#" style="margin-left:auto;font-size:12.5px">+ Add office</a></div>
+          <div class="rep">
+            <div class="rephead"><span class="grip">⣿</span><span>Europe</span><a href="#" style="margin-left:auto;font-size:12px">Remove</a></div>
+            <div class="two"><div class="field"><label>City, country</label><input class="input" type="text" value="Duisburg, Germany"></div><div class="field"><label>Role</label><input class="input" type="text" value="Client contact and contracting"></div></div>
+          </div>
+          <div class="rep">
+            <div class="rephead"><span class="grip">⣿</span><span>Delivery</span><a href="#" style="margin-left:auto;font-size:12px">Remove</a></div>
+            <div class="two"><div class="field"><label>City, country</label><input class="input" type="text" value="Islamabad, Pakistan"></div><div class="field"><label>Role</label><input class="input" type="text" value="Engineering, data, QA and AI teams"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <span class="ptitle">Social channels</span>
+        <div class="field"><label for="li">LinkedIn</label><input class="input" id="li" type="url" value="https://linkedin.com/company/bx-technologies"></div>
+        <div class="field"><label for="fb">Facebook</label><input class="input" id="fb" type="url" value="https://facebook.com"></div>
+        <div class="field"><label for="x">X</label><input class="input" id="x" type="url" value="https://x.com"></div>
+        <div class="hint">An empty field removes that icon from the footer rather than linking nowhere.</div>
+      </div>
+
+      <div class="panel">
+        <span class="ptitle">Search &amp; social defaults</span>
+        <div class="field"><label for="tt">Title template</label><input class="input" id="tt" type="text" value="%page% — bX Technologies"></div>
+        <div class="field"><label for="dd">Default meta description</label><textarea class="input" id="dd" style="min-height:66px">AI engineering, custom software and cloud work for clients in Europe and Asia. Engineers first.</textarea><span class="hint">Used where a page has none of its own.</span></div>
+        <div class="field"><label>Default share image</label><div class="bar"><a class="btn btn-secondary" href="bX Admin v2 - Media Library.dc.html" style="padding:5px 12px;font-size:12.5px">Choose</a><span class="hint">1200 × 630</span></div></div>
+        <div class="chk"><input type="checkbox" defaultChecked="{{ yes }}"><span>Generate sitemap.xml automatically</span></div>
+        <div class="chk"><input type="checkbox" defaultChecked="{{ yes }}"><span>Allow search engines to index the site</span></div>
+      </div>
+
+      <div class="panel">
+        <span class="ptitle">Forms &amp; routing</span>
+        <div class="field"><label for="to">Contact form goes to</label><input class="input" id="to" type="text" value="info@bxtechnologies.net, directors@bxtechnologies.net"></div>
+        <div class="field"><label for="rule">Routing rule</label><select class="input" id="rule" value="{{ rule }}" onChange="{{ onRule }}"><option value="budget">By budget — above €75k to Directors</option><option value="need">By stated need</option><option value="round">Round robin</option><option value="none">No routing, one inbox</option></select></div>
+        <div class="field"><label for="sla">Reply target</label><select class="input" id="sla"><option>One working day</option><option>Two working days</option><option>Same day</option></select></div>
+        <div class="chk"><input type="checkbox" defaultChecked="{{ yes }}"><span>Show budget bands on the contact form</span></div>
+        <div class="chk"><input type="checkbox" defaultChecked="{{ yes }}"><span>Send an automatic acknowledgement</span></div>
+        <div class="chk"><input type="checkbox" defaultChecked="{{ yes }}"><span>Keep applications for twelve months, then delete</span></div>
+      </div>
+
+      <div class="panel">
+        <span class="ptitle">Brand</span>
+        <div class="hint">bX Light tokens, locked to the approved v2 baseline. Changing one updates every page.</div>
+        <div>
+          <div class="swatch"><span class="sw" style="background:#F4F8FB"></span><span>Site background</span><code style="margin-left:auto">#F4F8FB</code></div>
+          <div class="swatch"><span class="sw" style="background:#0A1F33"></span><span>Text, metric numbers, navy bands</span><code style="margin-left:auto">#0A1F33</code></div>
+          <div class="swatch"><span class="sw" style="background:#006EA3"></span><span>Links and small blue text</span><code style="margin-left:auto">#006EA3</code></div>
+          <div class="swatch"><span class="sw" style="background:#00AEEF"></span><span>Primary button fill, signature rule</span><code style="margin-left:auto">#00AEEF</code></div>
+          <div class="swatch"><span class="sw" style="background:#79BB42"></span><span>Status dots only</span><code style="margin-left:auto">#79BB42</code></div>
+        </div>
+        <div class="warn">Green is for status dots and success messages, always beside words. Never on links, buttons, headings or numbers.</div>
+        <div class="two">
+          <div class="field"><label>Header logo</label><div class="bar"><a class="btn btn-secondary" href="#" style="padding:5px 12px;font-size:12.5px">Replace</a><span class="hint">Colour SVG for white header</span></div></div>
+          <div class="field"><label>Favicon</label><div class="bar"><a class="btn btn-secondary" href="#" style="padding:5px 12px;font-size:12.5px">Replace</a><span class="hint">32×32</span></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="ptitle">Clients &amp; partners strip</span><a class="btn btn-ghost" href="bX Admin v2 - Media Library.dc.html" style="margin-left:auto;font-size:12.5px">+ Add logo</a></div>
+        <div class="hint">Home page logo strip. A logo appears only once written permission from that client is on file.</div>
+        <div>
+          <div class="logorow"><span>Braintime</span><span class="tag tag-neutral">Not cleared</span><label class="radio" style="font-size:12.5px"><input type="checkbox"> <span class="dot"></span> Permission on file</label></div>
+          <div class="logorow"><span>ILED</span><span class="tag tag-neutral">Not cleared</span><label class="radio" style="font-size:12.5px"><input type="checkbox"> <span class="dot"></span> Permission on file</label></div>
+          <div class="logorow"><span>MetaKlouds</span><span class="tag tag-neutral">Not cleared</span><label class="radio" style="font-size:12.5px"><input type="checkbox"> <span class="dot"></span> Permission on file</label></div>
+          <div class="logorow"><span>HydroSensing</span><span class="tag tag-neutral">Not cleared</span><label class="radio" style="font-size:12.5px"><input type="checkbox"> <span class="dot"></span> Permission on file</label></div>
+          <div class="logorow"><span>Jabtco</span><span class="tag tag-neutral">Not cleared</span><label class="radio" style="font-size:12.5px"><input type="checkbox"> <span class="dot"></span> Permission on file</label></div>
+          <div class="logorow"><span>Hausmeisterservice Münsterland</span><span class="tag tag-neutral">Not cleared</span><label class="radio" style="font-size:12.5px"><input type="checkbox"> <span class="dot"></span> Permission on file</label></div>
+          <div class="logorow"><span>Perform Engineering Services</span><span class="tag tag-neutral">Not cleared</span><label class="radio" style="font-size:12.5px"><input type="checkbox"> <span class="dot"></span> Permission on file</label></div>
+          <div class="logorow"><span>Client logo 8</span><span class="tag tag-neutral">Not cleared</span><label class="radio" style="font-size:12.5px"><input type="checkbox"> <span class="dot"></span> Permission on file</label></div>
+        </div>
+        <div class="warn">0 cleared. The strip is hidden on the live site until at least one logo is cleared.</div>
+        <div class="chk"><input type="checkbox" defaultChecked="{{ yes }}"><span>Scroll continuously (stops for visitors who prefer reduced motion)</span></div>
+      </div>
+      <div class="panel">
+        <span class="ptitle">Integrations</span>
+        <div class="field"><label for="ga">Analytics ID</label><input class="input" id="ga" type="text" placeholder="G-XXXXXXXXXX"></div>
+        <div class="field"><label for="cookie">Cookie banner</label><select class="input" id="cookie"><option>Shown — analytics blocked until accepted</option><option>Shown — informational only</option><option>Hidden</option></select></div>
+        <div class="field"><label for="mail">Newsletter provider</label><select class="input" id="mail"><option>Not connected</option><option>Mailchimp</option><option>Brevo</option><option>Postmark broadcasts</option></select></div>
+        <div class="field"><label for="cal">Calendar for technical calls</label><input class="input" id="cal" type="url" placeholder="https://cal.com/…"></div>
+        <div class="chk"><input type="checkbox"><span>Maintenance mode — the site returns a holding page</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { rule: "budget" };
+  renderVals() {
+    return { yes: true, rule: this.state.rule, onRule: (e) => this.setState({ rule: e.target.value }) };
+  }
+}
+</script>
+</body>
+</html>

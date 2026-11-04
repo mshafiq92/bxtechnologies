@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Careers · bX Technologies</title>
+<script src="image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0;background:#F4F8FB;color:#0A1F33;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;height:auto;min-height:100%}
+.sc-host{height:auto!important}
+*{box-sizing:border-box}
+a{color:#006EA3;text-decoration:none;transition:color 150ms,background-color 150ms,border-color 150ms}
+a:hover{color:#0A1F33}
+:focus-visible{outline:2px solid #006EA3;outline-offset:2px}
+[data-deep] :focus-visible{outline-color:#5BC8F5}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{text-wrap:pretty;margin:0}
+section[id]{scroll-margin-top:126px}
+.g4{display:grid;grid-template-columns:minmax(0,1fr);gap:32px 24px}@media (min-width:660px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1140px){.g4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.rrow{display:grid;grid-template-columns:minmax(0,1fr) 24px;gap:12px 32px;padding:24px 0;border-top:1px solid #DCE6EF;color:#0A1F33;align-items:start}
+@media (min-width:900px){.rrow{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 180px 24px}}
+.jumpbar::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</helmet>
+
+<dc-import name="BxHeader" active="company" style="position:sticky;top:0;z-index:20" hint-size="100%,73px"></dc-import>
+
+<main>
+<section id="top" data-screen-label="Hero" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px) clamp(48px,6vw,64px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <nav aria-label="Breadcrumb" style="display:flex;gap:8px;font-size:14px;line-height:22px;color:#4A5B6C"><a href="bX v2 - Home.dc.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Careers</span></nav>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Careers</span>
+        <h1 style="font-size:clamp(34px,4vw,48px);line-height:1.125;font-weight:600;letter-spacing:-0.03em;max-width:18ch">Work on systems that go into production.</h1>
+        <p style="font-size:18px;line-height:28px;color:#4A5B6C;max-width:58ch">We are a small engineering team in Islamabad working with European clients. You will own components rather than tickets, talk to the people who use what you build, and see your work run against real load.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <dl style="margin:0;display:flex;flex-wrap:wrap;gap:16px 40px;border-top:1px solid #DCE6EF;padding-top:24px">
+          <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">office and hybrid</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em">Islamabad</dd></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">overlap with clients</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em">CET</dd></div>
+        </dl>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#roles" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;background:#00AEEF;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#33C1F3;color:#0A1F33">See open roles</a>
+          <a href="bX v2 - Apply.dc.html" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;border:1px solid #6B7F93;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#FFFFFF;color:#0A1F33">Send a speculative CV</a>
+        </div>
+      </div>
+      </div>
+      <figure style="margin:0;position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:1px solid #DCE6EF;background:#FFFFFF">
+        <image-slot id="v2-careers-hero" shape="rect" placeholder="Drop a real photo of the team at work. No stock imagery."></image-slot>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<nav aria-label="Jump to" style="position:sticky;top:73px;z-index:15;background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:0 clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:4px 8px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;min-height:52px" class="jumpbar">
+    <sc-for list="{{ jump }}" as="j" hint-placeholder-count="4">
+      <a href="{{ j.href }}" style="flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;white-space:nowrap;font-size:15px;font-weight:500;color:#0A1F33" style-hover="background:#F4F8FB;color:#006EA3">{{ j.label }}</a>
+    </sc-for>
+  </div>
+</nav>
+
+<section id="roles" data-screen-label="Open roles" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Open roles</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Where we are hiring</h2>
+      </div>
+      <p style="font-size:14px;line-height:22px;color:#4A5B6C;max-width:50ch">Placeholder listings until you send the live ones. Each links to a role page or straight to an application email.</p>
+    </div>
+    <div style="border-bottom:1px solid #DCE6EF">
+      <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
+        <a class="rrow" href="{{ r.href }}" style-hover="background:#FFFFFF;color:#0A1F33">
+          <span style="display:flex;flex-direction:column;gap:6px"><span style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ r.t }}</span><span style="font-size:16px;line-height:26px;color:#4A5B6C">{{ r.d }}</span></span>
+          <span style="display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start"><sc-for list="{{ r.stack }}" as="s" hint-placeholder-count="3"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;padding:3px 8px;border-radius:4px;background:#FFFFFF;border:1px solid #DCE6EF;color:#4A5B6C;white-space:nowrap">{{ s }}</span></sc-for></span>
+          <span style="font-size:14px;line-height:28px;color:#4A5B6C">Islamabad · Full-time</span>
+          <span aria-hidden="true" style="font-size:18px;line-height:28px;color:#006EA3;text-align:right">→</span>
+        </a>
+      </sc-for>
+    </div>
+    <p style="font-size:16px;line-height:26px;color:#4A5B6C;max-width:72ch">Nothing that fits? Send your CV to <a href="mailto:jobs@bxtechnologies.net" style="font-weight:500">jobs@bxtechnologies.net</a> with a note on what you want to work on. We keep good applications on file and do contact people months later.</p>
+  </div>
+</section>
+
+<section id="life" data-screen-label="What it is like" style="background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">What it is like</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Small team, real clients, no layers</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">Four to six people on an engagement, talking directly to the client's team. There is no account manager between you and the person whose problem you are solving, which is the best and hardest part of working here.</p>
+    </div>
+    <div class="g4">
+      <sc-for list="{{ life }}" as="l" hint-placeholder-count="4">
+        <div style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:12px">
+          <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ l.t }}</h3>
+          <p style="font-size:16px;line-height:26px;color:#4A5B6C">{{ l.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="process" data-screen-label="Hiring process" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Hiring process</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Four steps, about two weeks</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">No unpaid take-home projects that take a weekend. If we ask you to write code, it is ninety minutes and you keep it.</p>
+    </div>
+    <ol class="g4" style="list-style:none;margin:0;padding:0">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <li style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;color:#006EA3">{{ s.n }}</span>
+          <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ s.t }}</h3>
+          <p style="font-size:16px;line-height:26px;color:#4A5B6C">{{ s.d }}</p>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+</main>
+
+<div id="apply" style="scroll-margin-top:126px"><dc-import name="BxContactBand" eyebrow="Apply" title="Apply with a CV and one paragraph" text="Tell us what you built that you are proud of and what you want to be doing in two years. That paragraph matters more to us than the formatting of the CV." cta="jobs@bxtechnologies.net" cta-href="mailto:jobs@bxtechnologies.net" secondary="Follow on LinkedIn →" secondary-href="https://linkedin.com/company/bx-technologies" hint-size="100%,330px"></dc-import></div>
+<dc-import name="BxFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const A = 'bX v2 - Apply.dc.html';
+    return {
+      jump: [['#roles','Open roles'],['#life','What it is like'],['#process','Hiring process'],['#apply','Apply']].map(([href,label])=>({href,label})),
+      roles: [
+        { t: 'Senior Backend Engineer', d: 'Node.js and C#, service design, and the integrations that hold client systems together.', stack: ['Node.js', 'C# / .NET', 'SQL Server'], href: A },
+        { t: 'AI Engineer', d: 'Retrieval systems, agent workflows and the evaluation harnesses that decide whether they ship.', stack: ['Python', 'RAG', 'LangGraph'], href: 'bX v2 - Role Detail.dc.html' },
+        { t: 'Frontend Engineer', d: 'React and React Native, design-system work, and interfaces operators use all day.', stack: ['React', 'TypeScript', 'React Native'], href: A },
+        { t: 'DevOps / Platform Engineer', d: 'Pipelines, landing zones and infrastructure as code across client environments.', stack: ['AWS', 'Kubernetes', 'Terraform'], href: A },
+        { t: 'QA Automation Engineer', d: 'Regression suites that run per build, performance testing, and validation work with our automotive partner.', stack: ['Automation', 'Performance', 'API testing'], href: A }
+      ],
+      life: [
+        { t: 'You own something', d: 'Components and services, not tickets. You decide how it is built, and you are the person who fixes it at 2am if it breaks, which is why you get to decide.' },
+        { t: 'European working hours', d: 'Core overlap with CET, so afternoons are client time and mornings are yours. No night shifts.' },
+        { t: 'Learning is budgeted', d: 'Certification and conference budget, and time inside the week for it. Several engineers moved into AI work this way rather than by hiring from outside.' },
+        { t: 'Health and leave', d: 'Health cover, paid annual leave and flexibility when life needs it. Hybrid after probation.' }
+      ],
+      steps: [
+        { n: '01', t: 'Application review', d: 'A person reads it. You get an answer either way within a week.' },
+        { n: '02', t: 'Conversation with an engineer', d: 'Forty-five minutes on what you have built and how you approach problems. Not a quiz.' },
+        { n: '03', t: 'Technical session', d: 'Ninety minutes working through a realistic problem together, in your own editor and language.' },
+        { n: '04', t: 'Offer conversation', d: 'Scope, team, compensation and start date, with a director. Feedback given whatever the outcome.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

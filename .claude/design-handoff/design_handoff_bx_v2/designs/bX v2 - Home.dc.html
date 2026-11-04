@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>bX Technologies · AI-first engineering partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0;background:#F4F8FB;color:#0A1F33;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;height:auto;min-height:100%}
+.sc-host{height:auto!important}
+*{box-sizing:border-box}
+a{color:#006EA3;text-decoration:none;transition:color 150ms,background-color 150ms,border-color 150ms}
+a:hover{color:#0A1F33}
+:focus-visible{outline:2px solid #006EA3;outline-offset:2px}
+[data-deep] :focus-visible{outline-color:#5BC8F5}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{text-wrap:pretty;margin:0}
+section[id]{scroll-margin-top:72px}
+.g4{display:grid;grid-template-columns:minmax(0,1fr);gap:48px 24px}@media (min-width:660px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1140px){.g4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.g3{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}@media (min-width:960px){.g3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.g6{display:grid;grid-template-columns:minmax(0,1fr);gap:40px 32px}@media (min-width:660px){.g6{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1040px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.marquee{flex:1 1 420px;min-width:0;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 48px,#000 calc(100% - 48px),transparent)}
+.mtrack{display:flex;align-items:center;gap:64px;width:max-content;animation:mscroll 40s linear infinite}
+.marquee:hover .mtrack{animation-play-state:paused}
+@keyframes mscroll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 32px))}}
+.mlogo{position:relative;flex:none;height:28px;display:block}
+.mlogo img{height:28px;width:auto;display:block;transition:opacity 150ms}
+.mlogo .mono{filter:brightness(0);opacity:.55}
+.mlogo .real{position:absolute;inset:0;opacity:0}
+.mlogo:hover .mono{opacity:0}
+.mlogo:hover .real{opacity:1}
+.prow{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px 24px;align-items:start;padding:24px 0;position:relative}
+.prow+.prow{border-top:1px solid #1F3A55}
+.pbody{display:grid;grid-template-columns:minmax(0,1fr);gap:10px 32px;align-items:baseline}
+@media (min-width:900px){.pbody{grid-template-columns:minmax(0,0.8fr) minmax(0,1.3fr) minmax(0,0.8fr)}.pchips{justify-content:flex-end}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.mtrack{animation:none}}
+</style>
+</helmet>
+
+<dc-import name="BxHeader" active="home" style="position:sticky;top:0;z-index:20" hint-size="100%,73px"></dc-import>
+
+<main>
+<section id="top" data-screen-label="Hero" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px) clamp(48px,6vw,64px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">AI-first engineering partner</span>
+        <h1 style="font-size:clamp(40px,4.6vw,64px);line-height:1.063;font-weight:600;letter-spacing:-0.035em;max-width:16ch">We put AI agents into production software that already works.</h1>
+        <p style="font-size:18px;line-height:28px;color:#4A5B6C;max-width:56ch">Seven years building custom software, web and mobile systems for clients in Europe and Asia. We design, build and operate the agentic and generative layers on top of them.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border:1px solid #DCE6EF;border-radius:4px;background:#FFFFFF;color:#4A5B6C;white-space:nowrap">Agentic AI</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border:1px solid #DCE6EF;border-radius:4px;background:#FFFFFF;color:#4A5B6C;white-space:nowrap">Cloud</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border:1px solid #DCE6EF;border-radius:4px;background:#FFFFFF;color:#4A5B6C;white-space:nowrap">Custom software</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;padding-top:8px">
+          <a href="#contact" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;background:#00AEEF;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#33C1F3;color:#0A1F33">Book a technical call</a>
+          <a href="#work" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;border:1px solid #6B7F93;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#FFFFFF;color:#0A1F33">See the work <span aria-hidden="true">→</span></a>
+        </div>
+        <dl style="margin:8px 0 0;display:flex;flex-wrap:wrap;gap:16px 40px;border-top:1px solid #DCE6EF;padding-top:24px">
+          <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">faster claims triage</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em;color:#0A1F33">68%</dd></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">more online bookings</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em;color:#0A1F33">3.2×</dd></div>
+          <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">saved weekly on tenders</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em;color:#0A1F33">9 hrs</dd></div>
+        </dl>
+      </div>
+
+      <figure data-deep="" style="margin:0;background:#0A1F33;color:#F4F8FB;border-radius:12px;overflow:hidden">
+        <div style="height:3px;background:linear-gradient(90deg,#00AEEF,#79BB42)"></div>
+        <div style="padding:24px;display:flex;flex-direction:column;gap:16px">
+          <figcaption style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5BC8F5">How we build agents</figcaption>
+          <div style="display:flex;align-items:stretch;gap:8px">
+            <div style="flex:1;border:1px solid #5B7690;border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:4px"><span style="font-weight:600;font-size:15px">Channel</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;color:#A9B8C8">web · WhatsApp · email</span></div>
+            <span aria-hidden="true" style="align-self:center;font-family:'JetBrains Mono',monospace;color:#5BC8F5">→</span>
+            <div style="flex:1;border:1px solid #00AEEF;border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:4px"><span style="font-weight:600;font-size:15px">Orchestrator</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;color:#A9B8C8">planner · router</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+            <div style="border:1px solid #1F3A55;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;background:#0F2A44"><span style="font-weight:600;font-size:14px">Retrieval</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;color:#A9B8C8">vector + SQL</span></div>
+            <div style="border:1px solid #1F3A55;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;background:#0F2A44"><span style="font-weight:600;font-size:14px">Tools</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;color:#A9B8C8">ERP · CRM</span></div>
+            <div style="border:1px solid #1F3A55;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;background:#0F2A44"><span style="font-weight:600;font-size:14px">Guardrails</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;color:#A9B8C8">policy · PII</span></div>
+          </div>
+          <div style="border:1px dashed #5B7690;border-radius:8px;padding:12px 14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px"><span style="font-weight:600;font-size:14px;color:#5BC8F5">Eval &amp; observability</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:20px;color:#A9B8C8">traces · regressions · cost</span></div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;border-top:1px solid #1F3A55;padding-top:16px">
+            <span style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px;color:#F4F8FB"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#79BB42"></span>Deployed &amp; monitored</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;color:#79BB42">142 evals passing</span>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 32px;border-top:1px solid #DCE6EF;padding-top:24px;font-size:14px;line-height:22px;color:#4A5B6C">
+      <span>Delivering from Islamabad to clients in Germany, the UK and the Gulf</span>
+      <span>SECP registered · PSEB member · partner Vis Group, Germany</span>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Clients &amp; partners" style="background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:28px clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:20px 48px">
+    <span style="flex:none;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#4A5B6C">Clients &amp; partners</span>
+    <div class="marquee">
+      <div class="mtrack">
+        <span class="mlogo"><img class="mono" src="assets/clients/mono/braintime.png" alt="Braintime"><img class="real" src="assets/clients/braintime.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo"><img class="mono" src="assets/clients/mono/iled.png" alt="ILED"><img class="real" src="assets/clients/iled.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo"><img class="mono" src="assets/clients/mono/metacloud.png" alt="MetaKlouds"><img class="real" src="assets/clients/metacloud.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo"><img class="mono" src="assets/clients/mono/hydro.png" alt="HydroSensing"><img class="real" src="assets/clients/hydro.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo"><img class="mono" src="assets/clients/mono/jabtco.png" alt="Jabtco"><img class="real" src="assets/clients/jabtco.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo"><img class="mono" src="assets/clients/mono/gardening.png" alt="Hausmeisterservice Münsterland"><img class="real" src="assets/clients/gardening.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo"><img class="mono" src="assets/clients/mono/pes.png" alt="Perform Engineering Services"><img class="real" src="assets/clients/pes.gif" alt="" aria-hidden="true"></span>
+        <span class="mlogo"><img class="mono" src="assets/clients/mono/client-logo.png" alt="Client"><img class="real" src="assets/clients/client-logo.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo" aria-hidden="true"><img class="mono" src="assets/clients/mono/braintime.png" alt=""><img class="real" src="assets/clients/braintime.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo" aria-hidden="true"><img class="mono" src="assets/clients/mono/iled.png" alt=""><img class="real" src="assets/clients/iled.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo" aria-hidden="true"><img class="mono" src="assets/clients/mono/metacloud.png" alt=""><img class="real" src="assets/clients/metacloud.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo" aria-hidden="true"><img class="mono" src="assets/clients/mono/hydro.png" alt=""><img class="real" src="assets/clients/hydro.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo" aria-hidden="true"><img class="mono" src="assets/clients/mono/jabtco.png" alt=""><img class="real" src="assets/clients/jabtco.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo" aria-hidden="true"><img class="mono" src="assets/clients/mono/gardening.png" alt=""><img class="real" src="assets/clients/gardening.png" alt="" aria-hidden="true"></span>
+        <span class="mlogo" aria-hidden="true"><img class="mono" src="assets/clients/mono/pes.png" alt=""><img class="real" src="assets/clients/pes.gif" alt="" aria-hidden="true"></span>
+        <span class="mlogo" aria-hidden="true"><img class="mono" src="assets/clients/mono/client-logo.png" alt=""><img class="real" src="assets/clients/client-logo.png" alt="" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="capabilities" data-screen-label="Services" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Services</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Four groups, one delivery team</h2>
+      </div>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C;max-width:48ch">The AI work is built by the same engineers who maintain the systems it plugs into. Client names are withheld under NDA; sector and scale are not.</p>
+    </div>
+    <div class="g4">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+        <article style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:16px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;color:#006EA3">{{ g.num }}</span>
+          <h3 style="font-size:24px;line-height:32px;font-weight:600;letter-spacing:-0.015em">{{ g.title }}</h3>
+          <ul style="list-style:none;margin:0;padding:0">
+            <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="3">
+              <li style="border-top:1px solid #DCE6EF"><a href="{{ it.href }}" style="display:flex;flex-direction:column;gap:4px;padding:14px 0;color:#0A1F33" style-hover="color:#006EA3"><span style="font-size:16px;line-height:24px;font-weight:600">{{ it.t }}</span><span style="font-size:14px;line-height:22px;color:#4A5B6C">{{ it.d }}</span></a></li>
+            </sc-for>
+          </ul>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid #DCE6EF;font-size:14px;line-height:22px;color:#4A5B6C">
+            <span style="flex:none;width:8px;height:8px;border-radius:50%;background:#79BB42"></span>{{ g.prod }}
+          </div>
+        </article>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px">
+      <a href="bX v2 - Services.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px">All services <span aria-hidden="true">→</span></a>
+      <span style="font-size:14px;line-height:22px;color:#4A5B6C">Each group has delivered, running systems behind it</span>
+    </div>
+  </div>
+</section>
+
+<section id="work" data-screen-label="Selected work" style="background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Selected work</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Systems in production, with numbers attached</h2>
+      </div>
+      <a href="bX v2 - Projects.dc.html" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;border:1px solid #6B7F93;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#F4F8FB;color:#0A1F33">All projects <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="g3">
+      <sc-for list="{{ work }}" as="w" hint-placeholder-count="3">
+        <a href="bX v2 - Projects.dc.html" style="display:flex;flex-direction:column;gap:16px;padding:24px;border:1px solid #DCE6EF;border-radius:12px;background:#F4F8FB;color:#0A1F33" style-hover="border-color:#6B7F93;color:#0A1F33">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#006EA3">{{ w.tag }}</span>
+            <span style="font-size:13px;line-height:20px;color:#4A5B6C">{{ w.sector }}</span>
+          </div>
+          <span style="font-size:48px;line-height:52px;font-weight:600;letter-spacing:-0.03em;color:#0A1F33">{{ w.metric }}</span>
+          <p style="font-size:16px;line-height:26px">{{ w.text }}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:16px;border-top:1px solid #DCE6EF">
+            <sc-for list="{{ w.stack }}" as="s" hint-placeholder-count="3">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;padding:3px 8px;border-radius:4px;background:#FFFFFF;border:1px solid #DCE6EF;color:#4A5B6C">{{ s }}</span>
+            </sc-for>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<sc-if value="{{ proofBand }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Delivered" style="padding:32px clamp(16px,4vw,24px);border-bottom:1px solid #DCE6EF">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:24px 56px">
+    <div style="display:flex;flex-direction:column;gap:4px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#1E7F34">Delivered</span>
+      <span style="font-size:14px;line-height:22px;color:#4A5B6C">measured, not claimed</span>
+    </div>
+    <dl style="margin:0;display:flex;flex-wrap:wrap;gap:16px 48px;flex:1">
+      <div style="display:flex;align-items:baseline;gap:10px"><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em;color:#0A1F33">94%</dd><dt style="font-size:14px;line-height:20px;color:#4A5B6C;max-width:14ch">on-time delivery</dt></div>
+      <div style="display:flex;align-items:baseline;gap:10px"><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em;color:#0A1F33">8/10</dd><dt style="font-size:14px;line-height:20px;color:#4A5B6C;max-width:16ch">clients retained past first project</dt></div>
+      <div style="display:flex;align-items:baseline;gap:10px"><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em;color:#0A1F33">81%</dd><dt style="font-size:14px;line-height:20px;color:#4A5B6C;max-width:14ch">automated test coverage</dt></div>
+      <div style="display:flex;align-items:baseline;gap:10px"><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em;color:#0A1F33">4</dd><dt style="font-size:14px;line-height:20px;color:#4A5B6C;max-width:12ch">countries served</dt></div>
+    </dl>
+  </div>
+</section>
+</sc-if>
+
+<section id="process" data-screen-label="How we work" data-deep="" style="background:#0A1F33;color:#F4F8FB;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5BC8F5">How we work</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em;color:#F4F8FB">Six stages, and you sign off each one</h2>
+      </div>
+      <p style="font-size:16px;line-height:26px;color:#A9B8C8;max-width:46ch">The process that has carried every delivery since 2019. Unchanged for AI work: an agent in production needs the same discipline as a payments system.</p>
+    </div>
+    <ol style="list-style:none;margin:0;padding:0;position:relative;border-top:1px solid #1F3A55;border-bottom:1px solid #1F3A55">
+      <span aria-hidden="true" style="position:absolute;left:27px;top:0;bottom:0;width:1px;background:#1F3A55"></span>
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+        <li class="prow">
+          <span style="position:relative;justify-self:center;width:40px;height:40px;border-radius:50%;border:1px solid #5BC8F5;background:#0A1F33;display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;color:#5BC8F5">{{ st.num }}</span>
+          <div class="pbody" style="padding-top:6px">
+            <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em;color:#F4F8FB">{{ st.title }}</h3>
+            <p style="font-size:16px;line-height:26px;color:#A9B8C8;max-width:52ch">{{ st.text }}</p>
+            <div class="pchips" style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ st.chips }}" as="c" hint-placeholder-count="2">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;padding:4px 10px;border-radius:4px;border:1px solid #1F3A55;color:#A9B8C8;white-space:nowrap">{{ c }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section id="engagement" data-screen-label="Engagement models" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:48px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Engagement models</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Pick the shape that fits the problem</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C;max-width:48ch">Fixed scope when requirements are clear, a dedicated team when they are not, a bounded pilot when the question is whether AI helps at all, and a smaller monthly track for startups and growing businesses.</p>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px">Talk through the options <span aria-hidden="true">→</span></a>
+    </div>
+    <ul style="list-style:none;margin:0;padding:0;border-bottom:1px solid #DCE6EF">
+      <sc-for list="{{ models }}" as="m" hint-placeholder-count="4">
+        <li style="border-top:1px solid #DCE6EF;padding:24px 0;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px">
+            <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ m.title }}</h3>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:18px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px;border:1px solid #DCE6EF;background:#FFFFFF;color:#4A5B6C;white-space:nowrap">{{ m.tag }}</span>
+          </div>
+          <p style="font-size:16px;line-height:26px;color:#4A5B6C;max-width:62ch">{{ m.text }}</p>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<section id="industries" data-screen-label="Industries" style="padding:0 clamp(16px,4vw,24px) clamp(64px,8vw,96px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Industries</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Where we already know the domain</h2>
+      </div>
+      <a href="bX v2 - Industries.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px">All industries <span aria-hidden="true">→</span></a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px">
+      <sc-for list="{{ industries }}" as="ind" hint-placeholder-count="5">
+        <a href="bX v2 - Industries.dc.html#sectors" style="flex:1 1 200px;display:flex;flex-direction:column;gap:6px;padding:20px;border:1px solid #DCE6EF;border-radius:12px;background:#FFFFFF;color:#0A1F33" style-hover="border-color:#6B7F93;color:#0A1F33">
+          <span style="font-size:18px;line-height:26px;font-weight:600;letter-spacing:-0.01em">{{ ind.t }}</span>
+          <span style="font-size:14px;line-height:22px;color:#4A5B6C">{{ ind.d }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="insights" data-screen-label="Insights" style="background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Insights</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">What our engineers are working out</h2>
+      </div>
+      <a href="bX v2 - Insights.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px">All insights <span aria-hidden="true">→</span></a>
+    </div>
+    <ul style="list-style:none;margin:0;padding:0;border-bottom:1px solid #DCE6EF">
+      <sc-for list="{{ insights }}" as="a" hint-placeholder-count="3">
+        <li style="border-top:1px solid #DCE6EF">
+          <a href="bX v2 - Article.dc.html" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:8px 32px;align-items:baseline;padding:24px 0;color:#0A1F33" style-hover="color:#006EA3">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">{{ a.topic }}</span>
+            <span style="display:flex;flex-direction:column;gap:6px;grid-column:span 2;min-width:0"><span style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ a.title }}</span><span style="font-size:16px;line-height:26px;color:#4A5B6C">{{ a.text }}</span></span>
+            <span style="font-size:14px;line-height:22px;color:#4A5B6C;justify-self:end">{{ a.read }}</span>
+          </a>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" data-screen-label="Contact" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:48px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Start a project</span>
+      <h2 style="font-size:clamp(28px,3.4vw,40px);line-height:1.15;font-weight:600;letter-spacing:-0.025em;max-width:20ch">Tell us what is slow, manual or breaking.</h2>
+      <p style="font-size:18px;line-height:28px;color:#4A5B6C;max-width:48ch">A 30-minute call with the engineers who would do the work, not a sales team. You leave with an approach and a rough shape of cost, whether or not you hire us.</p>
+      <div style="display:flex;flex-direction:column;gap:6px;padding-top:8px;font-size:16px;line-height:26px">
+        <a href="mailto:info@bxtechnologies.net" style="font-weight:500">info@bxtechnologies.net</a>
+        <span style="color:#4A5B6C">Islamabad, Pakistan · working with clients across CET and GMT</span>
+      </div>
+    </div>
+    <form onSubmit="{{ submit }}" style="background:#FFFFFF;border:1px solid #DCE6EF;border-radius:12px;overflow:hidden">
+      <div style="height:3px;background:linear-gradient(90deg,#00AEEF,#79BB42)"></div>
+      <div style="padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:20px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px">
+          <label style="display:grid;gap:8px;align-content:start"><span style="font-size:14px;line-height:22px;font-weight:500">Name</span><input placeholder="Your name" style="height:48px;padding:0 16px;border:1px solid #6B7F93;border-radius:4px;background:#FFFFFF;font:inherit;font-size:16px;color:#0A1F33"></label>
+          <label style="display:grid;gap:8px;align-content:start"><span style="font-size:14px;line-height:22px;font-weight:500">Work email</span><input type="email" placeholder="you@company.com" style="height:48px;padding:0 16px;border:1px solid #6B7F93;border-radius:4px;background:#FFFFFF;font:inherit;font-size:16px;color:#0A1F33"></label>
+        </div>
+        <label style="display:grid;gap:8px"><span style="font-size:14px;line-height:22px;font-weight:500">What are you trying to build or fix?</span><textarea rows="4" placeholder="A sentence or two is plenty" style="padding:12px 16px;border:1px solid #6B7F93;border-radius:4px;background:#FFFFFF;font:inherit;font-size:16px;line-height:26px;color:#0A1F33;resize:vertical"></textarea></label>
+        <fieldset style="border:0;margin:0;padding:0;display:grid;gap:8px">
+          <legend style="font-size:14px;line-height:22px;font-weight:500;padding:0;margin-bottom:8px">Where are you starting from?</legend>
+          <div role="radiogroup" style="display:flex;flex-wrap:wrap;gap:8px">
+            <sc-for list="{{ stages }}" as="s" hint-placeholder-count="3">
+              <button type="button" role="radio" aria-checked="{{ s.on }}" onClick="{{ s.pick }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:1px solid {{ s.border }};background:{{ s.bg }};font-family:Inter,system-ui,sans-serif;font-size:15px;font-weight:500;color:#0A1F33;cursor:pointer;transition:border-color 150ms" style-hover="border-color:#006EA3">{{ s.label }}</button>
+            </sc-for>
+          </div>
+        </fieldset>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <p role="status" style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px;color:#1E7F34;font-weight:500"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#79BB42"></span>Received. An engineer will reply within one working day.</p>
+        </sc-if>
+        <button type="submit" style="height:48px;border:0;border-radius:8px;background:#00AEEF;color:#0A1F33;font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:16px;cursor:pointer;transition:background-color 150ms" style-hover="background:#33C1F3">Request a technical call</button>
+        <span style="font-size:14px;line-height:22px;color:#4A5B6C">We reply within one working day. No mailing list.</span>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<dc-import name="BxFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;proofBand&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;}}">
+class Component extends DCLogic {
+  state = { stage: 0, sent: false };
+  renderVals() {
+    const S = 'bX v2 - Services.dc.html';
+    const groups = [
+      { num: '01', title: 'AI & Autonomy', prod: 'In production · insurance, education, SaaS', items: [
+        { t: 'Agentic AI & agents', d: 'Planner and executor agents wired into ERP, CRM and data, with guardrails and regression evals', href: 'bX v2 - Service Detail.dc.html' },
+        { t: 'Generative AI integration', d: 'Retrieval over your own documents, copilots inside existing screens, evaluation before rollout', href: S + '#ai' },
+        { t: 'AI/ML engineering', d: 'Forecasting, vision and classification models, plus the MLOps to keep them honest', href: S + '#ai' }] },
+      { num: '02', title: 'Data & Cloud', prod: 'In production · utilities, logistics, SaaS', items: [
+        { t: 'Data engineering & analytics', d: 'Pipelines, warehouses and reporting your AI layer can actually rely on', href: S + '#data' },
+        { t: 'Cloud & DevOps', d: 'AWS and Azure landing zones, CI/CD, Kubernetes, cost and reliability engineering', href: 'bX v2 - Service Detail - Cloud DevOps.dc.html' },
+        { t: 'IoT & embedded', d: 'Device fleets, telemetry ingestion and the dashboards operators trust', href: S + '#data' }] },
+      { num: '03', title: 'Product Engineering', prod: 'In production · facilities, automotive, retail', items: [
+        { t: 'Custom software development', d: 'Line-of-business systems in .NET, Node and Python, built to be handed over', href: 'bX v2 - Service Detail - Custom Software.dc.html' },
+        { t: 'Web & mobile applications', d: 'React, React Native and Flutter products, from mock-up to store release', href: S + '#product' },
+        { t: 'QA & test automation', d: 'Functional, performance, security and API testing, including automotive infotainment', href: S + '#product' }] },
+      { num: '04', title: 'Teams & Advisory', prod: 'In production · automotive, education, fintech', items: [
+        { t: 'Dedicated teams', d: 'Named engineers in your standups, your board, your repo, scaled monthly', href: S + '#teams' },
+        { t: 'Digital transformation consulting', d: 'Assessment, roadmap and the migration work that follows it', href: S + '#teams' },
+        { t: 'Blockchain & distributed systems', d: 'Contracts, wallets and settlement flows, audited before they touch money', href: S + '#teams' }] }
+    ];
+    const work = [
+      { tag: 'Agentic AI', sector: 'Insurance · EU · NDA', metric: '68%', text: 'faster first response on inbound claims after deploying a triage agent across email and portal intake.', stack: ['LangGraph', 'Node', 'AWS'] },
+      { tag: 'Web & mobile', sector: 'Facilities · Germany · NDA', metric: '3.2×', text: 'more online bookings for a German facilities-services firm after rebuilding booking and operations.', stack: ['React', 'Node', 'Postgres'] },
+      { tag: 'Cloud & DevOps', sector: 'SaaS · NDA', metric: '41%', text: 'lower monthly cloud spend for a regional SaaS platform after migration and CI/CD rebuild.', stack: ['AWS', 'Kubernetes', 'Terraform'] }
+    ];
+    const steps = [
+      { num: '01', title: 'Requirements', text: 'Our requirements engineers work through your goals and business domain before anyone estimates anything.', chips: ['Workshops', 'Domain model'] },
+      { num: '02', title: 'Proposal', text: 'Scope, approach, team shape and price, including the options we rejected and why.', chips: ['Fixed or team', 'Estimate'] },
+      { num: '03', title: 'UX & architecture', text: 'Mock-ups and a reference architecture you sign off before build starts.', chips: ['Prototypes', 'ADRs'] },
+      { num: '04', title: 'Build', text: 'Two-week iterations, unit tests at commit level, your board and your repo.', chips: ['Your repo', 'Fortnightly demo'] },
+      { num: '05', title: 'Test & evaluate', text: 'Functional, performance and security testing. For AI work, evaluation suites and cost tracking before rollout.', chips: ['Eval harness', 'Load & security'] },
+      { num: '06', title: 'Deploy & operate', text: 'Your cloud or ours, with monitoring, handover documentation and an agreed support window.', chips: ['Runbooks', 'Support SLA'] }
+    ];
+    const models = [
+      { title: 'Fixed price', tag: 'Clear scope', text: 'Cost set during requirements and analysis. Change requests accepted late in the process. Best when the specification is stable.' },
+      { title: 'Dedicated team', tag: 'Evolving scope', text: 'Named engineers, your process, monthly scaling. Direct interaction with the team, no hiring overhead, lower total cost of ownership.' },
+      { title: 'AI pilot', tag: 'New', text: 'Six weeks, one workflow, a working agent behind an evaluation harness and a go/no-go number at the end. Fixed fee.' },
+      { title: 'Startup & SMB track', tag: 'Smaller budgets', text: "Two engineers on a monthly retainer, one priority at a time, cancellable with a month's notice. For an MVP that has to reach users, or a manual process that needs to become a system." }
+    ];
+    const industries = [
+      { t: 'Fintech', d: 'Payments, settlement, KYC' }, { t: 'Healthcare', d: 'Patient records, scheduling' },
+      { t: 'eCommerce', d: 'Catalogue, fulfilment, support' }, { t: 'Telecom', d: 'Provisioning, infotainment QA' },
+      { t: 'Facilities & services', d: 'Booking, dispatch, operations' }
+    ];
+    const insights = [
+      { topic: 'Agents', title: 'How we evaluate an agent before it touches a customer', text: 'The regression suite, the cost ceiling and the three failure modes we test for every time.', read: '8 min read' },
+      { topic: 'Cloud', title: "Cutting a client's AWS bill 41% without touching the product", text: 'Where the money actually goes, and the four changes that moved the number.', read: '6 min read' },
+      { topic: 'Delivery', title: 'Why our AI projects use the same process as our payment systems', text: 'Requirements, sign-off, tests, handover. Nothing about agents changes the discipline.', read: '5 min read' }
+    ];
+    const stages = ['An idea', 'Existing system', 'Team gap'].map((label, i) => {
+      const on = this.state.stage === i;
+      return { label, on, border: on ? '#006EA3' : '#6B7F93', bg: on ? '#E6F4FB' : '#FFFFFF', pick: () => this.setState({ stage: i }) };
+    });
+    return {
+      groups, work, steps, models, industries, insights, stages,
+      proofBand: this.props.proofBand ?? true,
+      sent: this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

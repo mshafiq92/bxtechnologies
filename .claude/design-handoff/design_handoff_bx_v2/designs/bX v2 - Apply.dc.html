@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Apply · Careers · bX Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0;background:#F4F8FB;color:#0A1F33;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;height:auto;min-height:100%}
+.sc-host{height:auto!important}
+*{box-sizing:border-box}
+a{color:#006EA3;text-decoration:none;transition:color 150ms,background-color 150ms,border-color 150ms}
+a:hover{color:#0A1F33}
+:focus-visible{outline:2px solid #006EA3;outline-offset:2px}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{text-wrap:pretty;margin:0}
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:48px;align-items:start}
+@media (min-width:1040px){.layout{grid-template-columns:minmax(0,1fr) 340px}}
+.f2{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}@media (min-width:640px){.f2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.inp{height:48px;padding:0 16px;border:1px solid #6B7F93;border-radius:4px;background:#FFFFFF;font:inherit;font-size:16px;color:#0A1F33;width:100%}
+.ta{padding:12px 16px;border:1px solid #6B7F93;border-radius:4px;background:#FFFFFF;font:inherit;font-size:16px;line-height:26px;color:#0A1F33;width:100%;min-height:128px;resize:vertical}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</helmet>
+
+<dc-import name="BxHeader" active="company" style="position:sticky;top:0;z-index:20" hint-size="100%,73px"></dc-import>
+
+<main>
+<section id="top" data-screen-label="Apply" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;gap:8px;font-size:14px;line-height:22px;color:#4A5B6C"><a href="bX v2 - Home.dc.html">Home</a><span aria-hidden="true">/</span><a href="bX v2 - Careers.dc.html">Careers</a><span aria-hidden="true">/</span><span aria-current="page">Apply</span></nav>
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Apply</span>
+      <h1 style="font-size:clamp(34px,4vw,48px);line-height:1.125;font-weight:600;letter-spacing:-0.03em">A CV and one honest paragraph.</h1>
+      <p style="font-size:18px;line-height:28px;color:#4A5B6C">Ten minutes to fill in. A person reads every application and you get an answer either way within a week, including if the answer is no.</p>
+    </div>
+    <div class="layout">
+      <form onSubmit="{{ submit }}" style="background:#FFFFFF;border:1px solid #DCE6EF;border-radius:12px;overflow:hidden">
+        <div style="height:3px;background:linear-gradient(90deg,#00AEEF,#79BB42)"></div>
+        <div style="padding:clamp(20px,3vw,40px);display:flex;flex-direction:column;gap:40px">
+          <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:20px">
+            <legend style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3;padding:0;margin-bottom:20px">01 · The role</legend>
+            <div class="f2">
+              <label style="display:grid;gap:8px;align-content:start"><span style="font-size:14px;line-height:22px;font-weight:500">Applying for</span><select class="inp"><option>AI Engineer</option><option>Senior Backend Engineer</option><option>Frontend Engineer</option><option>DevOps / Platform Engineer</option><option>QA Automation Engineer</option><option>Speculative, no specific role</option></select></label>
+              <label style="display:grid;gap:8px;align-content:start"><span style="font-size:14px;line-height:22px;font-weight:500">Earliest start</span><select class="inp"><option>Immediately</option><option>Two weeks' notice</option><option>One month's notice</option><option>Two months or more</option></select></label>
+            </div>
+          </fieldset>
+          <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;border-top:1px solid #DCE6EF;padding-top:32px">
+            <legend style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3;padding:0;margin-bottom:20px;float:left;width:100%">02 · About you</legend>
+            <div class="f2">
+              <label style="display:grid;gap:8px;align-content:start"><span style="font-size:14px;line-height:22px;font-weight:500">Full name</span><input class="inp" type="text" placeholder="Your name"></label>
+              <label style="display:grid;gap:8px;align-content:start"><span style="font-size:14px;line-height:22px;font-weight:500">Email</span><input class="inp" type="email" placeholder="you@email.com"></label>
+              <label style="display:grid;gap:8px;align-content:start"><span style="font-size:14px;line-height:22px;font-weight:500">Phone</span><input class="inp" type="tel" placeholder="+92 …"></label>
+              <label style="display:grid;gap:8px;align-content:start"><span style="font-size:14px;line-height:22px;font-weight:500">Currently based in</span><input class="inp" type="text" placeholder="City, country"></label>
+              <label style="display:grid;gap:8px;align-content:start"><span style="font-size:14px;line-height:22px;font-weight:500">LinkedIn</span><input class="inp" type="url" placeholder="linkedin.com/in/…"></label>
+              <label style="display:grid;gap:8px;align-content:start"><span style="font-size:14px;line-height:22px;font-weight:500">GitHub or portfolio (optional)</span><input class="inp" type="url" placeholder="github.com/…"></label>
+            </div>
+            <div style="display:grid;gap:8px">
+              <span id="exp-l" style="font-size:14px;line-height:22px;font-weight:500">Years of relevant experience</span>
+              <div role="radiogroup" aria-labelledby="exp-l" style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ exp }}" as="e" hint-placeholder-count="4">
+                  <button type="button" role="radio" aria-checked="{{ e.on }}" onClick="{{ e.pick }}" style="min-height:44px;padding:0 16px;border-radius:8px;border:1px solid {{ e.border }};background:{{ e.bg }};font-family:Inter,system-ui,sans-serif;font-size:15px;font-weight:500;color:#0A1F33;cursor:pointer;transition:border-color 150ms" style-hover="border-color:#006EA3">{{ e.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;border-top:1px solid #DCE6EF;padding-top:32px">
+            <legend style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3;padding:0;margin-bottom:20px;float:left;width:100%">03 · Your CV</legend>
+            <label style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:140px;padding:24px;border:1px dashed #6B7F93;border-radius:8px;background:#F4F8FB;text-align:center;cursor:pointer;transition:border-color 150ms" style-hover="border-color:#006EA3">
+              <span style="font-size:16px;line-height:24px;font-weight:600">{{ cvLabel }}</span>
+              <span style="font-size:14px;line-height:22px;color:#4A5B6C">PDF or DOCX, up to 10 MB</span>
+              <input type="file" accept=".pdf,.doc,.docx" onChange="{{ pickFile }}" style="position:absolute;width:1px;height:1px;opacity:0">
+            </label>
+          </fieldset>
+          <fieldset style="border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;border-top:1px solid #DCE6EF;padding-top:32px">
+            <legend style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3;padding:0;margin-bottom:20px;float:left;width:100%">04 · In your words</legend>
+            <label style="display:grid;gap:8px"><span style="font-size:14px;line-height:22px;font-weight:500">What have you built that you are proud of?</span><textarea class="ta" placeholder="One project, what your part in it was, and what made it hard. Links welcome."></textarea></label>
+            <label style="display:grid;gap:8px"><span style="font-size:14px;line-height:22px;font-weight:500">What do you want to be doing in two years?</span><textarea class="ta" placeholder="This matters to us more than the formatting of your CV."></textarea></label>
+            <label style="display:grid;gap:8px"><span style="font-size:14px;line-height:22px;font-weight:500">How did you hear about us? (optional)</span><input class="inp" type="text" placeholder="LinkedIn, a friend, our insights page…"></label>
+            <label style="display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:24px;color:#4A5B6C;cursor:pointer"><input type="checkbox" style="width:20px;height:20px;margin:2px 0 0;flex:none;accent-color:#006EA3">I agree that bX Technologies may store my application for up to twelve months so the team can contact me about this and future roles.</label>
+          </fieldset>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <p role="status" style="display:flex;align-items:center;gap:8px;font-size:15px;line-height:24px;color:#1E7F34;font-weight:500"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#79BB42"></span>Application received. You will hear back within a week.</p>
+          </sc-if>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px">
+            <button type="submit" style="height:48px;padding:0 28px;border:0;border-radius:8px;background:#00AEEF;color:#0A1F33;font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:16px;cursor:pointer;transition:background-color 150ms" style-hover="background:#33C1F3">Send application</button>
+            <span style="font-size:14px;line-height:22px;color:#4A5B6C">Prefer email? Send the same things to <a href="mailto:jobs@bxtechnologies.net">jobs@bxtechnologies.net</a>.</span>
+          </div>
+        </div>
+      </form>
+      <aside style="display:flex;flex-direction:column;gap:32px">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">What happens next</span>
+          <ol style="list-style:none;margin:0;padding:0;border-bottom:1px solid #DCE6EF">
+            <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+              <li style="display:grid;grid-template-columns:32px minmax(0,1fr);gap:4px 12px;padding:16px 0;border-top:1px solid #DCE6EF">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:24px;color:#006EA3">{{ s.n }}</span>
+                <span style="font-size:16px;line-height:24px;font-weight:600">{{ s.t }}</span>
+                <p style="grid-column:2;font-size:14px;line-height:22px;color:#4A5B6C">{{ s.d }}</p>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <h3 style="font-size:16px;line-height:24px;font-weight:600">Accommodations</h3>
+          <p style="font-size:14px;line-height:22px;color:#4A5B6C">If anything about this process would be difficult for you (timing, format, accessibility) write to <a href="mailto:jobs@bxtechnologies.net">jobs@bxtechnologies.net</a> and we will adjust it. Asking does not count against you.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <h3 style="font-size:16px;line-height:24px;font-weight:600">Your data</h3>
+          <p style="font-size:14px;line-height:22px;color:#4A5B6C">Applications are visible to the hiring team only, kept for twelve months, and deleted on request. We do not pass them to third parties.</p>
+          <a href="bX v2 - Privacy.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:15px">Privacy policy <span aria-hidden="true">→</span></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="BxFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { exp: 1, file: null, sent: false };
+  renderVals() {
+    return {
+      exp: ['Under 2', '2 to 4', '5 to 8', '8+'].map((label, i) => { const on = this.state.exp === i; return { label, on, border: on ? '#006EA3' : '#6B7F93', bg: on ? '#E6F4FB' : '#FFFFFF', pick: () => this.setState({ exp: i }) }; }),
+      cvLabel: this.state.file ? this.state.file : 'Drop your CV here or choose a file',
+      pickFile: e => this.setState({ file: e.target.files && e.target.files[0] ? e.target.files[0].name : null }),
+      sent: this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      steps: [
+        { n: '01', t: 'A person reads it', d: 'An answer either way within a week. No silent rejections.' },
+        { n: '02', t: 'A call with an engineer', d: 'Forty-five minutes on what you have built. Not a quiz.' },
+        { n: '03', t: 'Ninety-minute technical session', d: 'A realistic problem in your own editor. No unpaid weekend project, and you keep what you write.' },
+        { n: '04', t: 'Offer conversation', d: 'Scope, team, compensation and start date, with a director. Feedback given whatever the outcome.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

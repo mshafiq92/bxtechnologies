@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-da26c3f4-0ce6-45da-a3ed-4d7ef0a32267/styles.css">
+<script src="_ds/industry-da26c3f4-0ce6-45da-a3ed-4d7ef0a32267/_ds_bundle.js"></script>
+<style>
+html,body{height:auto;min-height:100%}
+body{margin:0;background:var(--color-bg);color:var(--color-text)}
+.sc-host,#root>div{height:auto!important;min-height:100%}
+a{color:var(--color-accent);text-decoration:none}
+a:hover{color:var(--color-accent-600)}
+.btn{white-space:nowrap}
+.navtoggle{display:none}
+.shell:has(.navtoggle:checked){grid-template-columns:minmax(0,1fr)}
+.shell:has(.navtoggle:checked) .side{display:none}
+.navbtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--color-divider);border-radius:var(--radius-md);cursor:pointer;font-size:14px;color:var(--color-text);flex:none}
+.navbtn:hover{background:color-mix(in srgb,var(--color-text) 7%,transparent)}
+.shell{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}
+@media (max-width:900px){.shell{grid-template-columns:minmax(0,1fr)}.side{display:none}}
+.side{border-right:1px solid var(--color-divider);padding:var(--space-4) var(--space-3);display:flex;flex-direction:column;gap:var(--space-4);position:sticky;top:0;align-self:start;height:100vh;box-sizing:border-box;overflow-y:auto}
+.navsec{display:flex;flex-direction:column;gap:2px}
+.navlab{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:6px}
+.navitem{display:flex;align-items:center;gap:9px;padding:6px 10px;font-size:13.5px;color:var(--color-text);border-radius:var(--radius-md)}
+.navitem:hover{background:color-mix(in srgb,var(--color-text) 6%,transparent);color:var(--color-text)}
+.navitem[aria-current="page"]{background:var(--color-accent);color:var(--color-bg)}
+.topbar{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);position:sticky;top:0;background:var(--color-bg);z-index:5;flex-wrap:wrap}
+.main{padding:var(--space-4);display:grid;grid-template-columns:250px minmax(0,1fr) 280px;gap:var(--space-3);align-items:start}
+@media (max-width:1280px){.main{grid-template-columns:230px minmax(0,1fr)}.meta{grid-column:1/-1}}
+@media (max-width:900px){.main{grid-template-columns:minmax(0,1fr)}}
+.panel{border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)}
+.ptitle{font-family:var(--font-heading);font-size:16px;line-height:1.2}
+.seclist{display:flex;flex-direction:column;gap:4px}
+.secitem{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:9px;align-items:center;padding:8px 9px;border:1px solid transparent;border-radius:var(--radius-md);font-size:13.5px;color:var(--color-text);cursor:grab}
+.secitem:hover{background:color-mix(in srgb,var(--color-text) 6%,transparent)}
+.secitem.on{border-color:var(--color-accent);background:color-mix(in srgb,var(--color-accent) 12%,transparent)}
+.grip{color:color-mix(in srgb,var(--color-text) 40%,transparent);font-size:12px;letter-spacing:1px}
+.sectype{font-size:11px;color:color-mix(in srgb,var(--color-text) 52%,transparent)}
+.eye{font-size:11px;color:color-mix(in srgb,var(--color-text) 50%,transparent)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;color:color-mix(in srgb,var(--color-text) 70%,transparent)}
+.hint{font-size:11.5px;color:color-mix(in srgb,var(--color-text) 50%,transparent)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.group{border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:var(--space-3);display:flex;flex-direction:column;gap:12px}
+.ghead{display:flex;align-items:center;gap:10px}
+.gtitle{font-family:var(--font-heading);font-size:14px}
+.rep{border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:var(--space-3);display:flex;flex-direction:column;gap:10px}
+.rephead{display:flex;align-items:center;gap:8px;font-size:12.5px;color:color-mix(in srgb,var(--color-text) 60%,transparent)}
+.imgbox{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center}
+.thumb{aspect-ratio:4/3;border:1px dashed color-mix(in srgb,var(--color-text) 28%,transparent);border-radius:var(--radius-md);display:grid;place-items:center;font-size:11px;color:color-mix(in srgb,var(--color-text) 50%,transparent);text-align:center;padding:6px}
+.metarow{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:7px 0;border-bottom:1px solid var(--color-divider)}
+.metarow:last-child{border-bottom:none}
+.hist{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px;font-size:12.5px;padding:8px 0;border-bottom:1px solid var(--color-divider)}
+.hist:last-child{border-bottom:none}
+.histd{color:var(--color-neutral-700);white-space:nowrap}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+</style>
+</helmet>
+
+<div class="shell">
+  <input class="navtoggle" id="navtoggle" type="checkbox">
+  <aside class="side">
+    <div style="display:flex;align-items:baseline;gap:8px">
+      <span style="font-family:var(--font-heading);font-size:20px;letter-spacing:-.01em">bX</span>
+      <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Console</span>
+      <label class="navbtn" for="navtoggle" title="Collapse sidebar" style="margin-left:auto">‹</label>
+    </div>
+    <div class="navsec">
+      <span class="navlab">Overview</span>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Dashboard</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Enquiries</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Applications</a>
+      <a class="navitem" href="#">Proposals</a>
+    </div>
+    <div class="navsec">
+      <span class="navlab">Content</span>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package" aria-current="page">Pages</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Navigation &amp; footer</a>
+      <a class="navitem" href="bX Admin v2 - Media Library.dc.html">Media library</a>
+      <a class="navitem" href="bX Admin v2 - Services.dc.html">Services</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Industries</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Work / projects</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Insights</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Careers</a>
+    </div>
+    <div class="navsec">
+      <span class="navlab">Delivery</span>
+      <a class="navitem" href="#">Projects</a>
+      <a class="navitem" href="#">People &amp; allocation</a>
+    </div>
+    <div class="navsec" style="margin-top:auto">
+      <a class="navitem" href="bX Admin v2 - Site Settings.dc.html">Site settings</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Users &amp; permissions</a>
+      <a class="navitem" href="bX v2 - Home.dc.html">View website ↗</a>
+    </div>
+  </aside>
+
+  <div id="top">
+    <div class="topbar">
+      <label class="navbtn" for="navtoggle" title="Show or hide sidebar">☰</label>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <a href="#" title="Unchanged screen, see the v1 package" style="font-size:12.5px">← Pages</a>
+        <div>
+          <h1 style="font-size:19px;margin:0;line-height:1.2">About</h1>
+          <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 58%,transparent);margin-top:3px">/about · draft changes, last saved 10:03 by Directors</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-left:auto;align-items:center;flex-wrap:wrap">
+        <div class="seg">
+          <label class="seg-opt"><input type="radio" name="vp" hidden defaultChecked="{{ yes }}"> Desktop</label>
+          <label class="seg-opt"><input type="radio" name="vp" hidden> Mobile</label>
+        </div>
+        <a class="btn btn-secondary" href="bX v2 - About.dc.html">Preview</a>
+        <a class="btn btn-secondary" href="#">Save draft</a>
+        <a class="btn btn-primary" href="#">Publish</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="panel">
+        <div style="display:flex;align-items:baseline;gap:10px"><span class="ptitle">Sections</span><span class="hint" style="margin-left:auto">Drag to reorder</span></div>
+        <div class="seclist">
+          <a class="secitem" href="#edit"><span class="grip">⣿</span><span><div>Header &amp; nav</div><div class="sectype">Global — edit in Navigation</div></span><span class="eye">Locked</span></a>
+          <a class="secitem on" href="#edit"><span class="grip">⣿</span><span><div>Hero</div><div class="sectype">Hero · photo</div></span><span class="eye">Visible</span></a>
+          <a class="secitem" href="#edit"><span class="grip">⣿</span><span><div>Jump bar</div><div class="sectype">Anchor links</div></span><span class="eye">Visible</span></a>
+          <a class="secitem" href="#edit"><span class="grip">⣿</span><span><div>Why us</div><div class="sectype">Open columns</div></span><span class="eye">Visible</span></a>
+          <a class="secitem" href="#edit"><span class="grip">⣿</span><span><div>How we work</div><div class="sectype">Principles list · navy band</div></span><span class="eye">Visible</span></a>
+          <a class="secitem" href="#edit"><span class="grip">⣿</span><span><div>People</div><div class="sectype">Portrait grid</div></span><span class="eye">Visible</span></a>
+          <a class="secitem" href="#edit"><span class="grip">⣿</span><span><div>Story</div><div class="sectype">Timeline</div></span><span class="eye">Visible</span></a>
+          <a class="secitem" href="#edit"><span class="grip">⣿</span><span><div>Offices</div><div class="sectype">Card row</div></span><span class="eye">Hidden</span></a>
+          <a class="secitem" href="#edit"><span class="grip">⣿</span><span><div>Contact band</div><div class="sectype">Contact band</div></span><span class="eye">Visible</span></a>
+          <a class="secitem" href="#edit"><span class="grip">⣿</span><span><div>Footer</div><div class="sectype">Global — edit in Footer</div></span><span class="eye">Locked</span></a>
+        </div>
+        <a class="btn btn-secondary btn-block" href="#">Add section</a>
+        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--color-divider);padding-top:var(--space-3)">
+          <span class="gtitle">Section types</span>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span class="tag tag-outline">Hero · diagram</span><span class="tag tag-outline">Hero · grid backdrop</span><span class="tag tag-outline">Hero · photo</span><span class="tag tag-outline">Logo strip</span><span class="tag tag-outline">Open columns</span><span class="tag tag-outline">Card grid</span><span class="tag tag-outline">Timeline</span><span class="tag tag-outline">Architecture</span><span class="tag tag-outline">FAQ</span><span class="tag tag-outline">Metrics strip</span><span class="tag tag-outline">Contact band</span>
+          </div>
+          <span class="hint">The jump bar is generated from section anchors. It is not a section of its own.</span>
+        </div>
+      </div>
+
+      <div id="edit" style="display:flex;flex-direction:column;gap:var(--space-3)">
+        <div class="panel">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <span class="ptitle">Hero</span>
+            <span class="tag tag-accent">Editing</span>
+            <div class="bar" style="margin-left:auto">
+              <label class="radio" style="font-size:12.5px"><input type="checkbox" defaultChecked="{{ yes }}"> <span class="dot"></span> Visible on site</label>
+              <a class="btn btn-secondary" href="#" style="padding:4px 10px;font-size:12.5px">Duplicate</a>
+              <a class="btn btn-secondary" href="#" style="padding:4px 10px;font-size:12.5px">Remove</a>
+            </div>
+          </div>
+
+          <div class="two">
+            <div class="field"><label for="eyebrow">Eyebrow</label><input class="input" id="eyebrow" type="text" value="About bX"></div>
+            <div class="field"><label for="layout">Layout</label><select class="input" id="layout"><option>Hero with photo (About, Careers)</option><option>Hero with grid backdrop</option><option>Hero with diagram card</option><option>Hero, text only</option></select></div>
+          </div>
+          <div class="field">
+            <label for="h1">Heading</label>
+            <input class="input" id="h1" type="text" value="An engineering company that stayed an engineering company.">
+            <span class="hint">Shown at 34–48px. Keep under about 60 characters so it holds two lines on mobile.</span>
+          </div>
+          <div class="field">
+            <label for="sub">Intro paragraph</label>
+            <textarea class="input" id="sub" style="min-height:90px">bX Technologies was incorporated in Pakistan in March 2019 and has been building software for European and Asian clients since. We are engineers first: the people who scope your work are the people who write it.</textarea>
+          </div>
+
+          <div class="group">
+            <div class="ghead"><span class="gtitle">Hero photo</span><a class="btn btn-ghost" href="bX Admin v2 - Media Library.dc.html" style="margin-left:auto;font-size:12.5px">Choose from media library</a></div>
+            <div class="imgbox">
+              <div class="thumb">No photo yet. Hero shows text only</div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div class="field"><label for="alt">Alt text</label><input class="input" id="alt" type="text" placeholder="Describe the photo for screen readers and search"></div>
+                <div class="bar"><a class="btn btn-secondary" href="#" style="padding:5px 12px;font-size:12.5px">Upload</a><a class="btn btn-secondary" href="#" style="padding:5px 12px;font-size:12.5px">Remove</a><span class="hint">4:3, at least 1600px wide. Framed beside the text, not behind it.</span></div>
+              </div>
+            </div>
+            <label class="radio" style="font-size:12.5px"><input type="checkbox"> <span class="dot"></span> This is a real photo of bX people or offices</label>
+            <span class="hint">Required before publish. Stock photography is not allowed on the site.</span>
+          </div>
+
+          <div class="group">
+            <div class="ghead"><span class="gtitle">Statistics</span><span class="hint">Three maximum · numbers render in navy</span><a class="btn btn-ghost" href="#" style="margin-left:auto;font-size:12.5px">+ Add</a></div>
+            <div class="rep">
+              <div class="rephead"><span class="grip">⣿</span><span>Statistic 1</span><a href="#" style="margin-left:auto;font-size:12px">Remove</a></div>
+              <div class="two"><div class="field"><label>Value</label><input class="input" type="text" value="2019"></div><div class="field"><label>Label</label><input class="input" type="text" value="incorporated"></div><div class="field"><label>Colour role (no effect on v2)</label><select class="input"><option>Interaction</option><option>Proof</option></select></div></div>
+            </div>
+            <div class="rep">
+              <div class="rephead"><span class="grip">⣿</span><span>Statistic 2</span><a href="#" style="margin-left:auto;font-size:12px">Remove</a></div>
+              <div class="two"><div class="field"><label>Value</label><input class="input" type="text" value="2"></div><div class="field"><label>Label</label><input class="input" type="text" value="locations, one team"></div><div class="field"><label>Colour role (no effect on v2)</label><select class="input"><option>Interaction</option><option>Proof</option></select></div></div>
+            </div>
+            <div class="rep">
+              <div class="rephead"><span class="grip">⣿</span><span>Statistic 3</span><a href="#" style="margin-left:auto;font-size:12px">Remove</a></div>
+              <div class="two"><div class="field"><label>Value</label><input class="input" type="text" value="94%"></div><div class="field"><label>Label</label><input class="input" type="text" value="on-time delivery"></div><div class="field"><label>Colour role (no effect on v2)</label><select class="input" value="{{ stat3 }}" onChange="{{ onStat3 }}"><option value="blue">Interaction</option><option value="green">Proof</option></select></div></div>
+            </div>
+          </div>
+
+          <div class="group">
+            <div class="ghead"><span class="gtitle">Buttons</span><a class="btn btn-ghost" href="#" style="margin-left:auto;font-size:12.5px">+ Add</a></div>
+            <div class="rep">
+              <div class="rephead"><span class="grip">⣿</span><span>Primary</span><a href="#" style="margin-left:auto;font-size:12px">Remove</a></div>
+              <div class="two"><div class="field"><label>Label</label><input class="input" type="text" value="Talk to an engineer"></div><div class="field"><label>Links to</label><select class="input"><option>Contact page</option><option>Section on this page</option><option>External URL</option></select></div></div>
+            </div>
+            <div class="rep">
+              <div class="rephead"><span class="grip">⣿</span><span>Secondary</span><a href="#" style="margin-left:auto;font-size:12px">Remove</a></div>
+              <div class="two"><div class="field"><label>Label</label><input class="input" type="text" value="Meet the team →"></div><div class="field"><label>Links to</label><select class="input" value="{{ link2 }}" onChange="{{ onLink2 }}"><option value="contact">Contact page</option><option value="section">Section on this page</option><option value="url">External URL</option></select></div></div>
+            </div>
+          </div>
+
+          <div class="bar" style="border-top:1px solid var(--color-divider);padding-top:var(--space-3)">
+            <a class="btn btn-primary" href="#">Save section</a>
+            <a class="btn btn-secondary" href="#">Discard changes</a>
+            <span class="hint" style="margin-left:auto">Changes save as a draft until the page is published.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="meta" style="display:flex;flex-direction:column;gap:var(--space-3)">
+        <div class="panel">
+          <span class="ptitle">Page</span>
+          <div>
+            <div class="metarow"><span style="color:color-mix(in srgb,var(--color-text) 60%,transparent)">Status</span><span class="tag tag-accent">Draft changes</span></div>
+            <div class="metarow"><span style="color:color-mix(in srgb,var(--color-text) 60%,transparent)">Path</span><span>/about</span></div>
+            <div class="metarow"><span style="color:color-mix(in srgb,var(--color-text) 60%,transparent)">Template</span><span>Standard page</span></div>
+            <div class="metarow"><span style="color:color-mix(in srgb,var(--color-text) 60%,transparent)">Published</span><span>14 Sep, 10:03</span></div>
+            <div class="metarow"><span style="color:color-mix(in srgb,var(--color-text) 60%,transparent)">Visible in nav</span><span>Company menu</span></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <span class="ptitle">Search &amp; social</span>
+          <div class="field"><label for="title">Meta title</label><input class="input" id="title" type="text" value="About bX Technologies"></div>
+          <div class="field"><label for="desc">Meta description</label><textarea class="input" id="desc" style="min-height:70px">An engineering company building software for European and Asian clients since 2019.</textarea><span class="hint">84 of 160 characters</span></div>
+          <div class="field"><label for="og">Social share image</label><div class="thumb" style="aspect-ratio:1.91/1">Not set. Falls back to the site default</div></div>
+        </div>
+
+        <div class="panel">
+          <span class="ptitle">History</span>
+          <div>
+            <div class="hist"><span class="histd">16 Sep 10:05</span><span>Hero layout changed to Hero with photo — Directors</span></div>
+            <div class="hist"><span class="histd">16 Sep 10:03</span><span>Hero paragraph edited — Directors</span></div>
+            <div class="hist"><span class="histd">14 Sep 10:03</span><span>Published — Directors</span></div>
+            <div class="hist"><span class="histd">14 Sep 09:41</span><span>Offices section hidden — Marketing</span></div>
+            <div class="hist"><span class="histd">13 Sep 16:20</span><span>Timeline entry added — Directors</span></div>
+          </div>
+          <a class="btn btn-secondary btn-block" href="#">All versions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { stat3: "green", link2: "section" };
+  renderVals() {
+    return {
+      yes: true,
+      stat3: this.state.stat3,
+      link2: this.state.link2,
+      onStat3: (e) => this.setState({ stat3: e.target.value }),
+      onLink2: (e) => this.setState({ link2: e.target.value })
+    };
+  }
+}
+</script>
+</body>
+</html>

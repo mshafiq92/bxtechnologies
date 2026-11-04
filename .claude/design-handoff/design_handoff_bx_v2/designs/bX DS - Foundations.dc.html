@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#F4F8FB;--surface:#FFFFFF;--hairline:#DCE6EF;--border-strong:#6B7F93;--text:#0A1F33;--text-muted:#4A5B6C;--link:#006EA3;
+--success-text:#1E7F34;--warning-text:#8A5A00;--danger-text:#B42318;--brand-cyan:#00AEEF;--brand-green:#79BB42;--on-brand:#0A1F33;
+--brand-deep:#0A1F33;--on-deep:#F4F8FB;--on-deep-muted:#A9B8C8;--on-deep-accent:#5BC8F5;--focus-ring:#006EA3;
+--font-sans:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono',ui-monospace,monospace;
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:24px;--space-6:32px;--space-7:48px;--space-8:64px;--space-9:96px;
+--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:16px;--radius-pill:999px;
+--shadow-card:0 1px 2px rgba(10,31,51,0.06),0 8px 24px rgba(10,31,51,0.06);
+--content:1200px;--gutter:clamp(16px,4vw,24px);--section:clamp(64px,8vw,96px);
+--signature:linear-gradient(90deg,#00AEEF,#79BB42);
+}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:26px;-webkit-font-smoothing:antialiased;height:auto;min-height:100%}
+.sc-host{height:auto!important}
+*{box-sizing:border-box}
+h1,h2,h3,h4{margin:0;font-weight:600;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:var(--link);text-decoration:none;transition:text-decoration-color 150ms;text-decoration-line:underline;text-decoration-color:transparent;text-underline-offset:3px}
+a:hover{text-decoration-color:currentColor}
+:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+::selection{background:#CCEFFC}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--hairline)">
+  <div style="max-width:var(--content);margin:0 auto;padding:0 var(--gutter);height:72px;display:flex;align-items:center;gap:var(--space-6)">
+    <a href="#" style="display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none">
+      <img src="assets/bx-mark.png" alt="bX" style="height:32px;width:auto;display:block">
+      <span style="font-weight:500;font-size:18px;letter-spacing:-0.01em">Technologies</span>
+    </a>
+    <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-left:auto">Design system v2 · Foundations</span>
+  </div>
+</header>
+
+<section data-screen-label="Intro" style="padding:var(--section) 0 var(--space-7)">
+  <div style="max-width:var(--content);margin:0 auto;padding:0 var(--gutter);display:grid;gap:var(--space-5)">
+    <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--link)">Version 1 · Light theme first</span>
+    <h1 style="font-size:clamp(34px,4.4vw,48px);line-height:1.125;letter-spacing:-0.03em;max-width:16ch">Calm, precise and specific.</h1>
+    <p style="font-size:18px;line-height:28px;color:var(--text-muted);max-width:60ch">The tokens and components every v2 page is built from. Values are taken verbatim from bx-design-tokens.xlsx.</p>
+    <div style="height:3px;width:160px;background:var(--signature);border-radius:var(--radius-pill);margin-top:var(--space-3)"></div>
+  </div>
+</section>
+
+<section data-screen-label="Colour" style="padding:var(--space-7) 0">
+  <div style="max-width:var(--content);margin:0 auto;padding:0 var(--gutter);display:grid;gap:var(--space-6)">
+    <div style="display:grid;gap:var(--space-3)">
+      <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--link)">01 · Colour</span>
+      <h2 style="font-size:clamp(28px,3.2vw,36px);line-height:1.167;letter-spacing:-0.025em">Navy, logo cyan, logo green.</h2>
+      <p style="color:var(--text-muted);max-width:65ch">Cyan and green are fills only. Blue text on light is link #006EA3. Text on cyan or green is always navy.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--space-5)">
+      <sc-for list="{{ colours }}" as="c" hint-placeholder-count="18">
+        <div style="display:grid;gap:var(--space-2);border-top:1px solid var(--hairline);padding-top:var(--space-4)">
+          <div style="height:72px;border-radius:var(--radius-md);border:1px solid var(--hairline);background:{{ c.hex }}"></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-2)">
+            <span style="font-weight:600;font-size:14px">{{ c.name }}</span>
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">{{ c.hex }}</span>
+          </div>
+          <span style="font-size:14px;line-height:22px;color:var(--text-muted)">{{ c.use }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Contrast" style="padding:var(--space-7) 0">
+  <div style="max-width:var(--content);margin:0 auto;padding:0 var(--gutter);display:grid;gap:var(--space-6)">
+    <div style="display:grid;gap:var(--space-3)">
+      <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--link)">02 · Contrast pairs</span>
+      <h2 style="font-size:clamp(28px,3.2vw,36px);line-height:1.167;letter-spacing:-0.025em">Every text pair passes AA.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-4)">
+      <sc-for list="{{ pairs }}" as="p" hint-placeholder-count="10">
+        <div style="border-radius:var(--radius-lg);border:1px solid var(--hairline);padding:var(--space-5);display:grid;gap:var(--space-3);background:{{ p.bg }};color:{{ p.fg }}">
+          <span style="font-size:20px;line-height:28px;font-weight:600">{{ p.sample }}</span>
+          <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:12px;line-height:18px">
+            <span>{{ p.label }}</span><span>{{ p.ratio }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="font-size:14px;line-height:22px;color:var(--danger-text)">Avoid: cyan #00AEEF as text on bg is 2.37:1 and fails. Never white on cyan or green.</p>
+  </div>
+</section>
+
+<section data-screen-label="Type" style="padding:var(--space-7) 0">
+  <div style="max-width:var(--content);margin:0 auto;padding:0 var(--gutter);display:grid;gap:var(--space-6)">
+    <div style="display:grid;gap:var(--space-3)">
+      <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--link)">03 · Typography</span>
+      <h2 style="font-size:clamp(28px,3.2vw,36px);line-height:1.167;letter-spacing:-0.025em">Inter for everything. Mono for labels.</h2>
+    </div>
+    <div style="display:grid">
+      <div style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:var(--space-5);align-items:baseline;border-top:1px solid var(--hairline);padding:var(--space-5) 0">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">display · 64/68 · 600</span>
+        <span style="font-size:clamp(40px,5.4vw,64px);line-height:1.063;font-weight:600;letter-spacing:-0.035em">Engineering for AI that runs in production.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:var(--space-5);align-items:baseline;border-top:1px solid var(--hairline);padding:var(--space-5) 0">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">h1 · 48/54 · 600</span>
+        <span style="font-size:clamp(34px,4.4vw,48px);line-height:1.125;font-weight:600;letter-spacing:-0.03em">Managed IT and DevOps</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:var(--space-5);align-items:baseline;border-top:1px solid var(--hairline);padding:var(--space-5) 0">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">h2 · 36/42 · 600</span>
+        <span style="font-size:clamp(28px,3.2vw,36px);line-height:1.167;font-weight:600;letter-spacing:-0.025em">How we work</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:var(--space-5);align-items:baseline;border-top:1px solid var(--hairline);padding:var(--space-5) 0">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">h3 · 24/32 · 600</span>
+        <span style="font-size:24px;line-height:32px;font-weight:600;letter-spacing:-0.015em">MLOps and model delivery</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:var(--space-5);align-items:baseline;border-top:1px solid var(--hairline);padding:var(--space-5) 0">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">h4 · 20/28 · 600</span>
+        <span style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">Monitoring and alerting</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:var(--space-5);align-items:baseline;border-top:1px solid var(--hairline);padding:var(--space-5) 0">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">body-lg · 18/28</span>
+        <span style="font-size:18px;line-height:28px;max-width:65ch">We build and run the platforms behind AI products.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:var(--space-5);align-items:baseline;border-top:1px solid var(--hairline);padding:var(--space-5) 0">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">body · 16/26</span>
+        <span style="max-width:65ch">Pipelines, infrastructure and monitoring, delivered by one team.</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:var(--space-5);align-items:baseline;border-top:1px solid var(--hairline);padding:var(--space-5) 0">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">small · 14/22</span>
+        <span style="font-size:14px;line-height:22px;color:var(--text-muted)">Duisburg, Germany</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:var(--space-5);align-items:baseline;border-top:1px solid var(--hairline);padding:var(--space-5) 0">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">label · 13/18 · mono</span>
+        <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--link)">MLOps</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,180px) minmax(0,1fr);gap:var(--space-5);align-items:baseline;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);padding:var(--space-5) 0">
+        <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">code · 14/22 · mono</span>
+        <span style="font-family:var(--font-mono);font-size:14px;line-height:22px">pipelines · registry · monitoring</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Spacing" style="padding:var(--space-7) 0">
+  <div style="max-width:var(--content);margin:0 auto;padding:0 var(--gutter);display:grid;gap:var(--space-6)">
+    <div style="display:grid;gap:var(--space-3)">
+      <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--link)">04 · Spacing, radius, shadow</span>
+      <h2 style="font-size:clamp(28px,3.2vw,36px);line-height:1.167;letter-spacing:-0.025em">A nine-step scale. Hairlines over shadows.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:var(--space-7)">
+      <div style="display:grid;gap:var(--space-3);align-content:start">
+        <sc-for list="{{ spaces }}" as="s" hint-placeholder-count="9">
+          <div style="display:grid;grid-template-columns:72px 40px minmax(0,1fr);gap:var(--space-3);align-items:center">
+            <span style="font-family:var(--font-mono);font-size:12px">{{ s.name }}</span>
+            <span style="font-family:var(--font-mono);font-size:12px;color:var(--text-muted)">{{ s.px }}</span>
+            <div style="height:12px;background:var(--brand-cyan);border-radius:2px;width:{{ s.w }}"></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:var(--space-4);align-content:start">
+        <div style="display:grid;gap:var(--space-2)"><div style="height:80px;background:var(--surface);border:1px solid var(--border-strong);border-radius:4px"></div><span style="font-family:var(--font-mono);font-size:12px">sm · 4 · inputs</span></div>
+        <div style="display:grid;gap:var(--space-2)"><div style="height:80px;background:var(--surface);border:1px solid var(--border-strong);border-radius:8px"></div><span style="font-family:var(--font-mono);font-size:12px">md · 8 · buttons</span></div>
+        <div style="display:grid;gap:var(--space-2)"><div style="height:80px;background:var(--surface);border:1px solid var(--border-strong);border-radius:12px"></div><span style="font-family:var(--font-mono);font-size:12px">lg · 12 · cards</span></div>
+        <div style="display:grid;gap:var(--space-2)"><div style="height:80px;background:var(--surface);border:1px solid var(--border-strong);border-radius:16px"></div><span style="font-family:var(--font-mono);font-size:12px">xl · 16 · panels</span></div>
+        <div style="display:grid;gap:var(--space-2)"><div style="height:80px;background:var(--surface);border:1px solid var(--border-strong);border-radius:999px"></div><span style="font-family:var(--font-mono);font-size:12px">pill · status</span></div>
+        <div style="display:grid;gap:var(--space-2)"><div style="height:80px;background:var(--surface);border-radius:12px;box-shadow:var(--shadow-card)"></div><span style="font-family:var(--font-mono);font-size:12px">shadow-card</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Components" style="padding:var(--space-7) 0 var(--section)">
+  <div style="max-width:var(--content);margin:0 auto;padding:0 var(--gutter);display:grid;gap:var(--space-7)">
+    <div style="display:grid;gap:var(--space-3)">
+      <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--link)">05 · Components</span>
+      <h2 style="font-size:clamp(28px,3.2vw,36px);line-height:1.167;letter-spacing:-0.025em">The parts every page is built from.</h2>
+    </div>
+
+    <div style="display:grid;gap:var(--space-4);border-top:1px solid var(--hairline);padding-top:var(--space-5)">
+      <h4 style="font-size:20px;line-height:28px;letter-spacing:-0.01em">Buttons</h4>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:center">
+        <a href="#" style="display:inline-flex;align-items:center;height:48px;white-space:nowrap;flex:none;padding:0 var(--space-5);border-radius:var(--radius-md);background:var(--brand-cyan);color:var(--on-brand);font-weight:600;text-decoration:none;transition:background 150ms" style-hover="background:#33BEF2">Book a technical call</a>
+        <a href="#" style="display:inline-flex;align-items:center;height:48px;white-space:nowrap;flex:none;padding:0 var(--space-5);border-radius:var(--radius-md);border:1px solid var(--border-strong);color:var(--text);font-weight:600;text-decoration:none;transition:background 150ms" style-hover="background:var(--surface)">See how we work</a>
+        <a href="#" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--link);font-weight:600">Explore <span aria-hidden="true">→</span></a>
+      </div>
+      <p style="font-size:14px;line-height:22px;color:var(--text-muted)">One cyan primary per screen. 48px high, radius 8, navy label.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--space-7)">
+      <div style="display:grid;gap:var(--space-4);border-top:1px solid var(--hairline);padding-top:var(--space-5);align-content:start">
+        <h4 style="font-size:20px;line-height:28px;letter-spacing:-0.01em">Badges</h4>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-3)">
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:4px 12px;white-space:nowrap;border-radius:var(--radius-pill);background:var(--surface);border:1px solid var(--hairline);font-size:14px;line-height:22px;color:var(--success-text);font-weight:500"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:var(--brand-green)"></span>Delivered</span>
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:4px 12px;white-space:nowrap;border-radius:var(--radius-pill);background:var(--surface);border:1px solid var(--hairline);font-size:14px;line-height:22px;color:var(--link);font-weight:500"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:var(--brand-cyan)"></span>In build</span>
+          <span style="display:inline-flex;align-items:center;gap:8px;padding:4px 12px;white-space:nowrap;border-radius:var(--radius-pill);background:var(--surface);border:1px solid var(--hairline);font-size:14px;line-height:22px;color:var(--warning-text);font-weight:500"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:var(--warning-text)"></span>Pending figures</span>
+        </div>
+      </div>
+      <div style="display:grid;gap:var(--space-4);border-top:1px solid var(--hairline);padding-top:var(--space-5);align-content:start">
+        <h4 style="font-size:20px;line-height:28px;letter-spacing:-0.01em">Eyebrow and signature rule</h4>
+        <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--link)">AI · MLOps · DevOps · Managed IT</span>
+        <div style="height:3px;background:var(--signature);border-radius:var(--radius-pill)"></div>
+        <p style="font-size:14px;line-height:22px;color:var(--text-muted)">The rule appears once per screen. Never a text fill or wash.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:var(--space-5);border-top:1px solid var(--hairline);padding-top:var(--space-5)">
+      <h4 style="font-size:20px;line-height:28px;letter-spacing:-0.01em">Pillar (open column) and architecture card</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:var(--space-7);align-items:start">
+        <div style="border-top:1px solid var(--text);padding-top:var(--space-5);display:grid;gap:var(--space-3)">
+          <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;color:var(--link)">01</span>
+          <h3 style="font-size:24px;line-height:32px;letter-spacing:-0.015em">ML and MLOps</h3>
+          <p style="color:var(--text-muted)">Models trained, versioned and monitored on pipelines your team can own.</p>
+          <div style="display:grid;margin-top:var(--space-2)">
+            <span style="padding:10px 0;border-top:1px solid var(--hairline);font-size:14px;line-height:22px">Training pipelines</span>
+            <span style="padding:10px 0;border-top:1px solid var(--hairline);font-size:14px;line-height:22px">Model registry</span>
+            <span style="padding:10px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);font-size:14px;line-height:22px">Drift monitoring</span>
+          </div>
+          <a href="#" style="display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:600">Explore <span aria-hidden="true">→</span></a>
+        </div>
+        <div style="background:var(--brand-deep);color:var(--on-deep);border-radius:var(--radius-lg);overflow:hidden">
+          <div style="height:3px;background:var(--signature)"></div>
+          <div style="padding:var(--space-5);display:grid;gap:var(--space-4)">
+            <span style="font-family:var(--font-mono);font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--on-deep-accent)">Illustrative architecture</span>
+            <div style="display:grid">
+              <sc-for list="{{ layers }}" as="l" hint-placeholder-count="4">
+                <div style="display:grid;grid-template-columns:32px minmax(0,1fr);gap:var(--space-3);padding:var(--space-4) 0;border-top:1px solid #1F3A55">
+                  <span style="font-family:var(--font-mono);font-size:13px;color:var(--on-deep-accent)">{{ l.n }}</span>
+                  <div style="display:grid;gap:2px">
+                    <span style="font-weight:600">{{ l.t }}</span>
+                    <span style="font-family:var(--font-mono);font-size:13px;line-height:20px;color:var(--on-deep-muted)">{{ l.d }}</span>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex;align-items:center;gap:var(--space-2);border-top:1px solid #1F3A55;padding-top:var(--space-4);font-size:14px;line-height:22px;color:var(--on-deep-muted)">
+              <span style="flex:none;width:8px;height:8px;border-radius:50%;background:var(--brand-green);flex:none"></span>One team builds it, ships it and runs it.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:var(--space-5);border-top:1px solid var(--hairline);padding-top:var(--space-5)">
+      <h4 style="font-size:20px;line-height:28px;letter-spacing:-0.01em">Form fields</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:var(--space-5);max-width:880px">
+        <label style="display:grid;gap:var(--space-2);align-content:start">
+          <span style="font-size:14px;line-height:22px;font-weight:500">Work email</span>
+          <input type="email" placeholder="name@company.com" style="height:48px;padding:0 var(--space-4);border:1px solid var(--border-strong);border-radius:var(--radius-sm);background:var(--surface);font:inherit;color:var(--text)">
+        </label>
+        <label style="display:grid;gap:var(--space-2);align-content:start">
+          <span style="font-size:14px;line-height:22px;font-weight:500">Company</span>
+          <input type="text" value="Acme" aria-invalid="true" style="height:48px;padding:0 var(--space-4);border:1px solid var(--danger-text);border-radius:var(--radius-sm);background:var(--surface);font:inherit;color:var(--text)">
+          <span style="font-size:14px;line-height:22px;color:var(--danger-text)">Error: enter your company's legal name.</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer style="background:var(--brand-deep);color:var(--on-deep-muted)">
+  <div style="max-width:var(--content);margin:0 auto;padding:var(--space-7) var(--gutter);display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-4);font-size:14px;line-height:22px">
+    <span>bX Technologies Pvt Ltd · Duisburg · Islamabad</span>
+    <span style="font-family:var(--font-mono);font-size:12px;color:var(--on-deep-accent)">v2 foundations</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const colours = [
+      ['bg','#F4F8FB','Page background'],['surface','#FFFFFF','Cards, strips, inputs'],['hairline','#DCE6EF','Dividers, card borders'],
+      ['border-strong','#6B7F93','Input and outlined button borders'],['text','#0A1F33','Headings, body'],['text-muted','#4A5B6C','Secondary text'],
+      ['link','#006EA3','Links, eyebrows, small blue text'],['success-text','#1E7F34','Success text, always with a word'],['warning-text','#8A5A00','Warning text'],
+      ['danger-text','#B42318','Error text'],['brand-cyan','#00AEEF','Fill only: primary button, rules'],['brand-green','#79BB42','Fill only: status dots, rule end'],
+      ['brand-deep','#0A1F33','Dark bands, footer, hero card'],['on-deep','#F4F8FB','Headings on navy'],['on-deep-muted','#A9B8C8','Body on navy'],
+      ['on-deep-accent','#5BC8F5','Labels and numbers on navy'],['focus-ring','#006EA3','2px outline, 2px offset']
+    ].map(([name,hex,use])=>({name,hex,use}));
+    const pairs = [
+      ['text on bg','#0A1F33','#F4F8FB','15.65'],['text-muted on surface','#4A5B6C','#FFFFFF','6.99'],['link on bg','#006EA3','#F4F8FB','5.23'],
+      ['success-text on bg','#1E7F34','#F4F8FB','4.75'],['danger-text on bg','#B42318','#F4F8FB','6.16'],['on-brand on cyan','#0A1F33','#00AEEF','6.61'],
+      ['on-brand on green','#0A1F33','#79BB42','7.16'],['on-deep on navy','#F4F8FB','#0A1F33','15.65'],['on-deep-muted on navy','#A9B8C8','#0A1F33','8.26'],
+      ['on-deep-accent on navy','#5BC8F5','#0A1F33','8.77']
+    ].map(([label,fg,bg,r])=>({label,fg,bg,ratio:r+':1',sample:'Aa · Precise'}));
+    const spaces = [4,8,12,16,24,32,48,64,96].map((v,i)=>({name:'space-'+(i+1),px:v,w:(v/96*100)+'%'}));
+    const layers = [
+      {n:'01',t:'Agents and generative AI',d:'retrieval · orchestration · evals'},
+      {n:'02',t:'ML and MLOps',d:'pipelines · registry · monitoring'},
+      {n:'03',t:'DevOps and cloud',d:'IaC · CI/CD · Kubernetes'},
+      {n:'04',t:'Managed IT',d:'service desk · patching · on-call'}
+    ];
+    return { colours, pairs, spaces, layers };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Industries · bX Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0;background:#F4F8FB;color:#0A1F33;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;height:auto;min-height:100%}
+.sc-host{height:auto!important}
+*{box-sizing:border-box}
+a{color:#006EA3;text-decoration:none;transition:color 150ms,background-color 150ms,border-color 150ms}
+a:hover{color:#0A1F33}
+:focus-visible{outline:2px solid #006EA3;outline-offset:2px}
+[data-deep] :focus-visible{outline-color:#5BC8F5}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{text-wrap:pretty;margin:0}
+section[id]{scroll-margin-top:126px}
+.g3{display:grid;grid-template-columns:minmax(0,1fr);gap:32px 24px}@media (min-width:960px){.g3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.g4{display:grid;grid-template-columns:minmax(0,1fr);gap:32px 24px}@media (min-width:660px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1140px){.g4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.srow{display:grid;grid-template-columns:minmax(0,1fr);gap:16px 40px;padding:32px 0;border-top:1px solid #DCE6EF}
+@media (min-width:960px){.srow{grid-template-columns:220px minmax(0,1fr) 200px;align-items:start}}
+.jumpbar::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</helmet>
+
+<dc-import name="BxHeader" active="services" style="position:sticky;top:0;z-index:20" hint-size="100%,73px"></dc-import>
+
+<main>
+<section id="top" data-screen-label="Hero" style="position:relative;isolation:isolate;overflow:hidden;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px) clamp(48px,6vw,64px)">
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(#DCE6EF 1px,transparent 1px),linear-gradient(90deg,#DCE6EF 1px,transparent 1px);background-size:56px 56px;background-position:right -1px top -1px;-webkit-mask-image:radial-gradient(ellipse 75% 100% at 100% 0%,#000 25%,transparent 72%);mask-image:radial-gradient(ellipse 75% 100% at 100% 0%,#000 25%,transparent 72%)"></div>
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <nav aria-label="Breadcrumb" style="display:flex;gap:8px;font-size:14px;line-height:22px;color:#4A5B6C"><a href="bX v2 - Home.dc.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Industries</span></nav>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Industries</span>
+        <h1 style="font-size:clamp(34px,4vw,48px);line-height:1.125;font-weight:600;letter-spacing:-0.03em;max-width:18ch">Domain knowledge we already paid for.</h1>
+        <p style="font-size:18px;line-height:28px;color:#4A5B6C;max-width:60ch">We build for startups, growing businesses and enterprise programmes alike. There are industries where we have learned the constraints the expensive way (the regulation, the legacy system, the failure mode nobody documents) and those are the ones listed here.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:24px;border-top:1px solid #DCE6EF;padding-top:24px">
+        <p style="font-size:16px;line-height:26px;color:#4A5B6C">If your sector is not on this page, it usually means the engineering problem transfers anyway. Say what you are building and we will tell you honestly whether we have seen it before.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#contact" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;background:#00AEEF;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#33C1F3;color:#0A1F33">Ask about your sector</a>
+          <a href="#sectors" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;border:1px solid #6B7F93;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#FFFFFF;color:#0A1F33">Browse sectors <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav aria-label="Jump to" style="position:sticky;top:73px;z-index:15;background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:0 clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:4px 8px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;min-height:52px" class="jumpbar">
+    <sc-for list="{{ jump }}" as="j" hint-placeholder-count="5">
+      <a href="{{ j.href }}" style="flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;white-space:nowrap;font-size:15px;font-weight:500;color:#0A1F33" style-hover="background:#F4F8FB;color:#006EA3">{{ j.label }}</a>
+    </sc-for>
+  </div>
+</nav>
+
+<section id="clients" data-screen-label="Who we work with" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Who we work with</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Startups, growing businesses, and enterprise teams</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">The engineering is the same. What changes is the budget shape, the pace and how much process sits around the work.</p>
+    </div>
+    <div class="g3">
+      <sc-for list="{{ clients }}" as="c" hint-placeholder-count="3">
+        <article style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">{{ c.k }}</span>
+          <h3 style="font-size:24px;line-height:32px;font-weight:600;letter-spacing:-0.015em">{{ c.t }}</h3>
+          <p style="font-size:16px;line-height:26px;color:#4A5B6C">{{ c.d }}</p>
+          <ul style="list-style:none;margin:8px 0 0;padding:0">
+            <sc-for list="{{ c.list }}" as="li" hint-placeholder-count="4"><li style="font-size:15px;line-height:24px;padding:10px 0;border-top:1px solid #DCE6EF">{{ li }}</li></sc-for>
+          </ul>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="sectors" data-screen-label="Sectors" style="background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Where we have delivered</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Sectors with work behind them</h2>
+      </div>
+      <p style="font-size:14px;line-height:22px;color:#4A5B6C;max-width:50ch">Client names are withheld under NDA. Figures are placeholders pending your sign-off; sectors and regions are accurate.</p>
+    </div>
+    <div style="border-bottom:1px solid #DCE6EF">
+      <sc-for list="{{ sectors }}" as="s" hint-placeholder-count="7">
+        <article class="srow">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <h3 style="font-size:24px;line-height:32px;font-weight:600;letter-spacing:-0.015em">{{ s.t }}</h3>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#4A5B6C">{{ s.region }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px">
+            <p style="font-size:16px;line-height:26px;color:#4A5B6C;max-width:64ch">{{ s.d }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ s.tags }}" as="t" hint-placeholder-count="4"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;padding:3px 8px;border-radius:4px;background:#F4F8FB;border:1px solid #DCE6EF;color:#4A5B6C">{{ t }}</span></sc-for>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-size:36px;line-height:42px;font-weight:600;letter-spacing:-0.025em;color:#0A1F33">{{ s.v }}</span>
+            <span style="font-size:14px;line-height:22px;color:#4A5B6C">{{ s.vl }}</span>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="constraints" data-screen-label="Constraints" data-deep="" style="background:#0A1F33;color:#F4F8FB;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5BC8F5">Constraints we plan for</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em;color:#F4F8FB">What regulated sectors change about a build</h2>
+      <p style="font-size:16px;line-height:26px;color:#A9B8C8">These come up in the first week on insurance, automotive and fintech work. Planning for them at the start is cheaper than retrofitting them at the audit.</p>
+    </div>
+    <div class="g4">
+      <sc-for list="{{ constraints }}" as="c" hint-placeholder-count="4">
+        <div style="border-top:1px solid #1F3A55;padding-top:24px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;color:#5BC8F5">{{ c.n }}</span>
+          <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em;color:#F4F8FB">{{ c.t }}</h3>
+          <p style="font-size:16px;line-height:26px;color:#A9B8C8">{{ c.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="other" data-screen-label="Other sectors" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:40px 56px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Other sectors</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Not listed here does not mean not for us</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">Most of what we do transfers: a document-heavy intake process looks much the same in insurance as in construction bidding. We will tell you plainly whether we have done your problem before or would be learning it on your budget.</p>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px">Ask about your sector <span aria-hidden="true">→</span></a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start">
+      <sc-for list="{{ other }}" as="o" hint-placeholder-count="9">
+        <span style="display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;border:1px solid #DCE6EF;background:#FFFFFF;font-size:15px;font-weight:500;white-space:nowrap">{{ o }}</span>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="BxContactBand" eyebrow="Start a project" title="Tell us the sector and the constraint" text="Thirty minutes with the engineers who did the work. You leave with an approach and a rough shape of effort, whether or not you hire us." cta="Book a technical call" cta-href="bX v2 - Contact.dc.html" secondary="All services →" secondary-href="bX v2 - Services.dc.html" hint-size="100%,330px"></dc-import>
+<dc-import name="BxFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const S = (t, region, d, tags, v, vl) => ({ t, region, d, tags, v, vl });
+    return {
+      jump: [['#clients','Who we work with'],['#sectors','Sectors'],['#constraints','Constraints we plan for'],['#other','Other sectors'],['#contact','Start a project']].map(([href,label])=>({href,label})),
+      clients: [
+        { k: 'Startups', t: 'From idea to something users can break', d: 'A working product rather than a prototype deck: the smallest build that proves the idea, shipped to real users, with the architecture kept simple enough to change when they tell you something you did not expect.', list: ['MVP build', 'Fractional CTO', 'Investor-ready demos', 'Fixed-scope sprints'] },
+        { k: 'Small & mid-sized businesses', t: 'Digitising the process the business already runs', d: 'Spreadsheets, email threads and phone calls turned into one system people will actually use. We start with the process that costs the most hours, not the one that demos best, and hand over documentation your own team can work from.', list: ['Process digitisation', 'Internal tools', 'Integrations', 'Cloud migration'] },
+        { k: 'Enterprise & partners', t: 'A squad inside an existing programme', d: 'Engineers who work your sprints, your repository and your release process, on CET overlap, plus the audit, traceability and security review that a regulated programme needs before anything reaches production.', list: ['Dedicated teams', 'Legacy migration', 'QA at scale', 'Compliance work'] }
+      ],
+      sectors: [
+        S('Insurance', 'EU · NDA', 'Claims handling, first-notice-of-loss intake and document-heavy back-office work. The constraint is never the model. It is that a decision has to be explainable to a regulator and reversible by a human.', ['Claims triage', 'Document extraction', 'Fraud signals', 'Policy system integration'], '68%', 'faster first response on triaged claims'),
+        S('Automotive', 'DE · NDA', "Infotainment and connected-vehicle validation alongside a German partner, working inside the client's pipeline and release process rather than beside it. Long programmes, strict traceability, per-build rather than per-release testing.", ['Test automation', 'Performance', 'API testing', 'Embedded squads'], '2,400', 'automated cases run per build'),
+        S('Utilities & energy', 'EU · NDA', 'Field telemetry and reporting for operators who have to act on what they see. Alerting rules tuned with the control room, because an alert nobody trusts is worse than no alert.', ['IoT ingestion', 'Time-series', 'Reporting', 'Data quality'], '18k', 'devices reporting into one view'),
+        S('Fintech', 'EU · NDA', 'Settlement flows, payment integrations and on-chain work where the review matters more than the build. Everything that touches money gets an independent audit before launch, including ours.', ['Smart contracts', 'Payments', 'Indexing', 'Security review'], '2', 'independent audits before go-live'),
+        S('Retail & logistics', 'APAC · EU · NDA', 'Forecasting, stock movement and the migrations underneath them. The hard part is rarely the algorithm. It is a master data set that three systems disagree about.', ['Demand forecasting', 'MLOps', 'Legacy migration', 'Dashboards'], '31%', 'fewer stockouts at constant inventory'),
+        S('Education', 'PK · NDA', 'Student-facing systems and assistants that answer from policy rather than from memory. Answers cite the handbook section they came from, and anything outside it escalates to a person.', ['RAG', 'Portal integration', 'Escalation design'], '24/7', 'admissions coverage without extra headcount'),
+        S('Construction & facilities', 'DE · NDA', 'Bid teams and service operations replacing phone-and-spreadsheet processes. Tender documents read and turned into a compliance matrix; scheduling and invoicing put on one system.', ['Document agents', 'Scheduling', 'Dispatch', 'Customer portals'], '9 hrs', 'saved per tender response')
+      ],
+      constraints: [
+        { n: '01', t: 'Explainability', d: 'Every automated decision keeps the inputs, the rule or model version and the reason, in a form a reviewer can read.' },
+        { n: '02', t: 'Data residency', d: 'EU-region processing where required, with a stated position on which models and vendors ever see client data.' },
+        { n: '03', t: 'A human in the path', d: 'Confidence thresholds and escalation routes designed with the team who will handle the escalations.' },
+        { n: '04', t: 'Shadow running', d: 'New automation runs alongside the existing process, measured against it, before it is allowed to act.' }
+      ],
+      other: ['SaaS', 'Healthcare', 'Manufacturing', 'Wellness', 'Public sector', 'Professional services', 'Real estate', 'Telecom', 'Media']
+    };
+  }
+}
+</script>
+</body>
+</html>

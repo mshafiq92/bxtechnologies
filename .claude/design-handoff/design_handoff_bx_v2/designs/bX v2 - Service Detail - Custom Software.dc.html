@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Custom software development · bX Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0;background:#F4F8FB;color:#0A1F33;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;height:auto;min-height:100%}
+.sc-host{height:auto!important}
+*{box-sizing:border-box}
+a{color:#006EA3;text-decoration:none;transition:color 150ms,background-color 150ms,border-color 150ms}
+a:hover{color:#0A1F33}
+:focus-visible{outline:2px solid #006EA3;outline-offset:2px}
+[data-deep] :focus-visible{outline-color:#5BC8F5}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{text-wrap:pretty;margin:0}
+section[id]{scroll-margin-top:126px}
+.g4{display:grid;grid-template-columns:minmax(0,1fr);gap:40px 24px}@media (min-width:660px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1140px){.g4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.g3{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}@media (min-width:960px){.g3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.g6{display:grid;grid-template-columns:minmax(0,1fr);gap:32px 24px}@media (min-width:660px){.g6{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1040px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.g3x{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}@media (min-width:720px){.g3x{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.g4x{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}@media (min-width:560px){.g4x{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:960px){.g4x{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.jumpbar::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</helmet>
+
+<dc-import name="BxHeader" active="services" style="position:sticky;top:0;z-index:20" hint-size="100%,73px"></dc-import>
+
+<main>
+<section id="top" data-screen-label="Hero" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px) clamp(48px,6vw,64px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;gap:8px;font-size:14px;line-height:22px;color:#4A5B6C"><a href="bX v2 - Home.dc.html">Home</a><span aria-hidden="true">/</span><a href="bX v2 - Services.dc.html">Services</a><span aria-hidden="true">/</span><span aria-current="page">Custom software development</span></nav>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:24px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Product Engineering · Service 07</span>
+      <h1 style="font-size:clamp(34px,4vw,48px);line-height:1.125;font-weight:600;letter-spacing:-0.03em">Line-of-business software built to be handed over.</h1>
+      <p style="font-size:18px;line-height:28px;color:#4A5B6C;max-width:62ch">Domain modelling, API design and the integrations with what you already run, in .NET, Node.js or Python. Documented well enough that your own team, or another vendor, could take it on.</p>
+    </div>
+    <dl style="margin:0;display:flex;flex-wrap:wrap;gap:16px 48px;border-top:1px solid #DCE6EF;padding-top:24px">
+      <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">between working demos</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em">2 wks</dd></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">from the first commit</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em">Your repo</dd></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">engagement model</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em">Fixed or team</dd></div>
+    </dl>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <a href="#contact" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;background:#00AEEF;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#33C1F3;color:#0A1F33">Discuss a build</a>
+      <a href="#architecture" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;border:1px solid #6B7F93;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#FFFFFF;color:#0A1F33">See the architecture <span aria-hidden="true">→</span></a>
+    </div>
+      </div>
+      <figure data-deep="" style="margin:0;background:#0A1F33;color:#F4F8FB;border-radius:12px;overflow:hidden">
+        <div style="height:3px;background:linear-gradient(90deg,#00AEEF,#79BB42)"></div>
+        <div style="padding:24px;display:flex;flex-direction:column;gap:12px">
+          <figcaption style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5BC8F5;margin-bottom:4px">From domain to deployed</figcaption>
+          <div style="border:1px solid #5B7690;border-radius:8px;padding:12px 16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px"><span style="font-weight:600;font-size:15px">Domain model</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:22px;color:#A9B8C8">workshops · ADRs</span></div>
+          <span aria-hidden="true" style="align-self:center;font-family:'JetBrains Mono',monospace;color:#5BC8F5;line-height:12px">↓</span>
+          <div style="border:1px solid #00AEEF;border-radius:8px;padding:12px 16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px"><span style="font-weight:600;font-size:15px">API & services</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:22px;color:#A9B8C8">.NET · Node · Python</span></div>
+          <span aria-hidden="true" style="align-self:center;font-family:'JetBrains Mono',monospace;color:#5BC8F5;line-height:12px">↓</span>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+            <div style="border:1px solid #1F3A55;border-radius:8px;padding:10px 14px;background:#0F2A44;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">Integrations</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:20px;color:#A9B8C8">ERP · CRM · payments</span></div>
+            <div style="border:1px solid #1F3A55;border-radius:8px;padding:10px 14px;background:#0F2A44;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">Data</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:20px;color:#A9B8C8">SQL Server · MySQL</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+            <div style="border:1px solid #1F3A55;border-radius:8px;padding:10px 14px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">Web & mobile</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:20px;color:#A9B8C8">React · responsive</span></div>
+            <div style="border:1px dashed #5B7690;border-radius:8px;padding:10px 14px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">Handover</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:20px;color:#A9B8C8">docs · runbooks</span></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;border-top:1px solid #1F3A55;padding-top:14px;margin-top:4px">
+            <span style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#79BB42"></span>Tested at commit level</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;color:#A9B8C8">unit · API · regression</span>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<nav aria-label="Jump to" style="position:sticky;top:73px;z-index:15;background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:0 clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:4px 8px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;min-height:52px" class="jumpbar">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#4A5B6C;flex:none;margin-right:8px">Jump to</span>
+    <sc-for list="{{ jump }}" as="j" hint-placeholder-count="6">
+      <a href="{{ j.href }}" style="flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;white-space:nowrap;font-size:15px;font-weight:500;color:#0A1F33" style-hover="background:#F4F8FB;color:#006EA3">{{ j.label }}</a>
+    </sc-for>
+  </div>
+</nav>
+
+<section id="build" data-screen-label="What we build" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">What we build</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Four kinds of system we build most</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">Each one replaces something the business already does by hand, or in a system that has stopped keeping up.</p>
+    </div>
+    <div class="g4">
+      <sc-for list="{{ patterns }}" as="p" hint-placeholder-count="4">
+        <article style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:16px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;color:#006EA3">{{ p.n }}</span>
+          <h3 style="font-size:24px;line-height:32px;font-weight:600;letter-spacing:-0.015em">{{ p.t }}</h3>
+          <p style="font-size:16px;line-height:26px;color:#4A5B6C">{{ p.d }}</p>
+          <ul style="list-style:none;margin:0;padding:0;margin-top:auto">
+            <sc-for list="{{ p.list }}" as="li" hint-placeholder-count="3">
+              <li style="font-size:15px;line-height:24px;padding:10px 0;border-top:1px solid #DCE6EF">{{ li }}</li>
+            </sc-for>
+          </ul>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="architecture" data-screen-label="Architecture" style="background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Architecture</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">How a build is structured</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">A service layer behind a typed API, so the web app, the mobile app and your existing systems all use the same rules. Stack choices follow what your team can maintain.</p>
+    </div>
+    <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+      <div class="g3x">
+        <sc-for list="{{ edge }}" as="e" hint-placeholder-count="3">
+          <div style="border:1px solid #6B7F93;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:16px;line-height:22px;font-weight:600">{{ e.t }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:20px;color:#4A5B6C">{{ e.d }}</span></div>
+        </sc-for>
+      </div>
+      <div aria-hidden="true" style="display:flex;justify-content:center;font-family:'JetBrains Mono',monospace;color:#6B7F93">↓</div>
+      <div style="border:1px solid #00AEEF;border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">API &amp; domain layer</span>
+        <span style="font-size:16px;line-height:26px">Business rules live in one place, versioned and tested. Every client (web, mobile, partner integration) calls the same typed API.</span>
+      </div>
+      <div aria-hidden="true" style="display:flex;justify-content:center;font-family:'JetBrains Mono',monospace;color:#6B7F93">↓</div>
+      <div class="g4x">
+        <sc-for list="{{ core }}" as="c" hint-placeholder-count="4">
+          <div style="border:1px solid #DCE6EF;border-radius:8px;padding:16px;background:#F4F8FB;display:flex;flex-direction:column;gap:6px"><span style="font-size:16px;line-height:22px;font-weight:600">{{ c.t }}</span><span style="font-size:14px;line-height:22px;color:#4A5B6C">{{ c.d }}</span></div>
+        </sc-for>
+      </div>
+      <div style="border:1px dashed #6B7F93;border-radius:8px;padding:16px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;margin-top:4px">
+        <span style="font-size:16px;line-height:24px;font-weight:600">Testing &amp; release</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:24px;color:#4A5B6C">unit tests at commit · API contract tests · regression suite · staged releases</span>
+      </div>
+    </figure>
+    <p style="font-size:16px;line-height:26px;color:#4A5B6C;max-width:72ch">The test suite is part of what you buy. Without it, the second phase of a project costs more than the first, because every change risks breaking something nobody remembers building.</p>
+  </div>
+</section>
+
+<section id="delivery" data-screen-label="The engagement" data-deep="" style="background:#0A1F33;color:#F4F8FB;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:680px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5BC8F5">The engagement</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em;color:#F4F8FB">Discovery, build, handover</h2>
+        <p style="font-size:16px;line-height:26px;color:#A9B8C8">Fixed price when the scope is clear, a dedicated team when it is not. Either way the code is in your repository from the first commit.</p>
+      </div>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px;color:#5BC8F5" style-hover="color:#F4F8FB">Discuss a build <span aria-hidden="true">→</span></a>
+    </div>
+    <ol class="g4" style="list-style:none;margin:0;padding:0">
+      <sc-for list="{{ pilot }}" as="st" hint-placeholder-count="4">
+        <li style="border-top:1px solid #1F3A55;padding-top:24px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;color:#5BC8F5">{{ st.wk }}</span>
+          <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em;color:#F4F8FB">{{ st.t }}</h3>
+          <p style="font-size:15px;line-height:24px;color:#A9B8C8">{{ st.d }}</p>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section id="proof" data-screen-label="In production" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px) 0">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">In production</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">What custom builds have moved for clients</h2>
+      </div>
+      <p style="font-size:14px;line-height:22px;color:#4A5B6C;max-width:46ch">Client names withheld under NDA. Figures are placeholders pending your final sign-off on the real numbers.</p>
+    </div>
+    <div class="g3">
+      <sc-for list="{{ proof }}" as="m" hint-placeholder-count="3">
+        <div style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:48px;line-height:52px;font-weight:600;letter-spacing:-0.03em;color:#0A1F33">{{ m.v }}</span>
+          <p style="font-size:16px;line-height:26px">{{ m.d }}</p>
+          <span style="font-size:13px;line-height:20px;color:#4A5B6C">{{ m.s }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="fit" data-screen-label="Where it fits" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Where it fits</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">When a custom build is the right call</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">Off-the-shelf software is usually cheaper. These are the cases where it is not.</p>
+    </div>
+    <div class="g6">
+      <sc-for list="{{ fit }}" as="f" hint-placeholder-count="6">
+        <div style="background:#FFFFFF;border:1px solid #DCE6EF;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">{{ f.s }}</span>
+          <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ f.t }}</h3>
+          <p style="font-size:15px;line-height:24px;color:#4A5B6C">{{ f.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-screen-label="Questions" style="padding:0 clamp(16px,4vw,24px) clamp(64px,8vw,96px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px 48px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:16px;flex:1 1 280px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Questions</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">The ones buyers actually ask</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">If yours is not here, put it in the first call. We would rather rule ourselves out early than sell you a build you do not need.</p>
+    </div>
+    <ul style="list-style:none;margin:0;padding:0;border-bottom:1px solid #DCE6EF;flex:2 1 520px;min-width:0">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+        <li style="border-top:1px solid #DCE6EF">
+          <button type="button" onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:64px;padding:16px 0;background:none;border:0;text-align:left;cursor:pointer;font-family:Inter,system-ui,sans-serif;font-size:18px;line-height:28px;font-weight:600;color:#0A1F33" style-hover="color:#006EA3">{{ q.q }}<span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:400;color:#006EA3;flex:none;width:24px;text-align:center">{{ q.sign }}</span></button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <p style="font-size:16px;line-height:26px;color:#4A5B6C;padding:0 48px 24px 0;max-width:680px">{{ q.a }}</p>
+          </sc-if>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<section id="related" data-screen-label="Related" style="background:#FFFFFF;border-top:1px solid #DCE6EF;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Related</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">What a custom build usually needs alongside it</h2>
+      </div>
+      <a href="bX v2 - Services.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px">All services <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="g3">
+      <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+        <a href="{{ r.href }}" style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:12px;color:#0A1F33" style-hover="color:#006EA3">
+          <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ r.t }}</h3>
+          <p style="font-size:16px;line-height:26px;color:#4A5B6C">{{ r.d }}</p>
+          <span style="font-weight:600;color:#006EA3">Explore <span aria-hidden="true">→</span></span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="BxContactBand" eyebrow="Start a project" title="Bring us the process that still runs on spreadsheets and email." text="Thirty minutes with the engineers who would build it. You leave with an approach, a rough shape of cost, and a view on whether off-the-shelf would do the job instead." cta="Discuss a build" cta-href="bX v2 - Contact.dc.html" secondary="Read our insights →" secondary-href="bX v2 - Insights.dc.html" hint-size="100%,330px"></dc-import>
+<dc-import name="BxFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const FAQ = [
+  {
+    "q": "Fixed price or dedicated team?",
+    "a": "Fixed price when the scope is stable enough to write down; a dedicated team when it will change as you learn. We recommend one at the end of discovery and explain why."
+  },
+  {
+    "q": "Who owns the code?",
+    "a": "You do, from the first commit. It lives in your repository under your licence, and the documentation is part of the deliverable."
+  },
+  {
+    "q": "Which stack will you use?",
+    "a": "Whichever your team can maintain. Most of our builds are C# / ASP.NET, Node.js or Python on SQL Server, MySQL or MongoDB, with React on the front end. If you already have a stack, we build in it."
+  },
+  {
+    "q": "Can it integrate with the systems we already run?",
+    "a": "That is usually most of the work. ERP, CRM, payment and identity integrations are scoped in discovery, with a test environment for each one before the build starts."
+  },
+  {
+    "q": "How do we see progress?",
+    "a": "A demo every two weeks on a staging environment you can use, plus your board and your repository. No status reports in place of working software."
+  },
+  {
+    "q": "What happens after launch?",
+    "a": "Either we stay on with a monthly support and change budget, or we hand over with a walkthrough. Most clients do the first for a while and then the second."
+  }
+];
+class Component extends DCLogic {
+  state = { openIdx: 0 };
+  renderVals() {
+    return {
+      jump: [['#build','What we build'],['#architecture','Architecture'],['#delivery','The engagement'],['#fit','Where it fits'],['#faq','Questions'],['#related','Related']].map(([href,label])=>({href,label})),
+      patterns: [
+        {
+          "n": "01",
+          "t": "Operations platforms",
+          "d": "Booking, scheduling, dispatch and invoicing on one system, replacing the phone calls and spreadsheets that hold the business together today.",
+          "list": [
+            "Scheduling",
+            "Dispatch",
+            "Invoicing"
+          ]
+        },
+        {
+          "n": "02",
+          "t": "Customer portals",
+          "d": "Self-service for the requests your team answers by email: status, documents, bookings and account changes, tied to the same records staff use.",
+          "list": [
+            "Self-service",
+            "Documents",
+            "Notifications"
+          ]
+        },
+        {
+          "n": "03",
+          "t": "Integration layers",
+          "d": "The service that sits between your ERP, CRM and payment systems so data moves once, correctly, instead of being re-keyed by hand.",
+          "list": [
+            "ERP and CRM",
+            "Payments",
+            "Sync jobs"
+          ]
+        },
+        {
+          "n": "04",
+          "t": "Legacy replacement",
+          "d": "A system that has stopped keeping up, rebuilt alongside the old one and switched over module by module, with the data migrated and reconciled.",
+          "list": [
+            "Parallel running",
+            "Data migration",
+            "Phased cutover"
+          ]
+        }
+      ],
+      edge: [
+        {
+          "t": "Web app",
+          "d": "React · responsive"
+        },
+        {
+          "t": "Mobile app",
+          "d": "iOS · Android"
+        },
+        {
+          "t": "Partner systems",
+          "d": "ERP · CRM · payments"
+        }
+      ],
+      core: [
+        {
+          "t": "Data",
+          "d": "SQL Server, MySQL or MongoDB"
+        },
+        {
+          "t": "Integrations",
+          "d": "Typed connectors with retries"
+        },
+        {
+          "t": "Auth & roles",
+          "d": "SSO and per-role permissions"
+        },
+        {
+          "t": "Background jobs",
+          "d": "Imports, reports, notifications"
+        }
+      ],
+      pilot: [
+        {
+          "wk": "WK 1 to 2",
+          "t": "Discovery",
+          "d": "Workshops with the people who use the current process, a domain model, the integration list and a written scope with a price or a team shape."
+        },
+        {
+          "wk": "FORTNIGHTLY",
+          "t": "Build in iterations",
+          "d": "Two-week iterations with a working demo on staging at the end of each. You see the software, not a status report."
+        },
+        {
+          "wk": "BEFORE LAUNCH",
+          "t": "Test and harden",
+          "d": "Regression, performance and security testing, data migration rehearsed against a copy of production, and a go-live checklist agreed with your team."
+        },
+        {
+          "wk": "AFTER",
+          "t": "Support or hand over",
+          "d": "A monthly support and change budget, or a handover with documentation and a walkthrough. Most clients do the first for a while, then the second."
+        }
+      ],
+      proof: [
+        {
+          "v": "3.2×",
+          "d": "more online bookings after rebuilding booking and operations on one system.",
+          "s": "Facilities · DE · NDA"
+        },
+        {
+          "v": "94%",
+          "d": "of delivered projects shipped on the date agreed at the end of discovery.",
+          "s": "Across delivered projects"
+        },
+        {
+          "v": "8/10",
+          "d": "clients retained past their first project, most now on a third or fourth phase.",
+          "s": "Across clients since 2019"
+        }
+      ],
+      fit: [
+        {
+          "s": "Facilities",
+          "t": "Booking runs on the phone",
+          "d": "Scheduling, dispatch and invoicing held together by spreadsheets and one person who knows the system."
+        },
+        {
+          "s": "Automotive",
+          "t": "Internal tools for a programme",
+          "d": "Tooling that has to fit an existing release process and its traceability rules."
+        },
+        {
+          "s": "Retail",
+          "t": "Stock and ordering across systems",
+          "d": "Three systems that disagree about what is in stock, reconciled by hand every week."
+        },
+        {
+          "s": "Education",
+          "t": "A student or staff portal",
+          "d": "Applications, documents and status requests that currently arrive by email."
+        },
+        {
+          "s": "Logistics",
+          "t": "Exceptions handled by email",
+          "d": "Delays and failed deliveries tracked in inboxes rather than in a system with a history."
+        },
+        {
+          "s": "Professional services",
+          "t": "A process nothing off-the-shelf fits",
+          "d": "Work that is the reason clients choose you, which a generic tool would flatten."
+        }
+      ],
+      faqs: FAQ.map((f, i) => { const open = this.state.openIdx === i; return { ...f, open, sign: open ? '−' : '+', toggle: () => this.setState({ openIdx: open ? null : i }) }; }),
+      related: [
+        {
+          "t": "Web & mobile applications",
+          "d": "The front ends and store releases for the system, built against the same API.",
+          "href": "bX v2 - Services.dc.html#product"
+        },
+        {
+          "t": "QA & test automation",
+          "d": "Independent regression and performance testing for builds where failures are expensive.",
+          "href": "bX v2 - Services.dc.html#product"
+        },
+        {
+          "t": "Cloud & DevOps",
+          "d": "The pipeline and platform the system deploys through from its first commit.",
+          "href": "bX v2 - Service Detail - Cloud DevOps.dc.html"
+        }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

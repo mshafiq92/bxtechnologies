@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Cloud &amp; DevOps · bX Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0;background:#F4F8FB;color:#0A1F33;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;height:auto;min-height:100%}
+.sc-host{height:auto!important}
+*{box-sizing:border-box}
+a{color:#006EA3;text-decoration:none;transition:color 150ms,background-color 150ms,border-color 150ms}
+a:hover{color:#0A1F33}
+:focus-visible{outline:2px solid #006EA3;outline-offset:2px}
+[data-deep] :focus-visible{outline-color:#5BC8F5}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{text-wrap:pretty;margin:0}
+section[id]{scroll-margin-top:126px}
+.g4{display:grid;grid-template-columns:minmax(0,1fr);gap:40px 24px}@media (min-width:660px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1140px){.g4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.g3{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}@media (min-width:960px){.g3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.g6{display:grid;grid-template-columns:minmax(0,1fr);gap:32px 24px}@media (min-width:660px){.g6{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1040px){.g6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.g3x{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}@media (min-width:720px){.g3x{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.g4x{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}@media (min-width:560px){.g4x{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:960px){.g4x{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.jumpbar::-webkit-scrollbar{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</helmet>
+
+<dc-import name="BxHeader" active="services" style="position:sticky;top:0;z-index:20" hint-size="100%,73px"></dc-import>
+
+<main>
+<section id="top" data-screen-label="Hero" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px) clamp(48px,6vw,64px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:32px">
+    <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;gap:8px;font-size:14px;line-height:22px;color:#4A5B6C"><a href="bX v2 - Home.dc.html">Home</a><span aria-hidden="true">/</span><a href="bX v2 - Services.dc.html">Services</a><span aria-hidden="true">/</span><span aria-current="page">Cloud &amp; DevOps</span></nav>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:24px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Data &amp; Cloud · Service 05</span>
+      <h1 style="font-size:clamp(34px,4vw,48px);line-height:1.125;font-weight:600;letter-spacing:-0.03em">Infrastructure your team can change on a Tuesday afternoon.</h1>
+      <p style="font-size:18px;line-height:28px;color:#4A5B6C;max-width:62ch">Landing zones, pipelines and observability on AWS and Azure, written as code and handed over with the runbooks. The goal is a platform where a deploy is routine and the monthly bill is explainable.</p>
+    </div>
+    <dl style="margin:0;display:flex;flex-wrap:wrap;gap:16px 48px;border-top:1px solid #DCE6EF;padding-top:24px">
+      <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">to a first infrastructure review</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em">2 wks</dd></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">every environment as code</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em">IaC</dd></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><dt style="order:2;font-size:14px;line-height:22px;color:#4A5B6C">no runtime of ours to rent</dt><dd style="margin:0;font-size:28px;line-height:34px;font-weight:600;letter-spacing:-0.02em">Your account</dd></div>
+    </dl>
+    <div style="display:flex;flex-wrap:wrap;gap:12px">
+      <a href="#contact" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;background:#00AEEF;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#33C1F3;color:#0A1F33">Book an infrastructure review</a>
+      <a href="#architecture" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;flex:none;border:1px solid #6B7F93;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#FFFFFF;color:#0A1F33">See the architecture <span aria-hidden="true">→</span></a>
+    </div>
+      </div>
+      <figure data-deep="" style="margin:0;background:#0A1F33;color:#F4F8FB;border-radius:12px;overflow:hidden">
+        <div style="height:3px;background:linear-gradient(90deg,#00AEEF,#79BB42)"></div>
+        <div style="padding:24px;display:flex;flex-direction:column;gap:12px">
+          <figcaption style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5BC8F5;margin-bottom:4px">One path to production</figcaption>
+          <div style="border:1px solid #5B7690;border-radius:8px;padding:12px 16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px"><span style="font-weight:600;font-size:15px">Commit</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:22px;color:#A9B8C8">pull request · review</span></div>
+          <span aria-hidden="true" style="align-self:center;font-family:'JetBrains Mono',monospace;color:#5BC8F5;line-height:12px">↓</span>
+          <div style="border:1px solid #00AEEF;border-radius:8px;padding:12px 16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px"><span style="font-weight:600;font-size:15px">Pipeline</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:22px;color:#A9B8C8">build · test · scan</span></div>
+          <span aria-hidden="true" style="align-self:center;font-family:'JetBrains Mono',monospace;color:#5BC8F5;line-height:12px">↓</span>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+            <div style="border:1px solid #1F3A55;border-radius:8px;padding:10px 14px;background:#0F2A44;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">Staging</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:20px;color:#A9B8C8">same IaC as prod</span></div>
+            <div style="border:1px solid #1F3A55;border-radius:8px;padding:10px 14px;background:#0F2A44;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">Policy</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:20px;color:#A9B8C8">cost · security checks</span></div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px">
+            <div style="border:1px solid #1F3A55;border-radius:8px;padding:10px 14px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">Production</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:20px;color:#A9B8C8">staged rollout</span></div>
+            <div style="border:1px dashed #5B7690;border-radius:8px;padding:10px 14px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">Rollback</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:20px;color:#A9B8C8">one command</span></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;border-top:1px solid #1F3A55;padding-top:14px;margin-top:4px">
+            <span style="display:flex;align-items:center;gap:8px;font-size:14px;line-height:22px"><span style="flex:none;width:8px;height:8px;border-radius:50%;background:#79BB42"></span>Monitored after every deploy</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;color:#A9B8C8">metrics · logs · alerts</span>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<nav aria-label="Jump to" style="position:sticky;top:73px;z-index:15;background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:0 clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:4px 8px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;min-height:52px" class="jumpbar">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#4A5B6C;flex:none;margin-right:8px">Jump to</span>
+    <sc-for list="{{ jump }}" as="j" hint-placeholder-count="6">
+      <a href="{{ j.href }}" style="flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:8px;white-space:nowrap;font-size:15px;font-weight:500;color:#0A1F33" style-hover="background:#F4F8FB;color:#006EA3">{{ j.label }}</a>
+    </sc-for>
+  </div>
+</nav>
+
+<section id="build" data-screen-label="What we build" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">What we build</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">Four pieces most platforms are missing</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">We start with whichever one is costing you the most: failed deploys, slow environments, or a bill nobody can explain.</p>
+    </div>
+    <div class="g4">
+      <sc-for list="{{ patterns }}" as="p" hint-placeholder-count="4">
+        <article style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:16px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;color:#006EA3">{{ p.n }}</span>
+          <h3 style="font-size:24px;line-height:32px;font-weight:600;letter-spacing:-0.015em">{{ p.t }}</h3>
+          <p style="font-size:16px;line-height:26px;color:#4A5B6C">{{ p.d }}</p>
+          <ul style="list-style:none;margin:0;padding:0;margin-top:auto">
+            <sc-for list="{{ p.list }}" as="li" hint-placeholder-count="3">
+              <li style="font-size:15px;line-height:24px;padding:10px 0;border-top:1px solid #DCE6EF">{{ li }}</li>
+            </sc-for>
+          </ul>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="architecture" data-screen-label="Architecture" style="background:#FFFFFF;border-top:1px solid #DCE6EF;border-bottom:1px solid #DCE6EF;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Architecture</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">The reference platform</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">AWS or Azure, in your own account. Region, network layout and compliance controls are decided per client, then written as code.</p>
+    </div>
+    <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+      <div class="g3x">
+        <sc-for list="{{ edge }}" as="e" hint-placeholder-count="3">
+          <div style="border:1px solid #6B7F93;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-size:16px;line-height:22px;font-weight:600">{{ e.t }}</span><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:20px;color:#4A5B6C">{{ e.d }}</span></div>
+        </sc-for>
+      </div>
+      <div aria-hidden="true" style="display:flex;justify-content:center;font-family:'JetBrains Mono',monospace;color:#6B7F93">↓</div>
+      <div style="border:1px solid #00AEEF;border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:6px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">CI/CD pipeline</span>
+        <span style="font-size:16px;line-height:26px">Build, test, security scan and deploy on every merge. The same pipeline promotes to staging and production, so nothing reaches users by hand.</span>
+      </div>
+      <div aria-hidden="true" style="display:flex;justify-content:center;font-family:'JetBrains Mono',monospace;color:#6B7F93">↓</div>
+      <div class="g4x">
+        <sc-for list="{{ core }}" as="c" hint-placeholder-count="4">
+          <div style="border:1px solid #DCE6EF;border-radius:8px;padding:16px;background:#F4F8FB;display:flex;flex-direction:column;gap:6px"><span style="font-size:16px;line-height:22px;font-weight:600">{{ c.t }}</span><span style="font-size:14px;line-height:22px;color:#4A5B6C">{{ c.d }}</span></div>
+        </sc-for>
+      </div>
+      <div style="border:1px dashed #6B7F93;border-radius:8px;padding:16px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px;margin-top:4px">
+        <span style="font-size:16px;line-height:24px;font-weight:600">Observability</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:24px;color:#4A5B6C">metrics · logs · traces · cost per environment · alerting with runbooks</span>
+      </div>
+    </figure>
+    <p style="font-size:16px;line-height:26px;color:#4A5B6C;max-width:72ch">Observability is the part most migrations leave for later, and the reason the first incident after go-live takes a day to diagnose. We put it in before the first workload moves.</p>
+  </div>
+</section>
+
+<section id="delivery" data-screen-label="The engagement" data-deep="" style="background:#0A1F33;color:#F4F8FB;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:48px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:680px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5BC8F5">The engagement</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em;color:#F4F8FB">Review, migrate, then hand over</h2>
+        <p style="font-size:16px;line-height:26px;color:#A9B8C8">Fixed fee for the review. You own the infrastructure code, pipelines and runbooks from day one, whether or not you continue with us.</p>
+      </div>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px;color:#5BC8F5" style-hover="color:#F4F8FB">Book a review <span aria-hidden="true">→</span></a>
+    </div>
+    <ol class="g4" style="list-style:none;margin:0;padding:0">
+      <sc-for list="{{ pilot }}" as="st" hint-placeholder-count="4">
+        <li style="border-top:1px solid #1F3A55;padding-top:24px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;color:#5BC8F5">{{ st.wk }}</span>
+          <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em;color:#F4F8FB">{{ st.t }}</h3>
+          <p style="font-size:15px;line-height:24px;color:#A9B8C8">{{ st.d }}</p>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section id="proof" data-screen-label="In production" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px) 0">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">In production</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">What platform work has moved for clients</h2>
+      </div>
+      <p style="font-size:14px;line-height:22px;color:#4A5B6C;max-width:46ch">Client names withheld under NDA. Figures are placeholders pending your final sign-off on the real numbers.</p>
+    </div>
+    <div class="g3">
+      <sc-for list="{{ proof }}" as="m" hint-placeholder-count="3">
+        <div style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:48px;line-height:52px;font-weight:600;letter-spacing:-0.03em;color:#0A1F33">{{ m.v }}</span>
+          <p style="font-size:16px;line-height:26px">{{ m.d }}</p>
+          <span style="font-size:13px;line-height:20px;color:#4A5B6C">{{ m.s }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="fit" data-screen-label="Where it fits" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Where it fits</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">When it is worth calling us</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">Usually one of these is already costing real money or real sleep.</p>
+    </div>
+    <div class="g6">
+      <sc-for list="{{ fit }}" as="f" hint-placeholder-count="6">
+        <div style="background:#FFFFFF;border:1px solid #DCE6EF;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">{{ f.s }}</span>
+          <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ f.t }}</h3>
+          <p style="font-size:15px;line-height:24px;color:#4A5B6C">{{ f.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-screen-label="Questions" style="padding:0 clamp(16px,4vw,24px) clamp(64px,8vw,96px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:32px 48px;align-items:flex-start">
+    <div style="display:flex;flex-direction:column;gap:16px;flex:1 1 280px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Questions</span>
+      <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">The ones buyers actually ask</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">If yours is not here, put it in the first call. We would rather rule ourselves out early than sell you a migration that cannot work.</p>
+    </div>
+    <ul style="list-style:none;margin:0;padding:0;border-bottom:1px solid #DCE6EF;flex:2 1 520px;min-width:0">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+        <li style="border-top:1px solid #DCE6EF">
+          <button type="button" onClick="{{ q.toggle }}" aria-expanded="{{ q.open }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:64px;padding:16px 0;background:none;border:0;text-align:left;cursor:pointer;font-family:Inter,system-ui,sans-serif;font-size:18px;line-height:28px;font-weight:600;color:#0A1F33" style-hover="color:#006EA3">{{ q.q }}<span aria-hidden="true" style="font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:400;color:#006EA3;flex:none;width:24px;text-align:center">{{ q.sign }}</span></button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <p style="font-size:16px;line-height:26px;color:#4A5B6C;padding:0 48px 24px 0;max-width:680px">{{ q.a }}</p>
+          </sc-if>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<section id="related" data-screen-label="Related" style="background:#FFFFFF;border-top:1px solid #DCE6EF;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Related</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">What platform work usually needs alongside it</h2>
+      </div>
+      <a href="bX v2 - Services.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px">All services <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="g3">
+      <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+        <a href="{{ r.href }}" style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:12px;color:#0A1F33" style-hover="color:#006EA3">
+          <h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">{{ r.t }}</h3>
+          <p style="font-size:16px;line-height:26px;color:#4A5B6C">{{ r.d }}</p>
+          <span style="font-weight:600;color:#006EA3">Explore <span aria-hidden="true">→</span></span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="BxContactBand" eyebrow="Start a project" title="Bring us the deploy you dread, or the bill you cannot explain." text="Thirty minutes with the engineers who would do the work. We will tell you what we would look at first, what a review would cost, and what the number to beat should be." cta="Book an infrastructure review" cta-href="bX v2 - Contact.dc.html" secondary="Read our insights →" secondary-href="bX v2 - Insights.dc.html" hint-size="100%,330px"></dc-import>
+<dc-import name="BxFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const FAQ = [
+  {
+    "q": "Do we have to move to AWS?",
+    "a": "No. We work on AWS and Azure, in your own account either way. If you already have a provider and a reason for it, we build there."
+  },
+  {
+    "q": "Will the migration cause downtime?",
+    "a": "We plan for none and move workloads in waves, each with a tested rollback. Where a cutover window is unavoidable, it is agreed in advance and rehearsed in staging first."
+  },
+  {
+    "q": "How do you bring the bill down without slowing things?",
+    "a": "Most savings come from four places: idle environments, oversized instances, storage nobody reads, and data transfer. We tag everything, report cost per environment, and change the defaults so the savings hold."
+  },
+  {
+    "q": "Who is on call after go-live?",
+    "a": "Your choice. We can run on-call with agreed response times, or hand over the runbooks and alerting to your team after a period of shadowing."
+  },
+  {
+    "q": "Who owns the infrastructure code?",
+    "a": "You do. Infrastructure definitions, pipeline configuration and runbooks live in your repository. Nothing depends on an account or tool of ours."
+  },
+  {
+    "q": "Can you work with our existing DevOps team?",
+    "a": "Yes, and it is usually the better arrangement. We pair with them on the platform rebuild so they own it afterwards."
+  }
+];
+class Component extends DCLogic {
+  state = { openIdx: 0 };
+  renderVals() {
+    return {
+      jump: [['#build','What we build'],['#architecture','Architecture'],['#delivery','The engagement'],['#fit','Where it fits'],['#faq','Questions'],['#related','Related']].map(([href,label])=>({href,label})),
+      patterns: [
+        {
+          "n": "01",
+          "t": "Landing zones",
+          "d": "Accounts, networks, identity and guardrails set up once, as code, so every new environment starts compliant instead of being fixed afterwards.",
+          "list": [
+            "Multi-account setup",
+            "SSO and roles",
+            "Policy as code"
+          ]
+        },
+        {
+          "n": "02",
+          "t": "CI/CD pipelines",
+          "d": "One pipeline from pull request to production, with tests and security scans that run on every change and a rollback that takes one command.",
+          "list": [
+            "Build and test",
+            "Security scans",
+            "Staged rollout"
+          ]
+        },
+        {
+          "n": "03",
+          "t": "Observability & on-call",
+          "d": "Metrics, logs and traces wired up before go-live, with alerts that point at a runbook rather than a person guessing at 2am.",
+          "list": [
+            "Dashboards",
+            "Alert rules",
+            "Runbooks"
+          ]
+        },
+        {
+          "n": "04",
+          "t": "Cost engineering",
+          "d": "Every resource tagged and reported per environment, idle capacity removed, and the defaults changed so the savings hold after we leave.",
+          "list": [
+            "Tagging",
+            "Right-sizing",
+            "Monthly report"
+          ]
+        }
+      ],
+      edge: [
+        {
+          "t": "Source control",
+          "d": "GitHub · Bitbucket"
+        },
+        {
+          "t": "Identity",
+          "d": "SSO · least-privilege roles"
+        },
+        {
+          "t": "Environments",
+          "d": "dev · staging · production"
+        }
+      ],
+      core: [
+        {
+          "t": "Compute",
+          "d": "Containers on Docker and Kubernetes"
+        },
+        {
+          "t": "Data",
+          "d": "Managed databases with tested backups"
+        },
+        {
+          "t": "Network",
+          "d": "Private networking and endpoints"
+        },
+        {
+          "t": "Security",
+          "d": "Secrets, scanning and policy as code"
+        }
+      ],
+      pilot: [
+        {
+          "wk": "WK 1 to 2",
+          "t": "Review what is running",
+          "d": "Architecture, pipelines, access and the last six months of the bill. You get a written review with the three changes that would matter most and what each would cost."
+        },
+        {
+          "wk": "WK 3 to 6",
+          "t": "Build the target platform",
+          "d": "Landing zone, pipelines and observability as code in your account, with staging built from the same definitions as production."
+        },
+        {
+          "wk": "MIGRATION",
+          "t": "Move workloads in waves",
+          "d": "One service at a time, each with a tested rollback and a cutover window agreed in advance. The riskiest workload goes last, not first."
+        },
+        {
+          "wk": "AFTER",
+          "t": "Operate or hand over",
+          "d": "We run on-call with agreed response times, or your team shadows us for a period and takes over with the runbooks and alerting already in place."
+        }
+      ],
+      proof: [
+        {
+          "v": "41%",
+          "d": "lower monthly cloud spend after migration and a CI/CD rebuild.",
+          "s": "SaaS · APAC · NDA"
+        },
+        {
+          "v": "12×",
+          "d": "more production deploys per week once releases stopped being manual.",
+          "s": "SaaS · APAC · NDA"
+        },
+        {
+          "v": "0",
+          "d": "hours of unplanned downtime across a wave-by-wave migration.",
+          "s": "Utilities · EU · NDA"
+        }
+      ],
+      fit: [
+        {
+          "s": "SaaS",
+          "t": "The bill grows faster than revenue",
+          "d": "Spend nobody can attribute to a customer, a feature or an environment."
+        },
+        {
+          "s": "Fintech",
+          "t": "An audit is coming",
+          "d": "Access, change history and environment separation that have to be shown, not described."
+        },
+        {
+          "s": "Retail",
+          "t": "Seasonal peaks",
+          "d": "Capacity that has to scale up for a few weeks a year and back down again without anyone remembering to."
+        },
+        {
+          "s": "Logistics",
+          "t": "Deploys are an event",
+          "d": "Releases that need a weekend, a checklist and the one person who knows how."
+        },
+        {
+          "s": "Utilities",
+          "t": "Environments have drifted",
+          "d": "Staging that no longer matches production, so testing there proves very little."
+        },
+        {
+          "s": "Education",
+          "t": "A server room to retire",
+          "d": "On-premises systems that need to move before the hardware or the contract runs out."
+        }
+      ],
+      faqs: FAQ.map((f, i) => { const open = this.state.openIdx === i; return { ...f, open, sign: open ? '−' : '+', toggle: () => this.setState({ openIdx: open ? null : i }) }; }),
+      related: [
+        {
+          "t": "Data engineering & analytics",
+          "d": "Pipelines and warehouses that run on the same platform and the same deployment discipline.",
+          "href": "bX v2 - Services.dc.html#data"
+        },
+        {
+          "t": "Agentic AI & agents",
+          "d": "Agents in production need predictable cost, observability and rollback, which is this platform.",
+          "href": "bX v2 - Service Detail.dc.html"
+        },
+        {
+          "t": "Custom software development",
+          "d": "Line-of-business systems built to deploy through the pipeline from their first commit.",
+          "href": "bX v2 - Service Detail - Custom Software.dc.html"
+        }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

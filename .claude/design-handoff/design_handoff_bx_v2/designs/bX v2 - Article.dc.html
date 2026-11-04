@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Most agent projects fail at the evaluation harness · bX Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0;background:#F4F8FB;color:#0A1F33;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;height:auto;min-height:100%}
+.sc-host{height:auto!important}
+*{box-sizing:border-box}
+a{color:#006EA3;text-decoration:none;transition:color 150ms,background-color 150ms,border-color 150ms}
+a:hover{color:#0A1F33}
+:focus-visible{outline:2px solid #006EA3;outline-offset:2px}
+[data-deep] :focus-visible{outline-color:#5BC8F5}
+h1,h2,h3,h4{text-wrap:balance;margin:0}
+p{text-wrap:pretty;margin:0}
+[id]{scroll-margin-top:96px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:48px}
+@media (min-width:1040px){.layout{grid-template-columns:minmax(0,720px) 240px;justify-content:space-between}}
+.g3{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}@media (min-width:960px){.g3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.prose{display:flex;flex-direction:column;gap:20px;font-size:18px;line-height:30px}
+.prose h2{font-size:28px;line-height:36px;font-weight:600;letter-spacing:-0.02em;margin-top:28px}
+.prose h3{font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em;margin-top:8px}
+.prose ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</helmet>
+
+<dc-import name="BxHeader" active="insights" style="position:sticky;top:0;z-index:20" hint-size="100%,73px"></dc-import>
+
+<main>
+<section id="top" data-screen-label="Title" style="padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px) clamp(40px,5vw,56px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:28px">
+    <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;gap:8px;font-size:14px;line-height:22px;color:#4A5B6C"><a href="bX v2 - Home.dc.html">Home</a><span aria-hidden="true">/</span><a href="bX v2 - Insights.dc.html">Insights</a><span aria-hidden="true">/</span><span aria-current="page">Evaluation harness</span></nav>
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:820px">
+      <div style="display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Agentic AI</span>
+        <span style="font-size:14px;line-height:22px;color:#4A5B6C">12 September 2026 · 9 min read</span>
+      </div>
+      <h1 style="font-size:clamp(34px,4vw,48px);line-height:1.125;font-weight:600;letter-spacing:-0.03em">Most agent projects fail at the evaluation harness, not the model</h1>
+      <p style="font-size:18px;line-height:28px;color:#4A5B6C;max-width:62ch">Teams spend weeks choosing between models and an afternoon deciding how they will know whether the thing works. We have started running it the other way round.</p>
+      <div style="display:flex;align-items:center;gap:12px;border-top:1px solid #DCE6EF;padding-top:20px">
+        <span aria-hidden="true" style="flex:none;width:44px;height:44px;border-radius:50%;background:#0A1F33;color:#F4F8FB;display:grid;place-items:center;font-size:15px;font-weight:600">AN</span>
+        <span style="display:flex;flex-direction:column"><span style="font-weight:600;font-size:16px;line-height:24px">[Author name]</span><span style="font-size:14px;line-height:22px;color:#4A5B6C">AI engineering, bX Technologies</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="article" data-screen-label="Article" style="padding:0 clamp(16px,4vw,24px) clamp(64px,8vw,96px)">
+  <div class="layout" style="max-width:1200px;margin:0 auto">
+    <article class="prose">
+      <p>Every failed AI pilot we have been asked to review had the same shape. A model was chosen carefully. Prompts were iterated for weeks. Someone demoed it to a steering group and it went well. Then it met the real queue, and nobody could say whether it was doing better or worse than the people it was meant to help, because no one had written down what better meant.</p>
+      <p>The pilots that reach production look different from week one. Before any model is picked, there is a set of real cases with agreed correct outcomes, and a harness that runs the system against them and produces a number. Everything after that is engineering against a target rather than argument about a demo.</p>
+      <h2 id="s1">Write the test set with the people who do the job</h2>
+      <p>The test set is not a technical artefact. It is the operational knowledge of the team that currently handles the work, written down for the first time. In the claims triage engagement we built it by sitting with three adjusters for two days and going through a hundred and twenty historical cases: what they would have classified each as, what they would have escalated, and, most usefully, where two of them disagreed.</p>
+      <p>Those disagreements are the valuable part. <strong>A case the experts disagree about is a case the system should escalate, not guess at.</strong> If you build the test set alone from documentation, you get a clean set with no ambiguity in it, and the first thing the real world sends you is ambiguity.</p>
+      <ul>
+        <li>A hundred or so cases is usually enough to be useful and few enough to label properly.</li>
+        <li>Include the awkward ones deliberately: the malformed input, the duplicate, the one that should have gone to a different department entirely.</li>
+        <li>Record the reason for each label, not just the label. You will need it when the system gets it wrong in an interesting way.</li>
+      </ul>
+      <blockquote style="margin:12px 0;padding:24px 0;border-top:1px solid #0A1F33;border-bottom:1px solid #DCE6EF;font-size:24px;line-height:34px;font-weight:600;letter-spacing:-0.015em">An agent without an evaluation harness is a demo that happens to run in production.</blockquote>
+      <h2 id="s2">Measure the workflow, not the model</h2>
+      <p>Model accuracy on a benchmark tells you almost nothing about whether a workflow improves. What matters is the end-to-end outcome the business already measures: time to first response, rework rate, escalation volume, cost per case. Those are the numbers someone is already accountable for, which is why they are the ones worth moving.</p>
+      <h3>Three numbers we track on most agent work</h3>
+      <ul>
+        <li><strong>Correct and confident.</strong> The proportion of cases handled end to end with no human correction. This is the number that pays for the project.</li>
+        <li><strong>Correctly escalated.</strong> Cases the system declined to handle that a human agreed were genuinely ambiguous. A high number here is a healthy system, not a failing one.</li>
+        <li><strong>Wrong and confident.</strong> The only number that has to be near zero. Everything else is a tuning conversation; this one is a trust problem.</li>
+      </ul>
+      <p>That third number is why we run new automation in shadow mode first: it processes the real queue, produces its answer, and the answer is compared against what the humans actually did, without ever reaching a customer.</p>
+      <h2 id="s3">Make the harness cheap to run</h2>
+      <p>If evaluating a change takes an afternoon, it happens once a week and the project moves at the speed of that cadence. If it takes four minutes, it happens on every change, and behaviour stops regressing quietly. We wire the harness into the pipeline on day one for the same reason we wire up deployment on day one: the discipline only holds if the tooling makes it the easy path.</p>
+      <div style="background:#FFFFFF;border:1px solid #DCE6EF;border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;margin:8px 0">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">What this looks like in a six-week pilot</span>
+        <p style="font-size:16px;line-height:26px;color:#4A5B6C">Week one is the test set and the harness. Weeks two to four build the agent against it. Week five runs in shadow beside the existing process. Week six is the go/no-go conversation, with the numbers on the table rather than an opinion about whether it felt good.</p>
+      </div>
+      <h2 id="s4">When the honest answer is no</h2>
+      <p>Two pilots we ran ended with a recommendation not to proceed. In one, the automation was accurate but the process around it took longer than the manual path it replaced. In the other, the volume was too low for the saving to cover the maintenance. Both took six weeks and a fixed fee to find out, which is a considerably better outcome than finding out two years into a programme.</p>
+      <p>The harness is what makes that conversation possible. Without a number, stopping a project becomes a matter of whose judgement carries more weight in the room, and projects in that position rarely stop.</p>
+    </article>
+    <aside style="display:flex;flex-direction:column;gap:32px">
+      <div style="position:sticky;top:104px;display:flex;flex-direction:column;gap:32px">
+        <nav aria-label="On this page" style="display:flex;flex-direction:column;gap:4px;border-top:1px solid #0A1F33;padding-top:16px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#4A5B6C;margin-bottom:8px">On this page</span>
+          <a href="#s1" style="display:flex;align-items:center;min-height:44px;font-size:15px;line-height:22px;color:#0A1F33" style-hover="color:#006EA3">Write the test set with the team</a>
+          <a href="#s2" style="display:flex;align-items:center;min-height:44px;font-size:15px;line-height:22px;color:#0A1F33" style-hover="color:#006EA3">Measure the workflow</a>
+          <a href="#s3" style="display:flex;align-items:center;min-height:44px;font-size:15px;line-height:22px;color:#0A1F33" style-hover="color:#006EA3">Make the harness cheap to run</a>
+          <a href="#s4" style="display:flex;align-items:center;min-height:44px;font-size:15px;line-height:22px;color:#0A1F33" style-hover="color:#006EA3">When the answer is no</a>
+        </nav>
+        <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid #DCE6EF;padding-top:16px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#4A5B6C">Share</span>
+          <div style="display:flex;gap:8px">
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="Share on LinkedIn" style="width:44px;height:44px;border-radius:8px;border:1px solid #6B7F93;display:grid;place-items:center;color:#0A1F33" style-hover="border-color:#006EA3;color:#006EA3"><svg width="14" height="16" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3M447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.690 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg></a>
+            <a href="https://x.com" target="_blank" rel="noreferrer" aria-label="Share on X" style="width:44px;height:44px;border-radius:8px;border:1px solid #6B7F93;display:grid;place-items:center;color:#0A1F33" style-hover="border-color:#006EA3;color:#006EA3"><svg width="15" height="15" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L196.2 280.2 22 48h145.6l108.9 144.3zm-24.8 373.8h39.1L151.1 88h-42z"></path></svg></a>
+            <a href="mailto:?subject=Most%20agent%20projects%20fail%20at%20the%20evaluation%20harness" aria-label="Share by email" style="width:44px;height:44px;border-radius:8px;border:1px solid #6B7F93;display:grid;place-items:center;color:#0A1F33" style-hover="border-color:#006EA3;color:#006EA3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></a>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="cta" data-screen-label="Related service" style="padding:0 clamp(16px,4vw,24px) clamp(64px,8vw,96px)">
+  <div style="max-width:1200px;margin:0 auto;background:#FFFFFF;border:1px solid #DCE6EF;border-radius:16px;padding:clamp(24px,4vw,40px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 48px">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Related service</span>
+      <h2 style="font-size:clamp(24px,2.6vw,30px);line-height:1.2;font-weight:600;letter-spacing:-0.02em">We run this as a six-week pilot</h2>
+      <p style="font-size:16px;line-height:26px;color:#4A5B6C">One workflow, a working agent behind an evaluation harness, and a go/no-go number at the end. Fixed fee, and you keep the harness either way.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center">
+      <a href="bX v2 - Service Detail.dc.html" style="display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:8px;white-space:nowrap;border:1px solid #6B7F93;color:#0A1F33;font-weight:600;font-size:16px" style-hover="background:#F4F8FB;color:#0A1F33">Agentic AI service <span aria-hidden="true">→</span></a>
+      <a href="bX v2 - Insights.dc.html" style="display:inline-flex;align-items:center;min-height:44px;font-weight:600;font-size:16px">More insights</a>
+    </div>
+  </div>
+</section>
+
+<section id="more" data-screen-label="Keep reading" style="background:#FFFFFF;border-top:1px solid #DCE6EF;padding:clamp(64px,8vw,96px) clamp(16px,4vw,24px)">
+  <div style="max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 48px">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Keep reading</span>
+        <h2 style="font-size:clamp(28px,3vw,36px);line-height:1.1667;font-weight:600;letter-spacing:-0.025em">More from the team</h2>
+      </div>
+      <a href="bX v2 - Insights.dc.html" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;font-size:16px">All insights <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="g3">
+      <a href="#top" style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:10px;color:#0A1F33" style-hover="color:#006EA3"><span style="display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">AI engineering</span><span style="font-size:14px;color:#4A5B6C">28 August 2026</span></span><h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">What a six-week AI pilot actually contains</h3><p style="font-size:16px;line-height:26px;color:#4A5B6C">The week-by-week shape of a pilot, what we hand over at the end, and the two conditions under which we recommend stopping.</p></a>
+      <a href="#top" style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:10px;color:#0A1F33" style-hover="color:#006EA3"><span style="display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">AI engineering</span><span style="font-size:14px;color:#4A5B6C">2 July 2026</span></span><h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">Shadow running: how we prove automation before it acts</h3><p style="font-size:16px;line-height:26px;color:#4A5B6C">Running new automation beside the existing process, measured against it, before it is allowed to touch a customer.</p></a>
+      <a href="#top" style="border-top:1px solid #0A1F33;padding-top:24px;display:flex;flex-direction:column;gap:10px;color:#0A1F33" style-hover="color:#006EA3"><span style="display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline"><span style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:18px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#006EA3">Working with us</span><span style="font-size:14px;color:#4A5B6C">8 May 2026</span></span><h3 style="font-size:20px;line-height:28px;font-weight:600;letter-spacing:-0.01em">Why we run a paid discovery instead of a free estimate</h3><p style="font-size:16px;line-height:26px;color:#4A5B6C">A fixed price given before anyone has read the existing system is a guess someone pays for later.</p></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<dc-import name="BxContactBand" eyebrow="Start a project" title="Have a workflow worth testing this way?" text="Thirty minutes with the engineers who did the work. You leave with an approach and a rough shape of effort, whether or not you hire us." cta="Book a technical call" cta-href="bX v2 - Contact.dc.html" secondary="All services →" secondary-href="bX v2 - Services.dc.html" hint-size="100%,330px"></dc-import>
+<dc-import name="BxFooter" hint-size="100%,420px"></dc-import>
+</x-dc>
+</body>
+</html>

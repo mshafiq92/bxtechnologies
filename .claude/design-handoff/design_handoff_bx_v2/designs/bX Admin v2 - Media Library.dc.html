@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-da26c3f4-0ce6-45da-a3ed-4d7ef0a32267/styles.css">
+<script src="_ds/industry-da26c3f4-0ce6-45da-a3ed-4d7ef0a32267/_ds_bundle.js"></script>
+<style>
+html,body{height:auto;min-height:100%}
+body{margin:0;background:var(--color-bg);color:var(--color-text)}
+.sc-host,#root>div{height:auto!important;min-height:100%}
+a{color:var(--color-accent);text-decoration:none}
+a:hover{color:var(--color-accent-600)}
+.btn{white-space:nowrap}
+.navtoggle{display:none}
+.shell{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}
+.shell:has(.navtoggle:checked){grid-template-columns:minmax(0,1fr)}
+.shell:has(.navtoggle:checked) .side{display:none}
+.navbtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--color-divider);border-radius:var(--radius-md);cursor:pointer;font-size:14px;color:var(--color-text);flex:none}
+.navbtn:hover{background:color-mix(in srgb,var(--color-text) 7%,transparent)}
+@media (max-width:900px){.shell{grid-template-columns:minmax(0,1fr)}.side{display:none}}
+.side{overflow-y:auto;border-right:1px solid var(--color-divider);padding:var(--space-4) var(--space-3);display:flex;flex-direction:column;gap:var(--space-4);position:sticky;top:0;align-self:start;height:100vh;box-sizing:border-box}
+.navsec{display:flex;flex-direction:column;gap:2px}
+.navlab{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-700);margin-bottom:6px}
+.navitem{display:flex;align-items:center;gap:9px;padding:6px 10px;font-size:13.5px;color:var(--color-text);border-radius:var(--radius-md)}
+.navitem:hover{background:color-mix(in srgb,var(--color-text) 6%,transparent);color:var(--color-text)}
+.navitem[aria-current="page"]{background:var(--color-accent);color:var(--color-bg)}
+.topbar{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);position:sticky;top:0;background:var(--color-bg);z-index:5;flex-wrap:wrap}
+.main{padding:var(--space-4);display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:var(--space-3);align-items:start}
+@media (max-width:1100px){.main{grid-template-columns:minmax(0,1fr)}}
+.panel{border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)}
+.ptitle{font-family:var(--font-heading);font-size:16px;line-height:1.2}
+.hint{font-size:11.5px;color:var(--color-neutral-700)}
+.filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:var(--space-3)}
+.item{border:1px solid var(--color-divider);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;background:var(--color-bg)}
+.item:hover{border-color:var(--color-accent)}
+.item.on{border-color:var(--color-accent);box-shadow:0 0 0 1px var(--color-accent)}
+.ph{aspect-ratio:4/3;display:grid;place-items:center;font-size:11px;color:color-mix(in srgb,var(--color-text) 45%,transparent);background:var(--color-neutral-100);text-align:center;padding:8px}
+.itemmeta{padding:8px 10px;display:flex;flex-direction:column;gap:3px}
+.iname{font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.isub{font-size:11px;color:color-mix(in srgb,var(--color-text) 52%,transparent)}
+.warn{font-size:11px;color:var(--color-accent-800)}
+.drop{border:1px dashed color-mix(in srgb,var(--color-text) 28%,transparent);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;cursor:pointer}
+.drop:hover{border-color:var(--color-accent)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;color:color-mix(in srgb,var(--color-text) 70%,transparent)}
+.metarow{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:7px 0;border-bottom:1px solid var(--color-divider)}
+.metarow:last-child{border-bottom:none}
+.useline{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:7px 0;border-bottom:1px solid var(--color-divider)}
+.useline:last-child{border-bottom:none}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+</style>
+</helmet>
+
+<div class="shell">
+  <input class="navtoggle" id="navtoggle" type="checkbox">
+  <aside class="side">
+    <div style="display:flex;align-items:baseline;gap:8px">
+      <span style="font-family:var(--font-heading);font-size:20px;letter-spacing:-.01em">bX</span>
+      <span style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)">Console</span>
+      <label class="navbtn" for="navtoggle" title="Collapse sidebar" style="margin-left:auto">‹</label>
+    </div>
+    <div class="navsec">
+      <span class="navlab">Overview</span>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Dashboard</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Enquiries</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Applications</a>
+      <a class="navitem" href="#">Proposals</a>
+    </div>
+    <div class="navsec">
+      <span class="navlab">Content</span>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Pages</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Navigation &amp; footer</a>
+      <a class="navitem" href="#top" aria-current="page">Media library</a>
+      <a class="navitem" href="bX Admin v2 - Services.dc.html">Services</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Industries</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Work / projects</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Insights</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Careers</a>
+    </div>
+    <div class="navsec">
+      <span class="navlab">Delivery</span>
+      <a class="navitem" href="#">Projects</a>
+      <a class="navitem" href="#">People &amp; allocation</a>
+    </div>
+    <div class="navsec" style="margin-top:auto">
+      <a class="navitem" href="bX Admin v2 - Site Settings.dc.html">Site settings</a>
+      <a class="navitem" href="#" title="Unchanged screen, see the v1 package">Users &amp; permissions</a>
+      <a class="navitem" href="bX v2 - Home.dc.html">View website ↗</a>
+    </div>
+  </aside>
+
+  <div id="top">
+    <div class="topbar">
+      <label class="navbtn" for="navtoggle" title="Show or hide sidebar">☰</label>
+      <div>
+        <h1 style="font-size:20px;margin:0;line-height:1.2">Media library</h1>
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 58%,transparent);margin-top:3px">148 files · 2.1 GB of 10 GB used · 6 missing alt text</div>
+      </div>
+      <div class="bar" style="margin-left:auto">
+        <input class="input" type="search" placeholder="Search file name, alt text, page…" style="width:230px">
+        <a class="btn btn-secondary" href="#">New folder</a>
+        <a class="btn btn-primary" href="#">Upload</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+        <div class="filters">
+          <div class="seg">
+            <label class="seg-opt"><input type="radio" name="kind" hidden defaultChecked="{{ yes }}"> All</label>
+            <label class="seg-opt"><input type="radio" name="kind" hidden> Images</label>
+            <label class="seg-opt"><input type="radio" name="kind" hidden> Logos &amp; SVG</label>
+            <label class="seg-opt"><input type="radio" name="kind" hidden> Documents</label>
+          </div>
+          <select class="input" style="width:auto;min-width:150px"><option>All folders</option><option>Hero photos</option><option>Client logos</option><option>Insights</option><option>People</option><option>Brand</option></select>
+          <select class="input" style="width:auto;min-width:150px"><option>Newest first</option><option>Oldest first</option><option>Largest first</option><option>Unused first</option></select>
+          <span class="hint" style="margin-left:auto">Selected: 1 file</span>
+        </div>
+
+        <div class="panel">
+          <label class="drop" for="upload">
+            <span style="font-family:var(--font-heading);font-size:15px">Drop files here or choose from your computer</span>
+            <span class="hint">JPG, PNG, WebP, SVG or PDF · up to 25 MB each · images are resized and served in WebP automatically</span>
+            <input id="upload" type="file" multiple style="display:none">
+          </label>
+        </div>
+
+        <div class="panel">
+          <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span class="ptitle">All files</span><span class="hint">Click a file to see where it is used</span></div>
+          <div class="grid">
+            <div class="item on"><div class="ph">hero-about.jpg</div><div class="itemmeta"><span class="iname">hero-about.jpg</span><span class="isub">2400×1800 · 412 KB</span><span class="isub">Used on 1 page</span><span class="tag tag-accent" style="align-self:flex-start;margin-top:4px">Real photo</span></div></div>
+            <div class="item"><div class="ph">hero-careers.jpg</div><div class="itemmeta"><span class="iname">hero-careers.jpg</span><span class="isub">2400×1800 · 398 KB</span><span class="warn">No alt text</span><span class="tag tag-accent" style="align-self:flex-start;margin-top:4px">Real photo</span></div></div>
+            <div class="item"><div class="ph">team-portrait-01.jpg</div><div class="itemmeta"><span class="iname">team-portrait-01.jpg</span><span class="isub">1200×1600 · 302 KB</span><span class="isub">Used on 1 page</span><span class="tag tag-accent" style="align-self:flex-start;margin-top:4px">Real photo</span></div></div>
+            <div class="item"><div class="ph">team-portrait-02.jpg</div><div class="itemmeta"><span class="iname">team-portrait-02.jpg</span><span class="isub">1200×1600 · 288 KB</span><span class="isub">Used on 1 page</span><span class="tag tag-accent" style="align-self:flex-start;margin-top:4px">Real photo</span></div></div>
+            <div class="item"><div class="ph">logo-braintime.png</div><div class="itemmeta"><span class="iname">logo-braintime.png</span><span class="isub">PNG · 14 KB</span><span class="isub">Client logo</span><span class="tag tag-neutral" style="align-self:flex-start;margin-top:4px">Not cleared</span></div></div>
+            <div class="item"><div class="ph">logo-iled.png</div><div class="itemmeta"><span class="iname">logo-iled.png</span><span class="isub">PNG · 11 KB</span><span class="isub">Client logo</span><span class="tag tag-neutral" style="align-self:flex-start;margin-top:4px">Not cleared</span></div></div>
+            <div class="item"><div class="ph">logo-hydrosensing.png</div><div class="itemmeta"><span class="iname">logo-hydrosensing.png</span><span class="isub">PNG · 12 KB</span><span class="isub">Client logo</span><span class="tag tag-neutral" style="align-self:flex-start;margin-top:4px">Not cleared</span></div></div>
+            <div class="item"><div class="ph">bx-mark.png</div><div class="itemmeta"><span class="iname">bx-mark.png</span><span class="isub">PNG · 22 KB</span><span class="isub">Used site-wide</span></div></div>
+            <div class="item"><div class="ph">insight-eval-harness.jpg</div><div class="itemmeta"><span class="iname">insight-eval-harness.jpg</span><span class="isub">1920×1080 · 355 KB</span><span class="isub">Used on 1 page</span></div></div>
+            <div class="item"><div class="ph">office-islamabad.jpg</div><div class="itemmeta"><span class="iname">office-islamabad.jpg</span><span class="isub">2000×1500 · 470 KB</span><span class="warn">Unused</span><span class="tag tag-accent" style="align-self:flex-start;margin-top:4px">Real photo</span></div></div>
+            <div class="item"><div class="ph">office-duisburg.jpg</div><div class="itemmeta"><span class="iname">office-duisburg.jpg</span><span class="isub">2000×1500 · 455 KB</span><span class="warn">Unused</span><span class="tag tag-accent" style="align-self:flex-start;margin-top:4px">Real photo</span></div></div>
+            <div class="item"><div class="ph">company-profile-2026.pdf</div><div class="itemmeta"><span class="iname">company-profile-2026.pdf</span><span class="isub">PDF · 3.4 MB</span><span class="isub">Linked from 1 page</span></div></div>
+          </div>
+          <div class="bar" style="border-top:1px solid var(--color-divider);padding-top:var(--space-3)">
+            <span class="hint">Showing 12 of 148</span>
+            <span class="bar" style="margin-left:auto"><a class="btn btn-secondary" href="#" style="padding:4px 10px">←</a><a class="btn btn-secondary" href="#" style="padding:4px 10px">→</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+        <div class="panel">
+          <span class="ptitle">hero-about.jpg</span>
+          <div class="ph" style="aspect-ratio:4/3">Preview</div>
+          <div class="field"><label for="alt">Alt text</label><textarea class="input" id="alt" style="min-height:66px">Engineers working at the Islamabad office</textarea><span class="hint">Required before this image can be published on a page.</span></div>
+          <div class="field"><label for="cap">Caption (optional)</label><input class="input" id="cap" type="text" placeholder="Shown beneath the image where the layout allows"></div>
+          <div class="field"><label for="folder">Folder</label><select class="input" id="folder"><option>Hero photos</option><option>Client logos</option><option>Insights</option><option>People</option><option>Brand</option></select></div>
+          <div class="field"><label for="src">Photo source</label><select class="input" id="src"><option>Real photo of bX people or offices</option><option>Diagram or screenshot</option><option>Stock (cannot be placed on site pages)</option></select><span class="hint">Hero photos and portraits must be real. Stock files can be stored but are blocked from site pages.</span></div>
+          <div class="bar"><a class="btn btn-primary" href="#" style="padding:6px 14px;font-size:13px">Save</a><a class="btn btn-secondary" href="#" style="padding:6px 14px;font-size:13px">Replace file</a><a class="btn btn-secondary" href="#" style="padding:6px 14px;font-size:13px">Download</a></div>
+        </div>
+
+        <div class="panel">
+          <span class="ptitle" style="font-size:14px">File details</span>
+          <div>
+            <div class="metarow"><span style="color:color-mix(in srgb,var(--color-text) 60%,transparent)">Dimensions</span><span>2400 × 1800</span></div>
+            <div class="metarow"><span style="color:color-mix(in srgb,var(--color-text) 60%,transparent)">Size</span><span>412 KB</span></div>
+            <div class="metarow"><span style="color:color-mix(in srgb,var(--color-text) 60%,transparent)">Type</span><span>JPEG</span></div>
+            <div class="metarow"><span style="color:color-mix(in srgb,var(--color-text) 60%,transparent)">Uploaded</span><span>14 Sep 2026</span></div>
+            <div class="metarow"><span style="color:color-mix(in srgb,var(--color-text) 60%,transparent)">By</span><span>Directors</span></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <span class="ptitle" style="font-size:14px">Used on</span>
+          <div>
+            <div class="useline"><span>About — Hero photo</span><a href="bX Admin v2 - Page Editor.dc.html" style="font-size:12px">Open</a></div>
+          </div>
+          <span class="hint">Replacing this file updates it everywhere it appears. Deleting is blocked while it is in use.</span>
+          <a class="btn btn-secondary btn-block" href="#" style="font-size:12.5px">Delete file</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return { yes: true }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+# =============================================================================
+# bX Technologies website — .gitignore
+# Stack: single Next.js (App Router) app with npm, TypeScript, Tailwind,
+#        Vitest, Playwright. Dev/test on Vercel; production in Docker on a VPS.
+# Note: package-lock.json IS committed (do not ignore it).
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Dependencies
+# -----------------------------------------------------------------------------
+node_modules/
+# Only npm is used; ignore lockfiles from other package managers if created by mistake
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# -----------------------------------------------------------------------------
+# Next.js / build output
+# -----------------------------------------------------------------------------
+.next/
+out/
+build/
+dist/
+.swc/
+next-env.d.ts
+*.tsbuildinfo
+
+# -----------------------------------------------------------------------------
+# Tooling caches
+# -----------------------------------------------------------------------------
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.prettiercache
+
+# -----------------------------------------------------------------------------
+# Environment variables and secrets — NEVER commit real values.
+# Commit only the templates (.env.example) with empty/placeholder values.
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+secrets/
+.secrets/
+
+# -----------------------------------------------------------------------------
+# Hosting / deployment
+# -----------------------------------------------------------------------------
+.vercel/
+.netlify/
+.wrangler/
+.sst/
+.serverless/
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl.bak
+
+# -----------------------------------------------------------------------------
+# Testing, coverage and quality reports
+# -----------------------------------------------------------------------------
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+playwright/.auth/
+/tests/**/__screenshots__/*-actual.png
+/tests/**/__screenshots__/*-diff.png
+.lighthouseci/
+lighthouse-reports/
+.vitest/
+junit.xml
+
+# -----------------------------------------------------------------------------
+# Storybook / component docs (if added)
+# -----------------------------------------------------------------------------
+storybook-static/
+*storybook.log
+
+# -----------------------------------------------------------------------------
+# Database (only if a CMS/database is added later) — local dbs and dumps
+# -----------------------------------------------------------------------------
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.sql.gz
+*.dump
+prisma/dev.db*
+postgres-data/
+docker-data/
+
+# -----------------------------------------------------------------------------
+# Uploads and generated media (CMS uploads live in object storage, not git)
+# -----------------------------------------------------------------------------
+uploads/
+public/uploads/
+.media-cache/
+
+# -----------------------------------------------------------------------------
+# Logs
+# -----------------------------------------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# -----------------------------------------------------------------------------
+# Editors and IDEs
+# Keep shared VS Code settings/extensions/launch configs; ignore the rest.
+# -----------------------------------------------------------------------------
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/*.code-snippets
+.history/
+*.code-workspace
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# -----------------------------------------------------------------------------
+# Claude Code — keep shared project config and the design handoff,
+# ignore personal/local settings.
+# -----------------------------------------------------------------------------
+.claude/settings.local.json
+.claude/*.local.*
+CLAUDE.local.md
+
+# -----------------------------------------------------------------------------
+# Operating systems
+# -----------------------------------------------------------------------------
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+*.stackdump
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+
+# Linux
+.directory
+.Trash-*
+.nfs*
+
+# -----------------------------------------------------------------------------
+# Docker / server (keep Dockerfile, docker-compose.yml and .dockerignore tracked)
+# -----------------------------------------------------------------------------
+docker-compose.override.yml
+caddy_data/
+caddy_config/
+
+# -----------------------------------------------------------------------------
+# Misc
+# -----------------------------------------------------------------------------
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+tmp/
+temp/
+.tmp/
+scratch/
