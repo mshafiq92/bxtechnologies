@@ -2,7 +2,8 @@
 Privacy policy prose. Copy verbatim from bX v2 - Privacy.dc.html (carried over from v1).
 Title block, table of contents and contact band: content/pages/legal.ts.
 Components (H2, Note, Facts, Fact) are provided by the legal renderer (task T39).
-Review against the real processors (hosting, Resend, analytics) in task T44.
+Reviewed on 2026-11-05 against the real build: Resend (form email, CVs as attachments),
+Cloudflare Turnstile (forms), Plausible (analytics, only after consent), no applicant system.
 */}
 
 <Note title="Short version">
@@ -29,11 +30,11 @@ Where we process personal data on behalf of a client as part of a delivery engag
 
 We collect three categories of information, and in each case only what is needed for the purpose.
 
-- **Enquiries.** When you use the contact form or email us: your name, company, work email, telephone number if you give one, the nature of your enquiry, the company-size and budget indications you select, and the message you write.
-- **Job applications.** When you apply through the careers pages: your name, contact details, location, links you provide, years of experience, your CV, and your written answers. We do not ask for date of birth, marital status, photographs or national identity numbers at application stage.
-- **Site usage.** Aggregated, non-identifying statistics about pages viewed, referring source and approximate region, plus the technical logs our hosting provider keeps for security and fault diagnosis. Details of the specific cookies involved are in our [cookies policy](/cookies).
+- **Enquiries.** When you use a contact form or email us: your name, company, work email, telephone number if you give one, the nature of your enquiry, the options you select (such as company size, budget, project stage or timing, and how you heard of us), and the message you write.
+- **Job applications.** When you apply through the careers pages: your name, contact details, location, links you provide, years of experience, when you could start, how you heard of us, your CV, and your written answers. We do not ask for date of birth, marital status, photographs or national identity numbers at application stage.
+- **Site usage.** If you accept analytics: aggregated, non-identifying statistics about pages viewed, referring source and approximate country, from Plausible, which sets no cookies. On pages with a form: the IP address and browser characteristics that Cloudflare Turnstile checks to keep out automated spam. And the technical logs our hosting provider keeps for security and fault diagnosis. Details are in our [cookies policy](/cookies).
 
-If you subscribe to our insights digest we hold your email address and the date you confirmed the subscription, and nothing else.
+If you subscribe to our insights digest we hold your email address and the date you subscribed, and nothing else.
 
 <H2 id="why">Why we hold it</H2>
 
@@ -41,7 +42,8 @@ We rely on the following grounds. Each purpose is limited to the data listed abo
 
 - **To answer you.** Replying to an enquiry, arranging a call, and preparing a proposal, on the basis of your request and our legitimate interest in responding to it.
 - **To assess an application.** Reviewing your CV, running the interview process and making a hiring decision, on the basis of taking steps prior to a possible employment contract.
-- **To operate and improve the site.** Understanding which pages are read and keeping the site secure, on the basis of our legitimate interest, using aggregated data.
+- **To keep the site and forms secure.** Spam protection on forms and security logs, on the basis of our legitimate interest in a site that works and is not abused.
+- **To improve the site.** Understanding which pages are read, on the basis of the consent you give in the cookie banner, withdrawable at any time from Cookie settings in the footer.
 - **To send what you asked for.** The insights digest, on the basis of the consent you gave when subscribing, withdrawable from any email or by writing to us.
 
 We do not use your data for automated decision-making or profiling, and we do not use it to train machine-learning models.
@@ -65,13 +67,18 @@ We do not use your data for automated decision-making or profiling, and we do no
 
 <H2 id="share">Who else sees it</H2>
 
-Your information is visible to the bX people who need it for the purpose it was collected for, for an enquiry, the directors and the engineering lead who would run the work; for an application, the hiring team. Beyond that we use a small number of service providers under contract: our website host, our email provider, our applicant tracking and our analytics provider. Each is bound to process data only on our instructions.
+Your information is visible to the bX people who need it for the purpose it was collected for, for an enquiry, the directors and the engineering lead who would run the work; for an application, the hiring team. Beyond that we use a small number of service providers under contract, each bound to process data only on our instructions:
+
+- **Our website host,** which serves the site and keeps its technical logs.
+- **Resend,** which delivers what you send through our forms, including CVs as attachments, to our inbox.
+- **Cloudflare,** whose Turnstile service checks form submissions for spam.
+- **Plausible,** our analytics provider, only if you accept analytics.
 
 Where an engagement is delivered with our partner Vis Group in Germany, contract and contact details may be shared with them for that engagement, and only for that engagement. **We do not sell personal data, and we do not share it with advertising networks or data brokers.**
 
 <H2 id="transfer">Where it is processed</H2>
 
-We are a Pakistan-registered company with a German presence, and our teams in both countries may access enquiry and application data. Where personal data originating in the European Economic Area is transferred to Pakistan, we rely on the European Commission's standard contractual clauses and apply the access controls described below.
+We are a Pakistan-registered company with a German presence, and our teams in both countries may access enquiry and application data. Where personal data originating in the European Economic Area is transferred to Pakistan, we rely on the European Commission's standard contractual clauses and apply the access controls described below. Resend and Cloudflare are based in the United States; where they process personal data from the European Economic Area, the transfer relies on the EU-US Data Privacy Framework or on standard contractual clauses. Plausible processes analytics data within the European Union.
 
 For client project data handled under a delivery contract, we can commit to EU-region processing and to a stated list of which providers and models ever see that data. Those commitments sit in the engagement contract, not in this policy.
 
@@ -83,7 +90,7 @@ Write to [info@bxtechnologies.net](mailto:info@bxtechnologies.net) and we will r
 
 <H2 id="security">Security</H2>
 
-Access to enquiry and application data is limited to named people and reviewed when someone changes role or leaves. Data is encrypted in transit and at rest with our providers, administrative accounts require multi-factor authentication, and CVs and attachments are held in the applicant system rather than circulated by email. If a breach affects your data and presents a risk to you, we will notify you and the relevant authority as the law requires.
+Access to enquiry and application data is limited to named people and reviewed when someone changes role or leaves. Data is encrypted in transit and at rest with our providers, administrative accounts require multi-factor authentication, and CVs arrive in a restricted inbox that only the hiring team can open, from which they are deleted at the end of the retention period. If a breach affects your data and presents a risk to you, we will notify you and the relevant authority as the law requires.
 
 <H2 id="changes">Changes</H2>
 
@@ -92,5 +99,6 @@ We update this policy when what we do changes. The date at the top of the page i
 <Note title="Needs your lawyer" tone="warning" internal>
   This text is drafted to be accurate about how bX actually works, but it is not legal advice and
   has not been reviewed by a qualified adviser. Have your counsel check the retention periods, the
-  transfer mechanism and the supervisory-authority wording before this goes live.
+  transfer mechanism (Pakistan, and Resend and Cloudflare in the US), the supervisory-authority
+  wording, and the commitment that CVs sit in a restricted inbox, before this goes live.
 </Note>

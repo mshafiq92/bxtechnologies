@@ -1,9 +1,11 @@
 import type { ComponentType } from "react";
 
+import { CookieSettingsButton } from "@/components/consent/cookie-settings-button";
 import { FacebookIcon, LinkedInIcon, XIcon } from "@/components/ui/icons";
 import { SmartLink } from "@/components/ui/smart-link";
 import { Eyebrow } from "@/components/ui/typography";
-import { getNavigation, getSiteSettings, type SocialIcon } from "@/lib/content";
+import { cn } from "@/lib/cn";
+import { getConsentCopy, getNavigation, getSiteSettings, type SocialIcon } from "@/lib/content";
 
 import { Logo } from "./logo";
 
@@ -25,6 +27,8 @@ function Column({ title, children }: { title: string; children: React.ReactNode 
     </div>
   );
 }
+
+const legalLink = "text-on-deep-muted transition-colors hover:text-on-deep";
 
 /** Navy footer: brand, Services, Company, Contact, Follow us, then the legal bar. */
 export function Footer() {
@@ -104,14 +108,17 @@ export function Footer() {
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-small">
             {nav.legalLinks.map((link) => (
               <li key={link.label}>
-                <SmartLink
-                  href={link.href}
-                  className="text-on-deep-muted transition-colors hover:text-on-deep"
-                >
+                <SmartLink href={link.href} className={legalLink}>
                   {link.label}
                 </SmartLink>
               </li>
             ))}
+            <li>
+              <CookieSettingsButton
+                label={getConsentCopy().footerButton}
+                className={cn(legalLink, "cursor-pointer")}
+              />
+            </li>
           </ul>
         </div>
       </div>

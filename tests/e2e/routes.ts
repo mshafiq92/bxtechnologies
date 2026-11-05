@@ -1,4 +1,4 @@
-/** Every public route of the site (the 17 designed pages). */
+/** Every public route of the site (the 17 designed pages plus the Imprint). */
 export const routes = [
   "/",
   "/services",
@@ -17,6 +17,7 @@ export const routes = [
   "/privacy",
   "/terms",
   "/cookies",
+  "/imprint",
 ] as const;
 
 /** Stable file-name for a route ("/" -> "home", "/services/agentic-ai" -> "services-agentic-ai"). */

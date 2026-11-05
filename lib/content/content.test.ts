@@ -173,6 +173,7 @@ describe("links", () => {
     "/privacy",
     "/terms",
     "/cookies",
+    "/imprint",
   ]);
   const dynamicRoutes = new Set([
     ...getServicesWithDetail().map((s) => `/services/${s.slug}`),

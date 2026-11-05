@@ -10,6 +10,8 @@ import ApplyPage from "@/app/careers/apply/page";
 import CareersPage from "@/app/careers/page";
 import ContactPage from "@/app/contact/page";
 import IndustriesPage from "@/app/industries/page";
+import { getLegalPage } from "@/lib/content";
+import { formatDate } from "@/lib/format";
 import { renderInline } from "@/lib/inline";
 
 import { isLikelyEmail } from "./contact-form";
@@ -32,7 +34,7 @@ vi.mock("next/navigation", async (orig) => ({
 // Vitest does not compile MDX: legal bodies render a stand-in with one heading per TOC entry.
 vi.mock("@/content/legal/bodies", async () => {
   const { getLegalPage } = await import("@/lib/content");
-  const body = (slug: "privacy" | "terms" | "cookies") => async () => ({
+  const body = (slug: "privacy" | "terms" | "cookies" | "imprint") => async () => ({
     default: () => (
       <>
         {getLegalPage(slug).toc.map((t) => (
@@ -44,7 +46,12 @@ vi.mock("@/content/legal/bodies", async () => {
     ),
   });
   return {
-    legalBodies: { privacy: body("privacy"), terms: body("terms"), cookies: body("cookies") },
+    legalBodies: {
+      privacy: body("privacy"),
+      terms: body("terms"),
+      cookies: body("cookies"),
+      imprint: body("imprint"),
+    },
   };
 });
 
@@ -206,17 +213,17 @@ describe("Contact", () => {
 });
 
 describe("Legal pages", () => {
-  it.each(["privacy", "terms", "cookies"] as const)(
+  it.each(["privacy", "terms", "cookies", "imprint"] as const)(
     "%s: title block, on-this-page links to real headings, legal band",
     async (slug) => {
       const { container } = render(await LegalPage({ slug }));
       expect(sectionIds(container)).toEqual(["top", "policy", "contact"]);
-      expect(container).toHaveTextContent("17 September 2026");
+      expect(container).toHaveTextContent(formatDate(getLegalPage(slug).lastUpdated));
       const nav = screen.getByRole("navigation", { name: "On this page" });
       for (const a of within(nav).getAllByRole("link")) {
         const href = a.getAttribute("href")!;
         if (href.startsWith("#")) expect(container.querySelector(href)).not.toBeNull();
-        else expect(["/privacy", "/terms", "/cookies"]).toContain(href);
+        else expect(["/privacy", "/terms", "/cookies", "/imprint"]).toContain(href);
       }
     },
   );
@@ -225,10 +232,10 @@ describe("Legal pages", () => {
 describe("content fidelity", () => {
   it("keeps the design's paragraph breaks in every MDX file", () => {
     const D = ".claude/design-handoff/design_handoff_bx_v2/designs/";
+    // Privacy and Cookies were rewritten on 2026-11-05 (client-approved) to match the real build,
+    // so they no longer follow the design copy paragraph for paragraph. Terms still does.
     const pairs = [
-      ["bX v2 - Privacy.dc.html", "content/legal/privacy.mdx"],
       ["bX v2 - Terms.dc.html", "content/legal/terms.mdx"],
-      ["bX v2 - Cookies.dc.html", "content/legal/cookies.mdx"],
       [
         "bX v2 - Article.dc.html",
         "content/insights/agent-projects-fail-at-the-evaluation-harness.mdx",

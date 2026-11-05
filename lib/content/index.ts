@@ -11,6 +11,7 @@
 import { z } from "zod";
 
 import { clientLogos as rawClientLogos } from "@/content/client-logos";
+import { consentCopy } from "@/content/consent";
 import {
   authors as rawAuthors,
   insightCategories as rawCategories,
@@ -54,6 +55,7 @@ import {
 } from "@/content/services";
 import {
   contactBandDefaults as rawContactBandDefaults,
+  imprint,
   offices as rawOffices,
   site,
 } from "@/content/site";
@@ -336,6 +338,16 @@ export function roleHref(role: Role): string {
 
 export function getSiteSettings() {
   return site;
+}
+
+/** Imprint (Impressum) details; `null` fields are still to be supplied. */
+export function getImprint() {
+  return imprint;
+}
+
+/** Cookie banner and settings copy. */
+export function getConsentCopy() {
+  return consentCopy;
 }
 
 export function getOffices() {

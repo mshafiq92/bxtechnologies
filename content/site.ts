@@ -35,6 +35,39 @@ export const site = {
   ],
 } as const;
 
+/*
+ * Imprint (Impressum, § 5 DDG). OPEN: every `null` must be supplied by bX before launch.
+ * Missing values show as "To be supplied" on dev and noindex previews, and are left out on the
+ * live site (which is still not compliant until they are filled in).
+ */
+export const imprint: Imprint = {
+  legalForm: "Private limited company (Pvt Ltd) under the laws of Pakistan",
+  /** Registered office address in Pakistan (postal). */
+  registeredOffice: null,
+  /** German office address in Duisburg (postal). */
+  germanOffice: null,
+  /** Managing director(s) / chief executive, as registered. */
+  representedBy: null,
+  register: "Securities and Exchange Commission of Pakistan (SECP)",
+  /** SECP Corporate Unique Identification Number (CUIN). */
+  registrationNumber: null,
+  /** VAT ID (Umsatzsteuer-Identifikationsnummer), if the company has one. */
+  vatId: null,
+  /** Person responsible for editorial content (§ 18 (2) MStV): name and postal address. */
+  contentResponsible: null,
+};
+
+export type Imprint = {
+  legalForm: string;
+  registeredOffice: string | null;
+  germanOffice: string | null;
+  representedBy: string | null;
+  register: string;
+  registrationNumber: string | null;
+  vatId: string | null;
+  contentResponsible: string | null;
+};
+
 export type SocialIcon = (typeof site.social)[number]["icon"];
 
 /** Offices (About "Two locations, one team"; Contact aside uses `contactBody`). */

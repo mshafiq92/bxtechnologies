@@ -91,6 +91,7 @@ jobs:
         env:
           SITE_NOINDEX: "true"
           NEXT_PUBLIC_SITE_URL: http://localhost:3100
+          NEXT_PUBLIC_PLAUSIBLE_DOMAIN: bxtechnologies.net
 
       # Desktop 1440 + mobile 390: smoke, axe, interactions, forms (dry run).
       # Visual snapshots are not run here: baselines are per platform and kept on Windows.

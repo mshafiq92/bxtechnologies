@@ -182,6 +182,15 @@ Template prompt, swap the bracketed parts:
 **T44 · Analytics, monitoring, legal sync**
 > Add cookieless analytics and Sentry. Update the Privacy and Cookies content to list the actual
 > processors. Add an uptime check endpoint.
+>
+> *Done (2026-11-05, owner's decisions):* cookie banner (bottom-left card, bottom sheet on phones;
+> equal Decline/Accept; Settings panel; footer "Cookie settings"; GPC = decline) in
+> `components/consent/` and `lib/consent.ts`, one essential cookie `bx_consent` (12 months, versioned).
+> Plausible loads **only after Accept** and only when `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` is set. Privacy
+> and Cookies rewritten to match the build (Resend, Turnstile, Plausible; CVs as email attachments;
+> no applicant system); new `/imprint` page (§ 5 DDG) with details in `imprint` in content/site.ts.
+> Uptime endpoint: `/api/health` (T01). *Open:* Sentry; imprint details from bX; legal review of all
+> four pages; Plausible account (paid, or self-hosted on the VPS).
 
 ## Phase 6 · Deploy
 
@@ -233,9 +242,9 @@ Template prompt, swap the bracketed parts:
 | T39 | Apply, Contact, Legal | | | ☑ Done (`090c2a2`) |
 | T40 | Forms | | | ☑ Done (`090c2a2`) |
 | T41 | Quality gates | | | ☑ Done (`78f7a21`) |
-| T42 | SEO | | | ☑ Done, awaiting commit |
-| T43 | Redirects | | | ☐ |
-| T44 | Analytics and monitoring | | | ☐ |
+| T42 | SEO | | | ☑ Done (commit pending) |
+| T43 | Redirects | | | ⏸ Deferred until the site is stable (owner, 2026-11-05) |
+| T44 | Analytics and monitoring | | | ◐ Consent, analytics and legal done, awaiting commit; Sentry pending |
 | T50 | Vercel (dev/testing) | | | ☐ |
 | T51 | Production VPS | | | ☐ |
 | T52 | Launch | | | ☐ |

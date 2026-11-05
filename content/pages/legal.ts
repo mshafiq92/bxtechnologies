@@ -3,13 +3,13 @@
  * The prose itself is in content/legal/<slug>.mdx.
  * Copy verbatim from bX v2 - Privacy / Terms / Cookies.dc.html ("carried over from v1 unchanged").
  *
- * OPEN: the Cookies policy describes a consent banner and cookies (bx_session, bx_consent,
- * bx_csrf, bx_stats) that the planned build does not set (cookieless analytics, no banner).
- * Update the legal text to match the real implementation in task T44, with legal review.
+ * Privacy and Cookies were rewritten on 2026-11-05 to match the real build (one cookie, Plausible
+ * after consent, Turnstile, Resend). Imprint was added the same day (not in the design handoff).
+ * Every legal page still needs legal review before launch (see the internal notes in each MDX file).
  */
 import type { ContactBandContent } from "@/lib/schemas/content";
 
-export type LegalSlug = "privacy" | "terms" | "cookies";
+export type LegalSlug = "privacy" | "terms" | "cookies" | "imprint";
 
 type LegalPage = {
   title: string;
@@ -22,13 +22,15 @@ type LegalPage = {
 };
 
 const lastUpdated = "2026-09-17";
+/** Privacy and Cookies rewritten, Imprint added. */
+const revised = "2026-11-05";
 
 export const legalPages: Record<LegalSlug, LegalPage> = {
   privacy: {
     title: "Privacy policy",
     intro:
       "What we collect when you contact us, apply for a job or read this site, why we hold it, and how to have it removed.",
-    lastUpdated,
+    lastUpdated: revised,
     appliesTo: "bxtechnologies.net",
     toc: [
       { id: "who", label: "Who we are" },
@@ -92,15 +94,16 @@ export const legalPages: Record<LegalSlug, LegalPage> = {
   cookies: {
     title: "Cookies policy",
     intro:
-      "Every cookie this site sets, what it does, how long it lasts, and how to turn the optional ones off.",
-    lastUpdated,
+      "The cookie this site sets, how our analytics works without cookies, and how to change your choice.",
+    lastUpdated: revised,
     appliesTo: "bxtechnologies.net",
     toc: [
       { id: "what", label: "What a cookie is" },
-      { id: "essential", label: "Essential cookies" },
-      { id: "analytics", label: "Analytics cookies" },
+      { id: "essential", label: "Essential cookie" },
+      { id: "analytics", label: "Analytics" },
+      { id: "forms", label: "Spam protection on forms" },
       { id: "none", label: "What we do not use" },
-      { id: "control", label: "Turning them off" },
+      { id: "control", label: "Changing your choice" },
       { id: "browser", label: "Browser controls" },
       { id: "changes", label: "Changes" },
     ],
@@ -113,9 +116,36 @@ export const legalPages: Record<LegalSlug, LegalPage> = {
       title: "Change your cookie choice",
       text: "Reopen the settings and decline analytics, or write to us if something on this page does not match what your browser shows.",
       cta: "Cookie settings",
-      ctaHref: "#control",
+      ctaHref: "#cookie-settings",
       secondary: "info@bxtechnologies.net",
       secondaryHref: "mailto:info@bxtechnologies.net",
+    },
+  },
+  imprint: {
+    title: "Imprint",
+    intro:
+      "Who is behind this website, how to reach us and where the company is registered, as German law requires (Impressum).",
+    lastUpdated: revised,
+    appliesTo: "bxtechnologies.net",
+    toc: [
+      { id: "provider", label: "Provider" },
+      { id: "responsible", label: "Responsible for content" },
+      { id: "disputes", label: "Consumer dispute resolution" },
+      { id: "more", label: "Privacy and terms" },
+    ],
+    related: [
+      { label: "Privacy policy", href: "/privacy" },
+      { label: "Terms & conditions", href: "/terms" },
+    ],
+    contactBand: {
+      eyebrow: "Legal",
+      title: "A legal or registration question?",
+      text: "One email to the team, answered by a person, usually within two working days.",
+      cta: "info@bxtechnologies.net",
+      ctaHref: "mailto:info@bxtechnologies.net",
+      secondary: "Contact page",
+      secondaryHref: "/contact",
+      secondaryArrow: true,
     },
   },
 };

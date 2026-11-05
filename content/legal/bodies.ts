@@ -7,4 +7,5 @@ export const legalBodies: Record<LegalSlug, () => Promise<{ default: MDXContent 
   privacy: () => import("./privacy.mdx"),
   terms: () => import("./terms.mdx"),
   cookies: () => import("./cookies.mdx"),
+  imprint: () => import("./imprint.mdx"),
 };

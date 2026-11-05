@@ -37,6 +37,11 @@ Current live site: https://bxtechnologies.net/ (used only for redirects and SEO 
 - **Adding an article**: write `content/insights/<slug>.mdx`, set `hasBody: true` in `content/insights.ts`,
   register it in `content/insights/bodies.ts`, and add its "On this page" entries in `content/pages/insights.ts`.
   Tests fail if any of these disagree. Its share card, sitemap entry and Article JSON-LD come automatically.
+- **Cookies and analytics**: the only cookie is `bx_consent` (the banner's choice). Plausible loads only after
+  Accept. Adding any cookie, tracker or third-party script needs a consent category, a `CONSENT_VERSION` bump
+  in `lib/consent.ts`, and matching updates to the Cookies and Privacy pages.
+- **Legal pages**: Privacy, Terms, Cookies and Imprint are MDX in `content/legal/`; Imprint company details are
+  `imprint` in `content/site.ts` (`null` = to be supplied, hidden on the live site).
 - **SEO**: page metadata goes through `pageMetadata()` in `lib/seo/metadata.ts`; a new page also needs its own
   `opengraph-image.tsx` (copy a sibling). Structured data is built from content in `lib/seo/structured-data.ts`.
 - Done = matches the design at 1440px and 390px; lint, typecheck, tests and build pass.

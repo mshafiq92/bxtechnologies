@@ -21,7 +21,7 @@ const STATIC_PATHS = [
   "/contact",
 ] as const;
 
-const LEGAL = ["privacy", "terms", "cookies"] as const;
+const LEGAL = ["privacy", "terms", "cookies", "imprint"] as const;
 
 /**
  * /sitemap.xml. Only pages that exist: services, articles and roles without a page are left out.

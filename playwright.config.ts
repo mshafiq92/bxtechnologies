@@ -29,6 +29,23 @@ export default defineConfig({
     baseURL,
     trace: "on-first-retry",
     reducedMotion: "reduce",
+    // Start every test with a stored "declined" choice so the cookie banner stays out of the way;
+    // consent.spec.ts clears it to test the banner itself.
+    storageState: {
+      cookies: [
+        {
+          name: "bx_consent",
+          value: "v1.denied",
+          domain: "localhost",
+          path: "/",
+          expires: -1,
+          httpOnly: false,
+          secure: false,
+          sameSite: "Lax",
+        },
+      ],
+      origins: [],
+    },
   },
   projects: [
     {
@@ -70,6 +87,9 @@ export default defineConfig({
       FORMS_DRY_RUN: "true",
       SITE_NOINDEX: "true",
       NEXT_PUBLIC_SITE_URL: baseURL,
+      // Analytics is configured so consent.spec.ts can check it loads only after Accept
+      // (requests to Plausible are intercepted; nothing leaves the machine).
+      NEXT_PUBLIC_PLAUSIBLE_DOMAIN: "bxtechnologies.net",
     },
   },
 });

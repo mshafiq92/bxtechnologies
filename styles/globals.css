@@ -116,3 +116,9 @@
 @utility measure {
   max-width: 68ch;
 }
+
+/* Cookie notice: server-rendered so it paints with the page; hidden before first paint for
+   visitors who already chose (lib/consent.ts consentPrePaintScript sets data-consent). */
+[data-consent="set"] [data-cookie-banner="notice"] {
+  display: none;
+}
