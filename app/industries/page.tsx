@@ -9,13 +9,14 @@ import { Section } from "@/components/ui/section";
 import { TextLink } from "@/components/ui/text-link";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
 import { getPage, getSectors } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Industries",
   description:
     "Sectors where we have delivered: insurance, automotive, utilities, fintech, retail and logistics, education, construction and facilities. For startups, growing businesses and enterprise teams.",
-  alternates: { canonical: "/industries" },
-};
+  path: "/industries",
+});
 
 export default function IndustriesPage() {
   const page = getPage("industries");

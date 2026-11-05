@@ -7,13 +7,14 @@ import { JumpBar } from "@/components/ui/jump-bar";
 import { Section } from "@/components/ui/section";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
 import { getPage, getProjects } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Work",
   description:
     "Projects we have delivered and still support, for clients in Europe and Asia. Client names are withheld under NDA; each project is described by sector, region, what we built and what it does now.",
-  alternates: { canonical: "/work" },
-};
+  path: "/work",
+});
 
 export default function WorkPage() {
   const page = getPage("work");

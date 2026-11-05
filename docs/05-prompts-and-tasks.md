@@ -167,6 +167,13 @@ Template prompt, swap the bracketed parts:
 **T42 · SEO**
 > Per-route metadata and canonicals, `sitemap.ts`, `robots.ts` (noindex on staging), JSON-LD
 > (Organization, BreadcrumbList, Service, Article, JobPosting), dynamic OG images, favicon set.
+>
+> *Done:* `lib/seo/` (`pageMetadata`, `absoluteUrl`, JSON-LD builders, `JsonLd`, OG renderer and palette),
+> `app/sitemap.ts`, `app/robots.ts`, an `opengraph-image.tsx` per page (prerendered), `icon.tsx` (32, 192) and
+> `apple-icon.tsx` from the raster mark. `Breadcrumb` emits BreadcrumbList itself. JobPosting needs
+> `datePosted` on the role. Every page sets its own `openGraph`, so every page needs its own
+> `opengraph-image.tsx` (the e2e smoke test checks this). Open: SVG mark for sharper icons; real role
+> posting date; OG cards use the renderer's built-in font (static Inter TTF would match the brand).
 
 **T43 · Redirects from the old site**
 > Crawl https://bxtechnologies.net/ (and its sitemap), list every indexed URL, and build a 301 map in `next.config` to the new routes.
@@ -225,8 +232,8 @@ Template prompt, swap the bracketed parts:
 | T38 | Careers + Role | | | ☑ Done (`090c2a2`) |
 | T39 | Apply, Contact, Legal | | | ☑ Done (`090c2a2`) |
 | T40 | Forms | | | ☑ Done (`090c2a2`) |
-| T41 | Quality gates | | | ☑ Done, awaiting commit |
-| T42 | SEO | | | ☐ |
+| T41 | Quality gates | | | ☑ Done (`78f7a21`) |
+| T42 | SEO | | | ☑ Done, awaiting commit |
 | T43 | Redirects | | | ☐ |
 | T44 | Analytics and monitoring | | | ☐ |
 | T50 | Vercel (dev/testing) | | | ☐ |

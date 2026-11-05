@@ -10,13 +10,14 @@ import { Section } from "@/components/ui/section";
 import { TextLink } from "@/components/ui/text-link";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
 import { getOffices, getPage } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
     "bX Technologies was incorporated in Pakistan in March 2019 and builds software for European and Asian clients from Islamabad and Duisburg. Engineers first: the people who scope your work write it.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   const page = getPage("about");

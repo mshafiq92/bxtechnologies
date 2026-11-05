@@ -43,6 +43,7 @@ export const offices: Office[] = [
     kind: "Delivery",
     city: "Islamabad",
     country: "Pakistan",
+    countryCode: "PK",
     body: "Engineering, data, QA and AI teams. Working day overlaps CET by five hours and US Eastern by two.",
     contactBody: "Engineering, data, QA and AI teams. Working day overlaps CET by five hours.",
     chips: ["Engineering", "AI", "QA"],
@@ -51,6 +52,7 @@ export const offices: Office[] = [
     kind: "Europe",
     city: "Duisburg",
     country: "Germany",
+    countryCode: "DE",
     body: "Client contact, contracting and on-site work across the EU, with our Vis Group partnership for local delivery cover.",
     contactBody:
       "Client contact and contracting for EU engagements. On-site visits arranged from here.",

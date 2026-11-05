@@ -25,13 +25,17 @@ import {
   getSiteSettings,
   serviceHref,
 } from "@/lib/content";
+import { JsonLd } from "@/lib/seo/json-ld";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { organizationLd } from "@/lib/seo/structured-data";
 
-export const metadata: Metadata = {
-  title: { absolute: "bX Technologies | AI-first engineering partner" },
+export const metadata: Metadata = pageMetadata({
+  title: "bX Technologies | AI-first engineering partner",
   description:
     "We put AI agents into production software that already works. Custom software, web, mobile, cloud and agentic AI for clients in Europe and Asia since 2019.",
-  alternates: { canonical: "/" },
-};
+  path: "/",
+  absoluteTitle: true,
+});
 
 export default function HomePage() {
   const page = getPage("home");
@@ -40,6 +44,7 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd data={organizationLd()} />
       {/* 1. Hero ---------------------------------------------------------------- */}
       <Section
         id="top"

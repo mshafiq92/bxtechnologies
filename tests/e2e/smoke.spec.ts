@@ -33,7 +33,41 @@ for (const route of routes) {
 
     expect(consoleErrors, "console errors").toEqual([]);
   });
+
+  test(`${route} has SEO tags, a share image and valid JSON-LD`, async ({ page, request }) => {
+    await page.goto(route);
+
+    const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
+    expect(new URL(canonical!).pathname, "canonical").toBe(route);
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /.{50,}/);
+
+    // Every page needs its own og:image (a page-level openGraph replaces the inherited one).
+    const ogImage = await page.locator('meta[property="og:image"]').getAttribute("content");
+    expect(ogImage, "og:image").toBeTruthy();
+    const image = await request.get(new URL(ogImage!).pathname + new URL(ogImage!).search);
+    expect(image.status()).toBe(200);
+    expect(image.headers()["content-type"]).toBe("image/png");
+
+    for (const json of await page.locator('script[type="application/ld+json"]').allTextContents()) {
+      expect(() => JSON.parse(json), "JSON-LD parses").not.toThrow();
+      expect(JSON.parse(json)["@context"]).toBe("https://schema.org");
+    }
+  });
 }
+
+test("the test server is not indexable (SITE_NOINDEX=true)", async ({ page, request }) => {
+  await page.goto("/");
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  expect(await (await request.get("/robots.txt")).text()).toContain("Disallow: /");
+});
+
+test("sitemap lists the public pages", async ({ request }) => {
+  const xml = await (await request.get("/sitemap.xml")).text();
+  for (const route of routes) {
+    expect(xml, route).toContain(`${route === "/" ? "" : route}</loc>`);
+  }
+  expect(xml).not.toContain("/dev/");
+});
 
 test("unknown pages return the styled 404", async ({ page }) => {
   const response = await page.goto("/this-page-does-not-exist");

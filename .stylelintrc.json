@@ -1,6 +1,16 @@
 {
   "extends": ["stylelint-config-standard"],
-  "ignoreFiles": [".next/**", "out/**", "coverage/**", ".claude/**", "node_modules/**"],
+  "ignoreFiles": [
+    ".next/**",
+    "out/**",
+    "coverage/**",
+    ".claude/**",
+    "node_modules/**",
+    "playwright-report/**",
+    "test-results/**",
+    "blob-report/**",
+    ".lighthouseci/**"
+  ],
   "rules": {
     "at-rule-no-unknown": [
       true,

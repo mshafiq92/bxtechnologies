@@ -10,13 +10,14 @@ import { Section } from "@/components/ui/section";
 import { SmartLink } from "@/components/ui/smart-link";
 import { SectionHeader } from "@/components/ui/typography";
 import { getPage, getRoles, roleHref } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Careers",
   description:
     "Work on systems that go into production. A small engineering team in Islamabad working with European clients: own components, talk to users, see your work run against real load.",
-  alternates: { canonical: "/careers" },
-};
+  path: "/careers",
+});
 
 export default function CareersPage() {
   const page = getPage("careers");

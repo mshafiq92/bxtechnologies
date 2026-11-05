@@ -8,14 +8,11 @@ import { SmartLink } from "@/components/ui/smart-link";
 import { Eyebrow, Heading } from "@/components/ui/typography";
 import { getLegalBody, getLegalPage, getSiteSettings, type LegalSlug } from "@/lib/content";
 import { formatDate } from "@/lib/format";
+import { pageMetadata } from "@/lib/seo/metadata";
 
 export function legalMetadata(slug: LegalSlug): Metadata {
   const page = getLegalPage(slug);
-  return {
-    title: page.title,
-    description: page.intro,
-    alternates: { canonical: `/${slug}` },
-  };
+  return pageMetadata({ title: page.title, description: page.intro, path: `/${slug}` });
 }
 
 const tocLink =

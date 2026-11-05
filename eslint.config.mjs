@@ -31,6 +31,11 @@ export default defineConfig([
     "out/**",
     "build/**",
     "coverage/**",
+    // Generated test and audit reports (git-ignored)
+    "playwright-report/**",
+    "test-results/**",
+    "blob-report/**",
+    ".lighthouseci/**",
     "next-env.d.ts",
     ".claude/**",
     "docs/**",

@@ -235,6 +235,8 @@ export const RoleSchema = z.object({
   team: z.string().min(1),
   location: z.string().default("Islamabad"),
   employmentType: z.string().default("Full-time"),
+  /** Date the role was published; required for its JobPosting structured data. */
+  datePosted: z.iso.date().optional(),
   experience: z.string().optional(),
   reportsTo: z.string().optional(),
   summary: z.string().min(1),
@@ -249,6 +251,8 @@ export const OfficeSchema = z.object({
   kind: z.string(),
   city: z.string(),
   country: z.string(),
+  /** ISO 3166-1 alpha-2, for structured data (JobPosting, Organization). */
+  countryCode: z.string().regex(/^[A-Z]{2}$/),
   body: z.string(),
   /** Shorter description used on the Contact page. */
   contactBody: z.string().optional(),

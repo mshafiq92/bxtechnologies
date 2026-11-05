@@ -18,6 +18,8 @@ export const roles: RoleInput[] = [
   {
     slug: "ai-engineer",
     title: "AI Engineer",
+    // OPEN: placeholder; set to the real publish date when the role goes live.
+    datePosted: "2026-11-05",
     team: "AI engineering",
     experience: "3+ years",
     reportsTo: "Engineering lead",

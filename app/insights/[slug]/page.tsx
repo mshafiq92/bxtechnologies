@@ -23,6 +23,9 @@ import {
   insightTopic,
 } from "@/lib/content";
 import { formatDate, formatReadTime } from "@/lib/format";
+import { JsonLd } from "@/lib/seo/json-ld";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { articleLd } from "@/lib/seo/structured-data";
 import { siteUrl } from "@/lib/site";
 
 type Params = { slug: string };
@@ -39,18 +42,16 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const insight = getInsight(slug);
   if (!insight?.hasBody) return {};
   const author = getAuthor(insight.author);
-  return {
+  return pageMetadata({
     title: insight.title,
-    description: insight.standfirst ?? insight.summary,
-    alternates: { canonical: `/insights/${slug}` },
-    openGraph: {
-      type: "article",
-      title: insight.title,
-      description: insight.standfirst ?? insight.summary,
+    description: insight.standfirst ?? insight.summary ?? insight.title,
+    path: `/insights/${slug}`,
+    article: {
       publishedTime: insight.date,
       authors: author ? [author.name] : undefined,
+      section: insightTopic(insight),
     },
-  };
+  });
 }
 
 const shareButton =
@@ -93,6 +94,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
 
   return (
     <>
+      <JsonLd data={articleLd(insight, author)} />
       {/* Title block ------------------------------------------------------------- */}
       <Section
         id="top"

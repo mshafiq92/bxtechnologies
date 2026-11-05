@@ -7,13 +7,14 @@ import { Section } from "@/components/ui/section";
 import { SmartLink } from "@/components/ui/smart-link";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
 import { getOffices, getPage, getSiteSettings } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
     "Tell us what is slow, manual or breaking. Thirty minutes with the engineers who would do the work. info@bxtechnologies.net · +49 203 34689340.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 const directLink = "flex min-h-11 items-center text-link transition-colors hover:text-ink";
 

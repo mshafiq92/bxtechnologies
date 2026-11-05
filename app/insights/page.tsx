@@ -22,13 +22,14 @@ import {
   insightsListSummaryLimit,
 } from "@/lib/content";
 import { formatDate, formatReadTime } from "@/lib/format";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Insights",
   description:
     "Notes from the work, not from the trend cycle. Written by the engineers on our projects about AI engineering, data and cloud, product and working with us.",
-  alternates: { canonical: "/insights" },
-};
+  path: "/insights",
+});
 
 export default function InsightsPage() {
   const page = getPage("insights");

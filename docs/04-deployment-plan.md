@@ -109,7 +109,7 @@ Mail domain: SPF, DKIM and DMARC records for the sending domain before forms go 
 - [ ] Real photos for About/Careers heroes, or confirm text-only heroes
 - [ ] Team names and roles, article author
 - [ ] Remaining service detail content, or rows link to contact
-- [ ] Vector bX mark, favicon set, OG image
+- [ ] Vector bX mark (favicon set and OG images are generated from the raster mark in T42)
 - [ ] Real social profile URLs (footer currently points to generic facebook.com / x.com)
 - [ ] Privacy and Cookies pages list the actual processors (hosting provider, Resend, Plausible, Cloudflare, Sentry)
 

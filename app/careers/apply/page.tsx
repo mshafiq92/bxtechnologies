@@ -8,13 +8,14 @@ import { SmartLink } from "@/components/ui/smart-link";
 import { TextLink } from "@/components/ui/text-link";
 import { Eyebrow, Heading } from "@/components/ui/typography";
 import { getPage, getRoles } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Apply · Careers",
   description:
     "A CV and one honest paragraph. A person reads every application and you get an answer either way within a week.",
-  alternates: { canonical: "/careers/apply" },
-};
+  path: "/careers/apply",
+});
 
 export default function ApplyPage() {
   const page = getPage("apply");

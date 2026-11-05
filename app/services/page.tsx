@@ -14,13 +14,14 @@ import {
   getServices,
   getStackGroups,
 } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
     "Four groups of services, one delivery team: AI and autonomy, data and cloud, product engineering, and teams and advisory. Built by the engineers who maintain the systems they plug into.",
-  alternates: { canonical: "/services" },
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   const page = getPage("services");

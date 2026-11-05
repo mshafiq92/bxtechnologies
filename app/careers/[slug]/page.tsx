@@ -12,6 +12,9 @@ import { TextLink } from "@/components/ui/text-link";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
 import { getPage, getRole, getRoles, getRolesWithDetail, roleHref } from "@/lib/content";
 import { renderInline } from "@/lib/inline";
+import { JsonLd } from "@/lib/seo/json-ld";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { jobPostingLd } from "@/lib/seo/structured-data";
 
 type Params = { slug: string };
 
@@ -26,11 +29,11 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const role = getRole(slug);
   if (!role?.detail) return {};
-  return {
+  return pageMetadata({
     title: `${role.title} · Careers`,
     description: role.detail.intro,
-    alternates: { canonical: `/careers/${slug}` },
-  };
+    path: `/careers/${slug}`,
+  });
 }
 
 function ProseList({ items }: { items: string[] }) {
@@ -64,6 +67,7 @@ export default async function RoleDetailPage({ params }: { params: Promise<Param
 
   return (
     <>
+      <JsonLd data={jobPostingLd(role)} />
       {/* Title block ------------------------------------------------------------------ */}
       <Section
         id="top"

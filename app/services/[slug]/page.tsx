@@ -16,6 +16,9 @@ import { SmartLink } from "@/components/ui/smart-link";
 import { TextLink } from "@/components/ui/text-link";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
 import { getService, getServicesWithDetail } from "@/lib/content";
+import { JsonLd } from "@/lib/seo/json-ld";
+import { pageMetadata } from "@/lib/seo/metadata";
+import { serviceLd } from "@/lib/seo/structured-data";
 
 type Params = { slug: string };
 
@@ -30,11 +33,11 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const { slug } = await params;
   const service = getService(slug);
   if (!service?.detail) return {};
-  return {
+  return pageMetadata({
     title: service.name,
     description: service.detail.intro,
-    alternates: { canonical: `/services/${slug}` },
-  };
+    path: `/services/${slug}`,
+  });
 }
 
 export default async function ServiceDetailPage({ params }: { params: Promise<Params> }) {
@@ -54,6 +57,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
 
   return (
     <>
+      <JsonLd data={serviceLd({ ...service, detail })} />
       {/* 1. Hero ---------------------------------------------------------------- */}
       <Section
         id="top"
