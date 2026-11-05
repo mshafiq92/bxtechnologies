@@ -4,10 +4,19 @@ import { expect, test, type Page } from "@playwright/test";
  * Real submissions against the production build. The test server runs with FORMS_DRY_RUN, so
  * the server actions validate and "send" (log) without Resend or Turnstile.
  *
- * The rate limit still applies (5 sends per form per IP per 10 minutes, in memory), so
- * `--repeat-each` above 2 makes later submissions fail with the rate-limit error. That is the
- * limiter working; each normal run starts a fresh server.
+ * The rate limit still applies (5 sends per form per IP per 10 minutes, in memory). Each test
+ * sends from its own address (X-Forwarded-For, trusted by the local test server) so tests, retries
+ * and `--repeat-each` never share a quota. The limiter itself is unit-tested (lib/forms).
  */
+
+let address = 0;
+test.beforeEach(async ({ page }, info) => {
+  address += 1;
+  const project = info.project.name === "mobile" ? 2 : 1;
+  await page.setExtraHTTPHeaders({
+    "x-forwarded-for": `198.51.${project}${info.repeatEachIndex}${info.retry}.${address}`,
+  });
+});
 
 /**
  * The apply form reads ?role= in the browser, so the prerendered form is a Suspense fallback

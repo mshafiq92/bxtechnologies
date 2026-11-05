@@ -4,6 +4,8 @@ import { headers } from "next/headers";
 
 import { getRole } from "@/lib/content";
 
+import { clientIpFrom } from "./client-ip";
+import { withCvLimit } from "./limits";
 import { mailConfig, sendMail } from "./mail";
 import { rateLimit } from "./rate-limit";
 import {
@@ -34,13 +36,7 @@ const SPAM_ERROR = "Error: we could not confirm you are not a bot. Please try ag
 const RATE_ERROR = "Error: too many attempts. Please wait a few minutes and try again.";
 
 async function clientIp(): Promise<string> {
-  const h = await headers();
-  return (
-    h.get("cf-connecting-ip") ??
-    h.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    h.get("x-real-ip") ??
-    "unknown"
-  );
+  return clientIpFrom(await headers(), process.env.VERCEL === "1");
 }
 
 function fields(formData: FormData): Record<string, string> {
@@ -173,7 +169,7 @@ export async function submitApplication(_prev: FormState, formData: FormData): P
   } else if (!CV_EXTENSIONS.test(cv.name)) {
     errors.cv = "Error: upload your CV as a PDF or DOCX file.";
   } else if (cv.size > CV_MAX_BYTES) {
-    errors.cv = "Error: the CV is larger than 10 MB. Send a smaller file.";
+    errors.cv = withCvLimit("Error: the CV is larger than 10 MB. Send a smaller file.");
   }
   if (!parsed.success || Object.keys(errors).length > 0) {
     return { status: "error", fieldErrors: errors };

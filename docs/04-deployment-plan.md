@@ -80,10 +80,61 @@ Never in git. Template in `.env.example`. Stored in Vercel (preview/staging), Gi
 | `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` | Spam protection |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | Analytics |
 | `SENTRY_DSN`, `SENTRY_AUTH_TOKEN` | Error monitoring |
-| `SITE_NOINDEX` | `true` on preview, staging and rehearsal |
+| `SITE_NOINDEX` | `true` on preview, staging and rehearsal (on by default on Vercel) |
+| `BASIC_AUTH_USER`, `BASIC_AUTH_PASSWORD` | Password for staging and previews (`proxy.ts`); never on the VPS |
+| `NEXT_PUBLIC_CV_MAX_MB` | `4` on Vercel (request cap 4.5 MB); unset (10) on the VPS |
 | `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY` (CI only) | Production deploy |
 
 Mail domain: SPF, DKIM and DMARC records for the sending domain before forms go live.
+
+## 4a. Vercel setup for staging and previews (T50)
+
+What the code already does (no Vercel-only features; the same build runs on the VPS):
+
+- `vercel.json`: functions in **`fra1`** (Frankfurt); **`main` is never deployed to Vercel**.
+- `proxy.ts`: **password protection** (HTTP basic auth) when `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD`
+  are set. Free, unlike Vercel's own password protection. `/api/health` stays open for uptime checks.
+- `lib/site.ts`: **noindex on every Vercel deployment by default**, plus an `X-Robots-Tag: noindex` header
+  on all responses and `Disallow: /` in robots.txt. The site URL falls back to the deployment's own
+  address, so canonicals and share images point at the right host.
+
+### One-time setup in the Vercel dashboard (owner)
+
+1. **Plan.** Vercel's free Hobby plan is for non-commercial use only. A company's staging site needs
+   **Pro** (per member, per month). One seat is enough; reviewers only need the staging password.
+2. **Add New → Project → Import** the GitHub repository. Framework preset: Next.js (detected).
+   Leave build and install commands at their defaults (`npm install`, `next build`). Node.js 24.x.
+3. **Settings → Environments → Production → Branch Tracking: `dev`**. On Vercel, "Production" *is*
+   staging; it gets the stable URL (e.g. `bx-staging.vercel.app`, or `staging.bxtechnologies.net` under
+   Domains). PRs into `dev` get Preview deployments automatically.
+4. **Settings → Deployment Protection → Vercel Authentication: off for Production** (staging uses our
+   own password instead, so directors do not need Vercel accounts). Leaving it on for Preview is fine.
+5. **Settings → Environment Variables**, for **Production and Preview** unless noted:
+
+| Variable | Value |
+|---|---|
+| `SITE_NOINDEX` | `true` |
+| `BASIC_AUTH_USER` / `BASIC_AUTH_PASSWORD` | a shared reviewer login (password 16+ characters, from a password manager) |
+| `NEXT_PUBLIC_SITE_URL` | Production only: the staging URL, e.g. `https://bx-staging.vercel.app` (Preview: leave unset) |
+| `NEXT_PUBLIC_CV_MAX_MB` | `4` |
+| `ENABLE_DEV_ROUTES` | `true` (design review page `/dev/foundations`) |
+| `RESEND_API_KEY` | a Resend key (see below) |
+| `MAIL_FROM` | until the domain is verified: `bX Staging <onboarding@resend.dev>` |
+| `MAIL_TO_ENQUIRIES`, `MAIL_TO_CAREERS` | until the domain is verified: the Resend account's own email address |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | Cloudflare's test keys (`1x00000000000000000000AA` / `1x0000000000000000000000000000000AA`) until a real widget exists; then the real keys, with the staging hostname added to the widget |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | leave empty (staging traffic must not count) |
+| `FORMS_DRY_RUN` | **never set** |
+
+6. **Redeploy** `dev` (Deployments → … → Redeploy) so the variables apply, then check:
+   the staging URL asks for the password; `/robots.txt` says `Disallow: /`; response headers include
+   `X-Robots-Tag: noindex`; the contact form sends to the Resend account inbox.
+
+### Known staging differences (not bugs)
+
+- **CV uploads are limited to 4 MB on Vercel** (platform request cap of 4.5 MB). The VPS keeps 10 MB.
+- **Form rate limiting is per serverless instance** on Vercel, so it is looser than on the VPS.
+- Resend's `onboarding@resend.dev` sender only delivers to the Resend account owner's address. Verify
+  `bxtechnologies.net` in Resend (SPF, DKIM) to send to `info@` and `jobs@`.
 
 ## 5. Cut-over from the current site (bxtechnologies.net)
 

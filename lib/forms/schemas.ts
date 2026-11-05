@@ -42,7 +42,7 @@ export const subscribeSchema = z.object({
     .regex(/.+@.+\..+/, "Error: enter an email address for the digest."),
 });
 
-export const CV_MAX_BYTES = 10 * 1024 * 1024;
+export { CV_MAX_BYTES } from "./limits";
 export const CV_EXTENSIONS = /\.(pdf|docx?)$/i;
 
 export const applicationSchema = z.object({

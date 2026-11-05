@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { SignatureRule } from "@/components/ui/signature-rule";
 import { SmartLink } from "@/components/ui/smart-link";
 import { submitApplication } from "@/lib/forms/actions";
+import { CV_MAX_BYTES, withCvLimit } from "@/lib/forms/limits";
 import { initialFormState } from "@/lib/forms/state";
 
 type FieldCopy = { label: string; placeholder: string };
@@ -60,7 +61,6 @@ export type ApplyCopy = {
 type Props = { copy: ApplyCopy; roles: { slug: string; title: string }[] };
 
 const SPECULATIVE = "speculative";
-const MAX_CV_BYTES = 10 * 1024 * 1024;
 
 /** Reads ?role=slug so "Apply for this role" preselects it (needs a Suspense boundary). */
 export function ApplyFormFromUrl(props: Props) {
@@ -115,9 +115,9 @@ export function ApplyForm({ copy, roles, initialRole }: Props & { initialRole?: 
       setCvName(null);
       return setCvError(copy.cv.errors.type);
     }
-    if (file.size > MAX_CV_BYTES) {
+    if (file.size > CV_MAX_BYTES) {
       setCvName(null);
-      return setCvError(copy.cv.errors.size);
+      return setCvError(withCvLimit(copy.cv.errors.size));
     }
     setCvName(file.name);
   };
@@ -231,7 +231,7 @@ export function ApplyForm({ copy, roles, initialRole }: Props & { initialRole?: 
             className="relative flex min-h-[140px] cursor-pointer flex-col items-center justify-center gap-1.5 rounded-md border border-dashed border-strong bg-ground p-6 text-center transition-colors focus-within:border-link hover:border-link"
           >
             <span className="text-body leading-6 font-semibold">{cvName ?? copy.cv.dropLabel}</span>
-            <span className="text-small text-muted">{copy.cv.hint}</span>
+            <span className="text-small text-muted">{withCvLimit(copy.cv.hint)}</span>
             <input
               id={cvId}
               name="cv"

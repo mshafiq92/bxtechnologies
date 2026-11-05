@@ -198,6 +198,11 @@ Template prompt, swap the bracketed parts:
 > Connect the repo to Vercel for **previews per PR and staging from `dev` only** (no production on
 > Vercel): basic auth and `SITE_NOINDEX=true` on every Vercel environment, `fra1` region, environment
 > variables documented. Confirm nothing in the app uses Vercel-only services.
+>
+> *Done in code:* `vercel.json` (fra1, `main` never deployed), `proxy.ts` basic auth, noindex by default on
+> Vercel (`lib/site.ts`) plus `X-Robots-Tag`, Vercel URL fallback, `NEXT_PUBLIC_CV_MAX_MB` for Vercel's 4.5 MB
+> request cap. Dashboard steps and every variable: docs/04 §4a. Vercel-only services: none (`next/og` is
+> part of Next and runs on the VPS too).
 
 **T51 · Production server (VPS)**
 > For the chosen host ([DigitalOcean / Hostinger VPS]), write the production setup from `docs/04` §2:
@@ -242,9 +247,9 @@ Template prompt, swap the bracketed parts:
 | T39 | Apply, Contact, Legal | | | ☑ Done (`090c2a2`) |
 | T40 | Forms | | | ☑ Done (`090c2a2`) |
 | T41 | Quality gates | | | ☑ Done (`78f7a21`) |
-| T42 | SEO | | | ☑ Done (commit pending) |
+| T42 | SEO | | | ☑ Done (`a2f59e2`) |
 | T43 | Redirects | | | ⏸ Deferred until the site is stable (owner, 2026-11-05) |
-| T44 | Analytics and monitoring | | | ◐ Consent, analytics and legal done, awaiting commit; Sentry pending |
-| T50 | Vercel (dev/testing) | | | ☐ |
+| T44 | Analytics and monitoring | | | ◐ Consent, analytics and legal done (`7ff991c`); Sentry pending |
+| T50 | Vercel (dev/testing) | | | ◐ Code ready, awaiting commit; owner connects Vercel (docs/04 §4a) |
 | T51 | Production VPS | | | ☐ |
 | T52 | Launch | | | ☐ |

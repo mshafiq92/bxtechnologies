@@ -3,6 +3,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 import { SmartLink } from "@/components/ui/smart-link";
 import { cn } from "@/lib/cn";
+import { showInternalNotes } from "@/lib/site";
 
 /*
  * Components available inside article MDX (content/insights/*.mdx), styled to the Article
@@ -53,7 +54,7 @@ export function Note({
   internal?: boolean;
   children: ReactNode;
 }) {
-  if (internal && process.env.NODE_ENV === "production" && process.env.SITE_NOINDEX !== "true") {
+  if (internal && !showInternalNotes) {
     return null;
   }
   return (

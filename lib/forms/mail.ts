@@ -43,7 +43,11 @@ export function formsDryRun(): boolean {
 
 export async function sendMail(mail: Mail): Promise<{ ok: true } | { ok: false; reason: string }> {
   if (formsDryRun()) {
-    console.info("[mail:dry-run]", { to: mail.to, subject: mail.subject });
+    console.info("[mail:dry-run]", {
+      to: mail.to,
+      subject: mail.subject,
+      attachments: mail.attachments?.map((a) => `${a.filename} (${a.content.length} bytes)`),
+    });
     return { ok: true };
   }
   const resend = getClient();

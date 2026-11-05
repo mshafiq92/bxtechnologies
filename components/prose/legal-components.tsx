@@ -4,6 +4,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { SmartLink } from "@/components/ui/smart-link";
 import { cn } from "@/lib/cn";
 import { getImprint, getSiteSettings } from "@/lib/content";
+import { showInternalNotes } from "@/lib/site";
 
 /*
  * Components available inside legal MDX (content/legal/*.mdx), styled to the legal page
@@ -48,7 +49,7 @@ function Note({
   internal?: boolean;
   children: ReactNode;
 }) {
-  if (internal && process.env.NODE_ENV === "production" && process.env.SITE_NOINDEX !== "true") {
+  if (internal && !showInternalNotes) {
     return null;
   }
   return (
@@ -86,8 +87,7 @@ function Fact({ term, children }: { term: string; children: ReactNode }) {
 }
 
 /** Show "to be supplied" placeholders for missing imprint details (never on the live site). */
-const showPending = () =>
-  process.env.NODE_ENV !== "production" || process.env.SITE_NOINDEX === "true";
+const showPending = () => showInternalNotes;
 
 /**
  * Imprint provider details from content/site.ts. Missing (`null`) values render as a warning on

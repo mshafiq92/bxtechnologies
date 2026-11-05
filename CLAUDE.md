@@ -12,7 +12,8 @@ Current live site: https://bxtechnologies.net/ (used only for redirects and SEO 
   File storage is not decided; don't add one.
 - **No monorepo.** One standard Next.js app at the repo root, npm only (no pnpm/yarn/bun).
 - **Portable.** Vercel is for dev/testing only; production is Docker on a VPS. No Vercel-only features
-  (Blob, KV, Edge Config, Vercel Analytics).
+  (Blob, KV, Edge Config, Vercel Analytics). Staging protection is our own `proxy.ts` basic auth, and
+  noindex is automatic on Vercel (`lib/site.ts`). Setup steps: docs/04 §4a.
 
 ## Sources of truth
 
