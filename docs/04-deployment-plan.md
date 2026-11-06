@@ -8,8 +8,7 @@ Hostinger VPS or similar; final choice pending). The app is built to run identic
 | Environment | Source | Host | URL | Purpose |
 |---|---|---|---|---|
 | Local | any branch | developer machine | `localhost:3000` | Development |
-| Preview | every PR | Vercel | auto preview URL | Review each change against the designs |
-| Staging | `dev` branch | Vercel | e.g. `bx-staging.vercel.app` (password-protected, `noindex`) | UAT by bX directors |
+| Test (Vercel) | `main` branch | Vercel | e.g. `bxtechnologies.vercel.app` (password-protected, `noindex`) | Testing and review by bX directors |
 | Production | `main` branch (tagged release) | **VPS** | `bxtechnologies.net` + `www` redirect | Live site |
 
 Branching: `feature/<task-id>-<name>` → PR into `dev` → milestone PR `dev` → `main`. Protect `main` and
@@ -62,7 +61,8 @@ On every pull request:
 
 On merge:
 
-- PR / `dev` → Vercel deploys preview / staging automatically (Vercel Git integration).
+- `main` → Vercel deploys the password-protected test site automatically (Vercel Git integration).
+  `dev` is never deployed.
 - `main` → GitHub Actions builds and pushes the Docker image to `ghcr.io`, tags `vX.Y.Z`, then deploys to the
   VPS over SSH (`docker pull` + `docker compose up -d`), runs a smoke test, and uploads Sentry source maps.
   Production deploys need a manual approval step (GitHub Environments).
@@ -91,7 +91,8 @@ Mail domain: SPF, DKIM and DMARC records for the sending domain before forms go 
 
 What the code already does (no Vercel-only features; the same build runs on the VPS):
 
-- `vercel.json`: functions in **`fra1`** (Frankfurt); **`main` is never deployed to Vercel**.
+- `vercel.json`: functions in **`fra1`** (Frankfurt); **only `main` deploys** (owner's rule, 2026-11-06:
+  `dev` is never deployed, for testing or staging).
 - `proxy.ts`: **password protection** (HTTP basic auth) when `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD`
   are set. Free, unlike Vercel's own password protection. `/api/health` stays open for uptime checks.
 - `lib/site.ts`: **noindex on every Vercel deployment by default**, plus an `X-Robots-Tag: noindex` header
@@ -104,9 +105,9 @@ What the code already does (no Vercel-only features; the same build runs on the 
    **Pro** (per member, per month). One seat is enough; reviewers only need the staging password.
 2. **Add New → Project → Import** the GitHub repository. Framework preset: Next.js (detected).
    Leave build and install commands at their defaults (`npm install`, `next build`). Node.js 24.x.
-3. **Settings → Environments → Production → Branch Tracking: `dev`**. On Vercel, "Production" *is*
-   staging; it gets the stable URL (e.g. `bx-staging.vercel.app`, or `staging.bxtechnologies.net` under
-   Domains). PRs into `dev` get Preview deployments automatically.
+3. **Settings → Environments → Production → Branch Tracking: `main`** (the default). On Vercel,
+   "Production" is our **test deployment**: password-protected and `noindex`, never the live site.
+   `dev` deployments are switched off in `vercel.json`.
 4. **Settings → Deployment Protection → Vercel Authentication: off for Production** (staging uses our
    own password instead, so directors do not need Vercel accounts). Leaving it on for Preview is fine.
 5. **Settings → Environment Variables**, for **Production and Preview** unless noted:
@@ -125,7 +126,7 @@ What the code already does (no Vercel-only features; the same build runs on the 
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | leave empty (staging traffic must not count) |
 | `FORMS_DRY_RUN` | **never set** |
 
-6. **Redeploy** `dev` (Deployments → … → Redeploy) so the variables apply, then check:
+6. **Deploy:** push to `main` (or Deployments → … → Redeploy) so the variables apply, then check:
    the staging URL asks for the password; `/robots.txt` says `Disallow: /`; response headers include
    `X-Robots-Tag: noindex`; the contact form sends to the Resend account inbox.
 

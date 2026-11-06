@@ -199,7 +199,8 @@ Template prompt, swap the bracketed parts:
 > Vercel): basic auth and `SITE_NOINDEX=true` on every Vercel environment, `fra1` region, environment
 > variables documented. Confirm nothing in the app uses Vercel-only services.
 >
-> *Done in code:* `vercel.json` (fra1, `main` never deployed), `proxy.ts` basic auth, noindex by default on
+> *Owner's rule (2026-11-06):* Vercel deploys **only `main`** (test deployment, password + noindex); `dev`
+> is never deployed. *Done in code:* `vercel.json` (fra1, `dev` deployments off), `proxy.ts` basic auth, noindex by default on
 > Vercel (`lib/site.ts`) plus `X-Robots-Tag`, Vercel URL fallback, `NEXT_PUBLIC_CV_MAX_MB` for Vercel's 4.5 MB
 > request cap. Dashboard steps and every variable: docs/04 §4a. Vercel-only services: none (`next/og` is
 > part of Next and runs on the VPS too).

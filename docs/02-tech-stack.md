@@ -32,7 +32,7 @@ testing and on our **own server (VPS)** in production.
 | Performance | **Lighthouse CI** budgets (Perf ≥ 95, A11y 100, SEO 100, Best Practices 100) | Measurable quality bar |
 | Git hooks | Husky + lint-staged + commitlint (Conventional Commits) | Clean history |
 | CI | **GitHub Actions** | Lint, typecheck, test, build, Playwright, Lighthouse on every PR |
-| Dev / test hosting | **Vercel** (preview per PR + staging from `dev`) | Fast feedback while building. **Not used for production** |
+| Dev / test hosting | **Vercel** (test deployment from `main` only; password + noindex) | Fast feedback while building. **Not used for production** |
 | Production hosting | **VPS, to be decided** (DigitalOcean Droplet, Hostinger VPS, or similar) running Docker + Node | See `04-deployment-plan.md` |
 | DNS / CDN / WAF | **Cloudflare** in front of the domain | DNS, TLS, caching, Turnstile, protection, host-independent |
 | Error monitoring | Sentry (free tier) | Works on any host |
