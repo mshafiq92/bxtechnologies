@@ -29,8 +29,8 @@ describe("pageMetadata", () => {
     expect(m.alternates?.canonical).toBe("/about");
     expect(m.openGraph).toMatchObject({
       url: "/about",
-      title: "About | bX Technologies",
-      siteName: "bX Technologies",
+      title: "About | BX Technologies",
+      siteName: "BX Technologies",
       type: "website",
     });
     expect(m.twitter).toMatchObject({ card: "summary_large_image" });

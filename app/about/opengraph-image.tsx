@@ -5,7 +5,7 @@ import { ogContentType, ogSize, renderOgImage } from "@/lib/seo/og-image";
 const page = getPage("about");
 const { eyebrow, title } = page.hero;
 
-export const alt = `bX Technologies. ${title}`;
+export const alt = `BX Technologies. ${title}`;
 export const size = ogSize;
 export const contentType = ogContentType;
 

@@ -173,7 +173,7 @@ export const applyPage = {
         placeholder: "LinkedIn, a friend, our insights page…",
       },
       consent:
-        "I agree that bX Technologies may store my application for up to twelve months so the team can contact me about this and future roles.",
+        "I agree that BX Technologies may store my application for up to twelve months so the team can contact me about this and future roles.",
     },
     submit: "Send application",
     success: "Application received. You will hear back within a week.",

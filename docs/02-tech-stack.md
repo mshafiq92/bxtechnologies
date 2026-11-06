@@ -30,7 +30,7 @@ testing and on our **own server (VPS)** in production.
 | Unit/component tests | **Vitest** + Testing Library | Menu, FAQ, filters, forms, content guards |
 | E2E / a11y / visual | **Playwright** + `@axe-core/playwright`; screenshots at **1440px and 390px** | Encodes the acceptance criteria |
 | Performance | **Lighthouse CI** budgets (Perf ≥ 95, A11y 100, SEO 100, Best Practices 100) | Measurable quality bar |
-| Git hooks | Husky + lint-staged + commitlint (Conventional Commits) | Clean history |
+| Git hooks | None. Husky, lint-staged and commitlint were removed on 2026-11-06 (owner decision); CI runs the checks | Simpler setup; the owner commits |
 | CI | **GitHub Actions** | Lint, typecheck, test, build, Playwright, Lighthouse on every PR |
 | Dev / test hosting | **Vercel** (test deployment from `main` only; password + noindex) | Fast feedback while building. **Not used for production** |
 | Production hosting | **VPS, to be decided** (DigitalOcean Droplet, Hostinger VPS, or similar) running Docker + Node | See `04-deployment-plan.md` |
@@ -59,7 +59,7 @@ bxtechnologies/
 │  ├─ forms/                # server actions, mail, storage, spam checks
 │  └─ seo/                  # metadata helpers, JSON-LD
 ├─ styles/                  # tokens.css (.theme-bx-light), globals.css
-├─ public/                  # brand mark, client logos (fonts live in app/fonts), icons
+├─ public/                  # brand/ logos the site uses, client logos (fonts in app/fonts, icons in app/)
 ├─ tests/                   # Playwright e2e + visual
 ├─ docs/                    # these planning docs
 ├─ .claude/design-handoff/  # design source of truth (read only)

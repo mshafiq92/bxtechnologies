@@ -30,7 +30,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 import { organizationLd } from "@/lib/seo/structured-data";
 
 export const metadata: Metadata = pageMetadata({
-  title: "bX Technologies | AI-first engineering partner",
+  title: "BX Technologies | AI-first engineering partner",
   description:
     "We put AI agents into production software that already works. Custom software, web, mobile, cloud and agentic AI for clients in Europe and Asia since 2019.",
   path: "/",

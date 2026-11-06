@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-# Production image for the bX Technologies website (Next.js standalone output).
+# Production image for the BX Technologies website (Next.js standalone output).
 # Build:  docker build -t bx-web .
 # Run:    docker run -p 3000:3000 --env-file .env bx-web
 

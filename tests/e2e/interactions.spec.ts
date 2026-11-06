@@ -65,13 +65,17 @@ test("jump bar sticks under the header and anchors land below it", async ({ page
     .getByRole("link", { name: "Teams & Advisory" })
     .click();
   await expect(page).toHaveURL(/#teams$/);
+  const headerBottom = await page
+    .getByRole("banner")
+    .evaluate((el) => el.getBoundingClientRect().bottom);
   const barBottom = await page
     .getByRole("navigation", { name: "Jump to" })
     .evaluate((el) => el.getBoundingClientRect().bottom);
   const headingTop = await page
     .getByRole("heading", { name: "Teams & Advisory", level: 2 })
     .evaluate((el) => el.getBoundingClientRect().top);
-  expect(barBottom).toBeLessThanOrEqual(73 + 54);
+  // The 52px bar (plus its borders) sits directly under the header, whatever the header height.
+  expect(barBottom).toBeLessThanOrEqual(headerBottom + 54);
   expect(headingTop, "section heading is not hidden under the sticky bars").toBeGreaterThanOrEqual(
     barBottom,
   );

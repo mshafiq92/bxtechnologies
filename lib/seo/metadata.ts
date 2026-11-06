@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { siteUrl } from "@/lib/site";
 
-export const SITE_NAME = "bX Technologies";
+export const SITE_NAME = "BX Technologies";
 export const TITLE_SUFFIX = ` | ${SITE_NAME}`;
 
 /** Absolute URL on this site (NEXT_PUBLIC_SITE_URL + path). */
@@ -14,7 +14,7 @@ type PageSeo = {
   description: string;
   /** Path from the site root ("/about"); becomes the canonical and og:url. */
   path: string;
-  /** Use the title as-is instead of adding " | bX Technologies" (the home page). */
+  /** Use the title as-is instead of adding " | BX Technologies" (the home page). */
   absoluteTitle?: boolean;
   /** Articles get og:type "article" with their dates and authors. */
   article?: { publishedTime: string; authors?: string[]; section?: string };

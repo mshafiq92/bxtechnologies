@@ -30,6 +30,11 @@ Tip: save this block as `CLAUDE.md` at the repo root (task T00) so it loads auto
 | D7 | Email: Resend (done). File storage for CVs: decide later; CV goes as an email attachment until then | bX | Partly done |
 | D8 | Share `teamData.js`, or approve the design's stack lists as they are | bX | Pending |
 | D9 | Domain + DNS access; GitHub branch protection on `main` and `dev` | bX | Pending |
+| D10 | Name written "BX Technologies" (designs say "bX"); legal name "BX Technologies Pvt Ltd" in the footer copyright line | Owner (2026-11-06) | Done |
+| D11 | Final logo set: horizontal compact logo (C1) site-wide, outlined SVG; package and guide in `docs/brand/` | Owner (2026-11-06) | Done |
+| D12 | Navy header with the white logo, 84px from 900px (72px below); mega menu and mobile panel stay light | Owner (2026-11-06) | Done |
+| D13 | Husky, lint-staged and commitlint removed; no git hooks | Owner (2026-11-06) | Done |
+| D14 | Vercel test deployment from `main` only, never `dev` | Owner (2026-11-06) | Done |
 
 ---
 
@@ -50,7 +55,7 @@ Tip: save this block as `CLAUDE.md` at the repo root (task T00) so it loads auto
 
 **T02 · Tooling and hooks**
 > Add ESLint flat config (next, jsx-a11y, import order), Stylelint, Prettier with the Tailwind plugin,
-> Husky + lint-staged + commitlint (Conventional Commits). Add `lint`, `typecheck`, `test`, `format`
+> Husky + lint-staged + commitlint (Conventional Commits; *removed 2026-11-06, see D13*). Add `lint`, `typecheck`, `test`, `format`
 > npm scripts.
 
 **T03 · CI pipeline**
@@ -89,11 +94,11 @@ Tip: save this block as `CLAUDE.md` at the repo root (task T00) so it loads auto
 **T12 · Content blocks**
 > Build `OpenColumn`, `Card`, `DiagramCard` (driven by the `heroDiagram` JSON shape from
 > `SCREENS-CONSOLE-V2.md`), `Timeline` (navy numbered), `MetricsStrip`, `FAQ` (first open, one at a time,
-> `aria-expanded`), and `JumpBar` (sticky at 73px, horizontal scroll, built from a list of section
+> `aria-expanded`), and `JumpBar` (sticky directly under the header, horizontal scroll, built from a list of section
 > anchors). Add Vitest tests for FAQ and JumpBar.
 
 **T13 · Header, mega menu, mobile menu**
-> Recreate `BxHeader.dc.html`: sticky 72px header, logo, nav with active underline, CTA. Services mega
+> Recreate `BxHeader.dc.html`: sticky header (72px; *now navy and 84px from 900px, see D12*), logo, nav with active underline, CTA. Services mega
 > menu (≥900px): 4 groups × 3 links + footer row, opens on hover/focus, closes on header mouse-leave,
 > other-item hover and Escape, shadow-card. Under 900px: Menu button + full-width panel with focus trap
 > and scroll lock. Nav data comes from `lib/content`. Test keyboard behaviour.
@@ -223,7 +228,7 @@ Template prompt, swap the bracketed parts:
 |---|---|---|---|---|
 | T00 | Project memory | | | ☑ Done (`090c2a2`) |
 | T01 | Project scaffold | | | ☑ Done (`090c2a2`) |
-| T02 | Tooling and hooks | | | ☑ Done (`090c2a2`) |
+| T02 | Tooling and hooks | | | ☑ Done (`090c2a2`); hooks removed 2026-11-06 (D13) |
 | T03 | CI pipeline | | | ☑ Done (`090c2a2`) |
 | T04 | Design tokens | | | ☑ Done (`090c2a2`) |
 | T05 | Fonts and typography | | | ☑ Done (`090c2a2`) |
@@ -251,6 +256,7 @@ Template prompt, swap the bracketed parts:
 | T42 | SEO | | | ☑ Done (`a2f59e2`) |
 | T43 | Redirects | | | ⏸ Deferred until the site is stable (owner, 2026-11-05) |
 | T44 | Analytics and monitoring | | | ◐ Consent, analytics and legal done (`7ff991c`); Sentry pending |
-| T50 | Vercel (dev/testing) | | | ◐ Code ready, awaiting commit; owner connects Vercel (docs/04 §4a) |
+| T50 | Vercel (testing, from `main`) | | | ☑ Done (`f59bd22`, `eacd2f4`); live at bxtechnologies.vercel.app with password + noindex |
+| B01 | Brand refresh (logo, name, navy header, phone-width test) | | | ◐ Done locally (D10 to D12), awaiting commit |
 | T51 | Production VPS | | | ☐ |
 | T52 | Launch | | | ☐ |

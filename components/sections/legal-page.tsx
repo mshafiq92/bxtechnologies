@@ -78,7 +78,7 @@ export async function LegalPage({ slug }: { slug: LegalSlug }) {
           <aside>
             <nav
               aria-label={page.onThisPage}
-              className="flex flex-col border-t border-ink pt-4 xl:sticky xl:top-[104px]"
+              className="flex flex-col border-t border-ink pt-4 xl:sticky xl:top-(--sticky-aside-top)"
             >
               <Eyebrow as="span" tone="muted" className="mb-2" aria-hidden="true">
                 {page.onThisPage}

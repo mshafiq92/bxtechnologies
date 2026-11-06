@@ -38,7 +38,7 @@ export function organizationLd(): Thing {
     name: SITE_NAME,
     legalName: site.legalName,
     url: absoluteUrl("/"),
-    logo: absoluteUrl("/brand/bx-mark.png"),
+    logo: absoluteUrl("/brand/bx-favicon-512.png"),
     email: site.email,
     telephone: site.phone.href.replace(/^tel:/, ""),
     foundingDate: "2019-03",
@@ -55,7 +55,7 @@ function organizationRef(): Thing {
     "@id": ORG_ID(),
     name: SITE_NAME,
     url: absoluteUrl("/"),
-    logo: absoluteUrl("/brand/bx-mark.png"),
+    logo: absoluteUrl("/brand/bx-favicon-512.png"),
   };
 }
 

@@ -3,10 +3,10 @@ import type { ContactBandContent } from "@/lib/schemas/content";
 
 export const aboutPage = {
   hero: {
-    eyebrow: "About bX",
+    eyebrow: "About BX",
     title: "An engineering company that stayed an engineering company.",
     intro:
-      "bX Technologies was incorporated in Pakistan in March 2019 and has been building software for European and Asian clients since. We are engineers first: the people who scope your work are the people who write it.",
+      "BX Technologies was incorporated in Pakistan in March 2019 and has been building software for European and Asian clients since. We are engineers first: the people who scope your work are the people who write it.",
     metrics: [
       { value: "2019", label: "incorporated" },
       { value: "2", label: "locations, one team" },

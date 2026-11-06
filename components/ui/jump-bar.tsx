@@ -3,9 +3,9 @@ import { cn } from "@/lib/cn";
 export type JumpLink = { href: string; label: string };
 
 /**
- * Jump bar: sticky directly under the header (top 73px), white with hairlines, 52px,
+ * Jump bar: sticky directly under the header (top: header height + 1px), white with hairlines, 52px,
  * horizontally scrollable with a hidden scrollbar. Built from the page's section anchors
- * (it is derived, never stored). Its presence switches anchor offsets to 126px
+ * (it is derived, never stored). Its presence switches anchor offsets to header + jump bar
  * (see `data-jump-bar` in styles/globals.css).
  */
 export function JumpBar({

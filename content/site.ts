@@ -5,8 +5,8 @@
 import type { ContactBandContent, Office } from "@/lib/schemas/content";
 
 export const site = {
-  name: "bX Technologies",
-  legalName: "bX Technologies Pvt Ltd",
+  name: "BX Technologies",
+  legalName: "BX Technologies Pvt Ltd",
   incorporated: "March 2019",
   /** Footer brand blurb */
   blurb:

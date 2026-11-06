@@ -13,7 +13,7 @@ import { showInternalNotes } from "@/lib/site";
  */
 
 const proseLink =
-  "text-link underline decoration-hairline underline-offset-[3px] transition-colors hover:decoration-current";
+  "text-link underline decoration-hairline underline-offset-[3px] transition-colors hover:decoration-current [overflow-wrap:anywhere]";
 
 function H2({ id, children }: { id?: string; children: ReactNode }) {
   return (

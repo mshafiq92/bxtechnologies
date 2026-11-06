@@ -139,7 +139,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
             <Body components={articleComponents} />
           </article>
           <aside className="flex flex-col gap-8">
-            <div className="flex flex-col gap-8 xl:sticky xl:top-[104px]">
+            <div className="flex flex-col gap-8 xl:sticky xl:top-(--sticky-aside-top)">
               {toc.length > 0 && (
                 <nav
                   aria-label={page.onThisPage}

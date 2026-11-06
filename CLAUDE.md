@@ -1,6 +1,6 @@
-# bX Technologies website (v2)
+# BX Technologies website (v2)
 
-Public company website for bX Technologies Pvt Ltd, rebuilt from the v2 "bX Light" design.
+Public company website for BX Technologies Pvt Ltd, rebuilt from the v2 "bX Light" design.
 Current live site: https://bxtechnologies.net/ (used only for redirects and SEO carry-over).
 
 ## Hard rules
@@ -11,7 +11,7 @@ Current live site: https://bxtechnologies.net/ (used only for redirects and SEO 
 - **Keep the stack simple.** Don't add a dependency or service without asking. Decided: Resend for email.
   File storage is not decided; don't add one.
 - **No monorepo.** One standard Next.js app at the repo root, npm only (no pnpm/yarn/bun).
-- **Portable.** Vercel is for dev/testing only; production is Docker on a VPS. No Vercel-only features
+- **Portable.** Vercel is for testing only and deploys from `main` only (never `dev`, see `vercel.json`); production is Docker on a VPS. No Vercel-only features
   (Blob, KV, Edge Config, Vercel Analytics). Staging protection is our own `proxy.ts` basic auth, and
   noindex is automatic on Vercel (`lib/site.ts`). Setup steps: docs/04 §4a.
 
@@ -21,6 +21,22 @@ Current live site: https://bxtechnologies.net/ (used only for redirects and SEO 
   - `DESIGN-TOKENS-V2.md` values · `BUSINESS-RULES-V2.md` behaviour · `SCREENS-SITE-V2.md` page structure
   - `designs/*.dc.html` layout and **verbatim copy** (prototypes: never port `support.js`, `<x-dc>` or inline styles)
 - The v1 dark "Nocturne" design is dropped. Ignore every reference to `design_handoff_bx_platform/`.
+- Brand: `docs/brand/` (final logo package and `BX-Logo-Guide.pdf`, not published). Only the files the site
+  uses live in `public/brand/` and `app/` (icons).
+
+## Owner decisions that override the design handoff (2026-11-06)
+
+Keep these even where the handoff or the `.dc.html` designs say otherwise; don't "fix" them back.
+
+- **Name**: always "BX Technologies" (the designs write "bX"). Legal name "BX Technologies Pvt Ltd" in the
+  footer copyright line, Imprint and legal pages. Design file names (`bX v2 - ….dc.html`) stay as they are.
+- **Logo**: one layout site-wide, the horizontal compact logo (C1, outlined SVG). Header: white-text version
+  on navy, 60px tall (44px under 900px). Footer: same, 48px (40px under 640px). Share cards use the compact PNG.
+  Stacked, print and no-bars versions are not used on the site. No text next to the logo.
+- **Header**: navy (`bg-deep`, `data-tone="deep"`), white links, cyan CTA unchanged; mega menu and mobile panel
+  stay light (`data-tone="light"`). Height 84px from 900px, 72px below. Jump bar top, anchor offsets and
+  sticky side columns derive from `--header-height` in `styles/tokens.css`; change the height only there.
+  Phone browser bar colour (`themeColor`) matches the navy.
 - Plans: `docs/01` analysis · `02` stack · `03` implementation · `04` deployment · `05` ordered tasks (T00 to T52)
 
 ## Build rules
@@ -55,10 +71,10 @@ components/     ui/ primitives · layout/ header, footer, contact band · sectio
 content/        typed content (TS) + MDX for articles and legal pages
 lib/            content/ (only content entry point) · schemas/ (Zod) · forms/ · seo/
 styles/         tokens.css, globals.css
-public/         brand mark, client logos
+public/         brand/ logos the site uses (masters in docs/brand) · clients/ client logos
 scripts/        guardrails.mjs (token, colour-role and copy checks)
 tests/          Playwright e2e + visual
-docs/           planning docs
+docs/           planning docs · brand/ final logo package and guide
 ```
 
 ## Commands
@@ -72,7 +88,7 @@ npm run test        # Vitest
 npm run guard       # guard rails (raw colours, green on links/metrics, dashes, counts, blocked names)
 npm run check       # everything CI runs except build
 npm run test:e2e    # Playwright desktop 1440 + mobile 390: smoke, axe, interactions, forms (builds first, port 3100)
-npm run test:visual # full-page screenshots vs tests/e2e/__screenshots__/win32 (add -- --update-snapshots after review)
+npm run test:visual # full-page screenshots vs tests/e2e/__screenshots__/win32 (refresh with -- --update-snapshots=all, then check by eye)
 npm run lighthouse  # Lighthouse CI budgets against the current build (port 3200; build without SITE_NOINDEX)
 ```
 
@@ -83,4 +99,5 @@ npm run lighthouse  # Lighthouse CI budgets against the current build (port 3200
 - Work one task from `docs/05-prompts-and-tasks.md` at a time, in order.
 - Environment: Windows (PowerShell / Git Bash). Line endings are LF (`.gitattributes`).
 - Versions: Next 16, React 19, TypeScript 6.0, ESLint 9 (Next's plugins don't support 10 yet), Tailwind 4, Vitest 5.
-- Commits follow Conventional Commits (commitlint hook), e.g. `feat(T11): add buttons`.
+- Commits follow Conventional Commits, e.g. `feat(T11): add buttons`. There are no git hooks (Husky,
+  lint-staged and commitlint were removed on 2026-11-06); never add them back.

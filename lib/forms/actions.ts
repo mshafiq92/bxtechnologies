@@ -115,7 +115,7 @@ export async function submitEnquiry(_prev: FormState, formData: FormData): Promi
     text:
       `Thank you${enquiry.name ? `, ${enquiry.name}` : ""}.\n\n` +
       "An engineer will reply within one working day with a time proposal for a short technical call.\n\n" +
-      "bX Technologies\ninfo@bxtechnologies.net · +49 203 34689340\n",
+      "BX Technologies\ninfo@bxtechnologies.net · +49 203 34689340\n",
   });
   return { status: "success" };
 }
@@ -207,7 +207,7 @@ export async function submitApplication(_prev: FormState, formData: FormData): P
     text:
       `Thank you, ${application.name}.\n\n` +
       "A person on the hiring team will read your application, and you will hear back within a week, including if the answer is no.\n\n" +
-      "bX Technologies\njobs@bxtechnologies.net\n",
+      "BX Technologies\njobs@bxtechnologies.net\n",
   });
   return { status: "success" };
 }

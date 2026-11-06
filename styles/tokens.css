@@ -43,7 +43,8 @@
   --on-deep-accent: #5bc8f5; /* eyebrows, step numbers, links on navy */
   --deep-hairline: #1f3a55; /* dividers and chip borders on navy */
   --deep-panel: #0f2a44; /* filled boxes inside diagram cards */
-  --focus-ring: #006ea3; /* 2px outline, 2px offset; switches to on-deep-accent in navy bands */
+  --focus-ring-light: #006ea3; /* 2px outline, 2px offset on light surfaces */
+  --focus-ring: var(--focus-ring-light); /* switches to on-deep-accent in navy bands */
 
   /* [added] Introduced during design, awaiting approval (OPEN-DECISIONS #5).
      If rejected, change the values here only. */
@@ -81,11 +82,14 @@
   --content: 1200px; /* content max width (header/footer 1248 incl. gutters) */
   --gutter: clamp(16px, 4vw, 24px);
   --section: clamp(64px, 8vw, 96px); /* section padding top and bottom */
-  --header-height: 72px;
-  --jump-bar-top: 73px; /* sticky offset under the header */
+  --header-height: 72px; /* 84px from the nav breakpoint, see below */
   --jump-bar-height: 52px;
-  --anchor-offset: 72px; /* scroll-margin-top on pages without a jump bar */
-  --anchor-offset-jump: 126px; /* scroll-margin-top on pages with a jump bar */
+
+  /* Derived from the header height (plus its 1px bottom border), so they follow it */
+  --jump-bar-top: calc(var(--header-height) + 1px); /* sticky offset under the header */
+  --anchor-offset: var(--header-height); /* scroll-margin-top on pages without a jump bar */
+  --anchor-offset-jump: calc(var(--header-height) + var(--jump-bar-height) + 2px); /* with one */
+  --sticky-aside-top: calc(var(--header-height) + 32px); /* "On this page" and side columns */
 
   /* Motion */
   --duration: 150ms;
@@ -104,10 +108,22 @@
   );
 }
 
+/* Taller header from the nav breakpoint: 12px above and below the 60px logo */
+@media (width >= 900px) {
+  .theme-bx-light {
+    --header-height: 84px;
+  }
+}
+
 /* 2. Navy bands -------------------------------------------------------------- */
 
 .theme-bx-light [data-tone="deep"] {
   --focus-ring: var(--on-deep-accent);
+}
+
+/* Light panels opening out of a navy band (header mega menu and mobile menu) */
+.theme-bx-light [data-tone="deep"] [data-tone="light"] {
+  --focus-ring: var(--focus-ring-light);
 }
 
 /* 3. Tailwind theme ------------------------------------------------------------ */

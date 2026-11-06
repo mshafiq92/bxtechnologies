@@ -9,23 +9,23 @@ import { ogPalette as c } from "./og-palette";
 
 /*
  * Social share cards (Open Graph / X), rendered at build time by the opengraph-image.tsx files.
- * Layout follows the site: ground background, signature rule, brand mark, eyebrow, page heading.
+ * Layout follows the site: ground background, signature rule, brand logo, eyebrow, page heading.
  * Font: the renderer's built-in sans (it cannot read our woff2 files).
  */
 
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
 
-/** The brand mark as a data URL (read once per build). */
-let markPromise: Promise<string> | undefined;
-export function brandMarkDataUrl(): Promise<string> {
-  markPromise ??= readFile(join(process.cwd(), "public/brand/bx-mark.png")).then(
+/** The header logo (mark and name) as a data URL, read once per build. */
+let logoPromise: Promise<string> | undefined;
+function brandLogoDataUrl(): Promise<string> {
+  logoPromise ??= readFile(join(process.cwd(), "public/brand/bx-logo-horizontal-compact.png")).then(
     (buf) => `data:image/png;base64,${buf.toString("base64")}`,
   );
-  return markPromise;
+  return logoPromise;
 }
-/** Intrinsic size of public/brand/bx-mark.png. */
-export const MARK_RATIO = 560 / 462;
+/** Intrinsic size of public/brand/bx-logo-horizontal-compact.png. */
+const LOGO_RATIO = 672 / 240;
 
 /** Smaller type for long headings so they fit in three lines. */
 const titleSize = (title: string) => (title.length > 90 ? 52 : title.length > 60 ? 60 : 68);
@@ -33,8 +33,8 @@ const titleSize = (title: string) => (title.length > 90 ? 52 : title.length > 60
 export async function renderOgImage({ eyebrow, title }: { eyebrow: string; title: string }) {
   const site = getSiteSettings();
   const domain = site.email.split("@")[1];
-  const mark = await brandMarkDataUrl();
-  const markHeight = 64;
+  const logo = await brandLogoDataUrl();
+  const logoHeight = 88;
 
   return new ImageResponse(
     <div
@@ -63,10 +63,9 @@ export async function renderOgImage({ eyebrow, title }: { eyebrow: string; title
           padding: "56px 80px 52px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
+        <div style={{ display: "flex" }}>
           {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse needs <img> */}
-          <img src={mark} alt="" width={Math.round(markHeight * MARK_RATIO)} height={markHeight} />
-          <div style={{ fontSize: 34, letterSpacing: "-0.01em" }}>Technologies</div>
+          <img src={logo} alt="" width={Math.round(logoHeight * LOGO_RATIO)} height={logoHeight} />
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>

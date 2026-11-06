@@ -18,7 +18,7 @@ Every phase ends with a working, deployable preview. Exact prompts for each task
 | ID | Task | Output | Done when |
 |---|---|---|---|
 | 0.1 | Repo scaffold | Single standard Next.js app at the repo root (npm, TS strict, App Router), folder layout from `docs/02`, `output: "standalone"`, `Dockerfile` | `npm run dev` serves a blank page; `npm run build` and `docker build` pass |
-| 0.2 | Tooling | ESLint, Stylelint, Prettier, Husky, lint-staged, commitlint, `.editorconfig`, `.nvmrc`, `.env.example` | Hooks block a bad commit |
+| 0.2 | Tooling | ESLint, Stylelint, Prettier, `.editorconfig`, `.nvmrc`, `.env.example` (Husky, lint-staged and commitlint were added, then removed on 2026-11-06) | CI blocks a bad change |
 | 0.3 | CI | GitHub Actions: install, lint, typecheck, unit test, build | Green check on a PR |
 | 0.4 | Design tokens | `.theme-bx-light` CSS variables + Tailwind v4 `@theme` mapping; semantic aliases `--interaction`, `--status` | Foundations test page renders every token |
 | 0.5 | Fonts | Self-hosted Inter (400/500/600) + JetBrains Mono (400/500) via `next/font/local` | No external font requests |

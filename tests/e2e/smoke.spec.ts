@@ -15,7 +15,7 @@ for (const route of routes) {
 
     // One h1, a real title, and the shared chrome.
     await expect(page.locator("h1")).toHaveCount(1);
-    await expect(page).toHaveTitle(/bX Technologies/);
+    await expect(page).toHaveTitle(/BX Technologies/);
     await expect(page.getByRole("banner")).toBeVisible();
     await expect(page.getByRole("contentinfo")).toBeVisible();
 

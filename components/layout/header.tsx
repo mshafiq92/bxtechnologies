@@ -19,7 +19,7 @@ const MEGA_ID = "bx-mega-menu";
 const MOBILE_ID = "bx-mobile-nav";
 
 const navLink =
-  "relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-3.5 py-3 text-[15px] font-medium transition-colors hover:bg-ground hover:text-link";
+  "relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-3.5 py-3 text-[15px] font-medium transition-colors hover:bg-deep-panel hover:text-on-deep-accent";
 
 function ActiveUnderline() {
   return (
@@ -28,7 +28,8 @@ function ActiveUnderline() {
 }
 
 /**
- * Sticky site header (BxHeader.dc.html): 72px, logo, nav, primary CTA.
+ * Sticky site header (BxHeader.dc.html): 72px on phones, 84px from 900px, logo, nav, CTA. Navy bar with the white
+ * logo (owner decision 2026-11-06, the design has it white); the mega menu and mobile panel stay light.
  * ≥900px: Services opens a mega menu on hover or focus; it closes on header mouse-leave,
  * hovering or focusing another item, Escape, or focus leaving the header.
  * <900px: a Menu button toggles a full-width panel with focus trap and scroll lock.
@@ -134,10 +135,11 @@ export function Header({ nav }: { nav: Navigation }) {
       onMouseLeave={closeMega}
       onBlur={onHeaderBlur}
       onKeyDown={onHeaderKeyDown}
-      className="sticky top-0 z-30 border-b border-hairline bg-surface"
+      data-tone="deep"
+      className="sticky top-0 z-30 border-b border-deep-hairline bg-deep"
     >
       <div className="mx-auto flex h-(--header-height) max-w-wide items-center gap-8 px-(--gutter)">
-        <Logo priority onClick={closeAll} />
+        <Logo tone="deep" placement="header" priority onClick={closeAll} />
 
         {/* Desktop navigation (≥900px) */}
         <nav aria-label="Main" className="ml-auto hidden nav:block">
@@ -152,7 +154,10 @@ export function Header({ nav }: { nav: Navigation }) {
                 aria-expanded={megaOpen}
                 aria-controls={MEGA_ID}
                 aria-current={active === "services" ? "page" : undefined}
-                className={cn(navLink, servicesHighlighted ? "text-link" : "text-ink")}
+                className={cn(
+                  navLink,
+                  servicesHighlighted ? "text-on-deep-accent" : "text-on-deep",
+                )}
               >
                 Services
                 <ChevronDownIcon />
@@ -163,6 +168,7 @@ export function Header({ nav }: { nav: Navigation }) {
               <div
                 id={MEGA_ID}
                 hidden={!megaOpen}
+                data-tone="light"
                 className="absolute top-full right-0 left-0 border-b border-hairline bg-surface shadow-card"
               >
                 <div className="mx-auto grid max-w-wide grid-cols-4 gap-8 px-(--gutter) py-8">
@@ -220,7 +226,7 @@ export function Header({ nav }: { nav: Navigation }) {
                   onFocus={closeMega}
                   onClick={closeAll}
                   aria-current={active === item.key ? "page" : undefined}
-                  className={cn(navLink, "text-ink")}
+                  className={cn(navLink, "text-on-deep")}
                 >
                   {item.label}
                   {active === item.key && <ActiveUnderline />}
@@ -250,7 +256,7 @@ export function Header({ nav }: { nav: Navigation }) {
           onClick={() => setMenuOpen((open) => !open)}
           aria-expanded={menuOpen}
           aria-controls={MOBILE_ID}
-          className="ml-auto h-11 min-w-11 rounded-md border border-strong bg-surface px-4 text-[15px] font-semibold text-ink nav:hidden"
+          className="ml-auto h-11 min-w-11 rounded-md border border-deep-border px-4 text-[15px] font-semibold text-on-deep transition-colors hover:bg-deep-panel nav:hidden"
         >
           {menuOpen ? "Close" : "Menu"}
         </button>
@@ -261,6 +267,7 @@ export function Header({ nav }: { nav: Navigation }) {
         id={MOBILE_ID}
         ref={mobilePanelRef}
         hidden={!menuOpen}
+        data-tone="light"
         className="max-h-[calc(100dvh-var(--header-height)-1px)] overflow-y-auto border-t border-hairline bg-surface px-4 pt-2 pb-6 nav:hidden"
       >
         <nav aria-label="Main" className="flex flex-col gap-4">

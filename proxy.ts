@@ -14,7 +14,7 @@ export function proxy(request: NextRequest) {
   return new NextResponse("Authentication required.", {
     status: 401,
     headers: {
-      "WWW-Authenticate": 'Basic realm="bX Technologies staging", charset="UTF-8"',
+      "WWW-Authenticate": 'Basic realm="BX Technologies staging", charset="UTF-8"',
       "X-Robots-Tag": "noindex, nofollow",
       "Cache-Control": "no-store",
     },

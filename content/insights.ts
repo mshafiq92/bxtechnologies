@@ -15,7 +15,7 @@ export const insightCategories: InsightCategory[] = [
 
 export const authors: Author[] = [
   // OPEN-DECISIONS #7: real author name pending.
-  { slug: "ai-engineering-author", name: "[Author name]", role: "AI engineering, bX Technologies" },
+  { slug: "ai-engineering-author", name: "[Author name]", role: "AI engineering, BX Technologies" },
 ];
 
 export const insights: InsightInput[] = [

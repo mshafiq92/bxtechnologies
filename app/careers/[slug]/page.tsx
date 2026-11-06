@@ -135,7 +135,7 @@ export default async function RoleDetailPage({ params }: { params: Promise<Param
           </article>
 
           <aside>
-            <div className="flex flex-col gap-6 xl:sticky xl:top-[104px]">
+            <div className="flex flex-col gap-6 xl:sticky xl:top-(--sticky-aside-top)">
               <div className="flex flex-col gap-5 rounded-lg border border-hairline bg-ground p-6">
                 <Eyebrow as="h2">{page.glanceTitle}</Eyebrow>
                 <dl className="flex flex-col">

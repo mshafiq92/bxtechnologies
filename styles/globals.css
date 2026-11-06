@@ -57,7 +57,7 @@
     color: var(--text);
   }
 
-  /* Anchor offsets: 72px under the header, 126px when the page has a jump bar */
+  /* Anchor offsets: under the header, or under header + jump bar when the page has one */
   :where([id]) {
     scroll-margin-top: var(--anchor-offset);
   }
@@ -69,6 +69,10 @@
   /* Navy bands set their own text colour */
   [data-tone="deep"] {
     color: var(--on-deep);
+  }
+
+  [data-tone="deep"] [data-tone="light"] {
+    color: var(--text);
   }
 }
 

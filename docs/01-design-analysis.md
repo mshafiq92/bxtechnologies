@@ -11,7 +11,7 @@ Source: `.claude/design-handoff/design_handoff_bx_v2/` (v2, "bX Light" theme). A
 | Foundations sheet (`bX DS - Foundations.dc.html`) | Visual token + component reference, not a route |
 | Admin console v2 screens | 4 (Page editor, Services, Media library, Site settings). Out of scope for now |
 | Spec docs | README, DESIGN-TOKENS-V2, BUSINESS-RULES-V2, SCREENS-SITE-V2, BUILD-PLAN-V2, OPEN-DECISIONS, DATA-MODEL, SCREENS-CONSOLE(-V2). References to the v1 package are ignored (v1 dropped) |
-| Assets | `bx-mark.png` (raster crop), 8 client logos (colour + mono) |
+| Assets | `bx-mark.png` (raster crop), 8 client logos (colour + mono). *Replaced 2026-11-06 by the final logo set in `docs/brand/`* |
 | Screenshots | 18 top-of-page captures (01 to 18) |
 | `support.js`, `image-slot.js`, `_ds/` | Prototype runtime and console "Industry" design system. **Not production code; do not port** |
 
@@ -66,7 +66,7 @@ All values live in `DESIGN-TOKENS-V2.md`; the acceptance criteria forbid hex val
 ## 4. Reusable components identified
 
 **Chrome**: Header (+ MegaMenu desktop ≥900px, Menu panel <900px), ContactBand, Footer.
-**Layout**: Container (1200px), Section (alternating bg/surface/navy), JumpBar (sticky at 73px), HeroGridBackdrop.
+**Layout**: Container (1200px), Section (alternating bg/surface/navy), JumpBar (sticky directly under the header), HeroGridBackdrop.
 **Hero variants**: `heroDiagram` (Home, Service Detail), `heroGrid` (Services, Industries, Work, Insights), `heroPhoto` (About, Careers; collapses to text-only when no photo), plain title block (Article, Role, Apply, Contact, legal).
 **Content**: OpenColumn (pillar), Card, ProjectCard, ServiceRow, MetricInline / MetricLarge, StatusDot, Chip/Tag, Eyebrow, SignatureRule, DiagramCard, ArchitectureDiagram, Timeline (navy, numbered), EngagementModels, IndustryTiles, InsightRow, FeaturedArticle, FAQ accordion, LogoMarquee, Breadcrumb, OnThisPage (sticky aside), ShareLinks, Avatar (initials fallback), PhotoSlot.
 **Forms**: Input, Select, Textarea, RadioPill group (`role="radio"`), Checkbox, FileDropZone, FormCard, FieldError, SuccessMessage.
@@ -93,7 +93,7 @@ All values live in `DESIGN-TOKENS-V2.md`; the acceptance criteria forbid hex val
 - Mega menu: opens on hover/focus, closes on header mouse-leave, other nav hover, or Escape.
 - FAQ: first open, one at a time, `aria-expanded`.
 - Forms: radio pills as `role="radio"`, work-email validation on Contact, inline `Error:` text in `#B42318`.
-- Anchors: `scroll-margin-top` 126px (with jump bar) / 72px (without).
+- Anchors: `scroll-margin-top` = header height (+ jump bar when present); derived from `--header-height` in `styles/tokens.css`.
 - Acceptance: match designs at **1440px and 390px**, axe clean, all targets ≥44px, visible focus everywhere.
 
 ## 7. Decisions taken (2026-11-04)
@@ -107,13 +107,25 @@ All values live in `DESIGN-TOKENS-V2.md`; the acceptance criteria forbid hex val
 | Repo | Single standard Next.js repo, npm, **no monorepo** |
 | Hosting | Vercel for development and testing only; production on a VPS (DigitalOcean / Hostinger / similar, to be decided) |
 
+### Later owner decisions (2026-11-06)
+
+These override the design handoff where they differ.
+
+| Topic | Decision |
+|---|---|
+| Name | "BX Technologies" everywhere (the designs write "bX"); legal name "BX Technologies Pvt Ltd" in the footer copyright line, Imprint and legal pages |
+| Logo | Final set in `docs/brand/` (guide: `BX-Logo-Guide.pdf`). The site uses one layout, the horizontal compact logo, in colour or with white text; stacked and print versions are not used on the site |
+| Header | Navy with the white logo (the design has it white), 84px from 900px and 72px below; mega menu and mobile panel stay light |
+| Git hooks | Husky, lint-staged and commitlint removed; the owner commits |
+| Vercel | Test deployment from `main` only |
+
 ## 8. Gaps and risks found
 
 | # | Gap | Impact | Action |
 |---|---|---|---|
 | G1 | **`teamData.js`** (stack grounding source) is not in the repo | Low: "What we build with" lists can't be cross-checked | Treat the design's stack lists as approved unless the file is shared |
 | G2 | 9 of 12 Service Detail pages have **no content** | Template only; those rows link to contact until written | Content task (OPEN-DECISIONS #4) |
-| G3 | Raster logo mark only | Blurry on high-DPI; no favicon set | Supply SVG mark (OPEN-DECISIONS #8) |
+| G3 | Raster logo mark only | Blurry on high-DPI; no favicon set | **Resolved 2026-11-06**: final outlined SVG logo set and favicons (`docs/brand/`) |
 | G4 | Form back end needed without a CMS | Contact / Apply / Subscribe need to send somewhere | Resend email; CV as attachment until file storage is decided |
 | G5 | Footer social links point to generic `facebook.com` / `x.com` | Wrong links at launch | Supply real profile URLs |
 | G6 | Legal text carried over from the old site | Must match the new hosting, analytics and form processors (GDPR) | Legal review before launch |

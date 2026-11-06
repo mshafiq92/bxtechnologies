@@ -16,8 +16,8 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "bX Technologies",
-    template: "%s | bX Technologies",
+    default: "BX Technologies",
+    template: "%s | BX Technologies",
   },
   description:
     "AI-first engineering partner. We design, build and operate custom software, web, mobile and agentic AI systems for clients in Europe and Asia.",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F4F8FB", // guard-ignore: browser UI colour must be a literal (matches --bg)
+  themeColor: "#0A1F33", // guard-ignore: browser UI colour must be a literal (matches --brand-deep, the header)
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

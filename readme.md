@@ -1,6 +1,6 @@
-# bX Technologies website
+# BX Technologies website
 
-The public company website for **bX Technologies Pvt Ltd**, rebuilt on the v2 "bX Light" design for
+The public company website for **BX Technologies Pvt Ltd**, rebuilt on the v2 "bX Light" design for
 clearer presentation of our services, better user experience and current web standards.
 
 - Live site today: <https://bxtechnologies.net/>

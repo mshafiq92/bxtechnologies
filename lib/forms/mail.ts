@@ -27,7 +27,7 @@ function getClient(): Resend | null {
 
 export function mailConfig() {
   return {
-    from: process.env.MAIL_FROM || "bX Technologies <website@bxtechnologies.net>",
+    from: process.env.MAIL_FROM || "BX Technologies <website@bxtechnologies.net>",
     enquiries: process.env.MAIL_TO_ENQUIRIES || "info@bxtechnologies.net",
     careers: process.env.MAIL_TO_CAREERS || "jobs@bxtechnologies.net",
   };

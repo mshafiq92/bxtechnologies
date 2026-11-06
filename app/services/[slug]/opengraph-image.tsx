@@ -3,7 +3,7 @@ import { ogContentType, ogSize, renderOgImage } from "@/lib/seo/og-image";
 
 /* Share card per page, prerendered for every published slug (see lib/seo/og-image.tsx). */
 
-export const alt = "A bX Technologies service";
+export const alt = "A BX Technologies service";
 export const size = ogSize;
 export const contentType = ogContentType;
 

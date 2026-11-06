@@ -250,7 +250,10 @@ describe("content fidelity", () => {
     for (const [design, mdxPath] of pairs) {
       const html = readFileSync(join(process.cwd(), D + design!), "utf8");
       const article = /<article[^>]*>([\s\S]*?)<\/article>/.exec(html)![1]!;
-      const paragraphs = [...article.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) => norm(m[1]!));
+      // The brand is written "BX" since the 2026-11-06 logo refresh; the designs still say "bX".
+      const paragraphs = [...article.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) =>
+        norm(m[1]!).replace(/\bbX\b/g, "BX"),
+      );
       const mdx = readFileSync(join(process.cwd(), mdxPath!), "utf8").replace(
         /\{\/\*[\s\S]*?\*\/\}/g,
         "",

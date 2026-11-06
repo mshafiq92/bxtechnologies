@@ -1,5 +1,5 @@
 # =============================================================================
-# bX Technologies website — .gitignore
+# BX Technologies website — .gitignore
 # Stack: single Next.js (App Router) app with npm, TypeScript, Tailwind,
 #        Vitest, Playwright. Dev/test on Vercel; production in Docker on a VPS.
 # Note: package-lock.json IS committed (do not ignore it).

@@ -91,7 +91,7 @@ export const articleComponents: MDXComponents = {
   a: ({ href = "", ...props }: ComponentPropsWithoutRef<"a">) => (
     <SmartLink
       href={href}
-      className="text-link underline decoration-1 underline-offset-2 transition-colors hover:text-ink"
+      className="[overflow-wrap:anywhere] text-link underline decoration-1 underline-offset-2 transition-colors hover:text-ink"
       {...props}
     />
   ),
