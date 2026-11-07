@@ -41,7 +41,7 @@ export function organizationLd(): Thing {
     logo: absoluteUrl("/brand/bx-favicon-512.png"),
     email: site.email,
     telephone: site.phone.href.replace(/^tel:/, ""),
-    foundingDate: "2019-03",
+    foundingDate: "2019-09-20",
     description: site.blurb,
     address: getOffices().map(postalAddress),
     sameAs: profileUrls(),

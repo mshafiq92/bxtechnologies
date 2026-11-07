@@ -5,7 +5,8 @@
  *
  * Privacy and Cookies were rewritten on 2026-11-05 to match the real build (one cookie, Plausible
  * after consent, Turnstile, Resend). Imprint was added the same day (not in the design handoff).
- * Every legal page still needs legal review before launch (see the internal notes in each MDX file).
+ * Every legal page was revised with the owner on 2026-11-07 (company details, governing law,
+ * GDPR and TDDDG legal bases). Legal review before launch: see the checklist comment at the top of each MDX file.
  */
 import type { ContactBandContent } from "@/lib/schemas/content";
 
@@ -21,16 +22,15 @@ type LegalPage = {
   contactBand: ContactBandContent;
 };
 
-const lastUpdated = "2026-09-17";
-/** Privacy and Cookies rewritten, Imprint added. */
-const revised = "2026-11-05";
+/** Every legal page was revised with the owner. */
+const revised2 = "2026-11-07";
 
 export const legalPages: Record<LegalSlug, LegalPage> = {
   privacy: {
     title: "Privacy policy",
     intro:
       "What we collect when you contact us, apply for a job or read this site, why we hold it, and how to have it removed.",
-    lastUpdated: revised,
+    lastUpdated: revised2,
     appliesTo: "bxtechnologies.net",
     toc: [
       { id: "who", label: "Who we are" },
@@ -62,7 +62,7 @@ export const legalPages: Record<LegalSlug, LegalPage> = {
     title: "Terms & conditions",
     intro:
       "The terms for using this website, and the ground rules that sit underneath every engagement before a contract is signed.",
-    lastUpdated,
+    lastUpdated: revised2,
     appliesTo: "bxtechnologies.net",
     toc: [
       { id: "who", label: "Who you are contracting with" },
@@ -95,7 +95,7 @@ export const legalPages: Record<LegalSlug, LegalPage> = {
     title: "Cookies policy",
     intro:
       "The cookie this site sets, how our analytics works without cookies, and how to change your choice.",
-    lastUpdated: revised,
+    lastUpdated: revised2,
     appliesTo: "bxtechnologies.net",
     toc: [
       { id: "what", label: "What a cookie is" },
@@ -124,8 +124,8 @@ export const legalPages: Record<LegalSlug, LegalPage> = {
   imprint: {
     title: "Imprint",
     intro:
-      "Who is behind this website, how to reach us and where the company is registered, as German law requires (Impressum).",
-    lastUpdated: revised,
+      "Who is behind this website, how to reach us and where the company is registered (Impressum).",
+    lastUpdated: revised2,
     appliesTo: "bxtechnologies.net",
     toc: [
       { id: "provider", label: "Provider" },

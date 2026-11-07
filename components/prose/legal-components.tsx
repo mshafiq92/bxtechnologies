@@ -97,14 +97,16 @@ function ImprintDetails() {
   const site = getSiteSettings();
   const i = getImprint();
   const rows: [string, ReactNode | null][] = [
-    ["Company", site.legalName],
+    ["Company", i.registeredName],
     ["Legal form", i.legalForm],
     ["Registered office", i.registeredOffice],
-    ["Office in Germany", i.germanOffice],
+    ["Address in Germany", i.germanAddress],
     ["Represented by", i.representedBy],
+    ["EU representative (Art. 27 GDPR)", i.euRepresentative],
     ["Register", i.register],
     ["Registration number", i.registrationNumber],
-    ["VAT ID", i.vatId],
+    ["Incorporated", i.incorporated],
+    ["Tax number", i.taxNumber],
     [
       "Contact",
       <>

@@ -15,7 +15,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
-    "BX Technologies was incorporated in Pakistan in March 2019 and builds software for European and Asian clients from Islamabad and Duisburg. Engineers first: the people who scope your work write it.",
+    "BX Technologies was incorporated in Pakistan in September 2019 and builds software for European and Asian clients from Islamabad and Duisburg. Engineers first: the people who scope your work write it.",
   path: "/about",
 });
 

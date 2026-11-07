@@ -232,10 +232,9 @@ describe("Legal pages", () => {
 describe("content fidelity", () => {
   it("keeps the design's paragraph breaks in every MDX file", () => {
     const D = ".claude/design-handoff/design_handoff_bx_v2/designs/";
-    // Privacy and Cookies were rewritten on 2026-11-05 (client-approved) to match the real build,
-    // so they no longer follow the design copy paragraph for paragraph. Terms still does.
+    // The legal pages were revised with the owner (Privacy and Cookies on 2026-11-05, Terms on
+    // 2026-11-07), so they no longer follow the design copy paragraph for paragraph. The article does.
     const pairs = [
-      ["bX v2 - Terms.dc.html", "content/legal/terms.mdx"],
       [
         "bX v2 - Article.dc.html",
         "content/insights/agent-projects-fail-at-the-evaluation-harness.mdx",

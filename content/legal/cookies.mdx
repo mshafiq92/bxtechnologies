@@ -2,8 +2,16 @@
 Cookies policy prose. Started from bX v2 - Cookies.dc.html (carried over from v1) and rewritten
 on 2026-11-05 to match the real build: one essential cookie (bx_consent), Plausible analytics
 (cookieless, loaded only after consent) and Cloudflare Turnstile on forms.
+Revised 2026-11-07 with the owner: legal basis for each item (GDPR, TDDDG), "Set by" column.
 Title block, table of contents and contact band: content/pages/legal.ts.
 Components (H2, Note, DataTable) are provided by the legal renderer.
+Before launch (moved from the on-page reminder card, 2026-11-07): This page matches the code:
+`bx_consent` is the only cookie the site sets, Plausible loads only after Accept, and Turnstile runs
+only on pages with a form. Once the site is on your hosting, scan it with the browser developer
+tools and correct the table if your host, Cloudflare or Plausible adds anything by default. If the
+domain is put behind the Cloudflare proxy, check for its bot cookie (__cf_bm). If Sentry is added
+(T44), update this page and the privacy policy first. Have counsel confirm the Turnstile paragraph
+and its legal basis.
 */}
 
 <Note title="Short version">
@@ -18,15 +26,16 @@ A cookie is a small text file a website asks your browser to store, so that it c
 
 <H2 id="essential">Essential cookie</H2>
 
-This one is set because the banner needs to remember what you chose. It holds only your choice, carries no personal data, and requires no consent.
+This one is set because the banner needs to remember what you chose. It holds only your choice and carries no personal data. Because it is strictly necessary to remember the choice you made, it needs no consent (§ 25(2) No. 2 of the German Telecommunications Digital Services Data Protection Act, TDDDG).
 
 <DataTable
   label="Essential cookie"
-  columns={["Name", "Purpose", "Expires"]}
+  columns={["Name", "Set by", "Purpose", "Expires"]}
   codeColumn={0}
   rows={[
     [
       "bx_consent",
+      "This site",
       "Records your cookie choice so the banner does not ask again on every page.",
       "12 months",
     ],
@@ -37,11 +46,11 @@ This one is set because the banner needs to remember what you chose. It holds on
 
 We count page views with Plausible Analytics, a service run from the European Union by Plausible Insights OÜ in Estonia. It does not set cookies or use local storage, and it does not build a profile of you. It counts page views, referring sites, browser and device type and approximate country, in aggregate. Your IP address is used only to tell one day's visitors apart and is not stored.
 
-Even so, we load it only after you accept in the banner. Until then, and if you decline, no analytics code runs on this site.
+Even so, we load it only after you accept in the banner, and your consent is the legal basis for it (Art. 6(1)(a) GDPR and § 25(1) TDDDG). Until then, and if you decline, no analytics code runs on this site.
 
 <H2 id="forms">Spam protection on forms</H2>
 
-Our contact, application and digest forms use Cloudflare Turnstile to check that a submission comes from a person. It runs only on pages with a form, processes your IP address and browser characteristics for that check, and sets no cookies on this site. It keeps the forms usable, so it is not something the banner switches off.
+Our contact, application and digest forms use Cloudflare Turnstile to check that a submission comes from a person. It runs only on pages with a form, processes your IP address and browser characteristics for that check, and sets no cookies on this site. It keeps the forms usable, so it is not something the banner switches off: the check is necessary to protect the forms from abuse, which is our legitimate interest (Art. 6(1)(f) GDPR).
 
 <H2 id="none">What we do not use</H2>
 
@@ -63,10 +72,3 @@ Every major browser lets you see the cookies a site has set, delete them, and re
 <H2 id="changes">Changes</H2>
 
 If we add or remove a cookie, this page is updated before the change goes live and the date at the top changes with it. Where a new cookie needs consent, the banner will ask again rather than relying on your earlier choice. What we do with the data collected is covered by our [privacy policy](/privacy).
-
-<Note title="Needs a real audit" tone="warning" internal>
-  This page matches the code: `bx_consent` is the only cookie the site sets, Plausible loads only
-  after Accept, and Turnstile runs only on pages with a form. Once the site is on your hosting,
-  scan it with the browser developer tools and correct the table if your host, Cloudflare or
-  Plausible adds anything by default. Have counsel confirm the Turnstile paragraph.
-</Note>

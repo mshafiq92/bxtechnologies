@@ -1,17 +1,14 @@
 {/*
 Imprint (Impressum) prose. Not in the design handoff: added 2026-11-05 because German law (§ 5 DDG)
 requires one for a business with a German presence. Same layout as the other legal pages.
-Company details come from `imprint` in content/site.ts (ImprintDetails, ContentResponsible).
+Company details come from `imprint` in content/site.ts (ImprintDetails, ContentResponsible),
+filled in on 2026-11-07 from the SECP certificate and the owner. Law references were kept out of
+the visible text (owner, 2026-11-07); the page intro already says what it is.
 */}
-
-<Note title="Short version">
-  Who is behind this website, how to reach us and where the company is registered, as German law
-  requires of every business website.
-</Note>
 
 <H2 id="provider">Provider</H2>
 
-This website is provided by the company below, which is responsible for it under § 5 of the German Digital Services Act (DDG).
+This website is provided by:
 
 <ImprintDetails />
 
@@ -28,11 +25,3 @@ We work with businesses, not consumers. We are not obliged and not willing to ta
 <H2 id="more">Privacy and terms</H2>
 
 How we handle personal data is set out in our [privacy policy](/privacy), and the terms for using this site are in our [terms & conditions](/terms).
-
-<Note title="Needs your details" tone="warning" internal>
-  Fill in every "To be supplied" line in `imprint` in content/site.ts before launch: the registered
-  office and Duisburg postal addresses, the managing director(s), the SECP registration number
-  (CUIN), the VAT ID if there is one, and the person responsible for content with a postal address.
-  An imprint with gaps is not compliant. Have counsel confirm the wording, in particular whether the
-  German office makes a German-language version advisable.
-</Note>
