@@ -11,7 +11,7 @@ export const servicesPage = {
     intro:
       "We are an engineering firm, not a marketplace of unrelated skills. The AI work is built by the same people who maintain the systems it plugs into, which is why it survives contact with production.",
     metrics: [
-      { value: "2019", label: "delivering since" },
+      { value: "80+", label: "projects delivered" },
       { value: "4", label: "countries served", placeholder: true },
       { value: "94%", label: "on-time delivery", placeholder: true },
     ],

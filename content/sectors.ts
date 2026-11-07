@@ -1,68 +1,52 @@
 /*
  * Sectors with delivered work (Industries page "Sectors with work behind them").
- * Copy verbatim from bX v2 - Industries.dc.html. Figures are placeholders (OPEN-DECISIONS #3).
+ * Revised 2026-11-07 with the owner: only sectors BX has delivered in; no figures and no region
+ * tags (most work is under NDA, stated once on the page). `services` are service slugs from
+ * content/services.ts, shown as "Services we bring" links (validated in lib/content tests).
  */
 import type { SectorInput } from "@/lib/schemas/content";
 
 export const sectors: SectorInput[] = [
   {
-    slug: "insurance",
-    name: "Insurance",
-    region: "EU · NDA",
-    body: "Claims handling, first-notice-of-loss intake and document-heavy back-office work. The constraint is never the model. It is that a decision has to be explainable to a regulator and reversible by a human.",
-    chips: ["Claims triage", "Document extraction", "Fraud signals", "Policy system integration"],
-    metric: { value: "68%", label: "faster first response on triaged claims", placeholder: true },
-  },
-  {
-    slug: "automotive",
-    name: "Automotive",
-    region: "DE · NDA",
-    body: "Infotainment and connected-vehicle validation alongside a German partner, working inside the client's pipeline and release process rather than beside it. Long programmes, strict traceability, per-build rather than per-release testing.",
-    chips: ["Test automation", "Performance", "API testing", "Embedded squads"],
-    metric: { value: "2,400", label: "automated cases run per build", placeholder: true },
-  },
-  {
-    slug: "utilities-energy",
-    name: "Utilities & energy",
-    region: "EU · NDA",
-    body: "Field telemetry and reporting for operators who have to act on what they see. Alerting rules tuned with the control room, because an alert nobody trusts is worse than no alert.",
-    chips: ["IoT ingestion", "Time-series", "Reporting", "Data quality"],
-    metric: { value: "18k", label: "devices reporting into one view", placeholder: true },
-  },
-  {
     slug: "fintech",
     name: "Fintech",
-    region: "EU · NDA",
-    body: "Settlement flows, payment integrations and on-chain work where the review matters more than the build. Everything that touches money gets an independent audit before launch, including ours.",
-    chips: ["Smart contracts", "Payments", "Indexing", "Security review"],
-    metric: { value: "2", label: "independent audits before go-live", placeholder: true },
+    body: "Payment integrations, settlement flows and blockchain systems where the review matters as much as the build. Anything touching money is security-reviewed before it goes live.",
+    chips: ["Payments", "Settlement", "Smart contracts", "Security review"],
+    services: ["blockchain", "custom-software", "cloud-devops"],
   },
   {
-    slug: "retail-logistics",
-    name: "Retail & logistics",
-    region: "APAC · EU · NDA",
-    body: "Forecasting, stock movement and the migrations underneath them. The hard part is rarely the algorithm. It is a master data set that three systems disagree about.",
-    chips: ["Demand forecasting", "MLOps", "Legacy migration", "Dashboards"],
-    metric: { value: "31%", label: "fewer stockouts at constant inventory", placeholder: true },
+    slug: "telecom",
+    name: "Telecom",
+    body: "Systems and test automation for telecom and connected-device products, built inside the client's own pipeline and release process, with full traceability.",
+    chips: ["Test automation", "API testing", "Performance", "Embedded squads"],
+    services: ["qa-test-automation", "cloud-devops", "dedicated-teams"],
+  },
+  {
+    slug: "saas-mvp",
+    name: "SaaS and MVP builds",
+    body: "The smallest build that proves the idea, shipped to real users, then the architecture, billing and cloud setup that let a SaaS product grow without a rewrite later on.",
+    chips: ["MVP build", "Multi-tenant SaaS", "Billing", "Product analytics"],
+    services: ["custom-software", "web-mobile", "cloud-devops"],
+  },
+  {
+    slug: "ecommerce",
+    name: "eCommerce",
+    body: "Online stores, payment and inventory integrations, and the dashboards small retailers run on, kept fast, secure and simple enough for their own team to update every day.",
+    chips: ["Online stores", "Payments", "Inventory sync", "Dashboards"],
+    services: ["web-mobile", "custom-software", "data-engineering"],
   },
   {
     slug: "education",
     name: "Education",
-    region: "PK · NDA",
-    body: "Student-facing systems and assistants that answer from policy rather than from memory. Answers cite the handbook section they came from, and anything outside it escalates to a person.",
-    chips: ["RAG", "Portal integration", "Escalation design"],
-    metric: {
-      value: "24/7",
-      label: "admissions coverage without extra headcount",
-      placeholder: true,
-    },
+    body: "Student portals and AI assistants that answer from policy rather than from memory. Every answer cites the source it came from, and anything outside it goes to a person.",
+    chips: ["Student portals", "RAG assistants", "Escalation design"],
+    services: ["generative-ai", "agentic-ai", "web-mobile"],
   },
   {
     slug: "construction-facilities",
     name: "Construction & facilities",
-    region: "DE · NDA",
-    body: "Bid teams and service operations replacing phone-and-spreadsheet processes. Tender documents read and turned into a compliance matrix; scheduling and invoicing put on one system.",
+    body: "Bid teams and service operations moving off phone calls and spreadsheets. Tender documents become a compliance matrix, and scheduling and invoicing run on one system.",
     chips: ["Document agents", "Scheduling", "Dispatch", "Customer portals"],
-    metric: { value: "9 hrs", label: "saved per tender response", placeholder: true },
+    services: ["agentic-ai", "custom-software", "digital-transformation"],
   },
 ];

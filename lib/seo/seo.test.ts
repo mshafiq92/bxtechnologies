@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   getInsight,
   getPublishedInsights,
-  getRole,
+  getAllRoles,
   getRolesWithDetail,
   getServicesWithDetail,
 } from "@/lib/content";
@@ -110,7 +110,7 @@ describe("structured data", () => {
       datePublished: insight.date,
     });
 
-    const job = jobPostingLd(getRole("ai-engineer")!)!;
+    const job = jobPostingLd(getAllRoles().find((r) => r.slug === "ai-engineer")!)!;
     expect(job).toMatchObject({
       "@type": "JobPosting",
       title: "AI Engineer",
@@ -123,7 +123,7 @@ describe("structured data", () => {
   });
 
   it("JobPosting is skipped for a role without a posting date", () => {
-    const role = { ...getRole("ai-engineer")!, datePosted: undefined };
+    const role = { ...getAllRoles().find((r) => r.slug === "ai-engineer")!, datePosted: undefined };
     expect(jobPostingLd(role)).toBeNull();
   });
 });

@@ -3,6 +3,7 @@
  * (bX v2 - Careers.dc.html, bX v2 - Role Detail.dc.html, bX v2 - Apply.dc.html).
  * Roles live in content/roles.ts.
  */
+import type { HeroDiagram } from "@/components/ui/diagram-card";
 import type { ContactBandContent } from "@/lib/schemas/content";
 
 export const careersPage = {
@@ -10,15 +11,36 @@ export const careersPage = {
     eyebrow: "Careers",
     title: "Work on systems that go into production.",
     intro:
-      "We are a small engineering team in Islamabad working with European clients. You will own components rather than tickets, talk to the people who use what you build, and see your work run against real load.",
+      "Build AI, software and cloud systems that run in production for real clients. You will own components rather than tickets, work directly with the people who use what you build, and grow with a team of 20+ people.",
     metrics: [
-      { value: "Islamabad", label: "office and hybrid" },
-      { value: "CET", label: "overlap with clients" },
+      { value: "20+", label: "engineers and specialists" },
+      { value: "Hybrid", label: "after probation" },
+      { value: "Islamabad", label: "office" },
     ],
+    /** Used while at least one role is published. */
     primaryCta: { label: "See open roles", href: "#roles" },
     secondaryCta: { label: "Send a speculative CV", href: "/careers/apply", arrow: false },
-    /** OPEN-DECISIONS #2: real photo of bX people or offices. Null renders a text-only hero. */
+    /** Used while no role is published. */
+    primaryCtaNoRoles: { label: "Send your CV", href: "/careers/apply" },
+    secondaryCtaNoRoles: { label: "How we hire", href: "#process" },
+    /** OPEN-DECISIONS #2: real photo of BX people or offices. Until then the card below shows. */
     photo: null as { src: string; alt: string } | null,
+    /** Hero card while there is no photo (same style as the About glance card). */
+    glance: {
+      caption: "Working at BX",
+      entry: { t: "Islamabad office", d: "hybrid after probation" },
+      core: { t: "Client projects", d: "AI · software · cloud · QA" },
+      support: [
+        { t: "Teams", d: "4 to 6 people" },
+        { t: "Learning", d: "paid budget" },
+        { t: "Health", d: "cover · leave" },
+      ],
+      outcomes: [
+        { t: "Hiring", d: "four steps · about two weeks" },
+        { t: "Code test", d: "ninety minutes · you keep it" },
+      ],
+      status: { t: "Every application read by a person", d: "answer within a week" },
+    } satisfies HeroDiagram,
   },
   jumpLinks: [
     { href: "#roles", label: "Open roles" },
@@ -29,13 +51,21 @@ export const careersPage = {
   roles: {
     eyebrow: "Open roles",
     title: "Where we are hiring",
-    // Design note addressed to bX; replace once the live roles arrive.
-    note: "Placeholder listings until you send the live ones. Each links to a role page or straight to an application email.",
     speculative: {
       before: "Nothing that fits? Send your CV to",
       email: "jobs@bxtechnologies.net",
       after:
         "with a note on what you want to work on. We keep good applications on file and do contact people months later.",
+    },
+    /** Shown instead of the list while no role is published. */
+    empty: {
+      title: "No open positions right now",
+      text: "We are not hiring for a specific role at the moment, but we always read speculative applications. Send your CV with a note on what you want to work on, and we will get in touch when something fits.",
+      cta: { label: "Send a speculative CV", href: "/careers/apply" },
+      secondary: {
+        label: "Follow us on LinkedIn for new roles",
+        href: "https://linkedin.com/company/bx-technologies",
+      },
     },
   },
   life: {
@@ -46,19 +76,19 @@ export const careersPage = {
     items: [
       {
         title: "You own something",
-        text: "Components and services, not tickets. You decide how it is built, and you are the person who fixes it at 2am if it breaks, which is why you get to decide.",
+        text: "Components and services, not tickets. You decide how something is built, and you keep it running in production, which is why the decision is yours.",
       },
       {
-        title: "European working hours",
-        text: "Core overlap with CET, so afternoons are client time and mornings are yours. No night shifts.",
+        title: "Sensible working hours",
+        text: "Afternoons overlap with client teams and mornings are kept for focused work. No night shifts, and a working day that ends when it is meant to.",
       },
       {
         title: "Learning is budgeted",
-        text: "Certification and conference budget, and time inside the week for it. Several engineers moved into AI work this way rather than by hiring from outside.",
+        text: "A certification and conference budget, with time inside the working week to use it. Several of our engineers moved into AI work exactly this way.",
       },
       {
         title: "Health and leave",
-        text: "Health cover, paid annual leave and flexibility when life needs it. Hybrid after probation.",
+        text: "Health cover, paid annual leave and flexibility when life needs it. Hybrid working after probation, with the Islamabad office there when you want it.",
       },
     ],
   },
@@ -71,22 +101,22 @@ export const careersPage = {
       {
         number: "01",
         title: "Application review",
-        text: "A person reads it. You get an answer either way within a week.",
+        text: "A person reads every application, and you get an answer either way within a week of applying.",
       },
       {
         number: "02",
-        title: "Conversation with an engineer",
-        text: "Forty-five minutes on what you have built and how you approach problems. Not a quiz.",
+        title: "Engineer conversation",
+        text: "Forty-five minutes on what you have built and how you approach problems. A conversation, not a quiz.",
       },
       {
         number: "03",
         title: "Technical session",
-        text: "Ninety minutes working through a realistic problem together, in your own editor and language.",
+        text: "Ninety minutes working through a realistic problem together, in your own editor and your own language.",
       },
       {
         number: "04",
         title: "Offer conversation",
-        text: "Scope, team, compensation and start date, with a director. Feedback given whatever the outcome.",
+        text: "Scope, team, compensation and start date, discussed with a director. Feedback whatever the outcome.",
       },
     ],
   },

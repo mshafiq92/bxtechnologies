@@ -617,7 +617,7 @@ export const customSoftwareDetail: ServiceDetailInput = {
       {
         value: "8/10",
         label: "clients retained past their first project, most now on a third or fourth phase.",
-        sector: "Across clients since 2019",
+        sector: "Across clients",
         placeholder: true,
       },
     ],

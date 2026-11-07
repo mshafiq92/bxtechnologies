@@ -21,6 +21,7 @@ import {
 import { insightBodies } from "@/content/insights/bodies";
 import { legalBodies } from "@/content/legal/bodies";
 import {
+  companyMenu,
   footerColumns,
   headerCta,
   legalLinks,
@@ -316,17 +317,23 @@ export { insightsListSummaryLimit };
 
 /* Careers -------------------------------------------------------------------- */
 
-export function getRoles(): Role[] {
+/** Every role, including unpublished drafts (content checks and tests only). */
+export function getAllRoles(): Role[] {
   return roles;
 }
 
-export function getRole(slug: string): Role | undefined {
-  return roles.find((r) => r.slug === slug);
+/** Open roles: only these appear on the site. Empty means "no open positions". */
+export function getRoles(): Role[] {
+  return roles.filter((r) => r.published);
 }
 
-/** Roles with a role page (for generateStaticParams of /careers/[slug]). */
+export function getRole(slug: string): Role | undefined {
+  return getRoles().find((r) => r.slug === slug);
+}
+
+/** Open roles with a role page (for generateStaticParams of /careers/[slug]). */
 export function getRolesWithDetail() {
-  return roles.filter((r) => r.detail);
+  return getRoles().filter((r) => r.detail);
 }
 
 /** A role links to its page when it has one, otherwise to the application form for it. */
@@ -372,6 +379,7 @@ export function getNavigation() {
     mainNav,
     headerCta,
     megaMenu: { groups, ...megaMenuExtras },
+    companyMenu,
     footerColumns,
     legalLinks,
   };

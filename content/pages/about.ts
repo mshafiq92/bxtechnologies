@@ -1,51 +1,97 @@
-/* About page copy (bX v2 - About.dc.html). Offices live in content/site.ts. */
+/*
+ * About page copy (bX v2 - About.dc.html). Offices live in content/site.ts.
+ * Revised 2026-11-07 with the owner: facts and figures from the old site (bxtechnologies.net
+ * about-us), mission and vision, a "BX at a glance" card in the hero, the client strip, and no
+ * German contracting entity. The people section is hidden until real names arrive.
+ */
+import type { HeroDiagram } from "@/components/ui/diagram-card";
 import type { ContactBandContent } from "@/lib/schemas/content";
+
+type Person = { name: string; initials: string; role: string; text: string };
 
 export const aboutPage = {
   hero: {
     eyebrow: "About BX",
     title: "An engineering company that stayed an engineering company.",
     intro:
-      "BX Technologies was incorporated in Pakistan in September 2019 and has been building software for European and Asian clients since. We are engineers first: the people who scope your work are the people who write it.",
+      "BX Technologies is a software engineering company building custom software, cloud platforms and AI for startups, growing businesses and enterprises. Since 2019 we have taken work from first design to production: web and mobile products, cloud infrastructure and DevOps pipelines, and AI agents that run inside the systems you already have. We are engineers first: the people who scope your work are the people who write it.",
+    /** Figures from the owner (old site, 2026-11-07). */
     metrics: [
-      { value: "2019", label: "incorporated" },
-      { value: "2", label: "locations, one team" },
-      { value: "94%", label: "on-time delivery", placeholder: true },
+      { value: "2019", label: "founded" },
+      { value: "50+", label: "clients" },
+      { value: "80+", label: "projects delivered" },
+      { value: "20+", label: "team members" },
     ],
     primaryCta: { label: "Talk to an engineer", href: "#contact" },
-    secondaryCta: { label: "Meet the team", href: "#people" },
-    /** OPEN-DECISIONS #2: real photo of bX people or offices. Null renders a text-only hero. */
+    secondaryCta: { label: "How we work", href: "#principles" },
+    /** OPEN-DECISIONS #2: real photo of BX people or offices. Until then the glance card shows. */
     photo: null as { src: string; alt: string } | null,
+    /** Hero card while there is no photo (same card style as the Home hero). */
+    glance: {
+      caption: "BX at a glance",
+      entry: { t: "Islamabad, Pakistan", d: "delivery · engineering · QA" },
+      core: { t: "Duisburg, Germany", d: "EU client contact · on-site visits" },
+      support: [
+        { t: "SECP", d: "CUIN 0139549" },
+        { t: "PSEB", d: "member" },
+        { t: "Since", d: "2019" },
+      ],
+      outcomes: [
+        { t: "Sectors", d: "fintech · healthcare · eCommerce · telecom" },
+        { t: "Engagements", d: "fixed price · dedicated team · AI pilot" },
+      ],
+      status: { t: "From first design to production", d: "on time, every time" },
+    } satisfies HeroDiagram,
   },
   jumpLinks: [
     { href: "#why", label: "Why us" },
+    { href: "#mission", label: "Mission" },
     { href: "#principles", label: "How we work" },
-    { href: "#people", label: "People" },
+    { href: "#clients", label: "Clients" },
     { href: "#story", label: "Story" },
     { href: "#offices", label: "Offices" },
   ],
   why: {
     eyebrow: "Why us",
-    title: "Three reasons clients give when they stay",
+    title: "Three reasons clients stay with us",
     intro:
-      "We are not the cheapest offshore option and we do not pretend to be. What we offer is a team you can reach, in a timezone that overlaps yours, that ships.",
+      "We do not compete on price. Clients stay because they work directly with senior engineers, in hours that overlap their own, and because everything we build is theirs to keep.",
     items: [
       {
         number: "01",
-        title: "Senior people on the work",
-        text: "No bait-and-switch between the pitch and the delivery. The engineer in your kickoff call is on your sprints.",
+        title: "Senior engineers throughout",
+        text: "The engineers who scope your project are the engineers who build, test and support it. Nothing is passed to a junior team once the contract is signed.",
       },
       {
         number: "02",
-        title: "European hours, Asian cost base",
-        text: "Duisburg for contracting and client contact, Islamabad for delivery, with a working day that overlaps CET by five hours.",
+        title: "One team, AI to production",
+        text: "AI, software, cloud and DevOps engineers work as one team, so the model, the application and its infrastructure are built, secured and supported together.",
       },
       {
         number: "03",
-        title: "We hand over what we build",
-        text: "Documentation, repository access and a walkthrough are part of the price. Nothing is written so that you have to keep us.",
+        title: "Full ownership at handover",
+        text: "Source code, documentation, repository access and a technical walkthrough are part of the price. Everything we build is yours, with nothing to lock you in.",
       },
     ],
+  },
+  mission: {
+    eyebrow: "Mission and vision",
+    title: "What we are building towards",
+    items: [
+      {
+        title: "Our mission",
+        text: "To help businesses put AI to work on the systems they already run. We build AI agents, machine learning and custom software, and run them on secure cloud platforms that stay reliable in production.",
+      },
+      {
+        title: "Our vision",
+        text: "To be the engineering partner companies trust to take AI from idea to production: one team where AI, software, cloud, security and operations work together, judged by systems that keep running.",
+      },
+      {
+        title: "Careers",
+        text: "Join AI, software and cloud engineers who build systems that run in production. If you want to learn from senior engineers, take ownership of real client work and grow into a lead role, talk to us.",
+        link: { label: "Careers at BX", href: "/careers" },
+      },
+    ] as { title: string; text: string; link?: { label: string; href: string } }[],
   },
   principles: {
     eyebrow: "How we work",
@@ -74,76 +120,59 @@ export const aboutPage = {
       {
         number: "05",
         title: "Measured, not claimed",
-        text: "Every metric on this site carries a number we agreed with the client on how to measure, with the baseline stated. Where we could not measure it, we say so.",
+        text: "When we report a result, we state the baseline and how it was measured, as agreed with the client in advance. Where we could not measure something, we say so.",
       },
     ],
+  },
+  clients: {
+    label: "Clients we have delivered for",
   },
   people: {
     eyebrow: "People",
     title: "Who you will actually be working with",
-    // Design notes addressed to bX (OPEN-DECISIONS #6); replace once real names arrive.
-    intro:
-      "Names and roles come from your current team page. Initials stand in until a real portrait is supplied.",
-    note: "Send us the real names, titles and photographs and this section fills in without any further design work. We would rather show five people honestly than a grid of stock portraits.",
-    members: [
-      {
-        name: "[Name]",
-        initials: "LD",
-        role: "Leadership",
-        text: "Director, delivery and client contracting",
-      },
-      {
-        name: "[Name]",
-        initials: "EL",
-        role: "Engineering lead",
-        text: "Architecture, code review, technical escalation",
-      },
-      {
-        name: "[Name]",
-        initials: "AI",
-        role: "AI engineering",
-        text: "Agents, retrieval, model evaluation",
-      },
-      {
-        name: "[Name]",
-        initials: "DC",
-        role: "Data & cloud",
-        text: "Pipelines, platform, infrastructure as code",
-      },
-      {
-        name: "[Name]",
-        initials: "QE",
-        role: "Quality engineering",
-        text: "Automation, performance, release validation",
-      },
-    ],
+    intro: "",
+    /**
+     * Hidden while empty (owner, 2026-11-07): add real names, roles and portraits here and the
+     * section and its jump link come back without any design work.
+     */
+    members: [] as Person[],
   },
   story: {
     eyebrow: "Story",
-    title: "From a contract team to a German-partnered firm",
-    // Design note addressed to bX; replace once the public wording is confirmed.
+    title: "How our practice grew, one capability at a time",
     intro:
-      "Dates are accurate; the detail under each is a placeholder until you confirm what you want stated publicly.",
+      "We started with custom software and added each capability when our clients needed it in production: web and mobile, cloud and DevOps, data and machine learning, and AI.",
+    /** Years proposed 2026-11-07; the owner may adjust them. */
     entries: [
       {
         year: "2019",
-        title: "Incorporated in Islamabad",
-        text: "Registered with the SECP in March, starting with custom software for regional clients.",
+        title: "Custom software",
+        text: "Founded in March and incorporated in September, building bespoke business software for our first clients and the systems they rely on every day.",
+      },
+      {
+        year: "2020",
+        title: "Web and mobile apps",
+        text: "Web platforms and cross-platform mobile apps, designed, built and maintained by the same team, from the first release to long-term support.",
       },
       {
         year: "2021",
-        title: "First European engagements",
-        text: "Automotive and insurance work in Germany, run on CET overlap rather than handover notes.",
+        title: "Cloud and DevOps",
+        text: "Client systems moved to the cloud, with CI/CD pipelines, infrastructure as code and monitoring as standard on every engagement we run.",
+      },
+      {
+        year: "2022",
+        title: "Data and machine learning",
+        text: "Data pipelines, analytics and the first machine learning models running inside client products, with the data work that keeps them accurate.",
       },
       {
         year: "2023",
-        title: "Duisburg presence, Vis Group partnership",
-        text: "A German contracting entity and a delivery partnership that puts a local counterpart in front of EU clients.",
+        title: "Cybersecurity and managed IT",
+        text: "Security reviews, hardening and managed operations, so the systems we build stay secure, monitored and running long after they launch.",
       },
       {
         year: "2024",
-        title: "AI engineering as a practice",
-        text: "Retrieval and agent work moved from experiments inside other projects to a standing team with its own evaluation practice.",
+        title: "AI-first engineering",
+        text: "AI agents, retrieval and evaluation became a standing practice, built on the software, cloud and data foundations that sit underneath them.",
       },
     ],
   },
@@ -153,7 +182,7 @@ export const aboutPage = {
     registrations: {
       kind: "Registrations",
       title: "Where we are registered",
-      text: "Securities and Exchange Commission of Pakistan · Pakistan Software Export Board member · partnered with Vis Group, Germany.",
+      text: "Registered with the SECP (CUIN 0139549) and a member of the Pakistan Software Export Board. Our partner in Germany, Vis Group, supports on-site work.",
       link: { label: "Request our company documents", href: "#contact" },
     },
   },

@@ -58,10 +58,11 @@ test("contact form shows the work-email error, then sends", async ({ page }) => 
 });
 
 test("application with a PDF CV is sent", async ({ page }) => {
-  await page.goto("/careers/apply?role=ai-engineer");
+  // No role is published, so the form offers a speculative application only.
+  await page.goto("/careers/apply");
   await waitForLiveForm(page);
   const form = page.getByRole("form", { name: "Send application" });
-  await expect(form.getByLabel("Applying for")).toHaveValue("ai-engineer");
+  await expect(form.getByLabel("Applying for")).toHaveValue("speculative");
   await form.getByLabel("Full name").fill("Test Applicant");
   await form.getByLabel("Email", { exact: true }).fill("applicant@example.com");
   await form.locator('input[type="file"]').setInputFiles({

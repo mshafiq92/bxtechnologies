@@ -1,12 +1,15 @@
 /*
- * Open roles. Copy verbatim from bX v2 - Careers.dc.html and bX v2 - Role Detail.dc.html.
- * Placeholder listings until bX sends the live ones. Only "AI Engineer" has a role page;
- * the others link straight to the application form, as in the design.
+ * Roles. Copy from bX v2 - Careers.dc.html and bX v2 - Role Detail.dc.html.
+ * All are unpublished drafts (owner, 2026-11-07: no open positions), so the Careers page shows
+ * "No open positions right now". To open a role: set `published: true`, check the text, and set
+ * `datePosted` to the day it goes live. A role with `detail` gets its own page and JobPosting data;
+ * the others link straight to the application form.
  */
 import type { RoleInput } from "@/lib/schemas/content";
 
 export const roles: RoleInput[] = [
   {
+    published: false,
     slug: "senior-backend-engineer",
     title: "Senior Backend Engineer",
     team: "Engineering",
@@ -16,6 +19,7 @@ export const roles: RoleInput[] = [
     detail: null,
   },
   {
+    published: false,
     slug: "ai-engineer",
     title: "AI Engineer",
     // OPEN: placeholder; set to the real publish date when the role goes live.
@@ -115,6 +119,7 @@ export const roles: RoleInput[] = [
     },
   },
   {
+    published: false,
     slug: "frontend-engineer",
     title: "Frontend Engineer",
     team: "Engineering",
@@ -123,6 +128,7 @@ export const roles: RoleInput[] = [
     detail: null,
   },
   {
+    published: false,
     slug: "devops-platform-engineer",
     title: "DevOps / Platform Engineer",
     team: "Data & cloud",
@@ -131,6 +137,7 @@ export const roles: RoleInput[] = [
     detail: null,
   },
   {
+    published: false,
     slug: "qa-automation-engineer",
     title: "QA Automation Engineer",
     team: "Quality engineering",

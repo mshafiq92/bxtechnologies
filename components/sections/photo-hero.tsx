@@ -1,7 +1,9 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 
 import { HeroMetricsActions } from "@/components/sections/page-hero";
 import { Breadcrumb, type BreadcrumbItem } from "@/components/ui/breadcrumb";
+import { HeroGridBackdrop } from "@/components/ui/hero-grid-backdrop";
 import type { MetricItem } from "@/components/ui/metric";
 import { Section } from "@/components/ui/section";
 import { Eyebrow, Heading } from "@/components/ui/typography";
@@ -11,7 +13,8 @@ type Cta = { label: string; href: string; arrow?: boolean };
 /**
  * Hero with a framed photo (About, Careers). The photo must be a real photo of bX people or
  * offices (BUSINESS-RULES-V2 §7). Until one is supplied the hero renders text-only, at full
- * width, rather than an empty frame (BUILD-PLAN-V2: Image slots).
+ * width, rather than an empty frame (BUILD-PLAN-V2: Image slots), unless a `visual` (for example
+ * a diagram card) is given to stand in for it. `backdrop` adds the hero grid behind the content.
  */
 export function PhotoHero({
   breadcrumb,
@@ -22,6 +25,8 @@ export function PhotoHero({
   primary,
   secondary,
   photo,
+  visual,
+  backdrop = false,
   titleWidth = "max-w-[18ch]",
 }: {
   breadcrumb: BreadcrumbItem[];
@@ -32,6 +37,9 @@ export function PhotoHero({
   primary: Cta;
   secondary?: Cta;
   photo: { src: string; alt: string } | null;
+  /** Shown in the photo slot while there is no photo. */
+  visual?: ReactNode;
+  backdrop?: boolean;
   titleWidth?: string;
 }) {
   return (
@@ -39,8 +47,10 @@ export function PhotoHero({
       id="top"
       spacing="hero"
       aria-labelledby="page-title"
+      className={backdrop ? "relative isolate overflow-hidden" : undefined}
       containerClassName="flex flex-col gap-8"
     >
+      {backdrop && <HeroGridBackdrop />}
       <Breadcrumb items={breadcrumb} />
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,440px),1fr))] items-center gap-12">
         <div className="flex flex-col gap-8">
@@ -55,7 +65,7 @@ export function PhotoHero({
             <HeroMetricsActions metrics={metrics} primary={primary} secondary={secondary} />
           </div>
         </div>
-        {photo && (
+        {photo ? (
           <figure className="relative m-0 aspect-[4/3] overflow-hidden rounded-lg border border-hairline">
             <Image
               src={photo.src}
@@ -66,6 +76,8 @@ export function PhotoHero({
               className="object-cover"
             />
           </figure>
+        ) : (
+          visual
         )}
       </div>
     </Section>

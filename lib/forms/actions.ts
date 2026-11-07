@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 
-import { getRole } from "@/lib/content";
+import { getAllRoles } from "@/lib/content";
 
 import { clientIpFrom } from "./client-ip";
 import { withCvLimit } from "./limits";
@@ -181,7 +181,7 @@ export async function submitApplication(_prev: FormState, formData: FormData): P
     role:
       parsed.data.role === "speculative"
         ? "Speculative, no specific role"
-        : (getRole(parsed.data.role)?.title ?? parsed.data.role),
+        : (getAllRoles().find((r) => r.slug === parsed.data.role)?.title ?? parsed.data.role),
   };
   const file = cv as File;
   const { careers } = mailConfig();

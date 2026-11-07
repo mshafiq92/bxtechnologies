@@ -54,6 +54,9 @@ Keep these even where the handoff or the `.dc.html` designs say otherwise; don't
 - **Adding an article**: write `content/insights/<slug>.mdx`, set `hasBody: true` in `content/insights.ts`,
   register it in `content/insights/bodies.ts`, and add its "On this page" entries in `content/pages/insights.ts`.
   Tests fail if any of these disagree. Its share card, sitemap entry and Article JSON-LD come automatically.
+- **Opening a role**: roles in `content/roles.ts` are drafts until `published: true` (none is published today, so
+  Careers shows "No open positions right now"). Publishing one brings back the list, its page (if it has `detail`),
+  the sitemap entry, JobPosting data and the apply-form option. Set `datePosted` to the day it goes live.
 - **Cookies and analytics**: the only cookie is `bx_consent` (the banner's choice). Plausible loads only after
   Accept. Adding any cookie, tracker or third-party script needs a consent category, a `CONSENT_VERSION` bump
   in `lib/consent.ts`, and matching updates to the Cookies and Privacy pages.

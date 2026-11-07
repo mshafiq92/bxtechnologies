@@ -42,7 +42,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 min-[1080px]:grid-cols-[1.5fr_repeat(4,minmax(0,1fr))]">
           <div className="flex flex-col gap-4 sm:col-span-2 min-[1080px]:col-span-1">
             <Logo tone="deep" placement="footer" />
-            <p className="max-w-[30ch] text-small">{site.blurb}</p>
+            <p className="max-w-[38ch] text-small">{site.blurb}</p>
           </div>
 
           {nav.footerColumns.map((col) => (

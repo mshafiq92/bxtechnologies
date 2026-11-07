@@ -5,7 +5,7 @@ import { fireEvent, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import AboutPage from "@/app/about/page";
-import RoleDetailPage, { generateStaticParams as roleParams } from "@/app/careers/[slug]/page";
+import { generateStaticParams as roleParams } from "@/app/careers/[slug]/page";
 import ApplyPage from "@/app/careers/apply/page";
 import CareersPage from "@/app/careers/page";
 import ContactPage from "@/app/contact/page";
@@ -63,31 +63,37 @@ const sectionIds = (c: HTMLElement) =>
   Array.from(c.querySelectorAll("section[id]")).map((s) => s.id);
 
 describe("About", () => {
-  it("renders every section, text-only hero until a real photo exists", () => {
+  it("renders every section, with the glance card standing in for the photo", () => {
     const { container } = render(<AboutPage />);
     expect(sectionIds(container)).toEqual([
       "top",
       "why",
+      "mission",
       "principles",
-      "people",
+      "clients",
       "story",
       "offices",
       "contact",
     ]);
-    expect(container.querySelector("section#top figure")).toBeNull();
+    // No stock photo: the hero shows the "BX at a glance" card until a real photo exists.
+    expect(container.querySelector("section#top img")).toBeNull();
+    expect(container.querySelector("section#top figure")).toHaveTextContent("BX at a glance");
   });
 
-  it("shows five people with initials avatars and no stock photos", () => {
+  it("hides the people section and its jump link until real names arrive", () => {
     const { container } = render(<AboutPage />);
-    const people = container.querySelectorAll("section#people li");
-    expect(people).toHaveLength(5);
-    expect(container.querySelector("section#people img")).toBeNull();
-    expect(people[0]).toHaveTextContent("LD");
+    expect(container.querySelector("section#people")).toBeNull();
+    expect(container.querySelector('a[href="#people"]')).toBeNull();
+    expect(container).not.toHaveTextContent("[Name]");
+    // Every jump link points at a section that exists.
+    for (const a of Array.from(container.querySelectorAll('[data-jump-bar] a[href^="#"]'))) {
+      expect(container.querySelector(a.getAttribute("href")!)).not.toBeNull();
+    }
   });
 });
 
 describe("Industries", () => {
-  it("renders seven sectors with navy metrics", () => {
+  it("renders six sectors under NDA, each linking to its services, with no figures", () => {
     const { container } = render(<IndustriesPage />);
     expect(sectionIds(container)).toEqual([
       "top",
@@ -97,23 +103,43 @@ describe("Industries", () => {
       "other",
       "contact",
     ]);
-    const metrics = container.querySelectorAll("section#sectors [data-metric]");
-    expect(metrics).toHaveLength(7);
-    for (const m of Array.from(metrics)) expect(m.className).toContain("text-ink");
+    const sectors = container.querySelectorAll("section#sectors article");
+    expect(sectors).toHaveLength(6);
+    for (const sector of Array.from(sectors)) {
+      expect(sector).toHaveTextContent("Under NDA");
+      expect(sector.querySelectorAll('a[href^="/services"]').length).toBeGreaterThan(0);
+    }
+    expect(container.querySelector("section#sectors [data-metric]")).toBeNull();
+    expect(container).not.toHaveTextContent(/placeholder/i);
   });
 });
 
 describe("Careers", () => {
-  it("links the AI Engineer to its page and other roles to the form", () => {
-    render(<CareersPage />);
-    expect(screen.getByRole("link", { name: /^AI Engineer/ })).toHaveAttribute(
+  // No role is published (owner, 2026-11-07). The open-roles behaviour is covered in
+  // careers-open-roles.test.tsx with the drafts published.
+  it("says there are no open positions instead of listing draft roles", () => {
+    const { container } = render(<CareersPage />);
+    const roles = container.querySelector("section#roles")!;
+    expect(roles.querySelector("[data-no-roles]")).toHaveTextContent("No open positions right now");
+    expect(roles.querySelectorAll("ul li")).toHaveLength(0);
+    expect(
+      within(roles as HTMLElement).getByRole("link", { name: "Send a speculative CV" }),
+    ).toHaveAttribute("href", "/careers/apply");
+    expect(container).not.toHaveTextContent(/placeholder/i);
+  });
+
+  it("points the hero at a CV and the hiring process, and shows the Working at BX card", () => {
+    const { container } = render(<CareersPage />);
+    const hero = container.querySelector("section#top") as HTMLElement;
+    expect(within(hero).getByRole("link", { name: "Send your CV" })).toHaveAttribute(
       "href",
-      "/careers/ai-engineer",
+      "/careers/apply",
     );
-    expect(screen.getByRole("link", { name: /^Frontend Engineer/ })).toHaveAttribute(
+    expect(within(hero).getByRole("link", { name: /How we hire/ })).toHaveAttribute(
       "href",
-      "/careers/apply?role=frontend-engineer",
+      "#process",
     );
+    expect(hero.querySelector("figure")).toHaveTextContent("Working at BX");
   });
 
   it("anchors the apply band at #apply for the jump bar", () => {
@@ -125,47 +151,22 @@ describe("Careers", () => {
 });
 
 describe("Role Detail", () => {
-  it("is generated only for roles with a page", () => {
-    expect(roleParams()).toEqual([{ slug: "ai-engineer" }]);
-  });
-
-  it("renders the role, glance card and also-hiring list", async () => {
-    render(await RoleDetailPage({ params: Promise.resolve({ slug: "ai-engineer" }) }));
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("AI Engineer");
-    expect(screen.getByText("About two weeks")).toBeInTheDocument();
-    expect(
-      screen.getByText(
-        "Roughly a third of the job is engineering judgement about when not to automate something.",
-      ),
-    ).toHaveProperty("tagName", "STRONG");
-    for (const link of screen.getAllByRole("link", { name: "Apply for this role" })) {
-      expect(link).toHaveAttribute("href", "/careers/apply?role=ai-engineer");
-    }
+  it("generates no role pages while no role is published", () => {
+    expect(roleParams()).toEqual([]);
   });
 });
 
 describe("Apply", () => {
-  it("preselects the role from ?role=", () => {
-    search = "role=devops-platform-engineer";
+  it("offers only a speculative application while no role is published", () => {
+    search = "role=ai-engineer";
     render(<ApplyPage />);
-    expect(screen.getByRole("combobox", { name: "Applying for" })).toHaveValue(
-      "devops-platform-engineer",
-    );
-  });
-
-  it("offers every role plus a speculative application", () => {
-    render(<ApplyPage />);
-    const options = within(screen.getByRole("combobox", { name: "Applying for" })).getAllByRole(
-      "option",
-    );
-    expect(options.map((o) => o.textContent)).toEqual([
-      "AI Engineer",
-      "Senior Backend Engineer",
-      "Frontend Engineer",
-      "DevOps / Platform Engineer",
-      "QA Automation Engineer",
-      "Speculative, no specific role",
-    ]);
+    const select = screen.getByRole("combobox", { name: "Applying for" });
+    expect(
+      within(select)
+        .getAllByRole("option")
+        .map((o) => o.textContent),
+    ).toEqual(["Speculative, no specific role"]);
+    expect(select).toHaveValue("speculative");
   });
 
   it("rejects a CV that is not PDF or DOCX", () => {

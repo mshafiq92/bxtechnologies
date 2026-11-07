@@ -32,7 +32,7 @@ import { organizationLd } from "@/lib/seo/structured-data";
 export const metadata: Metadata = pageMetadata({
   title: "BX Technologies | AI-first engineering partner",
   description:
-    "We put AI agents into production software that already works. Custom software, web, mobile, cloud and agentic AI for clients in Europe and Asia since 2019.",
+    "We put AI agents into production software that already works. Custom software, web, mobile, cloud and agentic AI, designed, built and operated by one engineering team.",
   path: "/",
   absoluteTitle: true,
 });

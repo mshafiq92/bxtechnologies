@@ -1,27 +1,39 @@
 import type { Metadata } from "next";
 
 import { ContactBand } from "@/components/layout/contact-band";
+import { LogoMarquee } from "@/components/sections/logo-marquee";
 import { NumberedGrid } from "@/components/sections/numbered-grid";
 import { PhotoHero } from "@/components/sections/photo-hero";
 import { Avatar } from "@/components/ui/avatar";
 import { ChipList } from "@/components/ui/chip";
+import { DiagramCard } from "@/components/ui/diagram-card";
 import { JumpBar } from "@/components/ui/jump-bar";
 import { Section } from "@/components/ui/section";
 import { TextLink } from "@/components/ui/text-link";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
-import { getOffices, getPage } from "@/lib/content";
+import { getClientLogos, getOffices, getPage } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
-    "BX Technologies was incorporated in Pakistan in September 2019 and builds software for European and Asian clients from Islamabad and Duisburg. Engineers first: the people who scope your work write it.",
+    "BX Technologies builds custom software, cloud platforms and AI for startups, growing businesses and enterprises. 50+ clients and 80+ projects delivered since 2019. Engineers first: the people who scope your work write it.",
   path: "/about",
 });
 
 export default function AboutPage() {
   const page = getPage("about");
   const offices = getOffices();
+  const logos = getClientLogos();
+  // People stay hidden until real names arrive; their jump link comes back with them.
+  const hasPeople = page.people.members.length > 0;
+  const jumpLinks = hasPeople
+    ? [
+        ...page.jumpLinks.slice(0, 3),
+        { href: "#people", label: "People" },
+        ...page.jumpLinks.slice(3),
+      ]
+    : page.jumpLinks;
 
   return (
     <>
@@ -34,10 +46,12 @@ export default function AboutPage() {
         primary={page.hero.primaryCta}
         secondary={page.hero.secondaryCta}
         photo={page.hero.photo}
+        visual={<DiagramCard diagram={page.hero.glance} layout="flow" />}
+        backdrop
         titleWidth="max-w-[20ch]"
       />
 
-      <JumpBar links={page.jumpLinks} showLabel={false} />
+      <JumpBar links={jumpLinks} showLabel={false} />
 
       {/* Why us ------------------------------------------------------------------ */}
       <Section id="why" aria-labelledby="why-title" containerClassName="flex flex-col gap-12">
@@ -48,6 +62,35 @@ export default function AboutPage() {
           intro={page.why.intro}
         />
         <NumberedGrid items={page.why.items} cols={3} titleSize="h3" />
+      </Section>
+
+      {/* Mission and vision (from the old site), with the careers invitation ------- */}
+      <Section
+        id="mission"
+        tone="surface"
+        aria-labelledby="mission-title"
+        containerClassName="flex flex-col gap-12"
+      >
+        <SectionHeader
+          narrow
+          eyebrow={page.mission.eyebrow}
+          title={<span id="mission-title">{page.mission.title}</span>}
+        />
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 lg:grid-cols-3">
+          {page.mission.items.map((item) => (
+            <article key={item.title} className="flex flex-col gap-4 border-t border-ink pt-6">
+              <Heading as="h3" size="h3">
+                {item.title}
+              </Heading>
+              <p className="text-body-lg text-muted">{item.text}</p>
+              {item.link && (
+                <TextLink href={item.link.href} className="mt-auto self-start">
+                  {item.link.label}
+                </TextLink>
+              )}
+            </article>
+          ))}
+        </div>
       </Section>
 
       {/* How we work (navy) ------------------------------------------------------- */}
@@ -83,35 +126,45 @@ export default function AboutPage() {
         </ol>
       </Section>
 
-      {/* People -------------------------------------------------------------------- */}
-      <Section id="people" aria-labelledby="people-title" containerClassName="flex flex-col gap-10">
-        <SectionHeader
-          eyebrow={page.people.eyebrow}
-          title={<span id="people-title">{page.people.title}</span>}
-          // Design note addressed to bX (OPEN-DECISIONS #6); replace once real names arrive.
-          aside={page.people.intro}
-          asideSize="small"
-        />
-        <ul className="flex flex-wrap gap-4">
-          {page.people.members.map((person) => (
-            <li
-              key={person.role}
-              className="flex flex-[1_1_200px] flex-col gap-4 rounded-lg border border-hairline bg-surface p-6"
-            >
-              <Avatar name={person.name} initials={person.initials} size={56} />
-              <div className="flex flex-col gap-1">
-                <span className="text-[18px] leading-[26px] font-semibold">{person.name}</span>
-                <span className="font-mono text-[13px] leading-[18px] font-medium tracking-[0.1em] text-link uppercase">
-                  {person.role}
-                </span>
-              </div>
-              <p className="text-small text-muted">{person.text}</p>
-            </li>
-          ))}
-        </ul>
-        {/* Design note addressed to bX; remove once real names and portraits arrive. */}
-        <p className="max-w-[72ch] text-body text-muted">{page.people.note}</p>
-      </Section>
+      {/* Clients (same strip as Home; hidden when no logo is cleared) ---------------- */}
+      {logos.length > 0 && (
+        <Section id="clients" spacing="strip" aria-label={page.clients.label}>
+          <LogoMarquee label={page.clients.label} logos={logos} />
+        </Section>
+      )}
+
+      {/* People (hidden until real names arrive) ------------------------------------ */}
+      {hasPeople && (
+        <Section
+          id="people"
+          aria-labelledby="people-title"
+          containerClassName="flex flex-col gap-10"
+        >
+          <SectionHeader
+            eyebrow={page.people.eyebrow}
+            title={<span id="people-title">{page.people.title}</span>}
+            aside={page.people.intro || undefined}
+            asideSize="small"
+          />
+          <ul className="flex flex-wrap gap-4">
+            {page.people.members.map((person) => (
+              <li
+                key={person.role}
+                className="flex flex-[1_1_200px] flex-col gap-4 rounded-lg border border-hairline bg-surface p-6"
+              >
+                <Avatar name={person.name} initials={person.initials} size={56} />
+                <div className="flex flex-col gap-1">
+                  <span className="text-[18px] leading-[26px] font-semibold">{person.name}</span>
+                  <span className="font-mono text-[13px] leading-[18px] font-medium tracking-[0.1em] text-link uppercase">
+                    {person.role}
+                  </span>
+                </div>
+                <p className="text-small text-muted">{person.text}</p>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       {/* Story --------------------------------------------------------------------- */}
       <Section
@@ -126,7 +179,7 @@ export default function AboutPage() {
           title={<span id="story-title">{page.story.title}</span>}
           intro={page.story.intro}
         />
-        <ol className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 2xl:grid-cols-4">
+        <ol className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
           {page.story.entries.map((entry) => (
             <li key={entry.year} className="flex flex-col gap-3 border-t border-ink pt-6">
               <span className="text-metric-inline text-link">{entry.year}</span>

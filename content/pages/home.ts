@@ -9,7 +9,7 @@ export const homePage = {
     eyebrow: "AI-first engineering partner",
     title: "We put AI agents into production software that already works.",
     intro:
-      "Seven years building custom software, web and mobile systems for clients in Europe and Asia. We design, build and operate the agentic and generative layers on top of them.",
+      "Custom software, web and mobile systems, cloud platforms, and the agentic and generative AI layers that run on top of them. We design, build and operate all of it.",
     tags: ["Agentic AI", "Cloud", "Custom software"],
     primaryCta: { label: "Book a technical call", href: "#contact" },
     secondaryCta: { label: "See the work", href: "#work" },
@@ -60,7 +60,7 @@ export const homePage = {
     eyebrow: "How we work",
     title: "Six stages, and you sign off each one",
     aside:
-      "The process that has carried every delivery since 2019. Unchanged for AI work: an agent in production needs the same discipline as a payments system.",
+      "The process that has carried every delivery we have made. Unchanged for AI work: an agent in production needs the same discipline as a payments system.",
     steps: [
       {
         num: "01",

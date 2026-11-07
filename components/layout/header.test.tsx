@@ -79,6 +79,46 @@ describe("Header: mega menu", () => {
   });
 });
 
+const companyLink = () =>
+  screen.getAllByRole("link", { name: /^Company/ }).find((el) => el.hasAttribute("aria-expanded"))!;
+const companyMenu = () => document.getElementById("bx-company-menu")!;
+
+describe("Header: Company menu", () => {
+  it("is closed by default, and Company still links to About", () => {
+    renderHeader();
+    expect(companyLink()).toHaveAttribute("aria-expanded", "false");
+    expect(companyLink()).toHaveAttribute("href", "/about");
+    expect(companyMenu()).not.toBeVisible();
+  });
+
+  it("opens on hover and lists About us, Industries and Careers", () => {
+    renderHeader();
+    fireEvent.mouseEnter(companyLink());
+    expect(companyMenu()).toBeVisible();
+    const hrefs = Array.from(companyMenu().querySelectorAll("a")).map((a) =>
+      a.getAttribute("href"),
+    );
+    expect(hrefs).toEqual(["/about", "/industries", "/careers"]);
+  });
+
+  it("only one dropdown is open at a time", () => {
+    renderHeader();
+    fireEvent.mouseEnter(servicesLink());
+    fireEvent.mouseEnter(companyLink());
+    expect(companyMenu()).toBeVisible();
+    expect(megaMenu()).not.toBeVisible();
+  });
+
+  it("closes on Escape and returns focus to Company", () => {
+    renderHeader();
+    act(() => companyLink().focus());
+    expect(companyMenu()).toBeVisible();
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(companyMenu()).not.toBeVisible();
+    expect(companyLink()).toHaveFocus();
+  });
+});
+
 describe("Header: active state", () => {
   it("marks the current section with aria-current", () => {
     mockPath = "/services/cloud-devops";

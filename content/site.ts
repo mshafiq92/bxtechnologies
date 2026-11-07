@@ -10,7 +10,7 @@ export const site = {
   incorporated: "September 2019",
   /** Footer brand blurb */
   blurb:
-    "Full-stack software development, AI engineering and technology consulting. Incorporated September 2019.",
+    "AI-first engineering company. We build AI agents, machine learning and custom software, and run them on secure cloud platforms with DevOps, cybersecurity and managed IT services.",
   email: "info@bxtechnologies.net",
   careersEmail: "jobs@bxtechnologies.net",
   phone: { display: "+49 203 34689340", href: "tel:+4920334689340" },
@@ -20,10 +20,9 @@ export const site = {
   },
   locations: "Islamabad · Duisburg",
   /** Footer legal bar */
-  registrations:
-    "Registered with SECP · Member, Pakistan Software Export Board · Partner, Vis Group (Germany)",
+  registrations: "Registered with SECP · Member, Pakistan Software Export Board",
   /** Home hero trust line */
-  registrationsShort: "SECP registered · PSEB member · partner Vis Group, Germany",
+  registrationsShort: "SECP registered · PSEB member",
   /*
    * OPEN (docs/01 G5): Facebook and X point to the generic sites in the design.
    * Replace with the real profile URLs before launch.
@@ -46,8 +45,8 @@ export const imprint: Imprint = {
   legalForm: "Private limited company, limited by shares, under the Companies Act 2017 of Pakistan",
   registeredOffice:
     "Office No. 2, Lower Ground Floor, Roshan Center, Blue Area, Islamabad 44000, Pakistan",
-  /** Not a registered German branch: the registered office of our partner Vis Group. */
-  germanAddress: "c/o Vis Group, Hansastraße 3, 47058 Duisburg, Germany",
+  /** Not a registered German branch: the office of our EU representative, Vision-ps GmbH. */
+  germanAddress: "c/o Vision-ps GmbH, Hansastraße 3, 47058 Duisburg, Germany",
   representedBy: "Muhammad Shafiq, Director",
   /** Representative in the EU under Art. 27 GDPR (BX has no EU establishment). */
   euRepresentative: "Vision-ps GmbH, Hansastraße 3, 47058 Duisburg, Germany",
@@ -86,19 +85,18 @@ export const offices: Office[] = [
     city: "Islamabad",
     country: "Pakistan",
     countryCode: "PK",
-    body: "Engineering, data, QA and AI teams. Working day overlaps CET by five hours and US Eastern by two.",
+    body: "Our engineering centre and home to the AI, software, data, cloud and QA teams. The working day overlaps CET by five hours and US Eastern by two.",
     contactBody: "Engineering, data, QA and AI teams. Working day overlaps CET by five hours.",
-    chips: ["Engineering", "AI", "QA"],
+    chips: ["AI", "Software", "Cloud", "QA"],
   },
   {
     kind: "Europe",
     city: "Duisburg",
     country: "Germany",
     countryCode: "DE",
-    body: "Client contact, contracting and on-site work across the EU, with our Vis Group partnership for local delivery cover.",
-    contactBody:
-      "Client contact and contracting for EU engagements. On-site visits arranged from here.",
-    chips: ["Contracting", "On-site", "EU clients"],
+    body: "Our address for clients in the EU. Workshops, project kick-offs and handovers can be held on site, arranged from here whenever a project needs them.",
+    contactBody: "Client contact for EU engagements. On-site visits arranged from here.",
+    chips: ["Client contact", "Workshops", "On-site"],
   },
 ];
 

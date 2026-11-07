@@ -20,6 +20,16 @@ export const mainNav: { key: Exclude<NavKey, "services">; label: string; href: s
 export const headerCta: NavLink = { label: "Start a project", href: "/contact" };
 
 /**
+ * Company dropdown (owner decision 2026-11-07; not in the design handoff). "Company" itself still
+ * links to /about. Add Team or Partners here when those pages exist.
+ */
+export const companyMenu: NavLink[] = [
+  { label: "About us", href: "/about" },
+  { label: "Industries", href: "/industries" },
+  { label: "Careers", href: "/careers" },
+];
+
+/**
  * Mega menu extras. The four service groups and their links are built from content/services.ts
  * by lib/content (getNavigation), so the menu always matches the services list.
  */

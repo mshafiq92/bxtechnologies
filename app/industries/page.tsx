@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { ContactBand } from "@/components/layout/contact-band";
 import { NumberedGrid } from "@/components/sections/numbered-grid";
@@ -8,13 +9,13 @@ import { JumpBar } from "@/components/ui/jump-bar";
 import { Section } from "@/components/ui/section";
 import { TextLink } from "@/components/ui/text-link";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
-import { getPage, getSectors } from "@/lib/content";
+import { getPage, getSectors, getService, serviceHref } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = pageMetadata({
   title: "Industries",
   description:
-    "Sectors where we have delivered: insurance, automotive, utilities, fintech, retail and logistics, education, construction and facilities. For startups, growing businesses and enterprise teams.",
+    "Sectors where we have delivered AI, software, cloud and data work: fintech, telecom, SaaS and MVP builds, eCommerce, education, construction and facilities. Most engagements are under NDA.",
   path: "/industries",
 });
 
@@ -81,7 +82,6 @@ export default function IndustriesPage() {
         <SectionHeader
           eyebrow={page.sectors.eyebrow}
           title={<span id="sectors-title">{page.sectors.title}</span>}
-          // Design note addressed to bX; replace once figures are signed off.
           aside={page.sectors.note}
           asideSize="small"
         />
@@ -89,28 +89,40 @@ export default function IndustriesPage() {
           {getSectors().map((sector) => (
             <article
               key={sector.slug}
-              className="grid grid-cols-1 items-start gap-x-10 gap-y-4 border-t border-hairline py-8 lg:grid-cols-[220px_minmax(0,1fr)_200px]"
+              className="grid grid-cols-1 items-start gap-x-10 gap-y-4 border-t border-hairline py-8 lg:grid-cols-[220px_minmax(0,1fr)_220px]"
             >
               <div className="flex flex-col gap-2">
                 <Heading as="h3" size="h3">
                   {sector.name}
                 </Heading>
                 <span className="font-mono text-[13px] leading-[18px] font-medium tracking-[0.12em] text-muted uppercase">
-                  {sector.region}
+                  {page.sectors.ndaLabel}
                 </span>
               </div>
               <div className="flex flex-col gap-3.5">
                 <p className="max-w-[64ch] text-body text-muted">{sector.body}</p>
                 <ChipList items={sector.chips} fill="ground" />
               </div>
-              <div className="flex flex-col gap-1">
-                <span
-                  data-metric=""
-                  className="text-[36px] leading-[42px] font-semibold tracking-[-0.025em] text-ink"
-                >
-                  {sector.metric.value}
-                </span>
-                <span className="text-small text-muted">{sector.metric.label}</span>
+              <div className="flex flex-col gap-2">
+                <Eyebrow as="span" tone="muted">
+                  {page.sectors.servicesLabel}
+                </Eyebrow>
+                <ul className="flex flex-col">
+                  {sector.services.map((slug) => {
+                    const service = getService(slug);
+                    if (!service) return null;
+                    return (
+                      <li key={slug}>
+                        <Link
+                          href={serviceHref(service)}
+                          className="inline-flex min-h-11 items-center text-[15px] font-medium text-link underline decoration-hairline underline-offset-[3px] transition-colors hover:decoration-current"
+                        >
+                          {service.navLabel}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </article>
           ))}

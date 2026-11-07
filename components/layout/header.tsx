@@ -17,6 +17,7 @@ type Navigation = ReturnType<typeof getNavigation>;
 
 const MEGA_ID = "bx-mega-menu";
 const MOBILE_ID = "bx-mobile-nav";
+const COMPANY_ID = "bx-company-menu";
 
 const navLink =
   "relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-3.5 py-3 text-[15px] font-medium transition-colors hover:bg-deep-panel hover:text-on-deep-accent";
@@ -30,47 +31,55 @@ function ActiveUnderline() {
 /**
  * Sticky site header (BxHeader.dc.html): 72px on phones, 84px from 900px, logo, nav, CTA. Navy bar with the white
  * logo (owner decision 2026-11-06, the design has it white); the mega menu and mobile panel stay light.
- * ≥900px: Services opens a mega menu on hover or focus; it closes on header mouse-leave,
+ * ≥900px: Services opens a mega menu and Company a small menu on hover or focus; each closes on
+ * header mouse-leave,
  * hovering or focusing another item, Escape, or focus leaving the header.
  * <900px: a Menu button toggles a full-width panel with focus trap and scroll lock.
  */
 export function Header({ nav }: { nav: Navigation }) {
   const pathname = usePathname();
   const active = activeNavKey(pathname);
-  const [megaOpen, setMegaOpen] = useState(false);
+  // Which desktop dropdown is open: the Services mega menu or the Company menu.
+  const [openMenu, setOpenMenu] = useState<"services" | "company" | null>(null);
+  const megaOpen = openMenu === "services";
+  const companyOpen = openMenu === "company";
   const [menuOpen, setMenuOpen] = useState(false);
 
   const headerRef = useRef<HTMLElement>(null);
   const servicesRef = useRef<HTMLAnchorElement>(null);
+  const companyRef = useRef<HTMLAnchorElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobilePanelRef = useRef<HTMLDivElement>(null);
 
-  // Set while Escape returns focus to the Services trigger, so that focus does not reopen the menu.
+  // Set while Escape returns focus to a menu trigger, so that focus does not reopen the menu.
   const returningFocus = useRef(false);
-  const openMega = () => setMegaOpen(true);
-  const onServicesFocus = () => {
+  const openMega = () => setOpenMenu("services");
+  const openCompany = () => setOpenMenu("company");
+  const onTriggerFocus = (menu: "services" | "company") => () => {
     if (returningFocus.current) {
       returningFocus.current = false;
       return;
     }
-    setMegaOpen(true);
+    setOpenMenu(menu);
   };
-  const closeMega = () => setMegaOpen(false);
+  /** Closes whichever desktop dropdown is open. */
+  const closeMega = () => setOpenMenu(null);
   const closeAll = () => {
-    setMegaOpen(false);
+    setOpenMenu(null);
     setMenuOpen(false);
   };
 
   // Escape closes whichever menu is open and returns focus to its trigger.
   useEffect(() => {
-    if (!megaOpen && !menuOpen) return;
+    if (!openMenu && !menuOpen) return;
     const onKey = (e: globalThis.KeyboardEvent) => {
       if (e.key !== "Escape") return;
-      if (megaOpen) {
-        setMegaOpen(false);
+      if (openMenu) {
+        const trigger = openMenu === "services" ? servicesRef.current : companyRef.current;
+        setOpenMenu(null);
         if (headerRef.current?.contains(document.activeElement)) {
           returningFocus.current = true;
-          servicesRef.current?.focus();
+          trigger?.focus();
           returningFocus.current = false;
         }
       }
@@ -81,7 +90,7 @@ export function Header({ nav }: { nav: Navigation }) {
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [megaOpen, menuOpen]);
+  }, [openMenu, menuOpen]);
 
   // Mobile panel: lock page scroll while open; close it if the viewport grows past 900px.
   useEffect(() => {
@@ -100,9 +109,9 @@ export function Header({ nav }: { nav: Navigation }) {
     };
   }, [menuOpen]);
 
-  // Close the mega menu when focus leaves the header.
+  // Close the dropdowns when focus leaves the header.
   const onHeaderBlur = (e: FocusEvent<HTMLElement>) => {
-    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setMegaOpen(false);
+    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpenMenu(null);
   };
 
   // Focus trap inside the mobile menu (menu button + panel links).
@@ -149,7 +158,7 @@ export function Header({ nav }: { nav: Navigation }) {
                 ref={servicesRef}
                 href="/services"
                 onMouseEnter={openMega}
-                onFocus={onServicesFocus}
+                onFocus={onTriggerFocus("services")}
                 onClick={closeAll}
                 aria-expanded={megaOpen}
                 aria-controls={MEGA_ID}
@@ -218,21 +227,68 @@ export function Header({ nav }: { nav: Navigation }) {
               </div>
             </li>
 
-            {nav.mainNav.map((item) => (
-              <li key={item.key}>
-                <Link
-                  href={item.href}
-                  onMouseEnter={closeMega}
-                  onFocus={closeMega}
-                  onClick={closeAll}
-                  aria-current={active === item.key ? "page" : undefined}
-                  className={cn(navLink, "text-on-deep")}
-                >
-                  {item.label}
-                  {active === item.key && <ActiveUnderline />}
-                </Link>
-              </li>
-            ))}
+            {nav.mainNav.map((item) =>
+              item.key === "company" ? (
+                <li key={item.key} className="relative">
+                  <Link
+                    ref={companyRef}
+                    href={item.href}
+                    onMouseEnter={openCompany}
+                    onFocus={onTriggerFocus("company")}
+                    onClick={closeAll}
+                    aria-expanded={companyOpen}
+                    aria-controls={COMPANY_ID}
+                    aria-current={active === item.key ? "page" : undefined}
+                    className={cn(
+                      navLink,
+                      active === item.key || companyOpen ? "text-on-deep-accent" : "text-on-deep",
+                    )}
+                  >
+                    {item.label}
+                    <ChevronDownIcon />
+                    {active === item.key && <ActiveUnderline />}
+                  </Link>
+
+                  {/* Company menu: right after its trigger so keyboard users tab into it.
+                      It hangs from the bottom edge of the header bar (link centre + half the bar). */}
+                  <div
+                    id={COMPANY_ID}
+                    hidden={!companyOpen}
+                    data-tone="light"
+                    className="absolute top-[calc(50%_+_var(--header-height)_/_2)] left-0 w-max min-w-[220px] rounded-b-lg border border-t-0 border-hairline bg-surface p-2 shadow-card"
+                  >
+                    <ul>
+                      {nav.companyMenu.map((link) => (
+                        <li key={link.href}>
+                          <Link
+                            href={link.href}
+                            onClick={closeAll}
+                            aria-current={pathname === link.href ? "page" : undefined}
+                            className="flex min-h-11 items-center rounded-md px-4 text-body font-medium text-ink transition-colors hover:bg-ground hover:text-link"
+                          >
+                            {link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </li>
+              ) : (
+                <li key={item.key}>
+                  <Link
+                    href={item.href}
+                    onMouseEnter={closeMega}
+                    onFocus={closeMega}
+                    onClick={closeAll}
+                    aria-current={active === item.key ? "page" : undefined}
+                    className={cn(navLink, "text-on-deep")}
+                  >
+                    {item.label}
+                    {active === item.key && <ActiveUnderline />}
+                  </Link>
+                </li>
+              ),
+            )}
           </ul>
         </nav>
 
@@ -286,6 +342,21 @@ export function Header({ nav }: { nav: Navigation }) {
                   {item.label}
                   <ArrowRightIcon size={16} className="text-muted" />
                 </Link>
+                {item.key === "company" && (
+                  <ul className="-mt-2 pb-3 pl-4">
+                    {nav.companyMenu.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          onClick={closeAll}
+                          className="flex min-h-11 items-center text-[15px] text-muted transition-colors hover:text-ink"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>

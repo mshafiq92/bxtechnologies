@@ -1,4 +1,4 @@
-/** Every public route of the site (the 17 designed pages plus the Imprint). */
+/** Every public route of the site (role pages appear only while a role is published). */
 export const routes = [
   "/",
   "/services",
@@ -11,7 +11,6 @@ export const routes = [
   "/about",
   "/industries",
   "/careers",
-  "/careers/ai-engineer",
   "/careers/apply",
   "/contact",
   "/privacy",

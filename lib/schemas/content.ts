@@ -171,10 +171,10 @@ export const ProjectSchema = z.object({
 export const SectorSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/),
   name: z.string().min(1),
-  region: z.string().min(1),
   body: z.string().min(1),
   chips: z.array(z.string()),
-  metric: MetricSchema,
+  /** Service slugs shown as "Services we bring" (must exist in content/services.ts). */
+  services: z.array(z.string()).min(1),
 });
 
 /* Insights ------------------------------------------------------------------ */
@@ -231,6 +231,11 @@ export const RoleDetailSchema = z.object({
 
 export const RoleSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/),
+  /**
+   * Only published roles appear anywhere on the site (list, role page, sitemap, JobPosting data,
+   * apply form). Unpublished roles are drafts: set true when the role is really open.
+   */
+  published: z.boolean().default(false),
   title: z.string().min(1),
   team: z.string().min(1),
   location: z.string().default("Islamabad"),

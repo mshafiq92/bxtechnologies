@@ -16,6 +16,7 @@ import {
   getPage,
   getProjects,
   getPublishedInsights,
+  getAllRoles,
   getRoles,
   getRolesWithDetail,
   getSectors,
@@ -90,11 +91,19 @@ describe("business rules in content", () => {
   it("marks proof metrics as placeholders until bX signs them off", () => {
     const proof = [
       ...getProjects().map((p) => p.metric),
-      ...getSectors().map((s) => s.metric),
       ...getServicesWithDetail().flatMap((s) => s.detail.proof.metrics),
     ];
     expect(proof.length).toBeGreaterThan(0);
     for (const m of proof) expect(m.placeholder).toBe(true);
+  });
+
+  it("links every sector to services that exist, and shows no sector figures", () => {
+    const slugs = new Set(getServices().map((s) => s.slug));
+    for (const sector of getSectors()) {
+      expect(sector.services.length).toBeGreaterThan(0);
+      for (const slug of sector.services) expect(slugs, `${sector.name}: ${slug}`).toContain(slug);
+      expect(sector).not.toHaveProperty("metric");
+    }
   });
 
   it("shows only cleared client logos (current logos are cleared by decision)", () => {
@@ -143,10 +152,20 @@ describe("insights", () => {
 });
 
 describe("careers", () => {
-  it("has a role page only for the AI Engineer", () => {
-    expect(getRolesWithDetail().map((r) => r.slug)).toEqual(["ai-engineer"]);
-    const backend = getRoles().find((r) => r.slug === "senior-backend-engineer")!;
-    expect(roleHref(backend)).toBe("/careers/apply?role=senior-backend-engineer");
+  it("shows no roles while none is published (owner, 2026-11-07: no open positions)", () => {
+    expect(getRoles()).toEqual([]);
+    expect(getRolesWithDetail()).toEqual([]);
+    // Drafts are kept, so opening a role later is a one-line change.
+    expect(getAllRoles().length).toBeGreaterThan(0);
+    for (const r of getAllRoles()) expect(r.published).toBe(false);
+  });
+
+  it("links a role to its page when it has one, otherwise to the application form", () => {
+    const byId = (slug: string) => getAllRoles().find((r) => r.slug === slug)!;
+    expect(roleHref(byId("ai-engineer"))).toBe("/careers/ai-engineer");
+    expect(roleHref(byId("senior-backend-engineer"))).toBe(
+      "/careers/apply?role=senior-backend-engineer",
+    );
   });
 });
 

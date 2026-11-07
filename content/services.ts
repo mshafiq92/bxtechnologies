@@ -34,7 +34,7 @@ export const serviceGroups: ServiceGroup[] = [
     number: "03",
     name: "Product Engineering",
     intro:
-      "The core practice since 2019. In production for facilities, automotive and retail clients.",
+      "Our longest-running practice. In production for facilities, automotive and retail clients.",
     production: "In production · facilities, automotive, retail",
   },
   {
