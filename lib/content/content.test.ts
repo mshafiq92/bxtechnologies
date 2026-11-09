@@ -33,11 +33,47 @@ const root = process.cwd();
 const read = (path: string) => readFileSync(join(root, path), "utf8");
 
 describe("services", () => {
-  it("has four groups of three services", () => {
-    expect(getServiceGroups().map((g) => g.key)).toEqual(["ai", "data", "product", "teams"]);
+  it("has the groups in order and every service numbered in group order", () => {
+    const keys = getServiceGroups().map((g) => g.key);
+    expect(keys).toEqual(["ai", "data", "cloud", "managed", "product", "teams"]);
+    expect(getServices()).toHaveLength(24);
+    expect(getServices().map((s) => s.number)).toEqual(
+      Array.from({ length: 24 }, (_, i) => String(i + 1).padStart(2, "0")),
+    );
+    expect(getServices().map((s) => s.slug)).toEqual(
+      keys.flatMap((key) => getServices(key).map((s) => s.slug)),
+    );
+  });
+
+  it("puts every service in a group that exists", () => {
+    const keys = new Set<string>(getServiceGroups().map((g) => g.key));
+    for (const service of getServices()) expect(keys, service.slug).toContain(service.group);
+  });
+
+  it("has at least three services in every group", () => {
     for (const group of getServiceGroups()) {
-      expect(getServices(group.key)).toHaveLength(3);
+      expect(getServices(group.key).length, group.key).toBeGreaterThanOrEqual(3);
     }
+  });
+
+  it("keeps Managed IT and Cloud in separate groups", () => {
+    expect(getServices("cloud").map((s) => s.name)).toEqual([
+      "Cloud deployment",
+      "Cloud migration",
+      "Monitoring & observability",
+      "CI/CD pipelines",
+    ]);
+    expect(getServices("managed").map((s) => s.name)).toEqual([
+      "Device support",
+      "Field engineering",
+      "Technical support (L1-L3)",
+      "Network troubleshooting",
+    ]);
+  });
+
+  it("never claims insurance or utilities work in group or service copy", () => {
+    const copy = JSON.stringify([getServiceGroups(), getServices(), getProjects()]);
+    expect(copy).not.toMatch(/insurance|utilities/i);
   });
 
   it("has detail pages for the three designed services", () => {
@@ -61,15 +97,17 @@ describe("services", () => {
     const { megaMenu } = getNavigation();
     expect(megaMenu.groups.map((g) => g.title)).toEqual([
       "AI & Autonomy",
-      "Data & Cloud",
-      "Product Engineering",
+      "Data & Analytics",
+      "Cloud & DevOps",
+      "Managed IT",
+      "Product & Quality",
       "Teams & Advisory",
     ]);
-    expect(megaMenu.groups[2]?.links[0]).toEqual({
+    expect(megaMenu.groups[4]?.links[0]).toEqual({
       label: "Custom software",
       href: "/services/custom-software",
     });
-    expect(megaMenu.groups[3]?.links[2]?.label).toBe("Blockchain & distributed");
+    expect(megaMenu.groups[5]?.links[3]?.label).toBe("Blockchain & distributed");
   });
 
   it("gives Home the shorter Startup & SMB sentence", () => {
@@ -113,7 +151,7 @@ describe("business rules in content", () => {
   });
 
   it("features three projects on Home", () => {
-    expect(getHomeProjects().map((p) => p.metric.value)).toEqual(["68%", "3.2×", "41%"]);
+    expect(getHomeProjects().map((p) => p.metric.value)).toEqual(["3.2×", "41%", "9 hrs"]);
   });
 
   it("rejects a service without a stack", () => {

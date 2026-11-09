@@ -217,6 +217,21 @@
 
   /* Clients strip: 40s linear loop over a duplicated list (README: Interactions) */
   --animate-marquee: marquee 40s linear infinite;
+  --animate-stack-signal: stack-signal 8s linear infinite;
+
+  /* Home hero diagram: one layer lit at a time (each layer starts later, see stack-card.tsx) */
+  @keyframes stack-signal {
+    0%,
+    26%,
+    100% {
+      border-color: var(--deep-border);
+    }
+
+    4%,
+    20% {
+      border-color: var(--brand-cyan);
+    }
+  }
 
   @keyframes marquee {
     from {

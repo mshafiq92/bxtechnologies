@@ -186,7 +186,7 @@ export function ComponentsShowcase() {
               </OpenColumn>
               <OpenColumn
                 number="02"
-                title="Data & Cloud"
+                title="Data & Analytics"
                 footer={
                   <StatusDot className="border-t border-hairline pt-3.5 text-small text-muted">
                     In production · Retail, Energy

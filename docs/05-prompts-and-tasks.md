@@ -99,7 +99,7 @@ Tip: save this block as `CLAUDE.md` at the repo root (task T00) so it loads auto
 
 **T13 · Header, mega menu, mobile menu**
 > Recreate `BxHeader.dc.html`: sticky header (72px; *now navy and 84px from 900px, see D12*), logo, nav with active underline, CTA. Services mega
-> menu (≥900px): 4 groups × 3 links + footer row, opens on hover/focus, closes on header mouse-leave,
+> menu (≥900px): service groups in a 3 by 2 grid (6 groups, 18 links since 2026-11-09) + footer row, opens on hover/focus, closes on header mouse-leave,
 > other-item hover and Escape, shadow-card. Under 900px: Menu button + full-width panel with focus trap
 > and scroll lock. Nav data comes from `lib/content`. Test keyboard behaviour.
 

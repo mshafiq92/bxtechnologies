@@ -63,13 +63,13 @@ describe("JumpBar", () => {
       <JumpBar
         links={[
           { href: "#ai", label: "AI & Autonomy" },
-          { href: "#data", label: "Data & Cloud" },
+          { href: "#data", label: "Data & Analytics" },
         ]}
       />,
     );
     const nav = screen.getByRole("navigation", { name: "Jump to" });
     expect(nav).toHaveAttribute("data-jump-bar");
-    expect(screen.getByRole("link", { name: "Data & Cloud" })).toHaveAttribute("href", "#data");
+    expect(screen.getByRole("link", { name: "Data & Analytics" })).toHaveAttribute("href", "#data");
   });
 });
 

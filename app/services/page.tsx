@@ -19,7 +19,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
-    "Four groups of services, one delivery team: AI and autonomy, data and cloud, product engineering, and teams and advisory. Built by the engineers who maintain the systems they plug into.",
+    "One delivery team across AI and autonomy, data and analytics, cloud and DevOps, managed IT, product and quality, and teams and advisory. Built by the engineers who maintain the systems they plug into.",
   path: "/services",
 });
 
@@ -45,7 +45,7 @@ export default function ServicesPage() {
 
       <JumpBar links={page.jumpLinks} />
 
-      {/* Four capability groups ------------------------------------------------ */}
+      {/* Capability groups ------------------------------------------------------ */}
       {getServiceGroups().map((group) => (
         <Section
           key={group.key}

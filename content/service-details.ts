@@ -130,9 +130,9 @@ export const agenticAiDetail: ServiceDetailInput = {
     note: proofNote,
     metrics: [
       {
-        value: "68%",
-        label: "faster first response on inbound claims after triage moved to an agent.",
-        sector: "Insurance · EU · NDA",
+        value: "24/7",
+        label: "answers for applicants from the handbook, with the source section cited.",
+        sector: "Education · PK · NDA",
         placeholder: true,
       },
       {
@@ -155,9 +155,9 @@ export const agenticAiDetail: ServiceDetailInput = {
       "High volume, clear rules, and a decision a person can check. Those three together are what make an agent pay for itself.",
     items: [
       {
-        sector: "Insurance",
-        title: "Claims intake and triage",
-        text: "First-notice-of-loss classification, fraud flags, and routing to the right adjuster with the file already assembled.",
+        sector: "Fintech",
+        title: "Payment exception handling",
+        text: "Failed and disputed transactions classified, checked against settlement records, and routed with the case already assembled.",
       },
       {
         sector: "Logistics",
@@ -175,9 +175,9 @@ export const agenticAiDetail: ServiceDetailInput = {
         text: "Tier-one resolution from docs and account state, with clean escalation and a written summary for the engineer who picks it up.",
       },
       {
-        sector: "Utilities",
-        title: "Field and asset reporting",
-        text: "Technician notes and telemetry turned into structured work orders, with anomalies escalated to a planner.",
+        sector: "Facilities",
+        title: "Field and job reporting",
+        text: "Technician notes and site reports turned into structured work orders, with anomalies escalated to a planner.",
       },
       {
         sector: "Professional services",
@@ -221,12 +221,12 @@ export const agenticAiDetail: ServiceDetailInput = {
     title: "What agent work usually needs alongside it",
     items: [
       {
-        title: "Generative AI integration",
+        title: "Gen AI integration",
         text: "Retrieval over your own documents and copilots inside existing screens, usually the layer an agent reads from.",
         href: "/services#ai",
       },
       {
-        title: "Data engineering & analytics",
+        title: "Data engineering",
         text: "If the agent's answers have to reconcile with reporting, the pipeline and the warehouse come first.",
         href: "/services#data",
       },
@@ -252,7 +252,7 @@ export const agenticAiDetail: ServiceDetailInput = {
 /* Cloud & DevOps ------------------------------------------------------------ */
 
 export const cloudDevopsDetail: ServiceDetailInput = {
-  eyebrow: "Data & Cloud · Service 05",
+  eyebrow: "Cloud & DevOps · Service 09",
   title: "Infrastructure your team can change on a Tuesday afternoon.",
   intro:
     "Landing zones, pipelines and observability on AWS and Azure, written as code and handed over with the runbooks. The goal is a platform where a deploy is routine and the monthly bill is explainable.",
@@ -381,7 +381,7 @@ export const cloudDevopsDetail: ServiceDetailInput = {
       {
         value: "0",
         label: "hours of unplanned downtime across a wave-by-wave migration.",
-        sector: "Utilities · EU · NDA",
+        sector: "Telecom · NDA",
         placeholder: true,
       },
     ],
@@ -411,7 +411,7 @@ export const cloudDevopsDetail: ServiceDetailInput = {
         text: "Releases that need a weekend, a checklist and the one person who knows how.",
       },
       {
-        sector: "Utilities",
+        sector: "Telecom",
         title: "Environments have drifted",
         text: "Staging that no longer matches production, so testing there proves very little.",
       },
@@ -457,7 +457,7 @@ export const cloudDevopsDetail: ServiceDetailInput = {
     title: "What platform work usually needs alongside it",
     items: [
       {
-        title: "Data engineering & analytics",
+        title: "Data engineering",
         text: "Pipelines and warehouses that run on the same platform and the same deployment discipline.",
         href: "/services#data",
       },
@@ -488,7 +488,7 @@ export const cloudDevopsDetail: ServiceDetailInput = {
 /* Custom software development ---------------------------------------------- */
 
 export const customSoftwareDetail: ServiceDetailInput = {
-  eyebrow: "Product Engineering · Service 07",
+  eyebrow: "Product & Quality · Service 17",
   title: "Line-of-business software built to be handed over.",
   intro:
     "Domain modelling, API design and the integrations with what you already run, in .NET, Node.js or Python. Documented well enough that your own team, or another vendor, could take it on.",
@@ -632,9 +632,9 @@ export const customSoftwareDetail: ServiceDetailInput = {
         text: "Scheduling, dispatch and invoicing held together by spreadsheets and one person who knows the system.",
       },
       {
-        sector: "Automotive",
-        title: "Internal tools for a programme",
-        text: "Tooling that has to fit an existing release process and its traceability rules.",
+        sector: "Healthcare",
+        title: "Records and scheduling in separate tools",
+        text: "Appointments, records and follow-ups spread across systems that do not share data.",
       },
       {
         sector: "Retail",

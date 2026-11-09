@@ -4,7 +4,7 @@ import { Eyebrow } from "./typography";
 
 /*
  * Metrics. Numbers are always navy (`text-ink` / `text-on-deep`), never green (BUSINESS-RULES-V2 §1).
- * All figures are placeholders for now (by decision); content marks them `placeholder: true`.
+ * Figures that are not yet real are marked `placeholder: true` in content.
  */
 
 export type MetricItem = { value: string; label: string };
@@ -31,7 +31,7 @@ export function MetricInlineList({
   );
 }
 
-/** Proof strip ("Delivered"): inline value with a short label beside it. */
+/** Proof strip ("Track record"): equal columns with dividers, value above its label. */
 export function MetricsStrip({
   label,
   sublabel,
@@ -44,17 +44,15 @@ export function MetricsStrip({
   className?: string;
 }) {
   return (
-    <div className={cn("flex flex-wrap items-center gap-x-14 gap-y-6", className)}>
+    <div className={cn("flex flex-col gap-6 md:flex-row md:items-center md:gap-14", className)}>
       <div className="flex flex-col gap-1">
-        <Eyebrow as="span" tone="success">
-          {label}
-        </Eyebrow>
+        <Eyebrow as="span">{label}</Eyebrow>
         {sublabel && <span className="text-small text-muted">{sublabel}</span>}
       </div>
-      <dl className="flex flex-1 flex-wrap gap-x-12 gap-y-4">
+      <dl className="grid flex-1 grid-cols-3 gap-4 md:gap-0 md:divide-x md:divide-hairline">
         {items.map((m) => (
-          <div key={m.label} className="flex items-baseline gap-2.5">
-            <dt className="order-2 max-w-[16ch] text-small leading-5 text-muted">{m.label}</dt>
+          <div key={m.label} className="flex flex-col gap-1 md:px-8">
+            <dt className="order-2 text-small leading-5 text-muted">{m.label}</dt>
             <dd data-metric="" className="text-metric-inline text-ink">
               {m.value}
             </dd>

@@ -55,7 +55,7 @@ Build in this order (each reuses what the previous ones created):
 | ID | Page | Route | Notable work |
 |---|---|---|---|
 | 3.1 | Home | `/` | Diagram hero, **LogoMarquee** (current logos, `cleared` flag respected, reduced-motion), services columns, selected work, proof strip, navy timeline, engagement models, industries tiles, insights rows, contact section + form (UI only) |
-| 3.2 | Services | `/services` | Grid hero, JumpBar, four groups of service rows, stack lists with grounding note, engagement models |
+| 3.2 | Services | `/services` | Grid hero, JumpBar, service rows by group (6 groups, 18 services since 2026-11-09), stack lists with grounding note, engagement models |
 | 3.3 | Service Detail | `/services/[slug]` | One template, sections toggled by data; architecture diagram; FAQ; related; `generateStaticParams` for published services only. Verify against all three designs |
 | 3.4 | Work | `/work` | Project cards (NDA format), "After launch" band |
 | 3.5 | Insights | `/insights` | Featured panel, client-side topic filter (URL `?topic=` synced), empty state, subscribe form (UI) |

@@ -38,12 +38,12 @@ export function JumpBar({
             {label}
           </span>
         )}
-        <ul className="flex flex-none items-center gap-x-2">
+        <ul className="flex flex-none items-center gap-x-1">
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="inline-flex min-h-11 flex-none items-center rounded-md px-3 text-[15px] font-medium whitespace-nowrap text-ink transition-colors hover:bg-ground hover:text-link"
+                className="inline-flex min-h-11 flex-none items-center rounded-md px-2.5 text-[15px] font-medium whitespace-nowrap text-ink transition-colors hover:bg-ground hover:text-link"
               >
                 {link.label}
               </a>

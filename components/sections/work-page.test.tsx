@@ -2,6 +2,7 @@ import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import WorkPage from "@/app/work/page";
+import { getProjects } from "@/lib/content";
 
 describe("Work page", () => {
   it("renders hero, projects, after launch and contact band in order", () => {
@@ -21,10 +22,10 @@ describe("Work page", () => {
     }
   });
 
-  it("shows nine projects, each as Sector · Region · NDA with a navy metric", () => {
+  it("shows every project, each as Sector · Region · NDA with a navy metric", () => {
     const { container } = render(<WorkPage />);
     const cards = container.querySelectorAll("section#projects article");
-    expect(cards).toHaveLength(9);
+    expect(cards).toHaveLength(getProjects().length);
     for (const card of Array.from(cards)) {
       expect(card.textContent).toMatch(/· NDA/);
       const metric = card.querySelector("[data-metric]");

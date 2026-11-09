@@ -2,22 +2,17 @@
  * Home page copy (bX v2 - Home.dc.html). Collections (services, projects, client logos)
  * come from their own files; this holds the page's own sections.
  */
-import type { HeroDiagram } from "@/lib/schemas/content";
+import type { HeroDiagram, ServiceGroup } from "@/lib/schemas/content";
 
 export const homePage = {
   hero: {
     eyebrow: "AI-first engineering partner",
     title: "We put AI agents into production software that already works.",
     intro:
-      "Custom software, web and mobile systems, cloud platforms, and the agentic and generative AI layers that run on top of them. We design, build and operate all of it.",
-    tags: ["Agentic AI", "Cloud", "Custom software"],
+      "AI agents, data platforms, cloud and custom software, with managed IT behind them. We design, build and operate all of it.",
+    tags: ["Agentic AI", "Cloud & DevOps", "Custom software"],
     primaryCta: { label: "Book a technical call", href: "#contact" },
     secondaryCta: { label: "See the work", href: "#work" },
-    metrics: [
-      { value: "68%", label: "faster claims triage", placeholder: true },
-      { value: "3.2×", label: "more online bookings", placeholder: true },
-      { value: "9 hrs", label: "saved weekly on tenders", placeholder: true },
-    ],
     diagram: {
       caption: "How we build agents",
       entry: { t: "Channel", d: "web · WhatsApp · email" },
@@ -30,16 +25,41 @@ export const homePage = {
       outcomes: [{ t: "Eval & observability", d: "traces · regressions · cost" }],
       status: { t: "Deployed & monitored", d: "142 evals passing", detailTone: "status" },
     } satisfies HeroDiagram,
-    footnote: "Delivering from Islamabad to clients in Germany, the UK and the Gulf",
+    slider: {
+      label: "Highlights",
+      pause: "Pause the slider",
+      play: "Play the slider",
+      firstSlide: "AI agents",
+    },
+    allServices: {
+      label: "All services",
+      eyebrow: "AI · Data · Cloud · Managed IT",
+      title: "Engineering for AI that runs in production.",
+      intro:
+        "We design, build and operate AI, data and cloud systems, from the first architecture review to day to day operations.",
+      tags: ["Managed IT", "Data & Analytics", "Product & Quality"],
+      primaryCta: { label: "Book a technical call", href: "#contact" },
+      secondaryCta: { label: "See how we work", href: "#process" },
+      caption: "What we build and run",
+      // Tags per group in the panel (a group without tags is not a layer).
+      // Names and links come from content/services.ts.
+      layers: {
+        ai: ["Agents", "Gen AI", "AI/ML", "MLOps"],
+        data: ["Engineering", "Pipelines", "Analytics"],
+        cloud: ["Deployment", "Migration", "Monitoring"],
+        managed: ["Device support", "Field engineering", "Technical support"],
+      } as Partial<Record<ServiceGroup["key"], string[]>>,
+      // The band beside the layers: this group touches all of them.
+      side: ["Custom software", "Web and mobile", "QA", "Cybersecurity"],
+    },
   },
   clients: { label: "Clients & partners" },
   services: {
     eyebrow: "Services",
-    title: "Four groups, one delivery team",
+    title: "AI, data and cloud engineering",
     aside:
-      "The AI work is built by the same engineers who maintain the systems it plugs into. Client names are withheld under NDA; sector and scale are not.",
+      "We design, build and operate the systems your business depends on, from AI agents to secure cloud platforms and custom software.",
     allLink: { label: "All services", href: "/services" },
-    footnote: "Each group has delivered, running systems behind it",
   },
   work: {
     eyebrow: "Selected work",
@@ -47,20 +67,18 @@ export const homePage = {
     allLink: { label: "All projects", href: "/work" },
   },
   delivered: {
-    label: "Delivered",
-    sublabel: "measured, not claimed",
+    label: "Track record",
     metrics: [
-      { value: "94%", label: "on-time delivery", placeholder: true },
-      { value: "8/10", label: "clients retained past first project", placeholder: true },
-      { value: "81%", label: "automated test coverage", placeholder: true },
-      { value: "4", label: "countries served", placeholder: true },
+      { value: "80+", label: "projects delivered" },
+      { value: "50+", label: "clients" },
+      { value: "20+", label: "team members" },
     ],
   },
   process: {
     eyebrow: "How we work",
-    title: "Six stages, and you sign off each one",
+    title: "You sign off every stage",
     aside:
-      "The process that has carried every delivery we have made. Unchanged for AI work: an agent in production needs the same discipline as a payments system.",
+      "One process from first workshop to live support. AI work follows it too: an agent in production needs the same discipline as a payments system.",
     steps: [
       {
         num: "01",
@@ -78,19 +96,19 @@ export const homePage = {
         num: "03",
         title: "UX & architecture",
         text: "Mock-ups and a reference architecture you sign off before build starts.",
-        chips: ["Prototypes", "ADRs"],
+        chips: ["Prototypes", "Design records"],
       },
       {
         num: "04",
         title: "Build",
-        text: "Two-week iterations, unit tests at commit level, your board and your repo.",
+        text: "Two-week iterations, unit tests on every commit, and full visibility in your own tools.",
         chips: ["Your repo", "Fortnightly demo"],
       },
       {
         num: "05",
         title: "Test & evaluate",
         text: "Functional, performance and security testing. For AI work, evaluation suites and cost tracking before rollout.",
-        chips: ["Eval harness", "Load & security"],
+        chips: ["AI evaluation", "Load & security"],
       },
       {
         num: "06",
@@ -108,7 +126,7 @@ export const homePage = {
       { title: "Fintech", text: "Payments, settlement, KYC" },
       { title: "Healthcare", text: "Patient records, scheduling" },
       { title: "eCommerce", text: "Catalogue, fulfilment, support" },
-      { title: "Telecom", text: "Provisioning, infotainment QA" },
+      { title: "Telecom", text: "Provisioning, test automation" },
       { title: "Facilities & services", text: "Booking, dispatch, operations" },
     ],
   },

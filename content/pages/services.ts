@@ -7,7 +7,7 @@ import type { ContactBandContent } from "@/lib/schemas/content";
 export const servicesPage = {
   hero: {
     eyebrow: "Services",
-    title: "Four groups of services, one delivery team.",
+    title: "Services built by one delivery team.",
     intro:
       "We are an engineering firm, not a marketplace of unrelated skills. The AI work is built by the same people who maintain the systems it plugs into, which is why it survives contact with production.",
     metrics: [
@@ -20,8 +20,10 @@ export const servicesPage = {
   },
   jumpLinks: [
     { href: "#ai", label: "AI & Autonomy" },
-    { href: "#data", label: "Data & Cloud" },
-    { href: "#product", label: "Product Engineering" },
+    { href: "#data", label: "Data & Analytics" },
+    { href: "#cloud", label: "Cloud & DevOps" },
+    { href: "#managed", label: "Managed IT" },
+    { href: "#product", label: "Product & Quality" },
     { href: "#teams", label: "Teams & Advisory" },
     { href: "#stack", label: "Stack" },
     { href: "#engagement", label: "Engagement" },

@@ -41,6 +41,10 @@ Main nav: **Services** (mega menu) · Work · Insights · Company (About / Indus
 
 ### Service catalogue (4 groups × 3, from the mega menu)
 
+> Original design, kept for reference. Since 2026-11-09 the site has 6 groups and 24 services
+> (`content/services.ts` is the source): AI & Autonomy, Data & Analytics, Cloud & DevOps, Managed IT,
+> Product & Quality, Teams & Advisory.
+
 | AI & Autonomy (`#ai`) | Data & Cloud (`#data`) | Product Engineering (`#product`) | Teams & Advisory (`#teams`) |
 |---|---|---|---|
 | Agentic AI & agents ✱ | Data engineering & analytics | Custom software ✱ | Dedicated teams |

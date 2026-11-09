@@ -1,10 +1,10 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { useState } from "react";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import HomePage from "@/app/page";
 import { RadioPills } from "@/components/forms/radio-pills";
-import { getClientLogos } from "@/lib/content";
+import { getClientLogos, getServiceGroups } from "@/lib/content";
 
 import { LogoMarquee } from "./logo-marquee";
 
@@ -14,6 +14,15 @@ vi.mock("@/lib/forms/actions", () => ({
   subscribe: vi.fn(async () => ({ status: "success" })),
   submitApplication: vi.fn(async () => ({ status: "success" })),
 }));
+
+// jsdom has no matchMedia; the hero slider reads the reduced motion setting.
+beforeEach(() => {
+  window.matchMedia = vi.fn().mockReturnValue({
+    matches: false,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+  }) as unknown as typeof window.matchMedia;
+});
 
 function Pills() {
   const [value, setValue] = useState("An idea");
@@ -92,6 +101,25 @@ describe("Home page", () => {
     );
   });
 
+  it("rotates whole banners, with a diagram of the service groups except Teams", () => {
+    const { container } = render(<HomePage />);
+    const hero = within(container.querySelector<HTMLElement>("#top")!);
+    expect(hero.getByRole("heading", { level: 2, hidden: true })).toHaveTextContent(
+      "Engineering for AI that runs in production.",
+    );
+    // The second slide is hidden from assistive tech until it shows, so query the DOM directly.
+    expect(
+      container.querySelector('[aria-roledescription="slide"][aria-label="All services"]'),
+    ).not.toBeNull();
+    expect(hero.queryByRole("tab")).toBeNull();
+    expect(container.querySelector('#top a[href="/services#teams"]')).toBeNull();
+    for (const group of getServiceGroups().filter((g) => g.key !== "teams")) {
+      expect(container.querySelector(`#top a[href="/services#${group.key}"]`)).toHaveTextContent(
+        group.name,
+      );
+    }
+  });
+
   it("has one h1 and no links to design files", () => {
     const { container } = render(<HomePage />);
     expect(container.querySelectorAll("h1")).toHaveLength(1);
@@ -100,17 +128,24 @@ describe("Home page", () => {
     }
   });
 
-  it("links services to detail pages where they exist", () => {
+  it("shows each service group as a card with an Explore link and service names", () => {
     const { container } = render(<HomePage />);
     const services = within(container.querySelector<HTMLElement>("#capabilities")!);
-    expect(services.getByRole("link", { name: /^Cloud & DevOps/ })).toHaveAttribute(
-      "href",
-      "/services/cloud-devops",
-    );
-    expect(services.getByRole("link", { name: /^IoT & embedded/ })).toHaveAttribute(
-      "href",
-      "/services#data",
-    );
+    expect(services.getAllByRole("article")).toHaveLength(6);
+    for (const [name, key] of [
+      ["AI & Autonomy", "ai"],
+      ["Data & Analytics", "data"],
+      ["Cloud & DevOps", "cloud"],
+      ["Managed IT", "managed"],
+      ["Product & Quality", "product"],
+      ["Teams & Advisory", "teams"],
+    ]) {
+      expect(services.getByRole("link", { name: `Explore ${name}` })).toHaveAttribute(
+        "href",
+        `/services#${key}`,
+      );
+    }
+    expect(services.getByText("Technical support (L1-L3)")).toBeInTheDocument();
   });
 
   it("shows the success state when the enquiry action succeeds", async () => {

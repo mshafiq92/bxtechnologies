@@ -33,8 +33,8 @@ Keep these even where the handoff or the `.dc.html` designs say otherwise; don't
 - **Logo**: one layout site-wide, the horizontal compact logo (C1, outlined SVG). Header: white-text version
   on navy, 60px tall (44px under 900px). Footer: same, 48px (40px under 640px). Share cards use the compact PNG.
   Stacked, print and no-bars versions are not used on the site. No text next to the logo.
-- **Header**: navy (`bg-deep`, `data-tone="deep"`), white links, cyan CTA unchanged; mega menu and mobile panel
-  stay light (`data-tone="light"`). Height 84px from 900px, 72px below. Jump bar top, anchor offsets and
+- **Header**: navy (`bg-deep`, `data-tone="deep"`), white links, cyan CTA unchanged; mega menu, Company menu and mobile
+  panel are navy too, styled like the footer (owner decision 2026-11-09). Height 84px from 900px, 72px below. Jump bar top, anchor offsets and
   sticky side columns derive from `--header-height` in `styles/tokens.css`; change the height only there.
   Phone browser bar colour (`themeColor`) matches the navy.
 - Plans: `docs/01` analysis · `02` stack · `03` implementation · `04` deployment · `05` ordered tasks (T00 to T52)

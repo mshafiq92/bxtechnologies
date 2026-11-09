@@ -30,15 +30,14 @@ export const companyMenu: NavLink[] = [
 ];
 
 /**
- * Mega menu extras. The four service groups and their links are built from content/services.ts
+ * Mega menu extras. The service groups and their links are built from content/services.ts
  * by lib/content (getNavigation), so the menu always matches the services list.
  */
-export const megaMenuExtras: { footerLinks: NavLink[]; note: string } = {
+export const megaMenuExtras: { footerLinks: NavLink[] } = {
   footerLinks: [
     { label: "Industries", href: "/industries" },
     { label: "Engagement models", href: "/services#engagement" },
   ],
-  note: "Every capability has delivered, running systems behind it",
 };
 
 export const footerColumns: { title: string; links: NavLink[] }[] = [
@@ -46,8 +45,10 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
     title: "Services",
     links: [
       { label: "AI & Autonomy", href: "/services#ai" },
-      { label: "Data & Cloud", href: "/services#data" },
-      { label: "Product Engineering", href: "/services#product" },
+      { label: "Data & Analytics", href: "/services#data" },
+      { label: "Cloud & DevOps", href: "/services#cloud" },
+      { label: "Managed IT", href: "/services#managed" },
+      { label: "Product & Quality", href: "/services#product" },
       { label: "Teams & Advisory", href: "/services#teams" },
     ],
   },

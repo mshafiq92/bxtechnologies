@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | BX Technologies",
   },
   description:
-    "AI-first engineering partner. We design, build and operate custom software, web, mobile and agentic AI systems for clients in Europe and Asia.",
+    "AI-first engineering partner. We design, build and operate custom software, web, mobile and agentic AI systems.",
   robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
 };
 

@@ -39,7 +39,7 @@ export const roles: RoleInput[] = [
         { value: "Full-time", label: "permanent" },
       ],
       work: [
-        "We build agent and retrieval systems for insurance, construction and education clients: claims triage, tender drafting, assistants that answer from policy documents. Most start as a six-week pilot with a fixed fee and a go/no-go number at the end, and the ones that pass go into daily operational use.",
+        "We build agent and retrieval systems for construction, education and SaaS clients: support triage, tender drafting, assistants that answer from policy documents. Most start as a six-week pilot with a fixed fee and a go/no-go number at the end, and the ones that pass go into daily operational use.",
         "You would own workflows end to end: talking to the people whose job the system touches, assembling the test set with them, building the pipeline, and running it in shadow mode beside the existing process until the numbers justify letting it act. **Roughly a third of the job is engineering judgement about when not to automate something.**",
       ],
       whatYouWillDo: [

@@ -167,7 +167,7 @@ export const aboutPage = {
       {
         year: "2023",
         title: "Cybersecurity and managed IT",
-        text: "Security reviews, hardening and managed operations, so the systems we build stay secure, monitored and running long after they launch.",
+        text: "Security reviews and hardening, plus hardware, on-site and L1 to L3 support, so the systems we build stay secure and keep running long after they launch.",
       },
       {
         year: "2024",

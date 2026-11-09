@@ -66,7 +66,7 @@ export const HeroDiagramSchema = z.object({
 
 /* Services ----------------------------------------------------------------- */
 
-export const CapabilityGroupKey = z.enum(["ai", "data", "product", "teams"]);
+export const CapabilityGroupKey = z.enum(["ai", "data", "cloud", "managed", "product", "teams"]);
 
 export const ServiceGroupSchema = z.object({
   key: CapabilityGroupKey,
@@ -74,8 +74,6 @@ export const ServiceGroupSchema = z.object({
   name: z.string().min(1),
   /** Intro on the Services page group heading. */
   intro: z.string().min(1),
-  /** Green status line on the Home services columns ("In production · ..."). */
-  production: z.string().min(1),
 });
 
 export const ServiceDetailSchema = z.object({

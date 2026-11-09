@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
 import { EngagementModels } from "@/components/sections/engagement-models";
+import { HeroSlider } from "@/components/sections/hero-slider";
 import { HomeContactForm } from "@/components/sections/home-contact-form";
 import { InsightRows } from "@/components/sections/insight-rows";
 import { LogoMarquee } from "@/components/sections/logo-marquee";
@@ -8,10 +10,10 @@ import { ButtonLink } from "@/components/ui/button";
 import { CardLink } from "@/components/ui/card";
 import { ChipList, Tag } from "@/components/ui/chip";
 import { DiagramCard } from "@/components/ui/diagram-card";
-import { MetricInlineList, MetricsStrip } from "@/components/ui/metric";
+import { MetricsStrip } from "@/components/ui/metric";
 import { Section } from "@/components/ui/section";
 import { SmartLink } from "@/components/ui/smart-link";
-import { StatusDot } from "@/components/ui/status";
+import { StackCard } from "@/components/ui/stack-card";
 import { TextLink } from "@/components/ui/text-link";
 import { Timeline } from "@/components/ui/timeline";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
@@ -23,7 +25,6 @@ import {
   getServiceGroups,
   getServices,
   getSiteSettings,
-  serviceHref,
 } from "@/lib/content";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { pageMetadata } from "@/lib/seo/metadata";
@@ -37,10 +38,46 @@ export const metadata: Metadata = pageMetadata({
   absoluteTitle: true,
 });
 
+type HeroCopy = {
+  eyebrow: string;
+  intro: string;
+  tags: string[];
+  primaryCta: { label: string; href: string };
+  secondaryCta: { label: string; href: string };
+};
+
+/** One banner of the Home hero slider: copy and buttons, with a panel beside them. */
+function HeroSlide({ copy, title, panel }: { copy: HeroCopy; title: ReactNode; panel: ReactNode }) {
+  return (
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-start gap-12">
+      <div className="flex flex-col gap-6">
+        <Eyebrow>{copy.eyebrow}</Eyebrow>
+        {title}
+        <p className="max-w-[56ch] text-body-lg text-muted">{copy.intro}</p>
+        <ul className="flex flex-wrap gap-2" aria-label="Focus areas">
+          {copy.tags.map((tag) => (
+            <li key={tag}>
+              <Tag>{tag}</Tag>
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-wrap gap-3 pt-2">
+          <ButtonLink href={copy.primaryCta.href}>{copy.primaryCta.label}</ButtonLink>
+          <ButtonLink href={copy.secondaryCta.href} variant="secondary" arrow>
+            {copy.secondaryCta.label}
+          </ButtonLink>
+        </div>
+      </div>
+      {panel}
+    </div>
+  );
+}
+
 export default function HomePage() {
   const page = getPage("home");
   const site = getSiteSettings();
   const engagement = getEngagementModels("home");
+  const productGroup = getServiceGroups().find((group) => group.key === "product");
 
   return (
     <>
@@ -52,37 +89,59 @@ export default function HomePage() {
         aria-labelledby="home-title"
         containerClassName="flex flex-col gap-12"
       >
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,420px),1fr))] items-start gap-12">
-          <div className="flex flex-col gap-6">
-            <Eyebrow>{page.hero.eyebrow}</Eyebrow>
-            <Heading id="home-title" size="display" className="max-w-[16ch]">
-              {page.hero.title}
-            </Heading>
-            <p className="max-w-[56ch] text-body-lg text-muted">{page.hero.intro}</p>
-            <ul className="flex flex-wrap gap-2" aria-label="Focus areas">
-              {page.hero.tags.map((tag) => (
-                <li key={tag}>
-                  <Tag>{tag}</Tag>
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <ButtonLink href={page.hero.primaryCta.href}>{page.hero.primaryCta.label}</ButtonLink>
-              <ButtonLink href={page.hero.secondaryCta.href} variant="secondary" arrow>
-                {page.hero.secondaryCta.label}
-              </ButtonLink>
-            </div>
-            <MetricInlineList
-              items={page.hero.metrics}
-              className="mt-2 border-t border-hairline pt-6"
-            />
-          </div>
-          <DiagramCard diagram={page.hero.diagram} layout="flow" />
-        </div>
-        <div className="flex flex-wrap justify-between gap-x-8 gap-y-2 border-t border-hairline pt-6 text-small text-muted">
-          <span>{page.hero.footnote}</span>
-          <span>{site.registrationsShort}</span>
-        </div>
+        <HeroSlider
+          label={page.hero.slider.label}
+          pauseLabel={page.hero.slider.pause}
+          playLabel={page.hero.slider.play}
+          slides={[
+            {
+              label: page.hero.slider.firstSlide,
+              content: (
+                <HeroSlide
+                  copy={page.hero}
+                  // The main heading of the page; the other slide uses a secondary one.
+                  title={
+                    <Heading id="home-title" size="display" className="max-w-[16ch]">
+                      {page.hero.title}
+                    </Heading>
+                  }
+                  panel={<DiagramCard diagram={page.hero.diagram} layout="flow" />}
+                />
+              ),
+            },
+            {
+              label: page.hero.allServices.label,
+              content: (
+                <HeroSlide
+                  copy={page.hero.allServices}
+                  title={
+                    <Heading as="h2" size="display" className="max-w-[16ch]">
+                      {page.hero.allServices.title}
+                    </Heading>
+                  }
+                  panel={
+                    <StackCard
+                      caption={page.hero.allServices.caption}
+                      layers={getServiceGroups().flatMap((group) => {
+                        const tags = page.hero.allServices.layers[group.key];
+                        return tags
+                          ? [{ title: group.name, tags, href: `/services#${group.key}` }]
+                          : [];
+                      })}
+                      side={
+                        productGroup && {
+                          title: productGroup.name,
+                          items: page.hero.allServices.side,
+                          href: `/services#${productGroup.key}`,
+                        }
+                      }
+                    />
+                  }
+                />
+              ),
+            },
+          ]}
+        />
       </Section>
 
       {/* 2. Clients & partners (hidden when no logo is cleared) ------------------- */}
@@ -103,7 +162,7 @@ export default function HomePage() {
           title={<span id="capabilities-title">{page.services.title}</span>}
           aside={page.services.aside}
         />
-        <div className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 2xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 2xl:grid-cols-3">
           {getServiceGroups().map((group) => (
             <article key={group.key} className="flex flex-col gap-4 border-t border-ink pt-6">
               <Eyebrow as="span" className="normal-case">
@@ -112,28 +171,35 @@ export default function HomePage() {
               <Heading as="h3" size="h3">
                 {group.name}
               </Heading>
+              <p className="text-body text-muted">{group.intro}</p>
               <ul>
                 {getServices(group.key).map((service) => (
-                  <li key={service.slug} className="border-t border-hairline">
-                    <SmartLink
-                      href={serviceHref(service)}
-                      className="flex flex-col gap-1 py-3.5 text-ink transition-colors hover:text-link"
-                    >
-                      <span className="text-body leading-6 font-semibold">{service.name}</span>
-                      <span className="text-small text-muted">{service.summary}</span>
-                    </SmartLink>
+                  <li
+                    key={service.slug}
+                    className="border-t border-hairline py-3 text-body leading-6 font-semibold text-ink"
+                  >
+                    {service.name}
                   </li>
                 ))}
               </ul>
-              <StatusDot className="mt-auto border-t border-hairline pt-3.5 text-small text-muted">
-                {group.production}
-              </StatusDot>
+              {/* Pinned to the bottom so the links align across a row. */}
+              <TextLink href={`/services#${group.key}`} className="mt-auto self-start">
+                <span>
+                  Explore <span className="sr-only">{group.name}</span>
+                </span>
+              </TextLink>
             </article>
           ))}
         </div>
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <TextLink href={page.services.allLink.href}>{page.services.allLink.label}</TextLink>
-          <span className="text-small text-muted">{page.services.footnote}</span>
+        <div className="flex justify-end">
+          <ButtonLink
+            href={page.services.allLink.href}
+            variant="secondary"
+            arrow
+            className="w-full md:w-auto"
+          >
+            {page.services.allLink.label}
+          </ButtonLink>
         </div>
       </Section>
 
@@ -185,11 +251,7 @@ export default function HomePage() {
         aria-label={page.delivered.label}
         className="border-b border-hairline"
       >
-        <MetricsStrip
-          label={page.delivered.label}
-          sublabel={page.delivered.sublabel}
-          items={page.delivered.metrics}
-        />
+        <MetricsStrip label={page.delivered.label} items={page.delivered.metrics} />
       </Section>
 
       {/* 6. How we work ---------------------------------------------------------- */}

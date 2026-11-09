@@ -8,20 +8,6 @@ import type { ProjectInput } from "@/lib/schemas/content";
 
 export const projects: ProjectInput[] = [
   {
-    slug: "claims-triage-agent",
-    tag: "Agentic AI",
-    sector: "Insurance · EU · NDA",
-    title: "Claims triage agent",
-    description:
-      "Classifies inbound first-notice-of-loss email, enriches it from the policy system and routes it to the right adjuster with the file already assembled.",
-    metric: { value: "68%", label: "faster first response", placeholder: true },
-    stack: ["LangGraph", "Node.js", "AWS"],
-    home: {
-      sector: "Insurance · EU · NDA",
-      text: "faster first response on inbound claims after deploying a triage agent across email and portal intake.",
-    },
-  },
-  {
     slug: "booking-operations-platform",
     tag: "Web & mobile",
     sector: "Facilities · DE · NDA",
@@ -58,16 +44,10 @@ export const projects: ProjectInput[] = [
       "Reads tender documents, builds a compliance matrix and drafts the standard response sections for a bid team to edit.",
     metric: { value: "9 hrs", label: "saved per tender response", placeholder: true },
     stack: ["Python", "RAG", "pgvector"],
-  },
-  {
-    slug: "field-telemetry-platform",
-    tag: "Data & cloud",
-    sector: "Utilities · EU · NDA",
-    title: "Field telemetry platform",
-    description:
-      "Ingests device telemetry into a time-series store with alerting rules tuned alongside the control room team.",
-    metric: { value: "18k", label: "devices in one view", placeholder: true },
-    stack: ["IoT", "TimescaleDB", "Grafana"],
+    home: {
+      sector: "Construction · NDA",
+      text: "saved per tender response after a drafting assistant began building the compliance matrix for the bid team.",
+    },
   },
   {
     slug: "infotainment-validation-suite",

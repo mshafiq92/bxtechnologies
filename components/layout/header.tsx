@@ -30,7 +30,7 @@ function ActiveUnderline() {
 
 /**
  * Sticky site header (BxHeader.dc.html): 72px on phones, 84px from 900px, logo, nav, CTA. Navy bar with the white
- * logo (owner decision 2026-11-06, the design has it white); the mega menu and mobile panel stay light.
+ * logo (owner decision 2026-11-06, the design has it white); the menus are navy too, styled like the footer (2026-11-09).
  * ≥900px: Services opens a mega menu and Company a small menu on hover or focus; each closes on
  * header mouse-leave,
  * hovering or focusing another item, Escape, or focus leaving the header.
@@ -44,6 +44,8 @@ export function Header({ nav }: { nav: Navigation }) {
   const megaOpen = openMenu === "services";
   const companyOpen = openMenu === "company";
   const [menuOpen, setMenuOpen] = useState(false);
+  // Which service group is expanded in the mobile panel (one at a time).
+  const [mobileGroup, setMobileGroup] = useState<string | null>(null);
 
   const headerRef = useRef<HTMLElement>(null);
   const servicesRef = useRef<HTMLAnchorElement>(null);
@@ -67,6 +69,7 @@ export function Header({ nav }: { nav: Navigation }) {
   const closeAll = () => {
     setOpenMenu(null);
     setMenuOpen(false);
+    setMobileGroup(null);
   };
 
   // Escape closes whichever menu is open and returns focus to its trigger.
@@ -114,12 +117,15 @@ export function Header({ nav }: { nav: Navigation }) {
     if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpenMenu(null);
   };
 
-  // Focus trap inside the mobile menu (menu button + panel links).
+  // Focus trap inside the mobile menu (menu button + panel links and group toggles).
+  // Links inside a collapsed group are hidden, so they are left out.
   const onHeaderKeyDown = (e: KeyboardEvent<HTMLElement>) => {
     if (!menuOpen || e.key !== "Tab") return;
     const focusables = [
       menuButtonRef.current,
-      ...Array.from(mobilePanelRef.current?.querySelectorAll<HTMLElement>("a[href]") ?? []),
+      ...Array.from(
+        mobilePanelRef.current?.querySelectorAll<HTMLElement>("a[href], button") ?? [],
+      ).filter((el) => !el.closest("[hidden]")),
     ].filter((el): el is HTMLElement => el !== null);
     const first = focusables[0];
     const last = focusables[focusables.length - 1];
@@ -177,13 +183,13 @@ export function Header({ nav }: { nav: Navigation }) {
               <div
                 id={MEGA_ID}
                 hidden={!megaOpen}
-                data-tone="light"
-                className="absolute top-full right-0 left-0 border-b border-hairline bg-surface shadow-card"
+                data-tone="deep"
+                className="absolute top-full right-0 left-0 max-h-[calc(100dvh-var(--header-height)-1px)] overflow-y-auto border-y border-deep-hairline bg-deep shadow-card"
               >
-                <div className="mx-auto grid max-w-wide grid-cols-4 gap-8 px-(--gutter) py-8">
+                <div className="mx-auto grid max-w-wide grid-cols-3 gap-x-6 gap-y-6 px-(--gutter) py-8 2xl:grid-cols-6">
                   {nav.megaMenu.groups.map((group) => (
                     <div key={group.title} className="flex flex-col gap-1">
-                      <Eyebrow as="span" tone="muted" className="mb-2">
+                      <Eyebrow as="span" tone="deep" className="mb-2">
                         {group.title}
                       </Eyebrow>
                       <ul>
@@ -192,7 +198,7 @@ export function Header({ nav }: { nav: Navigation }) {
                             <Link
                               href={link.href}
                               onClick={closeAll}
-                              className="flex min-h-11 items-center text-body font-medium text-ink transition-colors hover:text-link"
+                              className="flex min-h-11 items-center text-small text-on-deep transition-colors hover:text-on-deep-accent"
                             >
                               {link.label}
                             </Link>
@@ -202,12 +208,12 @@ export function Header({ nav }: { nav: Navigation }) {
                     </div>
                   ))}
                 </div>
-                <div className="border-t border-hairline bg-ground">
+                <div className="border-t border-deep-hairline bg-deep-panel">
                   <div className="mx-auto flex max-w-wide flex-wrap items-center gap-x-6 gap-y-1 px-(--gutter) py-2">
                     <Link
                       href="/services"
                       onClick={closeAll}
-                      className="inline-flex min-h-11 items-center gap-2 text-[15px] font-semibold text-link transition-colors hover:text-ink"
+                      className="inline-flex min-h-11 items-center gap-2 text-small font-semibold text-on-deep-accent transition-colors hover:text-on-deep"
                     >
                       All services <ArrowRightIcon size={16} />
                     </Link>
@@ -216,12 +222,11 @@ export function Header({ nav }: { nav: Navigation }) {
                         key={link.label}
                         href={link.href}
                         onClick={closeAll}
-                        className="inline-flex min-h-11 items-center text-[15px] font-medium text-ink transition-colors hover:text-link"
+                        className="inline-flex min-h-11 items-center text-small text-on-deep transition-colors hover:text-on-deep-accent"
                       >
                         {link.label}
                       </Link>
                     ))}
-                    <span className="ml-auto text-small text-muted">{nav.megaMenu.note}</span>
                   </div>
                 </div>
               </div>
@@ -254,8 +259,8 @@ export function Header({ nav }: { nav: Navigation }) {
                   <div
                     id={COMPANY_ID}
                     hidden={!companyOpen}
-                    data-tone="light"
-                    className="absolute top-[calc(50%_+_var(--header-height)_/_2)] left-0 w-max min-w-[220px] rounded-b-lg border border-t-0 border-hairline bg-surface p-2 shadow-card"
+                    data-tone="deep"
+                    className="absolute top-[calc(50%_+_var(--header-height)_/_2)] left-0 w-max min-w-[220px] rounded-b-lg border border-deep-hairline bg-deep p-2 shadow-card"
                   >
                     <ul>
                       {nav.companyMenu.map((link) => (
@@ -264,7 +269,7 @@ export function Header({ nav }: { nav: Navigation }) {
                             href={link.href}
                             onClick={closeAll}
                             aria-current={pathname === link.href ? "page" : undefined}
-                            className="flex min-h-11 items-center rounded-md px-4 text-body font-medium text-ink transition-colors hover:bg-ground hover:text-link"
+                            className="flex min-h-11 items-center rounded-md px-4 text-small text-on-deep transition-colors hover:bg-deep-panel hover:text-on-deep-accent"
                           >
                             {link.label}
                           </Link>
@@ -323,8 +328,8 @@ export function Header({ nav }: { nav: Navigation }) {
         id={MOBILE_ID}
         ref={mobilePanelRef}
         hidden={!menuOpen}
-        data-tone="light"
-        className="max-h-[calc(100dvh-var(--header-height)-1px)] overflow-y-auto border-t border-hairline bg-surface px-4 pt-2 pb-6 nav:hidden"
+        data-tone="deep"
+        className="max-h-[calc(100dvh-var(--header-height)-1px)] overflow-y-auto border-t border-deep-hairline bg-deep px-4 pt-2 pb-6 nav:hidden"
       >
         <nav aria-label="Main" className="flex flex-col gap-4">
           <ul>
@@ -332,16 +337,54 @@ export function Header({ nav }: { nav: Navigation }) {
               { key: "services" as const, label: "Services", href: "/services" },
               ...nav.mainNav,
             ].map((item) => (
-              <li key={item.key} className="border-b border-hairline">
+              <li key={item.key} className="border-b border-deep-hairline">
                 <Link
                   href={item.href}
                   onClick={closeAll}
                   aria-current={active === item.key ? "page" : undefined}
-                  className="flex min-h-14 items-center justify-between text-[17px] font-medium text-ink"
+                  className="flex min-h-14 items-center justify-between text-[17px] font-medium text-on-deep"
                 >
                   {item.label}
-                  <ArrowRightIcon size={16} className="text-muted" />
+                  <ArrowRightIcon size={16} className="text-on-deep-muted" />
                 </Link>
+                {item.key === "services" && (
+                  <ul className="-mt-2 pb-3 pl-4">
+                    {nav.megaMenu.groups.map((group, index) => {
+                      const expanded = mobileGroup === group.title;
+                      const panelId = `bx-mobile-group-${index}`;
+                      return (
+                        <li key={group.title}>
+                          <button
+                            type="button"
+                            aria-expanded={expanded}
+                            aria-controls={panelId}
+                            onClick={() => setMobileGroup(expanded ? null : group.title)}
+                            className="flex min-h-11 w-full items-center justify-between text-left text-[15px] font-medium text-on-deep transition-colors hover:text-on-deep-accent"
+                          >
+                            {group.title}
+                            <ChevronDownIcon
+                              size={16}
+                              className={cn("text-on-deep-muted", expanded && "rotate-180")}
+                            />
+                          </button>
+                          <ul id={panelId} hidden={!expanded} className="pb-2 pl-4">
+                            {group.links.map((link) => (
+                              <li key={link.label}>
+                                <Link
+                                  href={link.href}
+                                  onClick={closeAll}
+                                  className="flex min-h-11 items-center text-[15px] text-on-deep-muted transition-colors hover:text-on-deep"
+                                >
+                                  {link.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
                 {item.key === "company" && (
                   <ul className="-mt-2 pb-3 pl-4">
                     {nav.companyMenu.map((link) => (
@@ -349,7 +392,7 @@ export function Header({ nav }: { nav: Navigation }) {
                         <Link
                           href={link.href}
                           onClick={closeAll}
-                          className="flex min-h-11 items-center text-[15px] text-muted transition-colors hover:text-ink"
+                          className="flex min-h-11 items-center text-[15px] text-on-deep-muted transition-colors hover:text-on-deep"
                         >
                           {link.label}
                         </Link>

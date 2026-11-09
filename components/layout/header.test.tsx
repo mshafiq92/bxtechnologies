@@ -1,7 +1,7 @@
-import { act, fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { getNavigation } from "@/lib/content";
+import { getNavigation, getServices } from "@/lib/content";
 
 import { Header } from "./header";
 
@@ -44,21 +44,34 @@ describe("Header: mega menu", () => {
     expect(megaMenu()).toBeVisible();
   });
 
-  it("lists the four service groups with their links", () => {
+  it("lists every service group with its links", () => {
     renderHeader();
     fireEvent.mouseEnter(servicesLink());
+    const menu = within(megaMenu());
     for (const group of [
       "AI & Autonomy",
-      "Data & Cloud",
-      "Product Engineering",
+      "Data & Analytics",
+      "Cloud & DevOps",
+      "Managed IT",
+      "Product & Quality",
       "Teams & Advisory",
     ]) {
-      expect(screen.getByText(group)).toBeInTheDocument();
+      expect(menu.getByText(group)).toBeInTheDocument();
     }
-    expect(screen.getByRole("link", { name: "Cloud & DevOps" })).toHaveAttribute(
+    expect(menu.getByRole("link", { name: "Cloud deployment" })).toHaveAttribute(
       "href",
       "/services/cloud-devops",
     );
+  });
+
+  it("renders a link for every service", () => {
+    renderHeader();
+    fireEvent.mouseEnter(servicesLink());
+    const menu = within(megaMenu());
+    expect(getServices()).toHaveLength(24);
+    for (const service of getServices()) {
+      expect(menu.getByRole("link", { name: service.navLabel })).toBeInTheDocument();
+    }
   });
 
   it("closes on Escape and returns focus to Services", () => {
@@ -152,6 +165,24 @@ describe("Header: mobile menu", () => {
     expect(panel).not.toBeVisible();
     expect(button).toHaveFocus();
     expect(document.documentElement.style.overflow).toBe("");
+  });
+
+  it("expands one service group at a time", () => {
+    renderHeader();
+    fireEvent.click(screen.getByRole("button", { name: "Menu" }));
+    const panel = within(document.getElementById("bx-mobile-nav")!);
+    const ai = panel.getByRole("button", { name: "AI & Autonomy" });
+    const teams = panel.getByRole("button", { name: "Teams & Advisory" });
+    expect(ai).toHaveAttribute("aria-expanded", "false");
+    expect(panel.queryByRole("link", { name: "MLOps" })).toBeNull();
+
+    fireEvent.click(ai);
+    expect(ai).toHaveAttribute("aria-expanded", "true");
+    expect(panel.getByRole("link", { name: "MLOps" })).toBeVisible();
+
+    fireEvent.click(teams);
+    expect(ai).toHaveAttribute("aria-expanded", "false");
+    expect(panel.getByRole("link", { name: "Project management" })).toBeVisible();
   });
 
   it("traps Tab focus inside the open menu", () => {
