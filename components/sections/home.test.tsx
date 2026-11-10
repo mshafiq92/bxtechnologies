@@ -4,7 +4,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import HomePage from "@/app/page";
 import { RadioPills } from "@/components/forms/radio-pills";
-import { getClientLogos, getServiceGroups } from "@/lib/content";
+import { getClientLogos, getServiceGroups, groupHref } from "@/lib/content";
 
 import { LogoMarquee } from "./logo-marquee";
 
@@ -142,7 +142,7 @@ describe("Home page", () => {
     ]) {
       expect(services.getByRole("link", { name: `Explore ${name}` })).toHaveAttribute(
         "href",
-        `/services#${key}`,
+        groupHref(key as Parameters<typeof groupHref>[0]),
       );
     }
     expect(services.getByText("Technical support (L1-L3)")).toBeInTheDocument();

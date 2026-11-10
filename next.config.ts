@@ -17,6 +17,17 @@ const nextConfig: NextConfig = {
     // large CV uploads are not cut off.
     proxyClientMaxBodySize: "11mb",
   },
+  // Single-service pages retired in favour of group pages (owner decision 2026-11-10).
+  async redirects() {
+    return [
+      { source: "/services/agentic-ai", destination: "/services/ai-autonomy", permanent: true },
+      {
+        source: "/services/custom-software",
+        destination: "/services/product-quality",
+        permanent: true,
+      },
+    ];
+  },
   // Staging and previews: tell crawlers to stay out of every response, including images and files.
   async headers() {
     if (!resolveNoIndex()) return [];

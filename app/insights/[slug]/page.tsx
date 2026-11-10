@@ -6,6 +6,7 @@ import { articleComponents } from "@/components/prose/article-components";
 import { Avatar } from "@/components/ui/avatar";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { ButtonLink } from "@/components/ui/button";
+import { HeroGridBackdrop } from "@/components/ui/hero-grid-backdrop";
 import { LinkedInIcon, MailIcon, XIcon } from "@/components/ui/icons";
 import { Section } from "@/components/ui/section";
 import { SmartLink } from "@/components/ui/smart-link";
@@ -99,8 +100,10 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
         id="top"
         spacing="title"
         aria-labelledby="page-title"
+        className="relative isolate overflow-hidden"
         containerClassName="flex flex-col gap-7"
       >
+        <HeroGridBackdrop />
         <Breadcrumb
           items={[
             { label: "Home", href: "/" },

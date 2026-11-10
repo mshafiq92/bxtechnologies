@@ -16,7 +16,6 @@ describe("Services page", () => {
       "product",
       "teams",
       "stack",
-      "engagement",
       "contact",
     ]);
     const jump = screen.getByRole("navigation", { name: "Jump to" });
@@ -24,16 +23,7 @@ describe("Services page", () => {
       within(jump)
         .getAllByRole("link")
         .map((a) => a.getAttribute("href")),
-    ).toEqual([
-      "#ai",
-      "#data",
-      "#cloud",
-      "#managed",
-      "#product",
-      "#teams",
-      "#stack",
-      "#engagement",
-    ]);
+    ).toEqual(["#ai", "#data", "#cloud", "#managed", "#product", "#teams", "#stack"]);
   });
 
   it("has one h1 and a breadcrumb back to Home", () => {
@@ -47,21 +37,23 @@ describe("Services page", () => {
   it("lists every service, linking to its detail page or to the contact band", () => {
     const { container } = render(<ServicesPage />);
     const rows = ["ai", "data", "cloud", "managed", "product", "teams"].flatMap((id) =>
-      Array.from(container.querySelectorAll(`section#${id} a[href]`)),
+      Array.from(container.querySelectorAll(`section#${id} a[href]`)).filter((a) =>
+        a.querySelector(".text-h4"),
+      ),
     );
     expect(rows).toHaveLength(24);
     const hrefs = Object.fromEntries(
       rows.map((a) => [a.querySelector(".text-h4")?.textContent, a.getAttribute("href")]),
     );
-    expect(hrefs["Agentic AI & agents"]).toBe("/services/agentic-ai");
-    expect(hrefs["Cloud deployment"]).toBe("/services/cloud-devops");
-    expect(hrefs["Custom software development"]).toBe("/services/custom-software");
-    expect(hrefs["IoT & embedded"]).toBe("#contact");
+    expect(hrefs["Agentic AI & agents"]).toBe("/services/ai-autonomy#agentic-ai");
+    expect(hrefs["Cloud deployment"]).toBe("/services/cloud-devops#cloud-deployment");
+    expect(hrefs["Custom software development"]).toBe("/services/product-quality#custom-software");
+    expect(hrefs["IoT & embedded"]).toBe("/services/data-analytics#iot-embedded");
   });
 
   it("ends with the Services contact band copy", () => {
     render(<ServicesPage />);
-    const band = screen.getByRole("region", { name: "Not sure which service you need?" });
+    const band = screen.getByRole("region", { name: "Start with a technical call" });
     expect(within(band).getByRole("link", { name: "Book a technical call" })).toHaveAttribute(
       "href",
       "/contact",

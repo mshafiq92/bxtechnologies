@@ -5,17 +5,11 @@ import {
   getPublishedInsights,
   getAllRoles,
   getRolesWithDetail,
-  getServicesWithDetail,
+  getGroupPages,
 } from "@/lib/content";
 
 import { pageMetadata } from "./metadata";
-import {
-  articleLd,
-  breadcrumbLd,
-  jobPostingLd,
-  organizationLd,
-  serviceLd,
-} from "./structured-data";
+import { articleLd, breadcrumbLd, jobPostingLd, organizationLd, groupLd } from "./structured-data";
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -54,7 +48,7 @@ describe("sitemap", () => {
     const { default: sitemap } = await import("@/app/sitemap");
     const paths = sitemap().map((e) => new URL(e.url).pathname);
 
-    for (const s of getServicesWithDetail()) expect(paths).toContain(`/services/${s.slug}`);
+    for (const p of getGroupPages()) expect(paths).toContain(`/services/${p.slug}`);
     for (const i of getPublishedInsights()) expect(paths).toContain(`/insights/${i.slug}`);
     for (const r of getRolesWithDetail()) expect(paths).toContain(`/careers/${r.slug}`);
     expect(paths).toEqual(expect.arrayContaining(["/", "/privacy", "/terms", "/cookies"]));
@@ -100,8 +94,8 @@ describe("structured data", () => {
   });
 
   it("Service, Article and JobPosting carry the required fields", () => {
-    const service = getServicesWithDetail()[0]!;
-    expect(serviceLd(service)).toMatchObject({ "@type": "Service", name: service.name });
+    const page = getGroupPages()[0]!;
+    expect(groupLd(page, page.eyebrow)).toMatchObject({ "@type": "Service", name: page.eyebrow });
 
     const insight = getInsight(getPublishedInsights()[0]!.slug)!;
     expect(articleLd(insight)).toMatchObject({

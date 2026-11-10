@@ -26,6 +26,7 @@ import {
   getSectors,
   getServiceGroups,
   getServices,
+  groupHref,
   insightTopic,
 } from "@/lib/content";
 import { formatReadTime } from "@/lib/format";
@@ -185,7 +186,7 @@ export default function HomePage() {
                 ))}
               </ul>
               {/* Pinned to the bottom so the links align across a row. */}
-              <TextLink href={`/services#${group.key}`} className="mt-auto self-start">
+              <TextLink href={groupHref(group.key)} className="mt-auto self-start">
                 <span>
                   Explore <span className="sr-only">{group.name}</span>
                 </span>

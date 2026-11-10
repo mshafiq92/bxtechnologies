@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { ContactBand } from "@/components/layout/contact-band";
 import { ArchitectureDiagram } from "@/components/sections/architecture-diagram";
+import { GroupDetail } from "@/components/sections/group-detail";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -15,22 +16,33 @@ import { Section } from "@/components/ui/section";
 import { SmartLink } from "@/components/ui/smart-link";
 import { TextLink } from "@/components/ui/text-link";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
-import { getService, getServicesWithDetail } from "@/lib/content";
+import { getGroupPage, getGroupPages, getService, getServicesWithDetail } from "@/lib/content";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { serviceLd } from "@/lib/seo/structured-data";
 
 type Params = { slug: string };
 
-/** One page per service with written detail content; everything else is a 404. */
+/** Service group pages and single services with written detail content; everything else is a 404. */
 export const dynamicParams = false;
 
 export function generateStaticParams(): Params[] {
-  return getServicesWithDetail().map((s) => ({ slug: s.slug }));
+  return [
+    ...getGroupPages().map((p) => ({ slug: p.slug })),
+    ...getServicesWithDetail().map((s) => ({ slug: s.slug })),
+  ];
 }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
+  const group = getGroupPage(slug);
+  if (group) {
+    return pageMetadata({
+      title: group.eyebrow,
+      description: group.intro,
+      path: `/services/${slug}`,
+    });
+  }
   const service = getService(slug);
   if (!service?.detail) return {};
   return pageMetadata({
@@ -42,6 +54,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
 export default async function ServiceDetailPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
+  const group = getGroupPage(slug);
+  if (group) return <GroupDetail page={group} />;
   const service = getService(slug);
   const detail = service?.detail;
   if (!service || !detail) notFound();

@@ -23,6 +23,8 @@ import {
   getServiceGroups,
   getServices,
   getServicesWithDetail,
+  getGroupPages,
+  groupHref,
   getHomeProjects,
   legalSlugs,
   roleHref,
@@ -76,20 +78,37 @@ describe("services", () => {
     expect(copy).not.toMatch(/insurance|utilities/i);
   });
 
-  it("has detail pages for the three designed services", () => {
-    expect(getServicesWithDetail().map((s) => s.slug)).toEqual([
-      "agentic-ai",
-      "cloud-devops",
-      "custom-software",
-    ]);
+  it("has no single-service detail pages: every group has a group page", () => {
+    expect(getServicesWithDetail()).toEqual([]);
+    expect(getGroupPages().map((p) => p.group)).toEqual(getServiceGroups().map((g) => g.key));
   });
 
-  it("links to a detail page when one exists, otherwise to the group", () => {
-    expect(serviceHref(getServices().find((s) => s.slug === "cloud-devops")!)).toBe(
-      "/services/cloud-devops",
+  it("gives every group page real projects and a What's included list for each service", () => {
+    const page = getGroupPages().find((p) => p.slug === "cloud-devops");
+    expect(page?.group).toBe("cloud");
+    const projectSlugs = new Set(getProjects().map((p) => p.slug));
+    for (const p of getGroupPages()) {
+      for (const slug of p.projects?.slugs ?? []) expect(projectSlugs, slug).toContain(slug);
+    }
+    for (const p of getGroupPages()) {
+      for (const service of getServices(p.group)) {
+        expect(service.includes?.length, service.slug).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("links to the group page block, then a detail page, otherwise to the group", () => {
+    expect(serviceHref(getServices().find((s) => s.slug === "cloud-deployment")!)).toBe(
+      "/services/cloud-devops#cloud-deployment",
     );
+    expect(serviceHref(getServices().find((s) => s.slug === "agentic-ai")!)).toBe(
+      "/services/ai-autonomy#agentic-ai",
+    );
+    expect(groupHref("ai")).toBe("/services/ai-autonomy");
+    expect(groupHref("cloud")).toBe("/services/cloud-devops");
+    expect(groupHref("data")).toBe("/services/data-analytics");
     expect(serviceHref(getServices().find((s) => s.slug === "iot-embedded")!)).toBe(
-      "/services#data",
+      "/services/data-analytics#iot-embedded",
     );
   });
 
@@ -105,7 +124,7 @@ describe("services", () => {
     ]);
     expect(megaMenu.groups[4]?.links[0]).toEqual({
       label: "Custom software",
-      href: "/services/custom-software",
+      href: "/services/product-quality#custom-software",
     });
     expect(megaMenu.groups[5]?.links[3]?.label).toBe("Blockchain & distributed");
   });
@@ -126,10 +145,9 @@ describe("business rules in content", () => {
     ).toThrow();
   });
 
-  it("marks proof metrics as placeholders until bX signs them off", () => {
-    const proof = [...getServicesWithDetail().flatMap((s) => s.detail.proof.metrics)];
-    expect(proof.length).toBeGreaterThan(0);
-    for (const m of proof) expect(m.placeholder).toBe(true);
+  it("shows no proof figures: projects and group pages carry none (owner decision)", () => {
+    for (const p of getProjects()) expect(p).not.toHaveProperty("metric");
+    expect(getServicesWithDetail()).toEqual([]);
   });
 
   it("links every sector to services that exist, and shows no sector figures", () => {
@@ -234,6 +252,7 @@ describe("links", () => {
     "/imprint",
   ]);
   const dynamicRoutes = new Set([
+    ...getGroupPages().map((p) => `/services/${p.slug}`),
     ...getServicesWithDetail().map((s) => `/services/${s.slug}`),
     ...getPublishedInsights().map((i) => `/insights/${i.slug}`),
     ...getRolesWithDetail().map((r) => `/careers/${r.slug}`),

@@ -137,8 +137,29 @@ export const ServiceSchema = z.object({
   subtitle: z.string().min(1),
   description: z.string().min(1),
   stack: z.array(z.string()).min(1),
+  /** "What's included" on the group page (short items). */
+  includes: z.array(z.string().min(1)).max(6).optional(),
   /** Detail page content; null until written (OPEN-DECISIONS #4). */
   detail: ServiceDetailSchema.nullable(),
+});
+
+/** Service group page (/services/<slug>), drilling down into the group's services. */
+export const GroupPageSchema = z.object({
+  group: CapabilityGroupKey,
+  slug: z.string().regex(/^[a-z0-9-]+$/),
+  eyebrow: z.string().min(1),
+  title: z.string().min(1),
+  intro: z.string().min(1),
+  primaryCta: z.string().min(1),
+  heroDiagram: HeroDiagramSchema,
+  deliver: z.object({ title: z.string().min(1), intro: z.string().min(1) }),
+  architecture: ServiceDetailSchema.shape.architecture.optional(),
+  engagement: ServiceDetailSchema.shape.engagement,
+  fit: ServiceDetailSchema.shape.fit,
+  /** Related projects from content/projects.ts; left out until the group has one. */
+  projects: z.object({ title: z.string().min(1), slugs: z.array(z.string()).min(1) }).optional(),
+  faq: ServiceDetailSchema.shape.faq,
+  contactBand: ContactBandSchema,
 });
 
 export const EngagementModelSchema = z.object({
@@ -298,6 +319,8 @@ export type ClientLogo = z.infer<typeof ClientLogoSchema>;
 
 /* Input types for authoring content files (defaults optional) */
 export type ServiceInput = z.input<typeof ServiceSchema>;
+export type GroupPage = z.infer<typeof GroupPageSchema>;
+export type GroupPageInput = z.input<typeof GroupPageSchema>;
 export type ProjectInput = z.input<typeof ProjectSchema>;
 export type SectorInput = z.input<typeof SectorSchema>;
 export type InsightInput = z.input<typeof InsightSchema>;

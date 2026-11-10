@@ -1,6 +1,6 @@
 /*
  * Services page copy (bX v2 - Services.dc.html). Groups, services, stack lists and
- * engagement models live in content/services.ts.
+ * engagement models live in content/services.ts (engagement models show on Home only).
  */
 import type { ContactBandContent } from "@/lib/schemas/content";
 
@@ -16,7 +16,7 @@ export const servicesPage = {
       { value: "94%", label: "on-time delivery", placeholder: true },
     ],
     primaryCta: { label: "Book a technical call", href: "#contact" },
-    secondaryCta: { label: "Engagement models", href: "#engagement" },
+    secondaryCta: { label: "See our work", href: "/work" },
   },
   jumpLinks: [
     { href: "#ai", label: "AI & Autonomy" },
@@ -26,7 +26,6 @@ export const servicesPage = {
     { href: "#product", label: "Product & Quality" },
     { href: "#teams", label: "Teams & Advisory" },
     { href: "#stack", label: "Stack" },
-    { href: "#engagement", label: "Engagement" },
   ],
   stack: {
     eyebrow: "Stack",
@@ -36,8 +35,8 @@ export const servicesPage = {
   },
   contactBand: {
     eyebrow: "Start a project",
-    title: "Not sure which service you need?",
-    text: "Describe what is slow, manual or breaking. A 30-minute call with the engineers who would do the work. You leave with an approach, whether or not you hire us.",
+    title: "Start with a technical call",
+    text: "Tell us what you need to build, fix or run. In a 30-minute call, our engineers point you to the right service and approach.",
     cta: "Book a technical call",
     ctaHref: "/contact",
     secondary: "Read our insights",

@@ -1,4 +1,4 @@
-import { getService, getServicesWithDetail } from "@/lib/content";
+import { getGroupPage, getGroupPages, getService, getServicesWithDetail } from "@/lib/content";
 import { ogContentType, ogSize, renderOgImage } from "@/lib/seo/og-image";
 
 /* Share card per page, prerendered for every published slug (see lib/seo/og-image.tsx). */
@@ -8,11 +8,14 @@ export const size = ogSize;
 export const contentType = ogContentType;
 
 export function generateStaticParams() {
-  return getServicesWithDetail().map((s) => ({ slug: s.slug }));
+  return [
+    ...getGroupPages().map((p) => ({ slug: p.slug })),
+    ...getServicesWithDetail().map((s) => ({ slug: s.slug })),
+  ];
 }
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const service = getService(slug);
-  return renderOgImage({ eyebrow: "Services", title: service?.name ?? "Services" });
+  const title = getGroupPage(slug)?.eyebrow ?? getService(slug)?.name ?? "Services";
+  return renderOgImage({ eyebrow: "Services", title });
 }

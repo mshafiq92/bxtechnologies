@@ -36,7 +36,7 @@ export const companyMenu: NavLink[] = [
 export const megaMenuExtras: { footerLinks: NavLink[] } = {
   footerLinks: [
     { label: "Industries", href: "/industries" },
-    { label: "Engagement models", href: "/services#engagement" },
+    { label: "Engagement models", href: "/#engagement" },
   ],
 };
 
@@ -46,7 +46,7 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
     links: [
       { label: "AI & Autonomy", href: "/services#ai" },
       { label: "Data & Analytics", href: "/services#data" },
-      { label: "Cloud & DevOps", href: "/services#cloud" },
+      { label: "Cloud & DevOps", href: "/services/cloud-devops" },
       { label: "Managed IT", href: "/services#managed" },
       { label: "Product & Quality", href: "/services#product" },
       { label: "Teams & Advisory", href: "/services#teams" },

@@ -4,6 +4,7 @@ import {
   getLegalPage,
   getPublishedInsights,
   getRolesWithDetail,
+  getGroupPages,
   getServicesWithDetail,
 } from "@/lib/content";
 import { absoluteUrl } from "@/lib/seo/metadata";
@@ -30,6 +31,7 @@ const LEGAL = ["privacy", "terms", "cookies", "imprint"] as const;
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...STATIC_PATHS.map((path) => ({ url: absoluteUrl(path) })),
+    ...getGroupPages().map((p) => ({ url: absoluteUrl(`/services/${p.slug}`) })),
     ...getServicesWithDetail().map((s) => ({ url: absoluteUrl(`/services/${s.slug}`) })),
     ...getPublishedInsights().map((i) => ({
       url: absoluteUrl(`/insights/${i.slug}`),

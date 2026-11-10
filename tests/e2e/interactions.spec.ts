@@ -82,7 +82,7 @@ test("jump bar sticks under the header and anchors land below it", async ({ page
 });
 
 test("FAQ keeps one answer open", async ({ page }) => {
-  await page.goto("/services/agentic-ai");
+  await page.goto("/services/ai-autonomy");
   const faq = page.getByRole("region", { name: "The ones buyers actually ask" });
   const first = faq.getByRole("button").nth(0);
   const second = faq.getByRole("button").nth(1);

@@ -62,7 +62,7 @@ export const articleRelatedService: Record<
   "agent-projects-fail-at-the-evaluation-harness": {
     title: "We run this as a six-week pilot",
     text: "One workflow, a working agent with its evaluation harness, and a clear go or no-go result at the end. Fixed fee, and you keep the harness either way.",
-    cta: { label: "Agentic AI service", href: "/services/agentic-ai" },
+    cta: { label: "AI & Autonomy services", href: "/services/ai-autonomy#agentic-ai" },
   },
 };
 

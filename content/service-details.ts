@@ -15,7 +15,7 @@ const proofNote =
 /* Agentic AI & agents ------------------------------------------------------- */
 
 export const agenticAiDetail: ServiceDetailInput = {
-  eyebrow: "AI & Autonomy · Service 01",
+  eyebrow: "AI & Autonomy",
   title: "Agents that take actions inside your systems.",
   intro:
     "A chatbot answers. An agent decides, calls your APIs, and finishes the task, or hands it to a person with the reasoning attached. We build the orchestration, the guardrails and the evaluation that make that safe to run unattended.",
@@ -160,9 +160,9 @@ export const agenticAiDetail: ServiceDetailInput = {
         text: "Failed and disputed transactions classified, checked against settlement records, and routed with the case already assembled.",
       },
       {
-        sector: "Logistics",
-        title: "Exception handling",
-        text: "Delays, damages and address failures resolved against carrier APIs, with customer notification drafted per case.",
+        sector: "eCommerce",
+        title: "Order exception handling",
+        text: "Delays, damages and address failures resolved against carrier and store systems, with the customer reply drafted per case.",
       },
       {
         sector: "Education",
@@ -252,7 +252,7 @@ export const agenticAiDetail: ServiceDetailInput = {
 /* Cloud & DevOps ------------------------------------------------------------ */
 
 export const cloudDevopsDetail: ServiceDetailInput = {
-  eyebrow: "Cloud & DevOps · Service 09",
+  eyebrow: "Cloud & DevOps",
   title: "Infrastructure your team can change on a Tuesday afternoon.",
   intro:
     "Landing zones, pipelines and observability on AWS and Azure, written as code and handed over with the runbooks. The goal is a platform where a deploy is routine and the monthly bill is explainable.",
@@ -401,12 +401,12 @@ export const cloudDevopsDetail: ServiceDetailInput = {
         text: "Access, change history and environment separation that have to be shown, not described.",
       },
       {
-        sector: "Retail",
+        sector: "eCommerce",
         title: "Seasonal peaks",
         text: "Capacity that has to scale up for a few weeks a year and back down again without anyone remembering to.",
       },
       {
-        sector: "Logistics",
+        sector: "Facilities",
         title: "Deploys are an event",
         text: "Releases that need a weekend, a checklist and the one person who knows how.",
       },
@@ -464,12 +464,12 @@ export const cloudDevopsDetail: ServiceDetailInput = {
       {
         title: "Agentic AI & agents",
         text: "Agents in production need predictable cost, observability and rollback, which is this platform.",
-        href: "/services/agentic-ai",
+        href: "/services/ai-autonomy",
       },
       {
         title: "Custom software development",
         text: "Line-of-business systems built to deploy through the pipeline from their first commit.",
-        href: "/services/custom-software",
+        href: "/services/product-quality",
       },
     ],
   },
@@ -488,7 +488,7 @@ export const cloudDevopsDetail: ServiceDetailInput = {
 /* Custom software development ---------------------------------------------- */
 
 export const customSoftwareDetail: ServiceDetailInput = {
-  eyebrow: "Product & Quality · Service 17",
+  eyebrow: "Product & Quality",
   title: "Line-of-business software built to be handed over.",
   intro:
     "Domain modelling, API design and the integrations with what you already run, in .NET, Node.js or Python. Documented well enough that your own team, or another vendor, could take it on.",
@@ -637,7 +637,7 @@ export const customSoftwareDetail: ServiceDetailInput = {
         text: "Appointments, records and follow-ups spread across systems that do not share data.",
       },
       {
-        sector: "Retail",
+        sector: "eCommerce",
         title: "Stock and ordering across systems",
         text: "Three systems that disagree about what is in stock, reconciled by hand every week.",
       },
@@ -647,9 +647,9 @@ export const customSoftwareDetail: ServiceDetailInput = {
         text: "Applications, documents and status requests that currently arrive by email.",
       },
       {
-        sector: "Logistics",
+        sector: "Telecom",
         title: "Exceptions handled by email",
-        text: "Delays and failed deliveries tracked in inboxes rather than in a system with a history.",
+        text: "Failed orders and activations tracked in inboxes rather than in a system with a history.",
       },
       {
         sector: "Professional services",

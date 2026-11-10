@@ -60,7 +60,7 @@ describe("Header: mega menu", () => {
     }
     expect(menu.getByRole("link", { name: "Cloud deployment" })).toHaveAttribute(
       "href",
-      "/services/cloud-devops",
+      "/services/cloud-devops#cloud-deployment",
     );
   });
 

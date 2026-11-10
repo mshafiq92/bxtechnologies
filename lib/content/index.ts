@@ -12,6 +12,7 @@ import { z } from "zod";
 
 import { clientLogos as rawClientLogos } from "@/content/client-logos";
 import { consentCopy } from "@/content/consent";
+import { groupPages as rawGroupPages } from "@/content/group-pages";
 import {
   authors as rawAuthors,
   insightCategories as rawCategories,
@@ -65,6 +66,7 @@ import {
   ClientLogoSchema,
   ContactBandSchema,
   EngagementModelSchema,
+  GroupPageSchema,
   InsightCategorySchema,
   InsightSchema,
   OfficeSchema,
@@ -111,6 +113,7 @@ const serviceGroups = parseCollection(
   rawServiceGroups,
 );
 const services = parseCollection("services", z.array(ServiceSchema), rawServices);
+const groupPages = parseCollection("groupPages", z.array(GroupPageSchema), rawGroupPages);
 const stackGroups = parseCollection("stackGroups", z.array(StackGroupSchema), rawStackGroups);
 const engagementModels = parseCollection(
   "engagementModels",
@@ -226,7 +229,28 @@ export function getServicesWithDetail(): (Service & { detail: NonNullable<Servic
  * Where a service links to: its detail page when one exists, otherwise its group on /services
  * (the Services page itself uses `#contact` for those, per the design).
  */
+/** Service group pages (/services/<slug>). */
+export function getGroupPages() {
+  return groupPages;
+}
+
+export function getGroupPage(slug: string) {
+  return groupPages.find((p) => p.slug === slug);
+}
+
+/** A group's own page when it has one, otherwise its section on /services. */
+export function groupHref(key: ServiceGroup["key"]): string {
+  const page = groupPages.find((p) => p.group === key);
+  return page ? `/services/${page.slug}` : `/services#${key}`;
+}
+
+/**
+ * Where a service link goes: its block on the group page when the group has one, else its own
+ * detail page, else its group on /services.
+ */
 export function serviceHref(service: Service): string {
+  const page = groupPages.find((p) => p.group === service.group);
+  if (page) return `/services/${page.slug}#${service.slug}`;
   return service.detail ? `/services/${service.slug}` : `/services#${service.group}`;
 }
 

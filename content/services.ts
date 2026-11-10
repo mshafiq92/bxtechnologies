@@ -12,8 +12,6 @@ import type {
   StackGroup,
 } from "@/lib/schemas/content";
 
-import { agenticAiDetail, cloudDevopsDetail, customSoftwareDetail } from "./service-details";
-
 export const serviceGroups: ServiceGroup[] = [
   {
     key: "ai",
@@ -66,7 +64,13 @@ export const services: ServiceInput[] = [
     description:
       "Orchestration, tool calling into ERP and CRM, retrieval, policy guardrails, human handoff, and the regression evals that tell you when a prompt change broke something.",
     stack: ["Claude · OpenAI", "LangGraph", "pgvector"],
-    detail: agenticAiDetail,
+    includes: [
+      "Planner and executor agents",
+      "Tool calling into ERP and CRM",
+      "Policy guardrails and human handoff",
+      "Regression evaluation sets",
+    ],
+    detail: null,
   },
   {
     slug: "generative-ai",
@@ -80,6 +84,12 @@ export const services: ServiceInput[] = [
     description:
       "Document ingestion and chunking, hybrid search over your own content, copilots embedded in existing UI, and evaluation before anything reaches a customer.",
     stack: ["RAG", "Vector search", "Node.js"],
+    includes: [
+      "Document ingestion and search",
+      "Copilots in your existing screens",
+      "Answers with cited sources",
+      "Evaluation before rollout",
+    ],
     detail: null,
   },
   {
@@ -93,6 +103,12 @@ export const services: ServiceInput[] = [
     description:
       "Forecasting, classification, computer vision and anomaly detection, with feature stores, retraining schedules, drift monitoring and versioned deployment.",
     stack: ["Python", "Forecasting", "Computer vision"],
+    includes: [
+      "Forecasting and classification",
+      "Computer vision",
+      "Anomaly detection",
+      "Feature stores and retraining",
+    ],
     detail: null,
   },
   // DRAFT: new service, copy for owner review.
@@ -108,6 +124,12 @@ export const services: ServiceInput[] = [
     description:
       "Training and retraining pipelines, model registry and versioning, serving, drift and performance monitoring, and rollback.",
     stack: ["Pipelines", "Model registry", "Monitoring"],
+    includes: [
+      "Training and retraining pipelines",
+      "Model registry and versioning",
+      "Model serving",
+      "Drift and performance monitoring",
+    ],
     detail: null,
   },
   {
@@ -121,6 +143,12 @@ export const services: ServiceInput[] = [
     description:
       "Warehouse design, dimensional modelling and data quality tests, so everything downstream starts from clean data.",
     stack: ["SQL Server", "MySQL", "MongoDB", "Data quality"],
+    includes: [
+      "Warehouse design",
+      "Dimensional modelling",
+      "Data quality tests",
+      "Every definition documented",
+    ],
     detail: null,
   },
   // DRAFT: new service, copy for owner review.
@@ -135,6 +163,12 @@ export const services: ServiceInput[] = [
     description:
       "Ingestion from operational systems, scheduled orchestration, and quality checks on every run, so reports and models always have fresh data.",
     stack: ["Ingestion", "Orchestration", "Quality checks"],
+    includes: [
+      "Ingestion from operational systems",
+      "Scheduled orchestration",
+      "Quality checks on every run",
+      "Alerts when a run fails",
+    ],
     detail: null,
   },
   // DRAFT: new service, copy for owner review.
@@ -149,6 +183,12 @@ export const services: ServiceInput[] = [
     description:
       "Dimensional models, dashboards, scheduled reporting and metric definitions agreed with the people who use them.",
     stack: ["Dashboards", "Reporting", "SQL"],
+    includes: [
+      "Dashboards",
+      "Scheduled reporting",
+      "Agreed metric definitions",
+      "Reports that match the source data",
+    ],
     detail: null,
   },
   {
@@ -162,11 +202,16 @@ export const services: ServiceInput[] = [
     description:
       "Firmware integration, message-broker ingestion at scale, time-series storage, alerting rules, over-the-air update paths and operator dashboards.",
     stack: ["MQTT", "Telemetry", "Dashboards"],
+    includes: [
+      "Firmware integration",
+      "Telemetry ingestion",
+      "Time-series storage",
+      "Over-the-air updates",
+    ],
     detail: null,
   },
-  // The Cloud & DevOps detail page stays at /services/cloud-devops and opens from this service.
   {
-    slug: "cloud-devops",
+    slug: "cloud-deployment",
     number: "09",
     group: "cloud",
     name: "Cloud deployment",
@@ -176,7 +221,13 @@ export const services: ServiceInput[] = [
     description:
       "AWS and Azure architecture, infrastructure as code, containerised deployment and disaster recovery, with cloud spend brought back under control.",
     stack: ["AWS", "Azure", "Docker"],
-    detail: cloudDevopsDetail,
+    includes: [
+      "Landing zones on AWS and Azure",
+      "Infrastructure as code",
+      "Containers on Docker and Kubernetes",
+      "Disaster recovery",
+    ],
+    detail: null,
   },
   // DRAFT: new service, copy for owner review.
   {
@@ -190,6 +241,12 @@ export const services: ServiceInput[] = [
     description:
       "A review of what you run today, a sequenced migration plan, application and data moves, and testing before each cutover.",
     stack: ["Assessment", "Migration plan", "Cutover"],
+    includes: [
+      "Review of what runs today",
+      "A sequenced migration plan",
+      "Workloads moved in waves",
+      "A tested rollback for every cutover",
+    ],
     detail: null,
   },
   // DRAFT: new service, copy for owner review.
@@ -204,6 +261,12 @@ export const services: ServiceInput[] = [
     description:
       "Metrics, logs and traces across your applications and infrastructure, dashboards your team uses, and alerting rules tuned to real incidents.",
     stack: ["Metrics", "Logs", "Alerting"],
+    includes: [
+      "Metrics, logs and traces",
+      "Dashboards your team uses",
+      "Alert rules with runbooks",
+      "Cost per environment",
+    ],
     detail: null,
   },
   // DRAFT: new service, copy for owner review.
@@ -218,6 +281,12 @@ export const services: ServiceInput[] = [
     description:
       "Build, test and release automation, containerised deployment and rollback paths, so shipping a change is routine.",
     stack: ["CI/CD", "Git / GitHub", "Docker"],
+    includes: [
+      "Build and test on every change",
+      "Security scans",
+      "Staged rollout",
+      "One-command rollback",
+    ],
     detail: null,
   },
   // CONFIRM (all Managed IT services): on-site coverage countries. The source says on-site support is
@@ -235,6 +304,12 @@ export const services: ServiceInput[] = [
     description:
       "Hardware troubleshooting and repair, support for laptops, desktops, servers, printers and network devices, equipment swaps, and asset tagging and inventory checks.",
     stack: ["Troubleshooting", "Repair", "Asset tagging"],
+    includes: [
+      "Laptops and desktops",
+      "Servers and printers",
+      "Network devices",
+      "Asset tagging and inventory checks",
+    ],
     detail: null,
   },
   {
@@ -249,6 +324,12 @@ export const services: ServiceInput[] = [
     description:
       "Installation and de-installation, smart hands and remote hands, site inspections and equipment verification, with half-day and full-day on-site visits.",
     stack: ["Smart hands", "Remote hands", "On-site field engineering"],
+    includes: [
+      "Installation and de-installation",
+      "Equipment swaps",
+      "Smart hands and remote hands",
+      "Site inspections",
+    ],
     detail: null,
   },
   {
@@ -262,6 +343,12 @@ export const services: ServiceInput[] = [
     description:
       "L1, L2 and L3 technical support, with same business day and next business day response.",
     stack: ["L1 support", "L2 support", "L3 support"],
+    includes: [
+      "First-line L1 support",
+      "L2 and L3 escalation",
+      "Same or next business day response",
+      "Documented resolutions",
+    ],
     detail: null,
   },
   {
@@ -275,6 +362,12 @@ export const services: ServiceInput[] = [
     description:
       "Support for network devices and storage, and Wi-Fi support using Ekahau and AirMagnet tools.",
     stack: ["Network devices", "Wi-Fi", "Storage support"],
+    includes: [
+      "Network device support",
+      "Wi-Fi surveys with Ekahau and AirMagnet",
+      "Storage support",
+      "Equipment verification",
+    ],
     detail: null,
   },
   {
@@ -288,7 +381,13 @@ export const services: ServiceInput[] = [
     description:
       "Domain modelling, API design, integrations with what you already run, and documentation thorough enough that another team could take it on.",
     stack: ["C# / ASP.NET", "Node.js", "Python", "SQL Server"],
-    detail: customSoftwareDetail,
+    includes: [
+      "Domain modelling",
+      "API design",
+      "Integrations with existing systems",
+      "Handover documentation",
+    ],
+    detail: null,
   },
   {
     slug: "web-mobile",
@@ -301,6 +400,7 @@ export const services: ServiceInput[] = [
     description:
       "Responsive web products, cross-platform mobile apps, design systems, accessibility, and the release engineering behind store submissions.",
     stack: ["React.js", "Tailwind", "Responsive web", "Mobile apps"],
+    includes: ["Android apps", "iOS apps", "Cross-platform apps", "Responsive web applications"],
     detail: null,
   },
   {
@@ -314,6 +414,12 @@ export const services: ServiceInput[] = [
     description:
       "Functional, regression, performance, security and API testing, with automation suites that run in your pipeline and report on every build.",
     stack: ["Functional", "Performance", "Security", "API"],
+    includes: [
+      "Functional testing",
+      "Performance testing",
+      "Security and API testing",
+      "Usability, sanity and smoke testing",
+    ],
     detail: null,
   },
   // DRAFT: new service, copy for owner review.
@@ -328,6 +434,12 @@ export const services: ServiceInput[] = [
     description:
       "Threat and vulnerability assessments, penetration testing, security review of code and infrastructure, and remediation guidance.",
     stack: ["Pentesting", "Vulnerability assessment", "Security review"],
+    includes: [
+      "Vulnerability assessments",
+      "Penetration testing",
+      "Code and infrastructure review",
+      "Remediation guidance",
+    ],
     detail: null,
   },
   {
@@ -341,6 +453,12 @@ export const services: ServiceInput[] = [
     description:
       "You interview and pick the engineers. They work your process and your hours, scale monthly, and we handle employment, equipment and cover.",
     stack: ["Your process", "CET overlap", "Monthly scaling"],
+    includes: [
+      "Engineers you interview and choose",
+      "Your process and tools",
+      "Monthly scaling",
+      "Employment and equipment handled",
+    ],
     detail: null,
   },
   {
@@ -354,6 +472,12 @@ export const services: ServiceInput[] = [
     description:
       "Current-state review, technology stack selection and review, target architecture, a sequenced roadmap with costs, and, unlike a pure advisory, the team that executes it afterwards.",
     stack: ["Assessment", "Roadmap", "Legacy migration"],
+    includes: [
+      "Current-state review",
+      "Technology stack selection",
+      "Target architecture",
+      "A costed, sequenced roadmap",
+    ],
     detail: null,
   },
   // DRAFT: new service, copy for owner review.
@@ -368,6 +492,12 @@ export const services: ServiceInput[] = [
     description:
       "Planning, scope and change control, reporting, risk tracking and release coordination across your team and ours.",
     stack: ["Planning", "Reporting", "Release"],
+    includes: [
+      "Planning and scope",
+      "Change control",
+      "Progress reporting",
+      "Release coordination",
+    ],
     detail: null,
   },
   {
@@ -381,6 +511,12 @@ export const services: ServiceInput[] = [
     description:
       "Smart contract development and review, wallet integration, token and settlement flows, plus the off-chain services and indexing around them.",
     stack: ["Smart contracts", "Wallets", "Settlement"],
+    includes: [
+      "Smart contract development",
+      "Contract review",
+      "Wallet integration",
+      "Off-chain indexing",
+    ],
     detail: null,
   },
 ];

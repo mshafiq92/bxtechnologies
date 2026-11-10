@@ -5,7 +5,7 @@
  */
 import type { BreadcrumbItem } from "@/components/ui/breadcrumb";
 import { getOffices, getSiteSettings, insightTopic } from "@/lib/content";
-import type { Insight, Role, Service } from "@/lib/schemas/content";
+import type { GroupPage, Insight, Role, Service } from "@/lib/schemas/content";
 
 import { absoluteUrl, SITE_NAME } from "./metadata";
 
@@ -82,6 +82,19 @@ export function serviceLd(service: Service & { detail: NonNullable<Service["deta
     description: service.detail.intro,
     url: absoluteUrl(`/services/${service.slug}`),
     serviceType: service.name,
+    provider: organizationRef(),
+    areaServed: ["Europe", "Asia"],
+  };
+}
+
+export function groupLd(page: GroupPage, name: string): Thing {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    description: page.intro,
+    url: absoluteUrl(`/services/${page.slug}`),
+    serviceType: name,
     provider: organizationRef(),
     areaServed: ["Europe", "Asia"],
   };
