@@ -251,8 +251,20 @@ describe("content fidelity", () => {
       const html = readFileSync(join(process.cwd(), D + design!), "utf8");
       const article = /<article[^>]*>([\s\S]*?)<\/article>/.exec(html)![1]!;
       // The brand is written "BX" since the 2026-11-06 logo refresh; the designs still say "bX".
+      // Owner-approved edits to the article (2026-11-10): the example engagement moved from an
+      // insurance claims project to construction tender work, and "go/no-go" became "go or no-go".
+      const ownerEdits: [string, string][] = [
+        [
+          "In the claims triage engagement we built it by sitting with three adjusters for two days and going through a hundred and twenty historical cases: what they would have classified each as, what they would have escalated,",
+          "In a tender drafting engagement we built it by sitting with three bid writers for two days and going through a hundred and twenty sections from past tenders: which requirement each one answered, what they would have passed to a specialist,",
+        ],
+        ["the go/no-go conversation", "the go or no-go conversation"],
+      ];
       const paragraphs = [...article.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)].map((m) =>
-        norm(m[1]!).replace(/\bbX\b/g, "BX"),
+        ownerEdits.reduce(
+          (text, [from, to]) => text.replace(from, to),
+          norm(m[1]!).replace(/\bbX\b/g, "BX"),
+        ),
       );
       const mdx = readFileSync(join(process.cwd(), mdxPath!), "utf8").replace(
         /\{\/\*[\s\S]*?\*\/\}/g,

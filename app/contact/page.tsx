@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/sections/contact-form";
 import { NumberedGrid } from "@/components/sections/numbered-grid";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { HeroGridBackdrop } from "@/components/ui/hero-grid-backdrop";
 import { Section } from "@/components/ui/section";
 import { SmartLink } from "@/components/ui/smart-link";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
@@ -12,7 +13,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description:
-    "Tell us what is slow, manual or breaking. Thirty minutes with the engineers who would do the work. info@bxtechnologies.net · +49 203 34689340.",
+    "A new project, a system that needs work, or a question: an engineer replies within one working day. info@bxtechnologies.net · +49 203 34689340.",
   path: "/contact",
 });
 
@@ -26,7 +27,14 @@ export default function ContactPage() {
 
   return (
     <>
-      <Section id="top" aria-labelledby="page-title" containerClassName="flex flex-col gap-10">
+      <Section
+        id="top"
+        aria-labelledby="page-title"
+        className="relative isolate overflow-hidden"
+        containerClassName="flex flex-col gap-10"
+      >
+        {/* Behind the heading only, not the form and the aside below it. */}
+        <HeroGridBackdrop className="bottom-auto h-[520px]" />
         <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
         <div className="flex max-w-[720px] flex-col gap-6">
           <Eyebrow>{page.eyebrow}</Eyebrow>
@@ -49,26 +57,6 @@ export default function ContactPage() {
               <SmartLink href={site.phone.href} className={`${directLink} font-medium`}>
                 {site.phone.display}
               </SmartLink>
-              <SmartLink href={site.linkedin.href} className={`${directLink} font-medium`}>
-                {site.linkedin.display}
-              </SmartLink>
-              <p className="text-small text-muted">
-                {page.aside.hiring.before}{" "}
-                <SmartLink
-                  href={`mailto:${page.aside.hiring.email}`}
-                  className="text-link underline decoration-1 underline-offset-2 transition-colors hover:text-ink"
-                >
-                  {page.aside.hiring.email}
-                </SmartLink>
-                . See{" "}
-                <SmartLink
-                  href="/careers"
-                  className="text-link underline decoration-1 underline-offset-2 transition-colors hover:text-ink"
-                >
-                  {page.aside.hiring.rolesLink}
-                </SmartLink>
-                .
-              </p>
             </div>
             <div className="flex flex-col gap-5 border-t border-ink pt-5">
               <Eyebrow as="h2">{page.aside.offices}</Eyebrow>
@@ -77,7 +65,9 @@ export default function ContactPage() {
                   key={office.city}
                   className={`flex flex-col gap-1.5 ${i > 0 ? "border-t border-hairline pt-5" : ""}`}
                 >
-                  <span className="text-[13px] leading-[18px] text-muted">{office.kind}</span>
+                  <span className="text-[13px] leading-[18px] text-muted">
+                    {office.contactKind ?? office.kind}
+                  </span>
                   <Heading as="h3" size="h4">
                     {office.city}, {office.country}
                   </Heading>

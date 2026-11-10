@@ -55,7 +55,7 @@ describe("Article page", () => {
       "Most agent projects fail at the evaluation harness, not the model",
     );
     expect(container).toHaveTextContent("12 September 2026 · 9 min read");
-    expect(container).toHaveTextContent("[Author name]");
+    expect(container).toHaveTextContent("BX Technologies engineering team");
   });
 
   it("links every on-this-page entry to a heading in the body", async () => {

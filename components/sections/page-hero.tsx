@@ -23,6 +23,7 @@ export function PageHero({
   intro,
   aside,
   backdrop = true,
+  titleWidth = "max-w-[18ch]",
   titleId = "page-title",
   className,
 }: {
@@ -33,6 +34,8 @@ export function PageHero({
   intro: string | string[];
   aside?: ReactNode;
   backdrop?: boolean;
+  /** Heading width limit; Work widens it so its heading fits on one line. */
+  titleWidth?: string;
   titleId?: string;
   className?: string;
 }) {
@@ -50,7 +53,7 @@ export function PageHero({
       <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,440px),1fr))] items-end gap-12">
         <div className="flex flex-col gap-6">
           <Eyebrow>{eyebrow}</Eyebrow>
-          <Heading id={titleId} as="h1" size="h1" className="max-w-[18ch]">
+          <Heading id={titleId} as="h1" size="h1" className={titleWidth}>
             {title}
           </Heading>
           {paragraphs.map((p) => (

@@ -1,10 +1,9 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState } from "react";
 
 import { Field, FormCard, FormSuccess, Input, Textarea } from "@/components/forms/fields";
 import { FormError, FormGuard } from "@/components/forms/form-guard";
-import { RadioPills } from "@/components/forms/radio-pills";
 import { Button } from "@/components/ui/button";
 import { SignatureRule } from "@/components/ui/signature-rule";
 import { submitEnquiry } from "@/lib/forms/actions";
@@ -14,15 +13,14 @@ type Copy = {
   name: { label: string; placeholder: string };
   email: { label: string; placeholder: string };
   message: { label: string; placeholder: string };
-  stage: { legend: string; options: string[] };
   submit: string;
   success: string;
-  note: string;
+  /** Small line under the submit button; Home leaves it out. */
+  note?: string;
 };
 
-/** Home contact form card: sends an enquiry through the submitEnquiry server action. */
+/** Home contact form card (name, email, message): sends an enquiry through the submitEnquiry server action. The Contact page has the full form. */
 export function HomeContactForm({ copy }: { copy: Copy }) {
-  const [stage, setStage] = useState(copy.stage.options[0] ?? "");
   const [state, formAction, pending] = useActionState(submitEnquiry, initialFormState);
   const firstFieldError = state.fieldErrors ? Object.values(state.fieldErrors)[0] : undefined;
 
@@ -48,20 +46,13 @@ export function HomeContactForm({ copy }: { copy: Copy }) {
         <Field label={copy.message.label}>
           <Textarea name="message" required placeholder={copy.message.placeholder} />
         </Field>
-        <RadioPills
-          legend={copy.stage.legend}
-          options={copy.stage.options}
-          value={stage}
-          onChange={setStage}
-          name="stage"
-        />
         <FormGuard resetKey={state} />
         {state.status === "success" && <FormSuccess>{copy.success}</FormSuccess>}
         <FormError message={state.message ?? firstFieldError} />
         <Button type="submit" size="block" disabled={pending}>
           {copy.submit}
         </Button>
-        <span className="text-small text-muted">{copy.note}</span>
+        {copy.note && <span className="text-small text-muted">{copy.note}</span>}
       </div>
     </FormCard>
   );

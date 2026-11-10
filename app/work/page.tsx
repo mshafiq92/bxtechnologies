@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 
 import { ContactBand } from "@/components/layout/contact-band";
-import { HeroMetricsActions, PageHero } from "@/components/sections/page-hero";
+import { PageHero } from "@/components/sections/page-hero";
 import { ChipList } from "@/components/ui/chip";
-import { JumpBar } from "@/components/ui/jump-bar";
 import { Section } from "@/components/ui/section";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
 import { getPage, getProjects } from "@/lib/content";
@@ -12,12 +11,13 @@ import { pageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMetadata({
   title: "Work",
   description:
-    "Projects we have delivered and still support, for clients in Europe and Asia. Client names are withheld under NDA; each project is described by sector, region, what we built and what it does now.",
+    "AI, software, data and cloud systems we designed, built and still support. Client names stay under NDA; each project is shown by its sector and what it does today.",
   path: "/work",
 });
 
 export default function WorkPage() {
   const page = getPage("work");
+  const projects = getProjects();
 
   return (
     <>
@@ -26,32 +26,23 @@ export default function WorkPage() {
         eyebrow={page.hero.eyebrow}
         title={page.hero.title}
         intro={page.hero.intro}
-        aside={
-          <HeroMetricsActions
-            metrics={page.hero.metrics}
-            primary={page.hero.primaryCta}
-            secondary={page.hero.secondaryCta}
-          />
-        }
+        titleWidth="max-w-[32ch]"
       />
-
-      <JumpBar links={page.jumpLinks} showLabel={false} />
 
       {/* All projects ------------------------------------------------------------ */}
       <Section
         id="projects"
         aria-labelledby="projects-title"
+        // Less space under the hero than between ordinary sections.
+        className="pt-[clamp(40px,5vw,56px)]"
         containerClassName="flex flex-col gap-10"
       >
         <SectionHeader
           eyebrow={page.projects.eyebrow}
           title={<span id="projects-title">{page.projects.title}</span>}
-          // Design note addressed to bX; replace once figures are signed off.
-          aside={page.projects.note}
-          asideSize="small"
         />
         <ul className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {getProjects().map((project) => (
+          {projects.map((project) => (
             <li key={project.slug} className="flex">
               <article className="flex w-full flex-col gap-4 rounded-lg border border-hairline bg-surface p-6">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -64,11 +55,8 @@ export default function WorkPage() {
                   {project.title}
                 </Heading>
                 <p className="text-body text-muted">{project.description}</p>
-                <p className="mt-auto flex flex-wrap items-baseline gap-2.5 border-t border-hairline pt-4">
-                  <span data-metric="" className="text-metric-inline text-ink">
-                    {project.metric.value}
-                  </span>
-                  <span className="text-small text-muted">{project.metric.label}</span>
+                <p className="mt-auto border-t border-hairline pt-4 text-body text-muted">
+                  {project.result}
                 </p>
                 <ChipList items={project.stack} fill="ground" />
               </article>

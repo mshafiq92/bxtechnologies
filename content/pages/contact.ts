@@ -2,9 +2,9 @@
 
 export const contactPage = {
   eyebrow: "Contact",
-  title: "Tell us what is slow, manual or breaking.",
+  title: "Contact our team",
   intro:
-    "Thirty minutes with the engineers who would do the work. You leave with an approach and a rough shape of effort, whether or not you hire us.",
+    "A new project, a system that needs work, or simply a question. You'll hear back from an engineer, not a sales team, within one working day.",
   form: {
     name: { label: "Your name", placeholder: "Jane Fischer" },
     company: { label: "Company", placeholder: "Company name" },
@@ -19,42 +19,22 @@ export const contactPage = {
       options: [
         "A new build",
         "An AI pilot",
-        "Data or cloud work",
+        "Data or cloud",
         "A dedicated team",
-        "Not sure yet",
+        "General enquiry",
       ],
-    },
-    companySize: {
-      label: "Company size",
-      options: [
-        "Startup, pre-revenue",
-        "Startup, funded",
-        "Small or mid-sized business",
-        "Enterprise",
-        "Public sector or other",
-      ],
-    },
-    budget: {
-      label: "Rough budget",
-      options: ["Not established yet", "Under €25k", "€25k to €75k", "€75k to €200k", "Over €200k"],
     },
     message: {
-      label: "What are you trying to do?",
-      placeholder:
-        "The process that is costing you time, the system that needs replacing, or the thing you want to find out whether AI can help with. A paragraph is plenty.",
+      label: "Your message",
+      placeholder: "Write your message",
     },
     submit: "Send and book a call",
     success: "Received. An engineer will reply within one working day.",
-    note: "We reply within one working day. Nothing you send is shared outside the team, and we will sign your NDA before a first call if you prefer.",
+    note: "Nothing you send is shared outside our team, and we will sign your NDA before a first call if you prefer.",
   },
   aside: {
     direct: "Direct",
-    hiring: {
-      before: "Hiring enquiries go to",
-      email: "jobs@bxtechnologies.net",
-      rolesLink: "open roles",
-    },
-    offices: "Offices",
+    offices: "Locations",
   },
   next: {
     eyebrow: "What happens next",

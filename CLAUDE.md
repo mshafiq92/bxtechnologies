@@ -46,7 +46,7 @@ Keep these even where the handoff or the `.dc.html` designs say otherwise; don't
 - **Static by default**; client components only for real interaction (menus, FAQ, filters, marquee, forms).
 - **Motion**: CSS only, 150ms colour/background/border fades, no transforms, `prefers-reduced-motion` honoured.
 - **Accessibility**: semantic HTML, keyboard support, targets ≥44px, visible focus, axe clean.
-- **Copy rules**: no em/en dashes, never print a count ("All services"), no client names (`Sector · Region · NDA`),
+- **Copy rules**: no em/en dashes, never print a count ("All services"), no client names (`Sector · NDA`, no region and no figures on projects, owner decision 2026-11-10),
   errors start with `Error:`, green only as a status dot beside words, metric numbers navy.
 - **Decisions**: metrics stay placeholders (`placeholder: true`); current client logos show (`cleared: true`).
 - **Forms** post to server actions in `lib/forms/actions.ts` (Resend email, CV as attachment, Turnstile + honeypot +

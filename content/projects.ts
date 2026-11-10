@@ -1,8 +1,8 @@
 /*
  * Delivered projects (Work page and Home "Selected work").
- * Copy verbatim from bX v2 - Projects.dc.html; the `home` lines from bX v2 - Home.dc.html.
- * No client names: every project reads "Sector · Region · NDA" (enforced by the schema).
- * All figures are placeholders pending bX sign-off (OPEN-DECISIONS #3).
+ * Copy from bX v2 - Projects.dc.html, revised with the owner (2026-11-10): no figures, and the sector
+ * line reads "Sector · NDA" (no region). `result` says in words what the project changed.
+ * The owner will supply the final real projects before production; these stand in until then.
  */
 import type { ProjectInput } from "@/lib/schemas/content";
 
@@ -10,83 +10,96 @@ export const projects: ProjectInput[] = [
   {
     slug: "booking-operations-platform",
     tag: "Web & mobile",
-    sector: "Facilities · DE · NDA",
+    sector: "Facilities · NDA",
     title: "Booking and operations platform",
     description:
       "Replaced phone-and-spreadsheet scheduling with one system covering booking, dispatch, invoicing and a customer portal.",
-    metric: { value: "3.2×", label: "more online bookings", placeholder: true },
+    result: "Bookings, dispatch and invoicing now run in one system.",
     stack: ["React", "Node.js", "Postgres"],
-    home: {
-      sector: "Facilities · Germany · NDA",
-      text: "more online bookings for a German facilities-services firm after rebuilding booking and operations.",
-    },
+    home: true,
   },
   {
     slug: "cloud-migration-cicd",
     tag: "Cloud & DevOps",
-    sector: "SaaS · APAC · NDA",
+    sector: "SaaS · NDA",
     title: "Cloud migration and CI/CD rebuild",
     description:
-      "Moved a regional SaaS platform onto managed services, with pipelines, infrastructure as code and per-environment cost reporting.",
-    metric: { value: "41%", label: "lower monthly spend", placeholder: true },
+      "Moved a SaaS platform onto managed services, with pipelines, infrastructure as code and per-environment cost reporting.",
+    result: "Releases are automated and cloud spend is visible per environment.",
     stack: ["AWS", "Kubernetes", "Terraform"],
-    home: {
-      sector: "SaaS · NDA",
-      text: "lower monthly cloud spend for a regional SaaS platform after migration and CI/CD rebuild.",
-    },
+    home: true,
   },
   {
     slug: "tender-drafting-assistant",
     tag: "Agentic AI",
-    sector: "Construction · DE · NDA",
+    sector: "Construction · NDA",
     title: "Tender drafting assistant",
     description:
       "Reads tender documents, builds a compliance matrix and drafts the standard response sections for a bid team to edit.",
-    metric: { value: "9 hrs", label: "saved per tender response", placeholder: true },
+    result: "The bid team starts every response from a ready draft.",
     stack: ["Python", "RAG", "pgvector"],
-    home: {
-      sector: "Construction · NDA",
-      text: "saved per tender response after a drafting assistant began building the compliance matrix for the bid team.",
-    },
+    home: true,
   },
   {
     slug: "infotainment-validation-suite",
     tag: "QA engineering",
-    sector: "Automotive · DE · NDA",
+    sector: "Automotive · NDA",
     title: "Infotainment validation suite",
     description:
       "Automated regression and performance testing inside the client's release process, run alongside our German partner.",
-    metric: { value: "2,400", label: "automated cases per build", placeholder: true },
+    result: "Regression testing runs automatically on every build.",
     stack: ["Appium", "Python", "Jenkins"],
   },
   {
     slug: "admissions-assistant",
     tag: "Generative AI",
-    sector: "Education · PK · NDA",
+    sector: "Education · NDA",
     title: "Admissions assistant",
     description:
       "Answers student questions from the handbook with the source section cited, and escalates anything outside it to a person.",
-    metric: { value: "24/7", label: "coverage without extra headcount", placeholder: true },
+    result: "Students get cited answers at any hour, and a person handles the rest.",
     stack: ["RAG", "Python", "Azure OpenAI"],
   },
   {
     slug: "demand-forecasting-pipeline",
     tag: "Data & cloud",
-    sector: "Retail · APAC · NDA",
+    sector: "Retail · NDA",
     title: "Demand forecasting pipeline",
     description:
       "Forecasts stock movement per store on a nightly pipeline, with the master data reconciled across three source systems first.",
-    metric: { value: "31%", label: "fewer stockouts", placeholder: true },
+    result: "Every store's stock is forecast nightly from reconciled data.",
     stack: ["Python", "Airflow", "MLflow"],
   },
   {
     slug: "settlement-contracts-indexer",
     tag: "Blockchain",
-    sector: "Fintech · EU · NDA",
+    sector: "Fintech · NDA",
     title: "Settlement contracts and indexer",
     description:
       "Settlement flow contracts with an off-chain indexer and reporting, independently audited twice before launch.",
-    metric: { value: "2", label: "independent audits before go-live", placeholder: true },
+    result: "The contracts went live only after independent security audits.",
     stack: ["Solidity", "Node.js", "Postgres"],
+  },
+  // PLACEHOLDER: dummy project until the owner supplies the real list.
+  {
+    slug: "online-store-inventory-sync",
+    tag: "Web & mobile",
+    sector: "eCommerce · NDA",
+    title: "Online store and inventory sync",
+    description:
+      "An online store with payment and inventory integrations, and dashboards the client's own team updates every day.",
+    result: "Orders, stock and payments stay in sync across every channel.",
+    stack: ["React", "Node.js", "MySQL"],
+  },
+  // PLACEHOLDER: dummy project until the owner supplies the real list.
+  {
+    slug: "provisioning-test-automation",
+    tag: "QA engineering",
+    sector: "Telecom · NDA",
+    title: "Provisioning test automation",
+    description:
+      "API and performance test suites built inside the client's pipeline, covering provisioning flows from order to activation.",
+    result: "Every release is tested against the provisioning flows before it ships.",
+    stack: ["Python", "Postman", "Jenkins"],
   },
 ];

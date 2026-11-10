@@ -8,7 +8,7 @@ import {
   type InsightListItem,
 } from "@/components/sections/insights-list";
 import { PageHero } from "@/components/sections/page-hero";
-import { SubscribeForm } from "@/components/sections/subscribe-form";
+import { buttonClasses } from "@/components/ui/button";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { Section } from "@/components/ui/section";
 import { SmartLink } from "@/components/ui/smart-link";
@@ -27,7 +27,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = pageMetadata({
   title: "Insights",
   description:
-    "Notes from the work, not from the trend cycle. Written by the engineers on our projects about AI engineering, data and cloud, product and working with us.",
+    "Practical lessons from real projects, written by the engineers who delivered them: AI engineering, data and cloud, product and working with us.",
   path: "/insights",
 });
 
@@ -62,7 +62,7 @@ export default function InsightsPage() {
         eyebrow={page.hero.eyebrow}
         title={page.hero.title}
         intro={page.hero.intro}
-        aside={<SubscribeForm copy={page.subscribe} />}
+        titleWidth="max-w-[32ch]"
       />
 
       {/* Featured article ---------------------------------------------------------- */}
@@ -85,7 +85,8 @@ export default function InsightsPage() {
             </span>
             <span className="flex flex-col gap-4">
               <span className="text-body-lg text-muted">{featured.summary}</span>
-              <span className="inline-flex min-h-11 items-center gap-2 font-semibold text-link">
+              {/* Styled as the outlined button; the whole card is the link. */}
+              <span className={buttonClasses({ variant: "secondary", className: "self-start" })}>
                 {page.featured.cta} <ArrowRightIcon size={16} />
               </span>
             </span>
@@ -103,9 +104,6 @@ export default function InsightsPage() {
         <SectionHeader
           eyebrow={page.all.eyebrow}
           title={<span id="all-title">{page.all.title}</span>}
-          // Design note addressed to bX; replace once real drafts arrive.
-          aside={page.all.note}
-          asideSize="small"
         />
         {/* The URL topic is read in the browser; the static HTML shows every article. */}
         <Suspense fallback={<InsightsList {...listProps} />}>

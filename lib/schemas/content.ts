@@ -155,15 +155,16 @@ export const ProjectSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/),
   /** Capability tag ("Agentic AI", "Web & mobile"). */
   tag: z.string().min(1),
-  /** "Sector · Region · NDA": client names are never shown (BUSINESS-RULES-V2 §2). */
+  /** "Sector · NDA": client names are never shown (BUSINESS-RULES-V2 §2); no region (owner, 2026-11-10). */
   sector: z.string().regex(/·\s*NDA$/, "Project sector line must end with · NDA"),
   title: z.string().min(1),
   description: z.string().min(1),
-  metric: MetricSchema,
+  /** What the project changed, in words (no figures, owner decision 2026-11-10). */
+  result: z.string().min(1),
   stack: z.array(z.string()).min(1).max(4),
   stillSupported: z.boolean().default(true),
-  /** Shown in Home "Selected work", with its own sentence. */
-  home: z.object({ sector: z.string(), text: z.string() }).optional(),
+  /** Shown in Home "Selected work". */
+  home: z.boolean().default(false),
 });
 
 export const SectorSchema = z.object({
@@ -257,7 +258,8 @@ export const OfficeSchema = z.object({
   /** ISO 3166-1 alpha-2, for structured data (JobPosting, Organization). */
   countryCode: z.string().regex(/^[A-Z]{2}$/),
   body: z.string(),
-  /** Shorter description used on the Contact page. */
+  /** Label and shorter description used on the Contact page. */
+  contactKind: z.string().optional(),
   contactBody: z.string().optional(),
   chips: z.array(z.string()),
 });

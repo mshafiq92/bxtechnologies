@@ -108,7 +108,7 @@ export default function ServicesPage() {
         aria-label={engagement.intro.eyebrow}
         className="border-b-0"
       >
-        <EngagementModels intro={engagement.intro} models={engagement.models} />
+        <EngagementModels intro={engagement.intro} models={engagement.models} tone="surface" />
       </Section>
 
       <ContactBand {...page.contactBand} />

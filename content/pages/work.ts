@@ -4,43 +4,29 @@ import type { ContactBandContent } from "@/lib/schemas/content";
 export const workPage = {
   hero: {
     eyebrow: "Work",
-    title: "Projects we have delivered and still support.",
+    title: "Work we deliver and keep running",
     intro:
-      "Systems in production for clients in Europe and Asia. Client names are withheld under NDA, so each project is described by sector, region, what we built and what it does now.",
-    metrics: [
-      { value: "7", label: "years delivering" },
-      { value: "EU · APAC", label: "client base" },
-      { value: "94%", label: "on-time delivery", placeholder: true },
-    ],
-    primaryCta: { label: "Discuss a project", href: "/contact" },
-    secondaryCta: { label: "Browse projects", href: "#projects" },
+      "AI, software, data and cloud systems we designed, built and still support. Client names stay under NDA, so each project is shown by its sector and what it does today.",
   },
-  jumpLinks: [
-    { href: "#projects", label: "All projects" },
-    { href: "#support", label: "Still supported" },
-    { href: "#contact", label: "Start a project" },
-  ],
   projects: {
     eyebrow: "All projects",
     title: "What we have built",
-    // Design note addressed to bX; replace before launch once figures are signed off.
-    note: "Figures are placeholders pending your sign-off. Sectors, regions and stacks are accurate.",
   },
   support: {
     eyebrow: "After launch",
-    title: "Most of these are still ours to keep running",
+    title: "We stay after launch",
     intro:
       "A delivered project is not a finished relationship. Where a client wants us to stay, we run the system; where they want to take it in-house, we hand it over properly.",
     items: [
       {
         number: "01",
         title: "Support and monitoring",
-        text: "On-call cover, alerting we tuned ourselves, and a monthly report on what the system actually did.",
+        text: "On-call cover, alerting we tuned ourselves, and a monthly report on what the system did and what needs attention next.",
       },
       {
         number: "02",
         title: "Continuous change",
-        text: "Small monthly change budgets rather than annual re-platforming. Most of these projects are on their third or fourth phase.",
+        text: "Small monthly change budgets rather than annual re-platforming, so your systems keep improving in safe, reviewable steps.",
       },
       {
         number: "03",
@@ -51,8 +37,8 @@ export const workPage = {
   },
   contactBand: {
     eyebrow: "Start a project",
-    title: "Want the detail on any of these?",
-    text: "We can walk you through the architecture and what went wrong on the way. Thirty minutes with the engineers who built it.",
+    title: "Discuss your project with our engineers",
+    text: "A 30-minute call with the engineers who built these systems, about your goals, the right architecture and how we would approach it.",
     cta: "Book a technical call",
     ctaHref: "/contact",
     secondary: "All services",

@@ -88,15 +88,6 @@ describe("Insights page", () => {
     const { container } = render(<InsightsPage />);
     expect(listRows(container)).toHaveLength(9);
   });
-
-  it("shows the subscribe success state when the action succeeds", async () => {
-    render(<InsightsPage />);
-    const form = screen.getByRole("form", { name: "Subscribe to the insights digest" });
-    fireEvent.submit(form);
-    expect(await within(form).findByRole("status")).toHaveTextContent(
-      "Subscribed. The next digest arrives with the next piece.",
-    );
-  });
 });
 
 describe("format helpers", () => {

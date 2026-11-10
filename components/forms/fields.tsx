@@ -10,7 +10,7 @@ import { cn } from "@/lib/cn";
  */
 
 const control =
-  "w-full rounded-sm border bg-surface text-body text-ink placeholder:text-muted transition-colors focus-visible:border-link aria-invalid:border-danger";
+  "w-full rounded-sm border bg-surface text-body text-ink placeholder:text-small placeholder:text-muted transition-colors focus-visible:border-link aria-invalid:border-danger";
 
 export function FieldLabel({ children }: { children: ReactNode }) {
   return <span className="text-small font-medium">{children}</span>;

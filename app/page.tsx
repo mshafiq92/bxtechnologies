@@ -21,11 +21,14 @@ import {
   getClientLogos,
   getEngagementModels,
   getHomeProjects,
+  getInsights,
   getPage,
+  getSectors,
   getServiceGroups,
   getServices,
-  getSiteSettings,
+  insightTopic,
 } from "@/lib/content";
+import { formatReadTime } from "@/lib/format";
 import { JsonLd } from "@/lib/seo/json-ld";
 import { pageMetadata } from "@/lib/seo/metadata";
 import { organizationLd } from "@/lib/seo/structured-data";
@@ -75,7 +78,6 @@ function HeroSlide({ copy, title, panel }: { copy: HeroCopy; title: ReactNode; p
 
 export default function HomePage() {
   const page = getPage("home");
-  const site = getSiteSettings();
   const engagement = getEngagementModels("home");
   const productGroup = getServiceGroups().find((group) => group.key === "product");
 
@@ -232,12 +234,10 @@ export default function HomePage() {
                   <span className="font-mono text-[12px] leading-[18px] font-medium tracking-[0.12em] text-link uppercase">
                     {project.tag}
                   </span>
-                  <span className="text-[13px] leading-5 text-muted">{project.home.sector}</span>
+                  <span className="text-[13px] leading-5 text-muted">{project.sector}</span>
                 </span>
-                <span data-metric="" className="text-metric text-ink">
-                  {project.metric.value}
-                </span>
-                <span className="text-body">{project.home.text}</span>
+                <span className="text-h3 font-semibold text-ink">{project.title}</span>
+                <span className="text-body text-muted">{project.result}</span>
                 <ChipList items={project.stack} className="mt-auto border-t border-hairline pt-4" />
               </CardLink>
             </li>
@@ -286,23 +286,30 @@ export default function HomePage() {
           eyebrow={page.industries.eyebrow}
           title={<span id="industries-title">{page.industries.title}</span>}
           action={
-            <TextLink href={page.industries.allLink.href}>{page.industries.allLink.label}</TextLink>
+            <ButtonLink href={page.industries.allLink.href} variant="secondary" arrow>
+              {page.industries.allLink.label}
+            </ButtonLink>
           }
         />
-        <ul className="flex flex-wrap gap-4">
-          {page.industries.tiles.map((tile) => (
-            <li key={tile.title} className="flex flex-[1_1_200px]">
-              <SmartLink
-                href="/industries#sectors"
-                className="flex w-full flex-col gap-1.5 rounded-lg border border-hairline bg-surface p-5 text-ink transition-colors hover:border-strong"
-              >
-                <span className="text-[18px] leading-[26px] font-semibold tracking-[-0.01em]">
-                  {tile.title}
-                </span>
-                <span className="text-small text-muted">{tile.text}</span>
-              </SmartLink>
-            </li>
-          ))}
+        <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {getSectors()
+            .flatMap((sector) => {
+              const text = page.industries.tileLines[sector.slug];
+              return text ? [{ title: sector.name, text }] : [];
+            })
+            .map((tile) => (
+              <li key={tile.title} className="flex">
+                <SmartLink
+                  href="/industries#sectors"
+                  className="flex w-full flex-col gap-1.5 rounded-lg border border-hairline bg-surface p-5 text-ink transition-colors hover:border-strong"
+                >
+                  <span className="text-[18px] leading-[26px] font-semibold tracking-[-0.01em]">
+                    {tile.title}
+                  </span>
+                  <span className="text-small text-muted">{tile.text}</span>
+                </SmartLink>
+              </li>
+            ))}
         </ul>
       </Section>
 
@@ -317,18 +324,28 @@ export default function HomePage() {
           eyebrow={page.insights.eyebrow}
           title={<span id="insights-title">{page.insights.title}</span>}
           action={
-            <TextLink href={page.insights.allLink.href}>{page.insights.allLink.label}</TextLink>
+            <ButtonLink
+              href={page.insights.allLink.href}
+              variant="secondary"
+              arrow
+              className="hover:bg-ground"
+            >
+              {page.insights.allLink.label}
+            </ButtonLink>
           }
         />
-        {/* These three titles are not on the Insights page yet (docs/01 G9), so they link there. */}
+        {/* The latest articles; written ones link to themselves, the rest to the Insights page. */}
         <InsightRows
-          rows={page.insights.rows.map((row) => ({
-            topic: row.topic,
-            title: row.title,
-            text: row.text,
-            meta: `${row.readMinutes} min read`,
-            href: page.insights.allLink.href,
-          }))}
+          rows={getInsights()
+            .slice(0, 3)
+            .map((insight) => ({
+              topic: insightTopic(insight),
+              title: insight.title,
+              // The featured article has a long summary; its shorter standfirst keeps the rows even.
+              text: insight.standfirst ?? insight.summary,
+              meta: formatReadTime(insight.readMinutes),
+              href: insight.hasBody ? `/insights/${insight.slug}` : page.insights.allLink.href,
+            }))}
         />
       </Section>
 
@@ -344,15 +361,6 @@ export default function HomePage() {
               {page.contact.title}
             </h2>
             <p className="max-w-[48ch] text-body-lg text-muted">{page.contact.text}</p>
-            <div className="flex flex-col gap-1.5 pt-2 text-body">
-              <SmartLink
-                href={`mailto:${site.email}`}
-                className="self-start font-medium text-link transition-colors hover:text-ink"
-              >
-                {site.email}
-              </SmartLink>
-              <span className="text-muted">{page.contact.location}</span>
-            </div>
           </div>
           <HomeContactForm copy={page.contact.form} />
         </div>

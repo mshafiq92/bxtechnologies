@@ -9,7 +9,6 @@ import { ButtonLink } from "@/components/ui/button";
 import { LinkedInIcon, MailIcon, XIcon } from "@/components/ui/icons";
 import { Section } from "@/components/ui/section";
 import { SmartLink } from "@/components/ui/smart-link";
-import { TextLink } from "@/components/ui/text-link";
 import { Eyebrow, Heading, SectionHeader } from "@/components/ui/typography";
 import {
   getArticleRelatedService,
@@ -225,9 +224,9 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
             eyebrow={page.keepReading.eyebrow}
             title={<span id="more-title">{page.keepReading.title}</span>}
             action={
-              <TextLink href={page.keepReading.allLink.href}>
+              <ButtonLink href={page.keepReading.allLink.href} variant="secondary" arrow>
                 {page.keepReading.allLink.label}
-              </TextLink>
+              </ButtonLink>
             }
           />
           <ul className="grid grid-cols-1 gap-6 lg:grid-cols-3">

@@ -4,30 +4,21 @@ import type { ContactBandContent } from "@/lib/schemas/content";
 export const insightsPage = {
   hero: {
     eyebrow: "Insights",
-    title: "Notes from the work, not from the trend cycle.",
+    title: "Notes from our engineering work",
     intro:
-      "Written by the engineers on the projects, usually because something surprised us. No vendor roundups, no predictions for next year.",
-  },
-  subscribe: {
-    label:
-      "Roughly two pieces a month. If you want them by email, we send a short digest and nothing else.",
-    placeholder: "you@company.com",
-    submit: "Subscribe",
-    success: "Subscribed. The next digest arrives with the next piece.",
+      "Practical lessons from real projects, written by the engineers who delivered them. No vendor roundups and no trend predictions.",
   },
   featured: { label: "Latest", cta: "Read the article" },
   all: {
     eyebrow: "All writing",
     title: "Recent pieces",
-    // Design note addressed to bX; replace before launch once real drafts arrive.
-    note: "Titles and summaries are placeholders shaped around work we have actually done. Send us the real drafts and they drop straight in.",
     allFilter: "Everything",
     empty: "Nothing under this topic yet.",
   },
   contactBand: {
     eyebrow: "Start a project",
-    title: "Rather discuss it than read about it?",
-    text: "Thirty minutes with the engineers who did the work. You leave with an approach and a rough shape of effort, whether or not you hire us.",
+    title: "Discuss your project with our engineers",
+    text: "A 30-minute call with the engineers behind these articles, about your goals and how we would approach them.",
     cta: "Book a technical call",
     ctaHref: "/contact",
     secondary: "All services",
@@ -50,8 +41,8 @@ export const articlePage = {
   },
   contactBand: {
     eyebrow: "Start a project",
-    title: "Have a workflow worth testing this way?",
-    text: "Thirty minutes with the engineers who did the work. You leave with an approach and a rough shape of effort, whether or not you hire us.",
+    title: "Put this approach to work on your project",
+    text: "A 30-minute call with the engineers behind these articles, about your goals and how we would approach them.",
     cta: "Book a technical call",
     ctaHref: "/contact",
     secondary: "All services",
@@ -70,7 +61,7 @@ export const articleRelatedService: Record<
 > = {
   "agent-projects-fail-at-the-evaluation-harness": {
     title: "We run this as a six-week pilot",
-    text: "One workflow, a working agent behind an evaluation harness, and a go/no-go number at the end. Fixed fee, and you keep the harness either way.",
+    text: "One workflow, a working agent with its evaluation harness, and a clear go or no-go result at the end. Fixed fee, and you keep the harness either way.",
     cta: { label: "Agentic AI service", href: "/services/agentic-ai" },
   },
 };

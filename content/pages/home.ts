@@ -63,7 +63,7 @@ export const homePage = {
   },
   work: {
     eyebrow: "Selected work",
-    title: "Systems in production, with numbers attached",
+    title: "Selected projects",
     allLink: { label: "All projects", href: "/work" },
   },
   delivered: {
@@ -120,64 +120,36 @@ export const homePage = {
   },
   industries: {
     eyebrow: "Industries",
-    title: "Where we already know the domain",
+    title: "Industries we already know",
     allLink: { label: "All industries", href: "/industries" },
-    tiles: [
-      { title: "Fintech", text: "Payments, settlement, KYC" },
-      { title: "Healthcare", text: "Patient records, scheduling" },
-      { title: "eCommerce", text: "Catalogue, fulfilment, support" },
-      { title: "Telecom", text: "Provisioning, test automation" },
-      { title: "Facilities & services", text: "Booking, dispatch, operations" },
-    ],
+    // One short line per sector (content/sectors.ts, by slug); the tiles follow the Industries page.
+    tileLines: {
+      fintech: "Payments, settlement, KYC",
+      telecom: "Provisioning, test automation",
+      "saas-mvp": "MVPs, platforms, subscriptions",
+      ecommerce: "Catalogue, fulfilment, support",
+      education: "Student portals, AI assistants",
+      "construction-facilities": "Tenders, booking, dispatch",
+    } as Record<string, string>,
   },
   insights: {
     eyebrow: "Insights",
     title: "What our engineers are working out",
     allLink: { label: "All insights", href: "/insights" },
-    /*
-     * The Home design lists three titles that do not appear on the Insights page.
-     * Kept verbatim; decide in T30 whether Home should list the latest real articles instead.
-     */
-    rows: [
-      {
-        topic: "Agents",
-        title: "How we evaluate an agent before it touches a customer",
-        text: "The regression suite, the cost ceiling and the three failure modes we test for every time.",
-        readMinutes: 8,
-      },
-      {
-        topic: "Cloud",
-        title: "Cutting a client's AWS bill 41% without touching the product",
-        text: "Where the money actually goes, and the four changes that moved the number.",
-        readMinutes: 6,
-      },
-      {
-        topic: "Delivery",
-        title: "Why our AI projects use the same process as our payment systems",
-        text: "Requirements, sign-off, tests, handover. Nothing about agents changes the discipline.",
-        readMinutes: 5,
-      },
-    ],
   },
   contact: {
     eyebrow: "Start a project",
     title: "Tell us what is slow, manual or breaking.",
-    text: "A 30-minute call with the engineers who would do the work, not a sales team. You leave with an approach and a rough shape of cost, whether or not you hire us.",
-    location: "Islamabad, Pakistan · working with clients across CET and GMT",
+    text: "No sales team. You talk directly to the engineers who would build it, and you keep the approach whether or not you hire us.",
     form: {
       name: { label: "Name", placeholder: "Your name" },
       email: { label: "Work email", placeholder: "you@company.com" },
       message: {
-        label: "What are you trying to build or fix?",
-        placeholder: "A sentence or two is plenty",
-      },
-      stage: {
-        legend: "Where are you starting from?",
-        options: ["An idea", "Existing system", "Team gap"],
+        label: "Your message",
+        placeholder: "Write your message",
       },
       submit: "Request a technical call",
       success: "Received. An engineer will reply within one working day.",
-      note: "We reply within one working day. No mailing list.",
     },
   },
 };

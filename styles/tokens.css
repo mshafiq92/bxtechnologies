@@ -115,6 +115,15 @@
   }
 }
 
+/* Large screens and zoomed-out browsers: wider content and header (owner decision 2026-11-10).
+   Reading width (--container-reading) stays the same so paragraphs keep their line length. */
+@media (width >= 1600px) {
+  .theme-bx-light {
+    --container-content: 1320px;
+    --container-wide: 1368px;
+  }
+}
+
 /* 2. Navy bands -------------------------------------------------------------- */
 
 .theme-bx-light [data-tone="deep"] {

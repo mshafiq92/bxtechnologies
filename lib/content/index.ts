@@ -249,9 +249,7 @@ export function getProjects() {
 
 /** Projects featured in Home "Selected work", with their Home wording. */
 export function getHomeProjects() {
-  return projects
-    .filter((p) => p.home)
-    .map((p) => ({ ...p, home: p.home as NonNullable<typeof p.home> }));
+  return projects.filter((p) => p.home);
 }
 
 export function getSectors() {

@@ -2,7 +2,7 @@
 
 import { useActionState, useId, useState, type FormEvent } from "react";
 
-import { Field, FormCard, FormSuccess, Input, Select, Textarea } from "@/components/forms/fields";
+import { Field, FormCard, FormSuccess, Input, Textarea } from "@/components/forms/fields";
 import { FormError, FormGuard } from "@/components/forms/form-guard";
 import { RadioPills } from "@/components/forms/radio-pills";
 import { Button } from "@/components/ui/button";
@@ -16,12 +16,11 @@ type Copy = {
   email: { label: string; placeholder: string; error: string };
   phone: { label: string; placeholder: string };
   need: { legend: string; options: string[] };
-  companySize: { label: string; options: string[] };
-  budget: { label: string; options: string[] };
   message: { label: string; placeholder: string };
   submit: string;
   success: string;
-  note: string;
+  /** Small line under the submit button (optional). */
+  note?: string;
 };
 
 /** Same check as the design: something@something.something. */
@@ -109,22 +108,6 @@ export function ContactForm({ copy }: { copy: Copy }) {
           onChange={setNeed}
           name="need"
         />
-        <div className="grid grid-cols-1 gap-5 min-[640px]:grid-cols-2">
-          <Field label={copy.companySize.label}>
-            <Select name="companySize">
-              {copy.companySize.options.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </Select>
-          </Field>
-          <Field label={copy.budget.label}>
-            <Select name="budget">
-              {copy.budget.options.map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </Select>
-          </Field>
-        </div>
         <Field label={copy.message.label}>
           <Textarea
             name="message"
@@ -138,7 +121,7 @@ export function ContactForm({ copy }: { copy: Copy }) {
         <Button type="submit" size="block" disabled={pending}>
           {copy.submit}
         </Button>
-        <span className="text-small text-muted">{copy.note}</span>
+        {copy.note && <span className="text-small text-muted">{copy.note}</span>}
       </div>
     </FormCard>
   );

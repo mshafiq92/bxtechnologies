@@ -1,8 +1,9 @@
 /*
  * Insights: categories, authors and articles.
  * Copy verbatim from bX v2 - Insights.dc.html and bX v2 - Article.dc.html.
- * Only the featured article has a written body (content/insights/<slug>.mdx); the rest are
- * placeholder titles shaped around real work, waiting for drafts from the team.
+ * Only the featured article has a written body (content/insights/<slug>.mdx).
+ * PLACEHOLDER: every article without `hasBody: true` is a placeholder title kept for the design
+ * review. The owner supplies the real drafts; before production, list only written articles.
  */
 import type { Author, InsightCategory, InsightInput } from "@/lib/schemas/content";
 
@@ -14,8 +15,12 @@ export const insightCategories: InsightCategory[] = [
 ];
 
 export const authors: Author[] = [
-  // OPEN-DECISIONS #7: real author name pending.
-  { slug: "ai-engineering-author", name: "[Author name]", role: "AI engineering, BX Technologies" },
+  // Team byline until the owner chooses a named author (OPEN-DECISIONS #7).
+  {
+    slug: "ai-engineering-author",
+    name: "BX Technologies engineering team",
+    role: "AI engineering",
+  },
 ];
 
 export const insights: InsightInput[] = [

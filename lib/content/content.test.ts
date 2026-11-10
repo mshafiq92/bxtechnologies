@@ -127,10 +127,7 @@ describe("business rules in content", () => {
   });
 
   it("marks proof metrics as placeholders until bX signs them off", () => {
-    const proof = [
-      ...getProjects().map((p) => p.metric),
-      ...getServicesWithDetail().flatMap((s) => s.detail.proof.metrics),
-    ];
+    const proof = [...getServicesWithDetail().flatMap((s) => s.detail.proof.metrics)];
     expect(proof.length).toBeGreaterThan(0);
     for (const m of proof) expect(m.placeholder).toBe(true);
   });
@@ -151,7 +148,11 @@ describe("business rules in content", () => {
   });
 
   it("features three projects on Home", () => {
-    expect(getHomeProjects().map((p) => p.metric.value)).toEqual(["3.2×", "41%", "9 hrs"]);
+    expect(getHomeProjects().map((p) => p.slug)).toEqual([
+      "booking-operations-platform",
+      "cloud-migration-cicd",
+      "tender-drafting-assistant",
+    ]);
   });
 
   it("rejects a service without a stack", () => {

@@ -31,8 +31,7 @@ test("home contact form sends an enquiry", async ({ page }) => {
   const form = page.getByRole("form", { name: "Request a technical call" });
   await form.getByLabel("Name").fill("Test Person");
   await form.getByLabel("Work email").fill("test@example.com");
-  await form.getByLabel("What are you trying to build or fix?").fill("E2E test, please ignore.");
-  await form.getByRole("radio", { name: "Existing system" }).click();
+  await form.getByLabel("Your message").fill("E2E test, please ignore.");
   await form.getByRole("button", { name: "Request a technical call" }).click();
   await expect(form.getByRole("status")).toHaveText(
     "Received. An engineer will reply within one working day.",
@@ -50,7 +49,6 @@ test("contact form shows the work-email error, then sends", async ({ page }) => 
 
   await email.fill("jane@company.de");
   await form.getByRole("radio", { name: "An AI pilot" }).click();
-  await form.getByLabel("Rough budget").selectOption("€25k to €75k");
   await form.getByRole("button", { name: "Send and book a call" }).click();
   await expect(form.getByRole("status")).toHaveText(
     "Received. An engineer will reply within one working day.",
@@ -90,14 +88,4 @@ test("application rejects a non-PDF CV", async ({ page }) => {
     buffer: Buffer.from("png"),
   });
   await expect(form.getByText("Error: upload your CV as a PDF or DOCX file.")).toBeVisible();
-});
-
-test("digest subscribe form", async ({ page }) => {
-  await page.goto("/insights");
-  const form = page.getByRole("form", { name: "Subscribe to the insights digest" });
-  await form.getByRole("textbox").fill("reader@example.com");
-  await form.getByRole("button", { name: "Subscribe" }).click();
-  await expect(form.getByRole("status")).toHaveText(
-    "Subscribed. The next digest arrives with the next piece.",
-  );
 });
