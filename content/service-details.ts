@@ -98,23 +98,23 @@ export const agenticAiDetail: ServiceDetailInput = {
   engagement: {
     eyebrow: "The pilot",
     jumpLabel: "The pilot",
-    title: "Six weeks, one workflow, a real number",
+    title: "One workflow, a real number",
     intro:
       "Fixed fee. You own everything produced (code, prompts, evaluation set and infrastructure definitions) whether or not you continue with us.",
     cta: "Scope a pilot",
     steps: [
       {
-        label: "WK 1 to 2",
+        label: "SCOPE",
         title: "Pick the workflow and set the bar",
         text: "We sit with the people doing the work, instrument the current process, and agree the number that decides success: handling time, cost per case, or error rate. Access, data and security review happen here, not at the end.",
       },
       {
-        label: "WK 3 to 4",
+        label: "BUILD",
         title: "Build the agent and its evaluation set",
         text: "Orchestration, retrieval and tools against your real endpoints in a sandbox, with a golden set of cases drawn from your own history. The evaluation harness is built alongside the agent, not after it.",
       },
       {
-        label: "WK 5 to 6",
+        label: "TEST",
         title: "Run it shadow, then decide",
         text: "The agent runs beside your team on live traffic without acting, so you can compare its decisions to theirs. You get the measured result, the cost per task, the failure modes we found, and a straight recommendation either way.",
       },
@@ -341,17 +341,17 @@ export const cloudDevopsDetail: ServiceDetailInput = {
     cta: "Book a review",
     steps: [
       {
-        label: "WK 1 to 2",
+        label: "REVIEW",
         title: "Review what is running",
         text: "Architecture, pipelines, access and the last six months of the bill. You get a written review with the three changes that would matter most and what each would cost.",
       },
       {
-        label: "WK 3 to 6",
+        label: "BUILD",
         title: "Build the target platform",
         text: "Landing zone, pipelines and observability as code in your account, with staging built from the same definitions as production.",
       },
       {
-        label: "MIGRATION",
+        label: "MIGRATE",
         title: "Move workloads in waves",
         text: "One service at a time, each with a tested rollback and a cutover window agreed in advance. The riskiest workload goes last, not first.",
       },
@@ -577,17 +577,17 @@ export const customSoftwareDetail: ServiceDetailInput = {
     cta: "Discuss a build",
     steps: [
       {
-        label: "WK 1 to 2",
+        label: "DISCOVER",
         title: "Discovery",
         text: "Workshops with the people who use the current process, a domain model, the integration list and a written scope with a price or a team shape.",
       },
       {
-        label: "FORTNIGHTLY",
+        label: "BUILD",
         title: "Build in iterations",
         text: "Two-week iterations with a working demo on staging at the end of each. You see the software, not a status report.",
       },
       {
-        label: "BEFORE LAUNCH",
+        label: "TEST",
         title: "Test and harden",
         text: "Regression, performance and security testing, data migration rehearsed against a copy of production, and a go-live checklist agreed with your team.",
       },

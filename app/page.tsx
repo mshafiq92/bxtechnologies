@@ -28,6 +28,7 @@ import {
   getServices,
   groupHref,
   insightTopic,
+  serviceHref,
 } from "@/lib/content";
 import { formatReadTime } from "@/lib/format";
 import { JsonLd } from "@/lib/seo/json-ld";
@@ -128,14 +129,14 @@ export default function HomePage() {
                       layers={getServiceGroups().flatMap((group) => {
                         const tags = page.hero.allServices.layers[group.key];
                         return tags
-                          ? [{ title: group.name, tags, href: `/services#${group.key}` }]
+                          ? [{ title: group.name, tags, href: groupHref(group.key) }]
                           : [];
                       })}
                       side={
                         productGroup && {
                           title: productGroup.name,
                           items: page.hero.allServices.side,
-                          href: `/services#${productGroup.key}`,
+                          href: groupHref(productGroup.key),
                         }
                       }
                     />
@@ -177,11 +178,14 @@ export default function HomePage() {
               <p className="text-body text-muted">{group.intro}</p>
               <ul>
                 {getServices(group.key).map((service) => (
-                  <li
-                    key={service.slug}
-                    className="border-t border-hairline py-3 text-body leading-6 font-normal text-ink"
-                  >
-                    {service.name}
+                  <li key={service.slug} className="border-t border-hairline">
+                    {/* Each service opens its own block on the group page (owner, 2026-11-12). */}
+                    <SmartLink
+                      href={serviceHref(service)}
+                      className="flex min-h-11 items-center py-3 text-body leading-6 text-ink transition-colors hover:text-link"
+                    >
+                      {service.name}
+                    </SmartLink>
                   </li>
                 ))}
               </ul>

@@ -50,10 +50,10 @@ describe("Header: mega menu", () => {
     const menu = within(megaMenu());
     for (const group of [
       "AI Engineering",
-      "Data & Analytics",
       "Cloud & DevOps",
-      "Managed IT Services",
       "Software Engineering",
+      "Data & Analytics",
+      "Managed IT Services",
       "IT Consulting",
     ]) {
       expect(menu.getByText(group)).toBeInTheDocument();

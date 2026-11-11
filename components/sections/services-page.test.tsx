@@ -10,10 +10,10 @@ describe("Services page", () => {
     expect(ids).toEqual([
       "top",
       "ai",
-      "data",
       "cloud",
-      "managed",
       "software",
+      "data",
+      "managed",
       "consulting",
       "stack",
       "contact",
@@ -23,7 +23,7 @@ describe("Services page", () => {
       within(jump)
         .getAllByRole("link")
         .map((a) => a.getAttribute("href")),
-    ).toEqual(["#ai", "#data", "#cloud", "#managed", "#software", "#consulting", "#stack"]);
+    ).toEqual(["#ai", "#cloud", "#software", "#data", "#managed", "#consulting", "#stack"]);
   });
 
   it("has one h1 and a breadcrumb back to Home", () => {
@@ -36,7 +36,7 @@ describe("Services page", () => {
 
   it("lists every service, linking to its detail page or to the contact band", () => {
     const { container } = render(<ServicesPage />);
-    const rows = ["ai", "data", "cloud", "managed", "software", "consulting"].flatMap((id) =>
+    const rows = ["ai", "cloud", "software", "data", "managed", "consulting"].flatMap((id) =>
       Array.from(container.querySelectorAll(`section#${id} a[href]`)).filter((a) =>
         a.querySelector(".text-h4"),
       ),

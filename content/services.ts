@@ -20,28 +20,28 @@ export const serviceGroups: ServiceGroup[] = [
     intro: "Agents and models wired into the software your teams already use.",
   },
   {
-    key: "data",
-    number: "02",
-    name: "Data & Analytics",
-    intro: "Pipelines, warehouses and dashboards your reporting and AI can rely on.",
-  },
-  {
     key: "cloud",
-    number: "03",
+    number: "02",
     name: "Cloud & DevOps",
     intro: "Deployments that ship safely, and the monitoring that keeps them running.",
   },
   {
-    key: "managed",
-    number: "04",
-    name: "Managed IT Services",
-    intro: "Service desk, device, network and on-site support, from first line to field engineers.",
-  },
-  {
     key: "software",
-    number: "05",
+    number: "03",
     name: "Software Engineering",
     intro: "Custom software, web and mobile apps, IoT and blockchain, tested before release.",
+  },
+  {
+    key: "data",
+    number: "04",
+    name: "Data & Analytics",
+    intro: "Pipelines, warehouses and dashboards your reporting and AI can rely on.",
+  },
+  {
+    key: "managed",
+    number: "05",
+    name: "Managed IT Services",
+    intro: "Service desk, device, network and on-site support, from first line to field engineers.",
   },
   {
     key: "consulting",
@@ -140,7 +140,8 @@ export const services: ServiceInput[] = [
     name: "Computer vision",
     navLabel: "Computer vision",
     summary: "Inspection, recognition and document reading from images and video",
-    subtitle: "Models that read images and video so people do not have to",
+    subtitle:
+      "Models that inspect images and video, so your team does not have to check them by hand",
     description:
       "Defect detection, object and text recognition, document reading and video analysis, trained on your own images and tested against cases you agree before rollout.",
     stack: ["Python", "Computer vision", "OCR"],
@@ -173,67 +174,8 @@ export const services: ServiceInput[] = [
     detail: null,
   },
   {
-    slug: "data-engineering",
-    number: "07",
-    group: "data",
-    name: "Data engineering",
-    navLabel: "Data engineering",
-    summary: "Warehouses and data models your reporting and AI layer can actually rely on",
-    subtitle: "Warehouses and data models your reporting can be trusted on",
-    description:
-      "Warehouse design, dimensional modelling and data quality tests, so everything downstream starts from clean data.",
-    stack: ["SQL Server", "MySQL", "MongoDB", "Data quality"],
-    includes: [
-      "Warehouse design",
-      "Dimensional modelling",
-      "Data quality tests",
-      "Every definition documented",
-    ],
-    detail: null,
-  },
-  // DRAFT: new service, copy for owner review.
-  {
-    slug: "data-pipelines",
-    number: "08",
-    group: "data",
-    name: "Data pipelines & ETL",
-    navLabel: "Data pipelines & ETL",
-    summary: "Scheduled ingestion from your operational systems, tested on every run",
-    subtitle: "Data moved reliably from the systems that create it",
-    description:
-      "Ingestion from operational systems, scheduled orchestration, and quality checks on every run, so reports and models always have fresh data.",
-    stack: ["Ingestion", "Orchestration", "Quality checks"],
-    includes: [
-      "Ingestion from operational systems",
-      "Scheduled orchestration",
-      "Quality checks on every run",
-      "Alerts when a run fails",
-    ],
-    detail: null,
-  },
-  // DRAFT: new service, copy for owner review.
-  {
-    slug: "business-intelligence",
-    number: "09",
-    group: "data",
-    name: "Business intelligence & analytics",
-    navLabel: "BI & analytics",
-    summary: "Dashboards and reports that reconcile with the source of truth",
-    subtitle: "Dashboards your finance and operations teams trust",
-    description:
-      "Dimensional models, dashboards, scheduled reporting and metric definitions agreed with the people who use them.",
-    stack: ["Dashboards", "Reporting", "SQL"],
-    includes: [
-      "Dashboards",
-      "Scheduled reporting",
-      "Agreed metric definitions",
-      "Reports that match the source data",
-    ],
-    detail: null,
-  },
-  {
     slug: "cloud-infrastructure",
-    number: "10",
+    number: "07",
     group: "cloud",
     name: "Cloud infrastructure",
     navLabel: "Cloud infrastructure",
@@ -253,7 +195,7 @@ export const services: ServiceInput[] = [
   // DRAFT: new service, copy for owner review.
   {
     slug: "cloud-migration",
-    number: "11",
+    number: "08",
     group: "cloud",
     name: "Cloud migration & modernisation",
     navLabel: "Cloud migration",
@@ -274,7 +216,7 @@ export const services: ServiceInput[] = [
   // DRAFT: new service, copy for owner review.
   {
     slug: "devops-ci-cd",
-    number: "12",
+    number: "09",
     group: "cloud",
     name: "DevOps & CI/CD",
     navLabel: "DevOps & CI/CD",
@@ -294,7 +236,7 @@ export const services: ServiceInput[] = [
   // DRAFT: replaces Monitoring & SRE (owner approved 2026-11-11, DPL naming), copy for owner review.
   {
     slug: "managed-cloud",
-    number: "13",
+    number: "10",
     group: "cloud",
     name: "Managed cloud",
     navLabel: "Managed cloud",
@@ -314,9 +256,9 @@ export const services: ServiceInput[] = [
   // DRAFT: copy for owner review. Moved to Cloud & DevOps (owner, 2026-11-11).
   {
     slug: "mlops",
-    number: "14",
+    number: "11",
     group: "cloud",
-    name: "MLOps",
+    name: "Machine learning operations (MLOps)",
     navLabel: "MLOps",
     summary:
       "Training pipelines, model serving and drift monitoring, so models stay reliable after launch",
@@ -333,8 +275,179 @@ export const services: ServiceInput[] = [
     detail: null,
   },
   {
-    slug: "it-service-desk",
+    slug: "custom-software",
+    number: "12",
+    group: "software",
+    name: "Custom software development",
+    navLabel: "Custom software",
+    summary: "Line-of-business systems in .NET, Node and Python, built to be handed over",
+    subtitle: "Line-of-business systems built to be handed over",
+    description:
+      "Domain modelling, API design, integrations with what you already run, and documentation thorough enough that another team could take it on.",
+    stack: ["C# / ASP.NET", "Node.js", "Python", "SQL Server"],
+    includes: [
+      "Domain modelling",
+      "API design",
+      "Integrations with existing systems",
+      "Handover documentation",
+    ],
+    detail: null,
+  },
+  // Split from Web & mobile (owner approved 2026-11-11, DPL naming). DRAFT copy for owner review.
+  {
+    slug: "web-development",
+    number: "13",
+    group: "software",
+    name: "Web app development",
+    navLabel: "Web app development",
+    summary:
+      "Responsive web applications, portals and online stores, built to be fast and accessible",
+    subtitle: "Web applications that work on every screen",
+    description:
+      "Responsive web applications, customer portals, admin tools and online stores, with design systems, accessibility and the integrations behind them.",
+    stack: ["React.js", "Tailwind", "Responsive web"],
+    includes: [
+      "Responsive web applications",
+      "Customer portals and admin tools",
+      "Online stores and checkout",
+      "Design systems and accessibility",
+    ],
+    detail: null,
+  },
+  // Split from Web & mobile (owner approved 2026-11-11, DPL naming). DRAFT copy for owner review.
+  {
+    slug: "mobile-development",
+    number: "14",
+    group: "software",
+    name: "Mobile app development",
+    navLabel: "Mobile app development",
+    summary: "Android, iOS and cross-platform apps, from mock-up to store release",
+    subtitle: "From mock-up to store release, on one codebase where it makes sense",
+    description:
+      "Native and cross-platform apps for Android and iOS, with the release engineering behind store submissions and updates.",
+    stack: ["React Native", "Flutter", "Mobile apps"],
+    includes: ["Android apps", "iOS apps", "Cross-platform apps", "Store release and updates"],
+    detail: null,
+  },
+  {
+    slug: "iot-development",
     number: "15",
+    group: "software",
+    name: "IoT development",
+    navLabel: "IoT development",
+    summary: "Device fleets, telemetry ingestion and the dashboards operators trust",
+    subtitle: "Device fleets and the telemetry operators actually watch",
+    description:
+      "Firmware integration, message-broker ingestion at scale, time-series storage, alerting rules, over-the-air update paths and operator dashboards.",
+    stack: ["MQTT", "Telemetry", "Dashboards"],
+    includes: [
+      "Firmware integration",
+      "Telemetry ingestion",
+      "Time-series storage",
+      "Over-the-air updates",
+    ],
+    detail: null,
+  },
+  {
+    slug: "qa-testing",
+    number: "16",
+    group: "software",
+    name: "QA & software testing",
+    navLabel: "QA & software testing",
+    summary: "Functional, performance, security and API testing, independent of the build team",
+    subtitle: "Independent testing that runs in your pipeline on every build",
+    description:
+      "Functional, regression, performance, security and API testing, with automation suites that run in your pipeline and report on every build.",
+    stack: ["Functional", "Performance", "Security", "API"],
+    includes: [
+      "Functional testing",
+      "Performance testing",
+      "Security and API testing",
+      "Usability, sanity and smoke testing",
+    ],
+    detail: null,
+  },
+  {
+    slug: "blockchain",
+    number: "17",
+    group: "software",
+    name: "Blockchain development",
+    navLabel: "Blockchain development",
+    summary: "Contracts, wallets and settlement flows, audited before they touch money",
+    subtitle: "Contracts and settlement flows, audited before they touch money",
+    description:
+      "Smart contract development and review, wallet integration, token and settlement flows, plus the off-chain services and indexing around them.",
+    stack: ["Smart contracts", "Wallets", "Settlement"],
+    includes: [
+      "Smart contract development",
+      "Contract review",
+      "Wallet integration",
+      "Off-chain indexing",
+    ],
+    detail: null,
+  },
+  {
+    slug: "data-engineering",
+    number: "18",
+    group: "data",
+    name: "Data engineering",
+    navLabel: "Data engineering",
+    summary: "Warehouses and data models your reporting and AI layer can actually rely on",
+    subtitle: "Warehouses and data models your reports can rely on",
+    description:
+      "Warehouse design, dimensional modelling and data quality tests, so everything downstream starts from clean data.",
+    stack: ["SQL Server", "MySQL", "MongoDB", "Data quality"],
+    includes: [
+      "Warehouse design",
+      "Dimensional modelling",
+      "Data quality tests",
+      "Every definition documented",
+    ],
+    detail: null,
+  },
+  // DRAFT: new service, copy for owner review.
+  {
+    slug: "data-pipelines",
+    number: "19",
+    group: "data",
+    name: "Data pipelines & ETL",
+    navLabel: "Data pipelines & ETL",
+    summary: "Scheduled ingestion from your operational systems, tested on every run",
+    subtitle: "Data moved reliably from the systems that create it",
+    description:
+      "Ingestion from operational systems, scheduled orchestration, and quality checks on every run, so reports and models always have fresh data.",
+    stack: ["Ingestion", "Orchestration", "Quality checks"],
+    includes: [
+      "Ingestion from operational systems",
+      "Scheduled orchestration",
+      "Quality checks on every run",
+      "Alerts when a run fails",
+    ],
+    detail: null,
+  },
+  // DRAFT: new service, copy for owner review.
+  {
+    slug: "business-intelligence",
+    number: "20",
+    group: "data",
+    name: "Business intelligence & analytics",
+    navLabel: "BI & analytics",
+    summary: "Dashboards and reports that reconcile with the source of truth",
+    subtitle: "Dashboards your finance and operations teams trust",
+    description:
+      "Dimensional models, dashboards, scheduled reporting and metric definitions agreed with the people who use them.",
+    stack: ["Dashboards", "Reporting", "SQL"],
+    includes: [
+      "Dashboards",
+      "Scheduled reporting",
+      "Agreed metric definitions",
+      "Reports that match the source data",
+    ],
+    detail: null,
+  },
+  {
+    slug: "it-service-desk",
+    number: "21",
     group: "managed",
     name: "IT service desk (L1-L3)",
     navLabel: "IT service desk (L1-L3)",
@@ -356,7 +469,7 @@ export const services: ServiceInput[] = [
   // name any country or region in this copy until the owner confirms it.
   {
     slug: "device-support",
-    number: "16",
+    number: "22",
     group: "managed",
     name: "End-user device support",
     navLabel: "End-user device support",
@@ -376,7 +489,7 @@ export const services: ServiceInput[] = [
   },
   {
     slug: "on-site-it-support",
-    number: "17",
+    number: "23",
     group: "managed",
     name: "On-site IT support",
     navLabel: "On-site IT support",
@@ -396,7 +509,7 @@ export const services: ServiceInput[] = [
   },
   {
     slug: "network-management",
-    number: "18",
+    number: "24",
     group: "managed",
     name: "Network management",
     navLabel: "Network management",
@@ -410,118 +523,6 @@ export const services: ServiceInput[] = [
       "Wi-Fi surveys with Ekahau and AirMagnet",
       "Storage support",
       "Equipment verification",
-    ],
-    detail: null,
-  },
-  {
-    slug: "custom-software",
-    number: "19",
-    group: "software",
-    name: "Custom software development",
-    navLabel: "Custom software",
-    summary: "Line-of-business systems in .NET, Node and Python, built to be handed over",
-    subtitle: "Line-of-business systems built to be handed over",
-    description:
-      "Domain modelling, API design, integrations with what you already run, and documentation thorough enough that another team could take it on.",
-    stack: ["C# / ASP.NET", "Node.js", "Python", "SQL Server"],
-    includes: [
-      "Domain modelling",
-      "API design",
-      "Integrations with existing systems",
-      "Handover documentation",
-    ],
-    detail: null,
-  },
-  // Split from Web & mobile (owner approved 2026-11-11, DPL naming). DRAFT copy for owner review.
-  {
-    slug: "web-development",
-    number: "20",
-    group: "software",
-    name: "Web app development",
-    navLabel: "Web app development",
-    summary:
-      "Responsive web applications, portals and online stores, built to be fast and accessible",
-    subtitle: "Web applications that work on every screen",
-    description:
-      "Responsive web applications, customer portals, admin tools and online stores, with design systems, accessibility and the integrations behind them.",
-    stack: ["React.js", "Tailwind", "Responsive web"],
-    includes: [
-      "Responsive web applications",
-      "Customer portals and admin tools",
-      "Online stores and checkout",
-      "Design systems and accessibility",
-    ],
-    detail: null,
-  },
-  // Split from Web & mobile (owner approved 2026-11-11, DPL naming). DRAFT copy for owner review.
-  {
-    slug: "mobile-development",
-    number: "21",
-    group: "software",
-    name: "Mobile app development",
-    navLabel: "Mobile app development",
-    summary: "Android, iOS and cross-platform apps, from mock-up to store release",
-    subtitle: "From mock-up to store release, on one codebase where it makes sense",
-    description:
-      "Native and cross-platform apps for Android and iOS, with the release engineering behind store submissions and updates.",
-    stack: ["React Native", "Flutter", "Mobile apps"],
-    includes: ["Android apps", "iOS apps", "Cross-platform apps", "Store release and updates"],
-    detail: null,
-  },
-  {
-    slug: "iot-development",
-    number: "22",
-    group: "software",
-    name: "IoT development",
-    navLabel: "IoT development",
-    summary: "Device fleets, telemetry ingestion and the dashboards operators trust",
-    subtitle: "Device fleets and the telemetry operators actually watch",
-    description:
-      "Firmware integration, message-broker ingestion at scale, time-series storage, alerting rules, over-the-air update paths and operator dashboards.",
-    stack: ["MQTT", "Telemetry", "Dashboards"],
-    includes: [
-      "Firmware integration",
-      "Telemetry ingestion",
-      "Time-series storage",
-      "Over-the-air updates",
-    ],
-    detail: null,
-  },
-  {
-    slug: "qa-testing",
-    number: "23",
-    group: "software",
-    name: "QA & software testing",
-    navLabel: "QA & software testing",
-    summary: "Functional, performance, security and API testing, independent of the build team",
-    subtitle: "Independent testing that runs in your pipeline on every build",
-    description:
-      "Functional, regression, performance, security and API testing, with automation suites that run in your pipeline and report on every build.",
-    stack: ["Functional", "Performance", "Security", "API"],
-    includes: [
-      "Functional testing",
-      "Performance testing",
-      "Security and API testing",
-      "Usability, sanity and smoke testing",
-    ],
-    detail: null,
-  },
-  {
-    slug: "blockchain",
-    number: "24",
-    group: "software",
-    name: "Blockchain development",
-    navLabel: "Blockchain development",
-    summary: "Contracts, wallets and settlement flows, audited before they touch money",
-    subtitle: "Contracts and settlement flows, audited before they touch money",
-    description:
-      "Smart contract development and review, wallet integration, token and settlement flows, plus the off-chain services and indexing around them.",
-    stack: ["Smart contracts", "Wallets", "Settlement"],
-    includes: [
-      "Smart contract development",
-      "Contract review",
-      "Wallet integration",
-      "Off-chain indexing",
     ],
     detail: null,
   },

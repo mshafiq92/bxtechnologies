@@ -4,7 +4,13 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import HomePage from "@/app/page";
 import { RadioPills } from "@/components/forms/radio-pills";
-import { getClientLogos, getServiceGroups, groupHref } from "@/lib/content";
+import {
+  getClientLogos,
+  getServiceGroups,
+  getServices,
+  groupHref,
+  serviceHref,
+} from "@/lib/content";
 
 import { LogoMarquee } from "./logo-marquee";
 
@@ -112,9 +118,9 @@ describe("Home page", () => {
       container.querySelector('[aria-roledescription="slide"][aria-label="All services"]'),
     ).not.toBeNull();
     expect(hero.queryByRole("tab")).toBeNull();
-    expect(container.querySelector('#top a[href="/services#consulting"]')).toBeNull();
+    expect(container.querySelector(`#top a[href="${groupHref("consulting")}"]`)).toBeNull();
     for (const group of getServiceGroups().filter((g) => g.key !== "consulting")) {
-      expect(container.querySelector(`#top a[href="/services#${group.key}"]`)).toHaveTextContent(
+      expect(container.querySelector(`#top a[href="${groupHref(group.key)}"]`)).toHaveTextContent(
         group.name,
       );
     }
@@ -146,6 +152,13 @@ describe("Home page", () => {
       );
     }
     expect(services.getByText("IT service desk (L1-L3)")).toBeInTheDocument();
+    // Every service name opens its own block on the group page.
+    for (const service of getServices()) {
+      expect(services.getByRole("link", { name: service.name })).toHaveAttribute(
+        "href",
+        serviceHref(service),
+      );
+    }
   });
 
   it("shows the success state when the enquiry action succeeds", async () => {

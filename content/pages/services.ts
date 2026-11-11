@@ -20,10 +20,10 @@ export const servicesPage = {
   },
   jumpLinks: [
     { href: "#ai", label: "AI Engineering" },
-    { href: "#data", label: "Data & Analytics" },
     { href: "#cloud", label: "Cloud & DevOps" },
-    { href: "#managed", label: "Managed IT Services" },
     { href: "#software", label: "Software Engineering" },
+    { href: "#data", label: "Data & Analytics" },
+    { href: "#managed", label: "Managed IT Services" },
     { href: "#consulting", label: "IT Consulting" },
     { href: "#stack", label: "Stack" },
   ],

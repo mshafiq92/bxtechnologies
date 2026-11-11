@@ -57,6 +57,82 @@ export const groupPages: GroupPageInput[] = [
     ),
   },
 
+  // Cloud & DevOps (reviewed by the owner 2026-11-10).
+  {
+    group: "cloud",
+    slug: "cloud-devops",
+    eyebrow: "Cloud & DevOps",
+    title: "Cloud platforms your team can change with confidence",
+    intro:
+      "Infrastructure, migration, DevOps, managed cloud and MLOps on AWS and Azure, written as code in your own account and handed over with the runbooks.",
+    primaryCta: "Book a technical call",
+    heroDiagram: cloudDevopsDetail.heroDiagram,
+    deliver: {
+      title: "What we deliver",
+      intro:
+        "Each service stands on its own. Together they give you a platform where a deploy is routine and the monthly bill is explainable.",
+    },
+    architecture: cloudDevopsDetail.architecture,
+    engagement: cloudDevopsDetail.engagement,
+    projects: {
+      title: "Cloud work in production",
+      slugs: ["cloud-migration-cicd", "demand-forecasting-pipeline"],
+    },
+    faq: {
+      title: "Common questions",
+      items: [
+        cloudDevopsDetail.faq.items[0]!,
+        cloudDevopsDetail.faq.items[1]!,
+        cloudDevopsDetail.faq.items[2]!,
+        cloudDevopsDetail.faq.items[4]!,
+      ],
+    },
+    contactBand: band(
+      "Discuss your cloud platform with our engineers",
+      "A 30-minute call about your current setup, where it costs you time or money, and how we would approach it.",
+    ),
+  },
+
+  // DRAFT: Software Engineering.
+  {
+    group: "software",
+    slug: "software-engineering",
+    eyebrow: "Software Engineering",
+    title: "Software built to last and to be handed over",
+    intro:
+      "Custom software, web and mobile apps, IoT, testing and blockchain, built with the documentation and tests your own team needs to take it on.",
+    primaryCta: "Book a technical call",
+    heroDiagram: customSoftwareDetail.heroDiagram,
+    deliver: {
+      title: "What we deliver",
+      intro:
+        "From the first build to independent testing and release, each service can start on its own.",
+    },
+    architecture: customSoftwareDetail.architecture,
+    engagement: customSoftwareDetail.engagement,
+    projects: {
+      title: "Software in production",
+      slugs: [
+        "booking-operations-platform",
+        "online-store-inventory-sync",
+        "provisioning-test-automation",
+      ],
+    },
+    faq: {
+      title: "Common questions",
+      items: [
+        customSoftwareDetail.faq.items[0]!,
+        customSoftwareDetail.faq.items[1]!,
+        customSoftwareDetail.faq.items[2]!,
+        customSoftwareDetail.faq.items[3]!,
+      ],
+    },
+    contactBand: band(
+      "Discuss your software project with our engineers",
+      "A 30-minute call about what you need to build or fix, and how we would approach it.",
+    ),
+  },
+
   // DRAFT: Data & Analytics.
   {
     group: "data",
@@ -146,42 +222,6 @@ export const groupPages: GroupPageInput[] = [
     ),
   },
 
-  // Cloud & DevOps (reviewed by the owner 2026-11-10).
-  {
-    group: "cloud",
-    slug: "cloud-devops",
-    eyebrow: "Cloud & DevOps",
-    title: "Cloud platforms your team can change with confidence",
-    intro:
-      "Infrastructure, migration, DevOps, managed cloud and MLOps on AWS and Azure, written as code in your own account and handed over with the runbooks.",
-    primaryCta: "Book a technical call",
-    heroDiagram: cloudDevopsDetail.heroDiagram,
-    deliver: {
-      title: "What we deliver",
-      intro:
-        "Each service stands on its own. Together they give you a platform where a deploy is routine and the monthly bill is explainable.",
-    },
-    architecture: cloudDevopsDetail.architecture,
-    engagement: cloudDevopsDetail.engagement,
-    projects: {
-      title: "Cloud work in production",
-      slugs: ["cloud-migration-cicd", "demand-forecasting-pipeline"],
-    },
-    faq: {
-      title: "Common questions",
-      items: [
-        cloudDevopsDetail.faq.items[0]!,
-        cloudDevopsDetail.faq.items[1]!,
-        cloudDevopsDetail.faq.items[2]!,
-        cloudDevopsDetail.faq.items[4]!,
-      ],
-    },
-    contactBand: band(
-      "Discuss your cloud platform with our engineers",
-      "A 30-minute call about your current setup, where it costs you time or money, and how we would approach it.",
-    ),
-  },
-
   // DRAFT: Managed IT Services. CONFIRM: on-site coverage; no country or region is named here.
   {
     group: "managed",
@@ -263,46 +303,6 @@ export const groupPages: GroupPageInput[] = [
     contactBand: band(
       "Discuss your IT support with our team",
       "A 30-minute call about your sites, devices and the support your people need.",
-    ),
-  },
-
-  // DRAFT: Software Engineering.
-  {
-    group: "software",
-    slug: "software-engineering",
-    eyebrow: "Software Engineering",
-    title: "Software built to last and to be handed over",
-    intro:
-      "Custom software, web and mobile apps, IoT, testing and blockchain, built with the documentation and tests your own team needs to take it on.",
-    primaryCta: "Book a technical call",
-    heroDiagram: customSoftwareDetail.heroDiagram,
-    deliver: {
-      title: "What we deliver",
-      intro:
-        "From the first build to independent testing and release, each service can start on its own.",
-    },
-    architecture: customSoftwareDetail.architecture,
-    engagement: customSoftwareDetail.engagement,
-    projects: {
-      title: "Software in production",
-      slugs: [
-        "booking-operations-platform",
-        "online-store-inventory-sync",
-        "provisioning-test-automation",
-      ],
-    },
-    faq: {
-      title: "Common questions",
-      items: [
-        customSoftwareDetail.faq.items[0]!,
-        customSoftwareDetail.faq.items[1]!,
-        customSoftwareDetail.faq.items[2]!,
-        customSoftwareDetail.faq.items[3]!,
-      ],
-    },
-    contactBand: band(
-      "Discuss your software project with our engineers",
-      "A 30-minute call about what you need to build or fix, and how we would approach it.",
     ),
   },
 

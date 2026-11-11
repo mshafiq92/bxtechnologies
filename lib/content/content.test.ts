@@ -37,7 +37,7 @@ const read = (path: string) => readFileSync(join(root, path), "utf8");
 describe("services", () => {
   it("has the groups in order and every service numbered in group order", () => {
     const keys = getServiceGroups().map((g) => g.key);
-    expect(keys).toEqual(["ai", "data", "cloud", "managed", "software", "consulting"]);
+    expect(keys).toEqual(["ai", "cloud", "software", "data", "managed", "consulting"]);
     expect(getServices()).toHaveLength(27);
     expect(getServices().map((s) => s.number)).toEqual(
       Array.from({ length: 27 }, (_, i) => String(i + 1).padStart(2, "0")),
@@ -64,7 +64,7 @@ describe("services", () => {
       "Cloud migration & modernisation",
       "DevOps & CI/CD",
       "Managed cloud",
-      "MLOps",
+      "Machine learning operations (MLOps)",
     ]);
     expect(getServices("ai").map((s) => s.name)).toEqual([
       "AI agent development",
@@ -125,17 +125,17 @@ describe("services", () => {
     const { megaMenu } = getNavigation();
     expect(megaMenu.groups.map((g) => g.title)).toEqual([
       "AI Engineering",
-      "Data & Analytics",
       "Cloud & DevOps",
-      "Managed IT Services",
       "Software Engineering",
+      "Data & Analytics",
+      "Managed IT Services",
       "IT Consulting",
     ]);
-    expect(megaMenu.groups[4]?.links[0]).toEqual({
+    expect(megaMenu.groups[2]?.links[0]).toEqual({
       label: "Custom software",
       href: "/services/software-engineering#custom-software",
     });
-    expect(megaMenu.groups[4]?.links.map((l) => l.label)).toEqual([
+    expect(megaMenu.groups[2]?.links.map((l) => l.label)).toEqual([
       "Custom software",
       "Web app development",
       "Mobile app development",

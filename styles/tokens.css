@@ -81,7 +81,9 @@
   /* Layout */
   --content: 1200px; /* content max width (header/footer 1248 incl. gutters) */
   --gutter: clamp(16px, 4vw, 24px);
-  --section: clamp(64px, 8vw, 96px); /* section padding top and bottom */
+
+  /* Section padding top and bottom (owner trial 2026-11-11: was clamp(64px, 8vw, 96px)). */
+  --section: clamp(48px, 5vw, 72px);
   --header-height: 72px; /* 84px from the nav breakpoint, see below */
   --jump-bar-height: 52px;
 

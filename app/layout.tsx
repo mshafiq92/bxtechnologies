@@ -8,6 +8,7 @@ import { Header } from "@/components/layout/header";
 import { cn } from "@/lib/cn";
 import { consentPrePaintScript } from "@/lib/consent";
 import { getConsentCopy, getNavigation } from "@/lib/content";
+import { scrollTopOnReloadScript } from "@/lib/scroll";
 import { noIndex, siteUrl } from "@/lib/site";
 
 import { ibmPlexSans, jetbrainsMono } from "./fonts";
@@ -39,6 +40,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         {/* Hides the cookie notice before first paint for visitors who already chose. */}
         <script dangerouslySetInnerHTML={{ __html: consentPrePaintScript() }} />
+        {/* A reload starts at the top of the page, not where the visitor had scrolled to. */}
+        <script dangerouslySetInnerHTML={{ __html: scrollTopOnReloadScript() }} />
       </head>
       <body className="flex min-h-dvh flex-col bg-ground font-text text-ink">
         <ConsentProvider>
