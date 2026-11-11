@@ -2,7 +2,6 @@ import { ContactBand } from "@/components/layout/contact-band";
 import { ArchitectureDiagram } from "@/components/sections/architecture-diagram";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { ButtonLink } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { ChipList } from "@/components/ui/chip";
 import { DiagramCard } from "@/components/ui/diagram-card";
 import { Faq } from "@/components/ui/faq";
@@ -17,7 +16,7 @@ import { groupLd } from "@/lib/seo/structured-data";
 /**
  * Service group page (/services/<slug>): hero, then one block per service in the group (the
  * drill-down, each with its own anchor so menu links land on it), architecture, engagement,
- * where it fits, related projects, questions and the contact band.
+ * related projects, common questions and the contact band.
  */
 export function GroupDetail({ page }: { page: GroupPage }) {
   const group = getServiceGroup(page.group);
@@ -29,7 +28,6 @@ export function GroupDetail({ page }: { page: GroupPage }) {
     { href: "#deliver", label: page.deliver.title },
     ...(page.architecture ? [{ href: "#architecture", label: "Architecture" }] : []),
     { href: "#delivery", label: page.engagement.jumpLabel },
-    { href: "#fit", label: "Where it fits" },
     ...(projects.length > 0 ? [{ href: "#projects", label: "Projects" }] : []),
     { href: "#faq", label: "Questions" },
   ];
@@ -173,29 +171,6 @@ export function GroupDetail({ page }: { page: GroupPage }) {
         </ol>
       </Section>
 
-      {/* 5. Where it fits ----------------------------------------------------------- */}
-      <Section id="fit" aria-labelledby="fit-title" containerClassName="flex flex-col gap-10">
-        <SectionHeader
-          narrow
-          eyebrow="Where it fits"
-          title={<span id="fit-title">{page.fit.title}</span>}
-          intro={page.fit.intro}
-        />
-        <ul className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 xl:grid-cols-3">
-          {page.fit.items.map((item) => (
-            <li key={item.title} className="flex">
-              <Card gap="sm" className="w-full">
-                <Eyebrow as="span">{item.sector}</Eyebrow>
-                <Heading as="h3" size="h4">
-                  {item.title}
-                </Heading>
-                <p className="text-[15px] leading-6 text-muted">{item.text}</p>
-              </Card>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
       {/* 6. Related projects -------------------------------------------------------- */}
       {page.projects && projects.length > 0 && (
         <Section
@@ -243,9 +218,8 @@ export function GroupDetail({ page }: { page: GroupPage }) {
             <Heading id="faq-title" as="h2" size="h2">
               {page.faq.title}
             </Heading>
-            <p className="text-body text-muted">{page.faq.intro}</p>
           </div>
-          <Faq items={page.faq.items} className="flex-[2_1_520px]" />
+          <Faq items={page.faq.items} defaultOpen={null} className="flex-[2_1_520px]" />
         </div>
       </Section>
 

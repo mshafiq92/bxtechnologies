@@ -20,12 +20,19 @@ const nextConfig: NextConfig = {
   // Single-service pages retired in favour of group pages (owner decision 2026-11-10).
   async redirects() {
     return [
-      { source: "/services/agentic-ai", destination: "/services/ai-autonomy", permanent: true },
-      {
-        source: "/services/custom-software",
-        destination: "/services/product-quality",
+      // Group pages renamed to industry-standard names (owner decision 2026-11-11).
+      ...[
+        ["agentic-ai", "ai-engineering"],
+        ["ai-autonomy", "ai-engineering"],
+        ["custom-software", "software-engineering"],
+        ["product-quality", "software-engineering"],
+        ["managed-it", "managed-it-services"],
+        ["teams-advisory", "it-consulting"],
+      ].map(([from, to]) => ({
+        source: `/services/${from}`,
+        destination: `/services/${to}`,
         permanent: true,
-      },
+      })),
     ];
   },
   // Staging and previews: tell crawlers to stay out of every response, including images and files.

@@ -32,7 +32,7 @@ export type HeroDiagram = {
 
 const boxBase = "flex rounded-md border";
 /* Box titles keep the browser's tight line height, as in the design. */
-const title = "font-semibold leading-[1.2]";
+const title = "font-ui font-medium leading-[1.2]";
 /** Detail text: 12/18 in the Home flow layout, 13px in the Service Detail stack layout. */
 const details = {
   flow: "font-mono text-[12px] leading-[18px] text-on-deep-muted",
@@ -170,7 +170,7 @@ export function DiagramCard({
             flow ? "pt-4" : "mt-1 pt-3.5",
           )}
         >
-          <StatusDot className="text-small text-on-deep">{status.t}</StatusDot>
+          <StatusDot className="font-ui text-small font-medium text-on-deep">{status.t}</StatusDot>
           <span
             className={cn(
               flow

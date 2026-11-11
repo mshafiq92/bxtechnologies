@@ -19,12 +19,12 @@ export const servicesPage = {
     secondaryCta: { label: "See our work", href: "/work" },
   },
   jumpLinks: [
-    { href: "#ai", label: "AI & Autonomy" },
+    { href: "#ai", label: "AI Engineering" },
     { href: "#data", label: "Data & Analytics" },
     { href: "#cloud", label: "Cloud & DevOps" },
-    { href: "#managed", label: "Managed IT" },
-    { href: "#product", label: "Product & Quality" },
-    { href: "#teams", label: "Teams & Advisory" },
+    { href: "#managed", label: "Managed IT Services" },
+    { href: "#software", label: "Software Engineering" },
+    { href: "#consulting", label: "IT Consulting" },
     { href: "#stack", label: "Stack" },
   ],
   stack: {

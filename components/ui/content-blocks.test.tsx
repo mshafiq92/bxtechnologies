@@ -62,7 +62,7 @@ describe("JumpBar", () => {
     render(
       <JumpBar
         links={[
-          { href: "#ai", label: "AI & Autonomy" },
+          { href: "#ai", label: "AI Engineering" },
           { href: "#data", label: "Data & Analytics" },
         ]}
       />,

@@ -44,12 +44,12 @@ export const footerColumns: { title: string; links: NavLink[] }[] = [
   {
     title: "Services",
     links: [
-      { label: "AI & Autonomy", href: "/services#ai" },
-      { label: "Data & Analytics", href: "/services#data" },
+      { label: "AI Engineering", href: "/services/ai-engineering" },
+      { label: "Data & Analytics", href: "/services/data-analytics" },
       { label: "Cloud & DevOps", href: "/services/cloud-devops" },
-      { label: "Managed IT", href: "/services#managed" },
-      { label: "Product & Quality", href: "/services#product" },
-      { label: "Teams & Advisory", href: "/services#teams" },
+      { label: "Managed IT Services", href: "/services/managed-it-services" },
+      { label: "Software Engineering", href: "/services/software-engineering" },
+      { label: "IT Consulting", href: "/services/it-consulting" },
     ],
   },
   {

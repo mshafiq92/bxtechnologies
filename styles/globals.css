@@ -10,7 +10,7 @@
   html {
     background-color: var(--bg);
     color: var(--text);
-    font-family: var(--font-sans);
+    font-family: var(--font-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizelegibility;
@@ -31,6 +31,27 @@
   h5,
   h6 {
     text-wrap: balance;
+  }
+
+  /* Headings use the UI face (--font-ui); menus, buttons and links set font-ui themselves.
+     Figures stay JetBrains Mono, like eyebrows, chips and labels. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .text-display,
+  .text-h1,
+  .text-h2,
+  .text-h3,
+  .text-h4 {
+    font-family: var(--font-ui);
+  }
+
+  .text-metric,
+  .text-metric-inline {
+    font-family: var(--font-mono);
   }
 
   p,

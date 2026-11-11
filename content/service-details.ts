@@ -12,10 +12,10 @@ type ServiceDetailInput = z.input<typeof ServiceDetailSchema>;
 const proofNote =
   "Client names withheld under NDA. Figures are placeholders pending your final sign-off on the real numbers.";
 
-/* Agentic AI & agents ------------------------------------------------------- */
+/* AI agent development ------------------------------------------------------ */
 
 export const agenticAiDetail: ServiceDetailInput = {
-  eyebrow: "AI & Autonomy",
+  eyebrow: "AI Engineering",
   title: "Agents that take actions inside your systems.",
   intro:
     "A chatbot answers. An agent decides, calls your APIs, and finishes the task, or hands it to a person with the reasoning attached. We build the orchestration, the guardrails and the evaluation that make that safe to run unattended.",
@@ -221,7 +221,7 @@ export const agenticAiDetail: ServiceDetailInput = {
     title: "What agent work usually needs alongside it",
     items: [
       {
-        title: "Gen AI integration",
+        title: "Generative AI integration",
         text: "Retrieval over your own documents and copilots inside existing screens, usually the layer an agent reads from.",
         href: "/services#ai",
       },
@@ -462,14 +462,14 @@ export const cloudDevopsDetail: ServiceDetailInput = {
         href: "/services#data",
       },
       {
-        title: "Agentic AI & agents",
+        title: "AI agent development",
         text: "Agents in production need predictable cost, observability and rollback, which is this platform.",
-        href: "/services/ai-autonomy",
+        href: "/services/ai-engineering",
       },
       {
         title: "Custom software development",
         text: "Line-of-business systems built to deploy through the pipeline from their first commit.",
-        href: "/services/product-quality",
+        href: "/services/software-engineering",
       },
     ],
   },
@@ -488,7 +488,7 @@ export const cloudDevopsDetail: ServiceDetailInput = {
 /* Custom software development ---------------------------------------------- */
 
 export const customSoftwareDetail: ServiceDetailInput = {
-  eyebrow: "Product & Quality",
+  eyebrow: "Software Engineering",
   title: "Line-of-business software built to be handed over.",
   intro:
     "Domain modelling, API design and the integrations with what you already run, in .NET, Node.js or Python. Documented well enough that your own team, or another vendor, could take it on.",

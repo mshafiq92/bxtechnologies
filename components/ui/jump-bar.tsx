@@ -43,7 +43,7 @@ export function JumpBar({
             <li key={link.href}>
               <a
                 href={link.href}
-                className="inline-flex min-h-11 flex-none items-center rounded-md px-2.5 text-[15px] font-medium whitespace-nowrap text-ink transition-colors hover:bg-ground hover:text-link"
+                className="inline-flex min-h-11 flex-none items-center rounded-md px-2.5 font-ui text-[15px] font-medium whitespace-nowrap text-ink transition-colors hover:bg-ground hover:text-link"
               >
                 {link.label}
               </a>

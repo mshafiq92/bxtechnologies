@@ -13,10 +13,7 @@ import { showInternalNotes } from "@/lib/site";
 
 export function H2({ id, children }: { id?: string; children: ReactNode }) {
   return (
-    <h2
-      id={id}
-      className="mt-7 scroll-mt-24 text-[28px] leading-9 font-semibold tracking-[-0.02em]"
-    >
+    <h2 id={id} className="mt-7 scroll-mt-24 text-[28px] leading-9 font-medium tracking-[-0.02em]">
       {children}
     </h2>
   );

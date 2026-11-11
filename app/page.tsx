@@ -80,7 +80,7 @@ function HeroSlide({ copy, title, panel }: { copy: HeroCopy; title: ReactNode; p
 export default function HomePage() {
   const page = getPage("home");
   const engagement = getEngagementModels("home");
-  const productGroup = getServiceGroups().find((group) => group.key === "product");
+  const productGroup = getServiceGroups().find((group) => group.key === "software");
 
   return (
     <>
@@ -104,7 +104,7 @@ export default function HomePage() {
                   copy={page.hero}
                   // The main heading of the page; the other slide uses a secondary one.
                   title={
-                    <Heading id="home-title" size="display" className="max-w-[16ch]">
+                    <Heading id="home-title" size="display" className="max-w-[21ch]">
                       {page.hero.title}
                     </Heading>
                   }
@@ -118,7 +118,7 @@ export default function HomePage() {
                 <HeroSlide
                   copy={page.hero.allServices}
                   title={
-                    <Heading as="h2" size="display" className="max-w-[16ch]">
+                    <Heading as="h2" size="display" className="max-w-[21ch]">
                       {page.hero.allServices.title}
                     </Heading>
                   }
@@ -179,7 +179,7 @@ export default function HomePage() {
                 {getServices(group.key).map((service) => (
                   <li
                     key={service.slug}
-                    className="border-t border-hairline py-3 text-body leading-6 font-semibold text-ink"
+                    className="border-t border-hairline py-3 text-body leading-6 font-normal text-ink"
                   >
                     {service.name}
                   </li>
@@ -237,7 +237,7 @@ export default function HomePage() {
                   </span>
                   <span className="text-[13px] leading-5 text-muted">{project.sector}</span>
                 </span>
-                <span className="text-h3 font-semibold text-ink">{project.title}</span>
+                <span className="text-h4 text-ink">{project.title}</span>
                 <span className="text-body text-muted">{project.result}</span>
                 <ChipList items={project.stack} className="mt-auto border-t border-hairline pt-4" />
               </CardLink>
@@ -304,9 +304,7 @@ export default function HomePage() {
                   href="/industries#sectors"
                   className="flex w-full flex-col gap-1.5 rounded-lg border border-hairline bg-surface p-5 text-ink transition-colors hover:border-strong"
                 >
-                  <span className="text-[18px] leading-[26px] font-semibold tracking-[-0.01em]">
-                    {tile.title}
-                  </span>
+                  <span className="text-h4">{tile.title}</span>
                   <span className="text-small text-muted">{tile.text}</span>
                 </SmartLink>
               </li>
@@ -355,10 +353,7 @@ export default function HomePage() {
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))] items-start gap-12">
           <div className="flex flex-col gap-4">
             <Eyebrow>{page.contact.eyebrow}</Eyebrow>
-            <h2
-              id="contact-title"
-              className="max-w-[20ch] text-[clamp(28px,3.4vw,40px)] leading-[1.15] font-semibold tracking-[-0.025em]"
-            >
+            <h2 id="contact-title" className="max-w-[24ch] text-h2">
               {page.contact.title}
             </h2>
             <p className="max-w-[48ch] text-body-lg text-muted">{page.contact.text}</p>

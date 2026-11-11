@@ -64,7 +64,7 @@ export default function ApplyPage() {
             </ol>
           </div>
           <div className="flex flex-col gap-2">
-            <h2 className="text-body leading-6 font-semibold">{page.aside.accommodations.title}</h2>
+            <h2 className="text-body leading-6 font-medium">{page.aside.accommodations.title}</h2>
             <p className="text-small text-muted">
               {page.aside.accommodations.before}{" "}
               <SmartLink
@@ -77,7 +77,7 @@ export default function ApplyPage() {
             </p>
           </div>
           <div className="flex flex-col gap-2">
-            <h2 className="text-body leading-6 font-semibold">{page.aside.data.title}</h2>
+            <h2 className="text-body leading-6 font-medium">{page.aside.data.title}</h2>
             <p className="text-small text-muted">{page.aside.data.text}</p>
             <TextLink href={page.aside.data.link.href} className="self-start text-[15px]">
               {page.aside.data.link.label}

@@ -37,10 +37,10 @@ const read = (path: string) => readFileSync(join(root, path), "utf8");
 describe("services", () => {
   it("has the groups in order and every service numbered in group order", () => {
     const keys = getServiceGroups().map((g) => g.key);
-    expect(keys).toEqual(["ai", "data", "cloud", "managed", "product", "teams"]);
-    expect(getServices()).toHaveLength(24);
+    expect(keys).toEqual(["ai", "data", "cloud", "managed", "software", "consulting"]);
+    expect(getServices()).toHaveLength(27);
     expect(getServices().map((s) => s.number)).toEqual(
-      Array.from({ length: 24 }, (_, i) => String(i + 1).padStart(2, "0")),
+      Array.from({ length: 27 }, (_, i) => String(i + 1).padStart(2, "0")),
     );
     expect(getServices().map((s) => s.slug)).toEqual(
       keys.flatMap((key) => getServices(key).map((s) => s.slug)),
@@ -60,16 +60,25 @@ describe("services", () => {
 
   it("keeps Managed IT and Cloud in separate groups", () => {
     expect(getServices("cloud").map((s) => s.name)).toEqual([
-      "Cloud deployment",
-      "Cloud migration",
-      "Monitoring & observability",
-      "CI/CD pipelines",
+      "Cloud infrastructure",
+      "Cloud migration & modernisation",
+      "DevOps & CI/CD",
+      "Managed cloud",
+      "MLOps",
+    ]);
+    expect(getServices("ai").map((s) => s.name)).toEqual([
+      "AI agent development",
+      "Generative AI integration",
+      "AI chatbot development",
+      "Machine learning & deep learning",
+      "Computer vision",
+      "Predictive analytics",
     ]);
     expect(getServices("managed").map((s) => s.name)).toEqual([
-      "Device support",
-      "Field engineering",
-      "Technical support (L1-L3)",
-      "Network troubleshooting",
+      "IT service desk (L1-L3)",
+      "End-user device support",
+      "On-site IT support",
+      "Network management",
     ]);
   });
 
@@ -98,35 +107,43 @@ describe("services", () => {
   });
 
   it("links to the group page block, then a detail page, otherwise to the group", () => {
-    expect(serviceHref(getServices().find((s) => s.slug === "cloud-deployment")!)).toBe(
-      "/services/cloud-devops#cloud-deployment",
+    expect(serviceHref(getServices().find((s) => s.slug === "cloud-infrastructure")!)).toBe(
+      "/services/cloud-devops#cloud-infrastructure",
     );
-    expect(serviceHref(getServices().find((s) => s.slug === "agentic-ai")!)).toBe(
-      "/services/ai-autonomy#agentic-ai",
+    expect(serviceHref(getServices().find((s) => s.slug === "ai-agent-development")!)).toBe(
+      "/services/ai-engineering#ai-agent-development",
     );
-    expect(groupHref("ai")).toBe("/services/ai-autonomy");
+    expect(groupHref("ai")).toBe("/services/ai-engineering");
     expect(groupHref("cloud")).toBe("/services/cloud-devops");
     expect(groupHref("data")).toBe("/services/data-analytics");
-    expect(serviceHref(getServices().find((s) => s.slug === "iot-embedded")!)).toBe(
-      "/services/data-analytics#iot-embedded",
+    expect(serviceHref(getServices().find((s) => s.slug === "iot-development")!)).toBe(
+      "/services/software-engineering#iot-development",
     );
   });
 
   it("builds the mega menu from the services list", () => {
     const { megaMenu } = getNavigation();
     expect(megaMenu.groups.map((g) => g.title)).toEqual([
-      "AI & Autonomy",
+      "AI Engineering",
       "Data & Analytics",
       "Cloud & DevOps",
-      "Managed IT",
-      "Product & Quality",
-      "Teams & Advisory",
+      "Managed IT Services",
+      "Software Engineering",
+      "IT Consulting",
     ]);
     expect(megaMenu.groups[4]?.links[0]).toEqual({
       label: "Custom software",
-      href: "/services/product-quality#custom-software",
+      href: "/services/software-engineering#custom-software",
     });
-    expect(megaMenu.groups[5]?.links[3]?.label).toBe("Blockchain & distributed");
+    expect(megaMenu.groups[4]?.links.map((l) => l.label)).toEqual([
+      "Custom software",
+      "Web app development",
+      "Mobile app development",
+      "IoT development",
+      "QA & software testing",
+      "Blockchain development",
+    ]);
+    expect(megaMenu.groups[0]?.links[3]?.label).toBe("ML & DL");
   });
 
   it("gives Home the shorter Startup & SMB sentence", () => {

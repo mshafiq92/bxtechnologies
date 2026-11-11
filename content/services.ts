@@ -1,7 +1,7 @@
 /*
  * Service groups, services, stack lists and engagement models.
  * Copy from bX v2 - Home.dc.html and bX v2 - Services.dc.html, restructured with the owner
- * (2026-11-09).
+ * (2026-11-09). Group and service names aligned with industry naming (owner, 2026-11-11).
  * Services marked DRAFT are new copy for the owner to review.
  * Detail pages: content/service-details.ts.
  */
@@ -16,7 +16,7 @@ export const serviceGroups: ServiceGroup[] = [
   {
     key: "ai",
     number: "01",
-    name: "AI & Autonomy",
+    name: "AI Engineering",
     intro: "Agents and models wired into the software your teams already use.",
   },
   {
@@ -34,30 +34,30 @@ export const serviceGroups: ServiceGroup[] = [
   {
     key: "managed",
     number: "04",
-    name: "Managed IT",
-    intro: "Hardware, network and on-site support, from first line to field engineers.",
+    name: "Managed IT Services",
+    intro: "Service desk, device, network and on-site support, from first line to field engineers.",
   },
   {
-    key: "product",
+    key: "software",
     number: "05",
-    name: "Product & Quality",
-    intro: "Custom software and mobile products, tested and secured before release.",
+    name: "Software Engineering",
+    intro: "Custom software, web and mobile apps, IoT and blockchain, tested before release.",
   },
   {
-    key: "teams",
+    key: "consulting",
     number: "06",
-    name: "Teams & Advisory",
-    intro: "Engineers and advisers for when the gap is capacity or direction.",
+    name: "IT Consulting",
+    intro: "Roadmaps, security reviews and delivery leadership for the decisions ahead.",
   },
 ];
 
 export const services: ServiceInput[] = [
   {
-    slug: "agentic-ai",
+    slug: "ai-agent-development",
     number: "01",
     group: "ai",
-    name: "Agentic AI & agents",
-    navLabel: "Agentic AI & agents",
+    name: "AI agent development",
+    navLabel: "AI agent development",
     summary:
       "Planner and executor agents wired into ERP, CRM and data, with guardrails and regression evals",
     subtitle: "Planner and executor agents that take actions, not just answer questions",
@@ -76,7 +76,7 @@ export const services: ServiceInput[] = [
     slug: "generative-ai",
     number: "02",
     group: "ai",
-    name: "Gen AI integration",
+    name: "Generative AI integration",
     navLabel: "Gen AI integration",
     summary:
       "Retrieval over your own documents, copilots inside existing screens, evaluation before rollout",
@@ -92,49 +92,89 @@ export const services: ServiceInput[] = [
     ],
     detail: null,
   },
+  // DRAFT: new service (owner approved 2026-11-11), copy for owner review.
   {
-    slug: "ai-ml-engineering",
+    slug: "ai-chatbots",
     number: "03",
     group: "ai",
-    name: "AI/ML engineering",
-    navLabel: "AI/ML engineering",
-    summary: "Forecasting, vision and classification models, trained on your own data",
+    name: "AI chatbot development",
+    navLabel: "AI chatbot development",
+    summary:
+      "Customer and internal assistants that answer from your own content and hand over to people",
+    subtitle: "Assistants that answer from your content, not from a script",
+    description:
+      "Chatbots for customer service, internal help desks and websites, answering from your own documents and systems, with handover to a person and every conversation logged for review.",
+    stack: ["Claude · OpenAI", "RAG", "Web chat"],
+    includes: [
+      "Customer service chatbots",
+      "Internal help desk assistants",
+      "Handover to a person",
+      "Conversation logs and review",
+    ],
+    detail: null,
+  },
+  {
+    slug: "machine-learning",
+    number: "04",
+    group: "ai",
+    name: "Machine learning & deep learning",
+    navLabel: "ML & DL",
+    summary: "Custom models trained on your own data, from classification to deep learning",
     subtitle: "Models trained on your data, and the pipeline that keeps them honest",
     description:
-      "Forecasting, classification, computer vision and anomaly detection, with feature stores, retraining schedules, drift monitoring and versioned deployment.",
-    stack: ["Python", "Forecasting", "Computer vision"],
+      "Classification, anomaly detection, recommendation and deep learning models built for your problem, with feature stores, retraining schedules and versioned deployment.",
+    stack: ["Python", "Classification", "Deep learning"],
     includes: [
-      "Forecasting and classification",
-      "Computer vision",
+      "Classification and recommendation",
       "Anomaly detection",
+      "Deep learning models",
       "Feature stores and retraining",
     ],
     detail: null,
   },
-  // DRAFT: new service, copy for owner review.
+  // DRAFT: new service (owner approved 2026-11-11), copy for owner review.
   {
-    slug: "mlops",
-    number: "04",
+    slug: "computer-vision",
+    number: "05",
     group: "ai",
-    name: "MLOps & model operations",
-    navLabel: "MLOps",
-    summary:
-      "Training pipelines, model serving and drift monitoring, so models stay reliable after launch",
-    subtitle: "Models taken from notebook to a monitored service your team can own",
+    name: "Computer vision",
+    navLabel: "Computer vision",
+    summary: "Inspection, recognition and document reading from images and video",
+    subtitle: "Models that read images and video so people do not have to",
     description:
-      "Training and retraining pipelines, model registry and versioning, serving, drift and performance monitoring, and rollback.",
-    stack: ["Pipelines", "Model registry", "Monitoring"],
+      "Defect detection, object and text recognition, document reading and video analysis, trained on your own images and tested against cases you agree before rollout.",
+    stack: ["Python", "Computer vision", "OCR"],
     includes: [
-      "Training and retraining pipelines",
-      "Model registry and versioning",
-      "Model serving",
-      "Drift and performance monitoring",
+      "Defect detection and inspection",
+      "Object and text recognition",
+      "Document reading",
+      "Video analysis",
+    ],
+    detail: null,
+  },
+  // DRAFT: new service (owner approved 2026-11-11), copy for owner review.
+  {
+    slug: "predictive-analytics",
+    number: "06",
+    group: "ai",
+    name: "Predictive analytics",
+    navLabel: "Predictive analytics",
+    summary: "Forecasts for demand, churn and risk, built on your own history",
+    subtitle: "Forecasts your planners can check against what actually happened",
+    description:
+      "Demand, sales, churn and risk forecasting from your historical data, with accuracy tracked against actual results and forecasts delivered into the reports and systems your team uses.",
+    stack: ["Python", "Forecasting", "SQL"],
+    includes: [
+      "Demand and sales forecasting",
+      "Churn and risk prediction",
+      "Accuracy tracked against actuals",
+      "Forecasts in your reports",
     ],
     detail: null,
   },
   {
     slug: "data-engineering",
-    number: "05",
+    number: "07",
     group: "data",
     name: "Data engineering",
     navLabel: "Data engineering",
@@ -154,10 +194,10 @@ export const services: ServiceInput[] = [
   // DRAFT: new service, copy for owner review.
   {
     slug: "data-pipelines",
-    number: "06",
+    number: "08",
     group: "data",
-    name: "Data pipelines",
-    navLabel: "Data pipelines",
+    name: "Data pipelines & ETL",
+    navLabel: "Data pipelines & ETL",
     summary: "Scheduled ingestion from your operational systems, tested on every run",
     subtitle: "Data moved reliably from the systems that create it",
     description:
@@ -173,11 +213,11 @@ export const services: ServiceInput[] = [
   },
   // DRAFT: new service, copy for owner review.
   {
-    slug: "analytics-bi",
-    number: "07",
+    slug: "business-intelligence",
+    number: "09",
     group: "data",
-    name: "Analytics & BI",
-    navLabel: "Analytics & BI",
+    name: "Business intelligence & analytics",
+    navLabel: "BI & analytics",
     summary: "Dashboards and reports that reconcile with the source of truth",
     subtitle: "Dashboards your finance and operations teams trust",
     description:
@@ -192,30 +232,11 @@ export const services: ServiceInput[] = [
     detail: null,
   },
   {
-    slug: "iot-embedded",
-    number: "08",
-    group: "data",
-    name: "IoT & embedded",
-    navLabel: "IoT & embedded",
-    summary: "Device fleets, telemetry ingestion and the dashboards operators trust",
-    subtitle: "Device fleets and the telemetry operators actually watch",
-    description:
-      "Firmware integration, message-broker ingestion at scale, time-series storage, alerting rules, over-the-air update paths and operator dashboards.",
-    stack: ["MQTT", "Telemetry", "Dashboards"],
-    includes: [
-      "Firmware integration",
-      "Telemetry ingestion",
-      "Time-series storage",
-      "Over-the-air updates",
-    ],
-    detail: null,
-  },
-  {
-    slug: "cloud-deployment",
-    number: "09",
+    slug: "cloud-infrastructure",
+    number: "10",
     group: "cloud",
-    name: "Cloud deployment",
-    navLabel: "Cloud deployment",
+    name: "Cloud infrastructure",
+    navLabel: "Cloud infrastructure",
     summary: "AWS and Azure landing zones, infrastructure as code and containerised deployment",
     subtitle: "Landing zones and deployments your team can change safely",
     description:
@@ -232,50 +253,31 @@ export const services: ServiceInput[] = [
   // DRAFT: new service, copy for owner review.
   {
     slug: "cloud-migration",
-    number: "10",
+    number: "11",
     group: "cloud",
-    name: "Cloud migration",
+    name: "Cloud migration & modernisation",
     navLabel: "Cloud migration",
-    summary: "Existing systems moved to AWS or Azure, planned in stages and tested before cutover",
+    summary:
+      "Existing systems moved to AWS or Azure and modernised, in planned stages tested before cutover",
     subtitle: "Existing systems moved to the cloud, one planned stage at a time",
     description:
-      "A review of what you run today, a sequenced migration plan, application and data moves, and testing before each cutover.",
+      "A review of what you run today, a sequenced migration plan, legacy applications modernised where it pays off, and testing before each cutover.",
     stack: ["Assessment", "Migration plan", "Cutover"],
     includes: [
       "Review of what runs today",
-      "A sequenced migration plan",
       "Workloads moved in waves",
+      "Legacy app modernisation",
       "A tested rollback for every cutover",
     ],
     detail: null,
   },
   // DRAFT: new service, copy for owner review.
   {
-    slug: "monitoring-observability",
-    number: "11",
-    group: "cloud",
-    name: "Monitoring & observability",
-    navLabel: "Monitoring & observability",
-    summary: "Metrics, logs, traces and alerts, so problems are found before customers report them",
-    subtitle: "See what your systems are doing, and hear about problems first",
-    description:
-      "Metrics, logs and traces across your applications and infrastructure, dashboards your team uses, and alerting rules tuned to real incidents.",
-    stack: ["Metrics", "Logs", "Alerting"],
-    includes: [
-      "Metrics, logs and traces",
-      "Dashboards your team uses",
-      "Alert rules with runbooks",
-      "Cost per environment",
-    ],
-    detail: null,
-  },
-  // DRAFT: new service, copy for owner review.
-  {
-    slug: "ci-cd-pipelines",
+    slug: "devops-ci-cd",
     number: "12",
     group: "cloud",
-    name: "CI/CD pipelines",
-    navLabel: "CI/CD pipelines",
+    name: "DevOps & CI/CD",
+    navLabel: "DevOps & CI/CD",
     summary: "Automated build, test and release pipelines, from first commit to production",
     subtitle: "Every change built, tested and released the same way",
     description:
@@ -289,15 +291,75 @@ export const services: ServiceInput[] = [
     ],
     detail: null,
   },
-  // CONFIRM (all Managed IT services): on-site coverage countries. The source says on-site support is
+  // DRAFT: replaces Monitoring & SRE (owner approved 2026-11-11, DPL naming), copy for owner review.
+  {
+    slug: "managed-cloud",
+    number: "13",
+    group: "cloud",
+    name: "Managed cloud",
+    navLabel: "Managed cloud",
+    summary: "Monitoring, patching, backups and cost control for the cloud you already run",
+    subtitle: "Your cloud kept healthy, secure and affordable after launch",
+    description:
+      "Monitoring and alerting, incident response in agreed hours, patching and backups, and monthly cost reviews that keep cloud spend explainable.",
+    stack: ["Monitoring", "Backups", "Cost control"],
+    includes: [
+      "Monitoring and alerts with runbooks",
+      "Patching and backups",
+      "Incident response in agreed hours",
+      "Monthly cost reviews",
+    ],
+    detail: null,
+  },
+  // DRAFT: copy for owner review. Moved to Cloud & DevOps (owner, 2026-11-11).
+  {
+    slug: "mlops",
+    number: "14",
+    group: "cloud",
+    name: "MLOps",
+    navLabel: "MLOps",
+    summary:
+      "Training pipelines, model serving and drift monitoring, so models stay reliable after launch",
+    subtitle: "Models taken from notebook to a monitored service your team can own",
+    description:
+      "Training and retraining pipelines, model registry and versioning, serving, drift and performance monitoring, and rollback.",
+    stack: ["Pipelines", "Model registry", "Monitoring"],
+    includes: [
+      "Training and retraining pipelines",
+      "Model registry and versioning",
+      "Model serving",
+      "Drift and performance monitoring",
+    ],
+    detail: null,
+  },
+  {
+    slug: "it-service-desk",
+    number: "15",
+    group: "managed",
+    name: "IT service desk (L1-L3)",
+    navLabel: "IT service desk (L1-L3)",
+    summary: "First line to expert technical support, with same or next business day response",
+    subtitle: "Technical support from first line to expert level",
+    description:
+      "L1, L2 and L3 technical support, with same business day and next business day response.",
+    stack: ["L1 support", "L2 support", "L3 support"],
+    includes: [
+      "First-line L1 support",
+      "L2 and L3 escalation",
+      "Same or next business day response",
+      "Documented resolutions",
+    ],
+    detail: null,
+  },
+  // CONFIRM (all Managed IT Services): on-site coverage countries. The source says on-site support is
   // available in the registered country and otherwise relies on partners or employees there. Do not
   // name any country or region in this copy until the owner confirms it.
   {
     slug: "device-support",
-    number: "13",
+    number: "16",
     group: "managed",
-    name: "Device support",
-    navLabel: "Device support",
+    name: "End-user device support",
+    navLabel: "End-user device support",
     summary:
       "Troubleshooting and repair for laptops, desktops, servers, printers and network devices",
     subtitle: "The equipment your people depend on, kept working",
@@ -313,11 +375,11 @@ export const services: ServiceInput[] = [
     detail: null,
   },
   {
-    slug: "field-engineering",
-    number: "14",
+    slug: "on-site-it-support",
+    number: "17",
     group: "managed",
-    name: "Field engineering",
-    navLabel: "Field engineering",
+    name: "On-site IT support",
+    navLabel: "On-site IT support",
     summary:
       "Installation, smart hands and remote hands, with half-day and full-day on-site visits",
     subtitle: "Engineers on site when the work cannot be done remotely",
@@ -333,30 +395,11 @@ export const services: ServiceInput[] = [
     detail: null,
   },
   {
-    slug: "technical-support",
-    number: "15",
+    slug: "network-management",
+    number: "18",
     group: "managed",
-    name: "Technical support (L1-L3)",
-    navLabel: "Technical support (L1-L3)",
-    summary: "First line to expert technical support, with same or next business day response",
-    subtitle: "Technical support from first line to expert level",
-    description:
-      "L1, L2 and L3 technical support, with same business day and next business day response.",
-    stack: ["L1 support", "L2 support", "L3 support"],
-    includes: [
-      "First-line L1 support",
-      "L2 and L3 escalation",
-      "Same or next business day response",
-      "Documented resolutions",
-    ],
-    detail: null,
-  },
-  {
-    slug: "network-troubleshooting",
-    number: "16",
-    group: "managed",
-    name: "Network troubleshooting",
-    navLabel: "Network troubleshooting",
+    name: "Network management",
+    navLabel: "Network management",
     summary: "Network device, storage and Wi-Fi support, using Ekahau and AirMagnet tools",
     subtitle: "The network and storage underneath everything else",
     description:
@@ -372,8 +415,8 @@ export const services: ServiceInput[] = [
   },
   {
     slug: "custom-software",
-    number: "17",
-    group: "product",
+    number: "19",
+    group: "software",
     name: "Custom software development",
     navLabel: "Custom software",
     summary: "Line-of-business systems in .NET, Node and Python, built to be handed over",
@@ -389,26 +432,67 @@ export const services: ServiceInput[] = [
     ],
     detail: null,
   },
+  // Split from Web & mobile (owner approved 2026-11-11, DPL naming). DRAFT copy for owner review.
   {
-    slug: "web-mobile",
-    number: "18",
-    group: "product",
-    name: "Web & mobile applications",
-    navLabel: "Web & mobile apps",
-    summary: "React, React Native and Flutter products, from mock-up to store release",
+    slug: "web-development",
+    number: "20",
+    group: "software",
+    name: "Web app development",
+    navLabel: "Web app development",
+    summary:
+      "Responsive web applications, portals and online stores, built to be fast and accessible",
+    subtitle: "Web applications that work on every screen",
+    description:
+      "Responsive web applications, customer portals, admin tools and online stores, with design systems, accessibility and the integrations behind them.",
+    stack: ["React.js", "Tailwind", "Responsive web"],
+    includes: [
+      "Responsive web applications",
+      "Customer portals and admin tools",
+      "Online stores and checkout",
+      "Design systems and accessibility",
+    ],
+    detail: null,
+  },
+  // Split from Web & mobile (owner approved 2026-11-11, DPL naming). DRAFT copy for owner review.
+  {
+    slug: "mobile-development",
+    number: "21",
+    group: "software",
+    name: "Mobile app development",
+    navLabel: "Mobile app development",
+    summary: "Android, iOS and cross-platform apps, from mock-up to store release",
     subtitle: "From mock-up to store release, on one codebase where it makes sense",
     description:
-      "Responsive web products, cross-platform mobile apps, design systems, accessibility, and the release engineering behind store submissions.",
-    stack: ["React.js", "Tailwind", "Responsive web", "Mobile apps"],
-    includes: ["Android apps", "iOS apps", "Cross-platform apps", "Responsive web applications"],
+      "Native and cross-platform apps for Android and iOS, with the release engineering behind store submissions and updates.",
+    stack: ["React Native", "Flutter", "Mobile apps"],
+    includes: ["Android apps", "iOS apps", "Cross-platform apps", "Store release and updates"],
     detail: null,
   },
   {
-    slug: "qa-test-automation",
-    number: "19",
-    group: "product",
-    name: "QA & test automation",
-    navLabel: "QA & test automation",
+    slug: "iot-development",
+    number: "22",
+    group: "software",
+    name: "IoT development",
+    navLabel: "IoT development",
+    summary: "Device fleets, telemetry ingestion and the dashboards operators trust",
+    subtitle: "Device fleets and the telemetry operators actually watch",
+    description:
+      "Firmware integration, message-broker ingestion at scale, time-series storage, alerting rules, over-the-air update paths and operator dashboards.",
+    stack: ["MQTT", "Telemetry", "Dashboards"],
+    includes: [
+      "Firmware integration",
+      "Telemetry ingestion",
+      "Time-series storage",
+      "Over-the-air updates",
+    ],
+    detail: null,
+  },
+  {
+    slug: "qa-testing",
+    number: "23",
+    group: "software",
+    name: "QA & software testing",
+    navLabel: "QA & software testing",
     summary: "Functional, performance, security and API testing, independent of the build team",
     subtitle: "Independent testing that runs in your pipeline on every build",
     description:
@@ -422,50 +506,30 @@ export const services: ServiceInput[] = [
     ],
     detail: null,
   },
-  // DRAFT: new service, copy for owner review.
   {
-    slug: "cybersecurity",
-    number: "20",
-    group: "product",
-    name: "Cybersecurity & penetration testing",
-    navLabel: "Cybersecurity",
-    summary: "Vulnerability assessments, penetration tests and security reviews",
-    subtitle: "Find the weaknesses before someone else does",
+    slug: "blockchain",
+    number: "24",
+    group: "software",
+    name: "Blockchain development",
+    navLabel: "Blockchain development",
+    summary: "Contracts, wallets and settlement flows, audited before they touch money",
+    subtitle: "Contracts and settlement flows, audited before they touch money",
     description:
-      "Threat and vulnerability assessments, penetration testing, security review of code and infrastructure, and remediation guidance.",
-    stack: ["Pentesting", "Vulnerability assessment", "Security review"],
+      "Smart contract development and review, wallet integration, token and settlement flows, plus the off-chain services and indexing around them.",
+    stack: ["Smart contracts", "Wallets", "Settlement"],
     includes: [
-      "Vulnerability assessments",
-      "Penetration testing",
-      "Code and infrastructure review",
-      "Remediation guidance",
-    ],
-    detail: null,
-  },
-  {
-    slug: "dedicated-teams",
-    number: "21",
-    group: "teams",
-    name: "Dedicated teams",
-    navLabel: "Dedicated teams",
-    summary: "Named engineers in your standups, your board, your repo, scaled monthly",
-    subtitle: "Named engineers in your standups, your board and your repo",
-    description:
-      "You interview and pick the engineers. They work your process and your hours, scale monthly, and we handle employment, equipment and cover.",
-    stack: ["Your process", "CET overlap", "Monthly scaling"],
-    includes: [
-      "Engineers you interview and choose",
-      "Your process and tools",
-      "Monthly scaling",
-      "Employment and equipment handled",
+      "Smart contract development",
+      "Contract review",
+      "Wallet integration",
+      "Off-chain indexing",
     ],
     detail: null,
   },
   {
     slug: "digital-transformation",
-    number: "22",
-    group: "teams",
-    name: "Digital transformation & technology consulting",
+    number: "25",
+    group: "consulting",
+    name: "Digital transformation consulting",
     navLabel: "Digital transformation",
     summary: "Assessment, roadmap and the migration work that follows it",
     subtitle: "Assessment and roadmap, then the migration work itself",
@@ -483,10 +547,10 @@ export const services: ServiceInput[] = [
   // DRAFT: new service, copy for owner review.
   {
     slug: "project-management",
-    number: "23",
-    group: "teams",
-    name: "Software project management",
-    navLabel: "Project management",
+    number: "26",
+    group: "consulting",
+    name: "IT project management",
+    navLabel: "IT project management",
     summary: "Delivery managed from concept to market",
     subtitle: "One accountable lead from first scope to release",
     description:
@@ -500,22 +564,23 @@ export const services: ServiceInput[] = [
     ],
     detail: null,
   },
+  // DRAFT: new service, copy for owner review.
   {
-    slug: "blockchain",
-    number: "24",
-    group: "teams",
-    name: "Blockchain & distributed systems",
-    navLabel: "Blockchain & distributed",
-    summary: "Contracts, wallets and settlement flows, audited before they touch money",
-    subtitle: "Contracts and settlement flows, audited before they touch money",
+    slug: "cybersecurity",
+    number: "27",
+    group: "consulting",
+    name: "Cybersecurity consulting",
+    navLabel: "Cybersecurity",
+    summary: "Vulnerability assessments, penetration tests and security reviews",
+    subtitle: "Find the weaknesses before someone else does",
     description:
-      "Smart contract development and review, wallet integration, token and settlement flows, plus the off-chain services and indexing around them.",
-    stack: ["Smart contracts", "Wallets", "Settlement"],
+      "Threat and vulnerability assessments, penetration testing, security review of code and infrastructure, and remediation guidance.",
+    stack: ["Pentesting", "Vulnerability assessment", "Security review"],
     includes: [
-      "Smart contract development",
-      "Contract review",
-      "Wallet integration",
-      "Off-chain indexing",
+      "Vulnerability assessments",
+      "Penetration testing",
+      "Code and infrastructure review",
+      "Remediation guidance",
     ],
     detail: null,
   },

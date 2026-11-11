@@ -22,7 +22,7 @@ export function ArchitectureDiagram({ architecture }: { architecture: Architectu
       <div className="grid grid-cols-1 gap-2 min-[720px]:grid-cols-3">
         {edge.map((box) => (
           <div key={box.t} className="flex flex-col gap-1.5 rounded-md border border-strong p-4">
-            <span className="text-body leading-[22px] font-semibold">{box.t}</span>
+            <span className="font-ui text-body leading-[22px] font-medium">{box.t}</span>
             <span className="font-mono text-[13px] leading-5 text-muted">{box.d}</span>
           </div>
         ))}
@@ -39,13 +39,13 @@ export function ArchitectureDiagram({ architecture }: { architecture: Architectu
             key={box.t}
             className="flex flex-col gap-1.5 rounded-md border border-hairline bg-ground p-4"
           >
-            <span className="text-body leading-[22px] font-semibold">{box.t}</span>
+            <span className="font-ui text-body leading-[22px] font-medium">{box.t}</span>
             <span className="text-small text-muted">{box.d}</span>
           </div>
         ))}
       </div>
       <div className="mt-1 flex flex-wrap justify-between gap-x-6 gap-y-1.5 rounded-md border border-dashed border-strong px-5 py-4">
-        <span className="text-body leading-6 font-semibold">{observability.t}</span>
+        <span className="font-ui text-body leading-6 font-medium">{observability.t}</span>
         <span className="font-mono text-[13px] leading-6 text-muted">{observability.d}</span>
       </div>
     </figure>

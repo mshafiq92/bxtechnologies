@@ -176,7 +176,7 @@ export default function FoundationsPage() {
           <span id="type">Typography</span>
         </Heading>
         <p className="mb-8 text-small text-muted">
-          Inter 400/500/600 · JetBrains Mono 400/500 · self-hosted
+          IBM Plex Sans 400/500/600 · JetBrains Mono 400/500 · self-hosted
         </p>
         <p className="mb-8 eyebrow">Eyebrow · mono 13 / 18 · 500 · 0.14em · uppercase</p>
         <ul className="grid divide-y divide-hairline">

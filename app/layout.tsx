@@ -10,7 +10,7 @@ import { consentPrePaintScript } from "@/lib/consent";
 import { getConsentCopy, getNavigation } from "@/lib/content";
 import { noIndex, siteUrl } from "@/lib/site";
 
-import { inter, jetbrainsMono } from "./fonts";
+import { ibmPlexSans, jetbrainsMono } from "./fonts";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
@@ -33,14 +33,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     // suppressHydrationWarning: the consent script below sets data-consent on <html> before React loads.
     <html
       lang="en"
-      className={cn("theme-bx-light", inter.variable, jetbrainsMono.variable)}
+      className={cn("theme-bx-light", ibmPlexSans.variable, jetbrainsMono.variable)}
       suppressHydrationWarning
     >
       <head>
         {/* Hides the cookie notice before first paint for visitors who already chose. */}
         <script dangerouslySetInnerHTML={{ __html: consentPrePaintScript() }} />
       </head>
-      <body className="flex min-h-dvh flex-col bg-ground font-sans text-ink">
+      <body className="flex min-h-dvh flex-col bg-ground font-text text-ink">
         <ConsentProvider>
           <a
             href="#main"

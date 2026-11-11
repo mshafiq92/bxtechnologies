@@ -49,18 +49,18 @@ describe("Header: mega menu", () => {
     fireEvent.mouseEnter(servicesLink());
     const menu = within(megaMenu());
     for (const group of [
-      "AI & Autonomy",
+      "AI Engineering",
       "Data & Analytics",
       "Cloud & DevOps",
-      "Managed IT",
-      "Product & Quality",
-      "Teams & Advisory",
+      "Managed IT Services",
+      "Software Engineering",
+      "IT Consulting",
     ]) {
       expect(menu.getByText(group)).toBeInTheDocument();
     }
-    expect(menu.getByRole("link", { name: "Cloud deployment" })).toHaveAttribute(
+    expect(menu.getByRole("link", { name: "Cloud infrastructure" })).toHaveAttribute(
       "href",
-      "/services/cloud-devops#cloud-deployment",
+      "/services/cloud-devops#cloud-infrastructure",
     );
   });
 
@@ -68,7 +68,7 @@ describe("Header: mega menu", () => {
     renderHeader();
     fireEvent.mouseEnter(servicesLink());
     const menu = within(megaMenu());
-    expect(getServices()).toHaveLength(24);
+    expect(getServices()).toHaveLength(27);
     for (const service of getServices()) {
       expect(menu.getByRole("link", { name: service.navLabel })).toBeInTheDocument();
     }
@@ -171,18 +171,18 @@ describe("Header: mobile menu", () => {
     renderHeader();
     fireEvent.click(screen.getByRole("button", { name: "Menu" }));
     const panel = within(document.getElementById("bx-mobile-nav")!);
-    const ai = panel.getByRole("button", { name: "AI & Autonomy" });
-    const teams = panel.getByRole("button", { name: "Teams & Advisory" });
+    const ai = panel.getByRole("button", { name: "AI Engineering" });
+    const consulting = panel.getByRole("button", { name: "IT Consulting" });
     expect(ai).toHaveAttribute("aria-expanded", "false");
-    expect(panel.queryByRole("link", { name: "MLOps" })).toBeNull();
+    expect(panel.queryByRole("link", { name: "Computer vision" })).toBeNull();
 
     fireEvent.click(ai);
     expect(ai).toHaveAttribute("aria-expanded", "true");
-    expect(panel.getByRole("link", { name: "MLOps" })).toBeVisible();
+    expect(panel.getByRole("link", { name: "Computer vision" })).toBeVisible();
 
-    fireEvent.click(teams);
+    fireEvent.click(consulting);
     expect(ai).toHaveAttribute("aria-expanded", "false");
-    expect(panel.getByRole("link", { name: "Project management" })).toBeVisible();
+    expect(panel.getByRole("link", { name: "IT project management" })).toBeVisible();
   });
 
   it("traps Tab focus inside the open menu", () => {

@@ -47,7 +47,7 @@ export function Footer() {
 
           {nav.footerColumns.map((col) => (
             <Column key={col.title} title={col.title}>
-              <ul className="flex flex-col gap-3 text-small">
+              <ul className="flex flex-col gap-3 font-ui text-small">
                 {col.links.map((link) => (
                   <li key={link.label}>
                     <SmartLink href={link.href} className={footerLink}>
@@ -60,7 +60,7 @@ export function Footer() {
           ))}
 
           <Column title="Contact">
-            <ul className="flex flex-col gap-3 text-small">
+            <ul className="flex flex-col gap-3 font-ui text-small">
               <li>
                 <SmartLink href={nav.headerCta.href} className={footerLink}>
                   {nav.headerCta.label}
@@ -105,7 +105,7 @@ export function Footer() {
             © {year} {site.legalName}
           </span>
           <span>{site.registrations}</span>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-small">
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 font-ui text-small">
             {nav.legalLinks.map((link) => (
               <li key={link.label}>
                 <SmartLink href={link.href} className={legalLink}>

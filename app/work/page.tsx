@@ -51,7 +51,7 @@ export default function WorkPage() {
                   </span>
                   <span className="text-[13px] leading-5 text-muted">{project.sector}</span>
                 </div>
-                <Heading as="h3" size="h3">
+                <Heading as="h3" size="h4">
                   {project.title}
                 </Heading>
                 <p className="text-body text-muted">{project.description}</p>

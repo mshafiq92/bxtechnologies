@@ -20,7 +20,7 @@ const MOBILE_ID = "bx-mobile-nav";
 const COMPANY_ID = "bx-company-menu";
 
 const navLink =
-  "relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-3.5 py-3 text-[15px] font-medium transition-colors hover:bg-deep-panel hover:text-on-deep-accent";
+  "relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-3.5 py-3 text-[15px] font-normal transition-colors hover:bg-deep-panel hover:text-on-deep-accent";
 
 function ActiveUnderline() {
   return (
@@ -151,7 +151,7 @@ export function Header({ nav }: { nav: Navigation }) {
       onBlur={onHeaderBlur}
       onKeyDown={onHeaderKeyDown}
       data-tone="deep"
-      className="sticky top-0 z-30 border-b border-deep-hairline bg-deep"
+      className="sticky top-0 z-30 border-b border-deep-hairline bg-deep font-ui"
     >
       <div className="mx-auto flex h-(--header-height) max-w-wide items-center gap-8 px-(--gutter)">
         <Logo tone="deep" placement="header" priority onClick={closeAll} />
@@ -186,10 +186,11 @@ export function Header({ nav }: { nav: Navigation }) {
                 data-tone="deep"
                 className="absolute top-full right-0 left-0 max-h-[calc(100dvh-var(--header-height)-1px)] overflow-y-auto border-y border-deep-hairline bg-deep shadow-card"
               >
-                <div className="mx-auto grid max-w-wide grid-cols-3 gap-x-6 gap-y-6 px-(--gutter) py-8 2xl:grid-cols-6">
+                <div className="mx-auto grid max-w-wide grid-cols-3 gap-x-4 gap-y-6 px-(--gutter) py-8 2xl:grid-cols-6">
                   {nav.megaMenu.groups.map((group) => (
-                    <div key={group.title} className="flex flex-col gap-1">
-                      <Eyebrow as="span" tone="deep" className="mb-2">
+                    // Subgrid rows keep every column's links level, even if a title wraps.
+                    <div key={group.title} className="row-span-2 grid grid-rows-subgrid gap-y-1">
+                      <Eyebrow as="span" tone="deep" className="mb-2 tracking-[0.06em]">
                         {group.title}
                       </Eyebrow>
                       <ul>
@@ -198,7 +199,7 @@ export function Header({ nav }: { nav: Navigation }) {
                             <Link
                               href={link.href}
                               onClick={closeAll}
-                              className="flex min-h-11 items-center text-small text-on-deep transition-colors hover:text-on-deep-accent"
+                              className="flex min-h-11 items-center text-small whitespace-nowrap text-on-deep transition-colors hover:text-on-deep-accent"
                             >
                               {link.label}
                             </Link>
@@ -213,7 +214,7 @@ export function Header({ nav }: { nav: Navigation }) {
                     <Link
                       href="/services"
                       onClick={closeAll}
-                      className="inline-flex min-h-11 items-center gap-2 text-small font-semibold text-on-deep-accent transition-colors hover:text-on-deep"
+                      className="inline-flex min-h-11 items-center gap-2 text-small font-normal text-on-deep-accent transition-colors hover:text-on-deep"
                     >
                       All services <ArrowRightIcon size={16} />
                     </Link>
@@ -317,7 +318,7 @@ export function Header({ nav }: { nav: Navigation }) {
           onClick={() => setMenuOpen((open) => !open)}
           aria-expanded={menuOpen}
           aria-controls={MOBILE_ID}
-          className="ml-auto h-11 min-w-11 rounded-md border border-deep-border px-4 text-[15px] font-semibold text-on-deep transition-colors hover:bg-deep-panel nav:hidden"
+          className="ml-auto h-11 min-w-11 rounded-md border border-deep-border px-4 text-[15px] font-medium text-on-deep transition-colors hover:bg-deep-panel nav:hidden"
         >
           {menuOpen ? "Close" : "Menu"}
         </button>
@@ -342,7 +343,7 @@ export function Header({ nav }: { nav: Navigation }) {
                   href={item.href}
                   onClick={closeAll}
                   aria-current={active === item.key ? "page" : undefined}
-                  className="flex min-h-14 items-center justify-between text-[17px] font-medium text-on-deep"
+                  className="flex min-h-14 items-center justify-between text-[17px] font-normal text-on-deep"
                 >
                   {item.label}
                   <ArrowRightIcon size={16} className="text-on-deep-muted" />
@@ -359,7 +360,7 @@ export function Header({ nav }: { nav: Navigation }) {
                             aria-expanded={expanded}
                             aria-controls={panelId}
                             onClick={() => setMobileGroup(expanded ? null : group.title)}
-                            className="flex min-h-11 w-full items-center justify-between text-left text-[15px] font-medium text-on-deep transition-colors hover:text-on-deep-accent"
+                            className="flex min-h-11 w-full items-center justify-between text-left text-[15px] font-normal text-on-deep transition-colors hover:text-on-deep-accent"
                           >
                             {group.title}
                             <ChevronDownIcon

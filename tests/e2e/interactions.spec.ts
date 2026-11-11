@@ -17,7 +17,7 @@ test.describe("header", () => {
     await services.focus();
     await expect(menu).toBeVisible();
     await page.keyboard.press("Tab");
-    await expect(page.getByRole("link", { name: "Agentic AI & agents" }).first()).toBeFocused();
+    await expect(page.getByRole("link", { name: "AI agent development" }).first()).toBeFocused();
     await page.keyboard.press("Escape");
     await expect(menu).toBeHidden();
     await expect(services).toBeFocused();
@@ -62,9 +62,9 @@ test("jump bar sticks under the header and anchors land below it", async ({ page
   await page.goto("/services");
   await page
     .getByRole("navigation", { name: "Jump to" })
-    .getByRole("link", { name: "Teams & Advisory" })
+    .getByRole("link", { name: "IT Consulting" })
     .click();
-  await expect(page).toHaveURL(/#teams$/);
+  await expect(page).toHaveURL(/#consulting$/);
   const headerBottom = await page
     .getByRole("banner")
     .evaluate((el) => el.getBoundingClientRect().bottom);
@@ -72,7 +72,7 @@ test("jump bar sticks under the header and anchors land below it", async ({ page
     .getByRole("navigation", { name: "Jump to" })
     .evaluate((el) => el.getBoundingClientRect().bottom);
   const headingTop = await page
-    .getByRole("heading", { name: "Teams & Advisory", level: 2 })
+    .getByRole("heading", { name: "IT Consulting", level: 2 })
     .evaluate((el) => el.getBoundingClientRect().top);
   // The 52px bar (plus its borders) sits directly under the header, whatever the header height.
   expect(barBottom).toBeLessThanOrEqual(headerBottom + 54);
@@ -82,10 +82,12 @@ test("jump bar sticks under the header and anchors land below it", async ({ page
 });
 
 test("FAQ keeps one answer open", async ({ page }) => {
-  await page.goto("/services/ai-autonomy");
-  const faq = page.getByRole("region", { name: "The ones buyers actually ask" });
+  await page.goto("/services/ai-engineering");
+  const faq = page.getByRole("region", { name: "Common questions" });
   const first = faq.getByRole("button").nth(0);
   const second = faq.getByRole("button").nth(1);
+  await expect(first).toHaveAttribute("aria-expanded", "false");
+  await first.click();
   await expect(first).toHaveAttribute("aria-expanded", "true");
   await second.click();
   await expect(second).toHaveAttribute("aria-expanded", "true");

@@ -66,7 +66,14 @@ export const HeroDiagramSchema = z.object({
 
 /* Services ----------------------------------------------------------------- */
 
-export const CapabilityGroupKey = z.enum(["ai", "data", "cloud", "managed", "product", "teams"]);
+export const CapabilityGroupKey = z.enum([
+  "ai",
+  "data",
+  "cloud",
+  "managed",
+  "software",
+  "consulting",
+]);
 
 export const ServiceGroupSchema = z.object({
   key: CapabilityGroupKey,
@@ -155,10 +162,10 @@ export const GroupPageSchema = z.object({
   deliver: z.object({ title: z.string().min(1), intro: z.string().min(1) }),
   architecture: ServiceDetailSchema.shape.architecture.optional(),
   engagement: ServiceDetailSchema.shape.engagement,
-  fit: ServiceDetailSchema.shape.fit,
   /** Related projects from content/projects.ts; left out until the group has one. */
   projects: z.object({ title: z.string().min(1), slugs: z.array(z.string()).min(1) }).optional(),
-  faq: ServiceDetailSchema.shape.faq,
+  /** Compact FAQ (owner decision 2026-11-10): a short title and at most four questions. */
+  faq: z.object({ title: z.string().min(1), items: z.array(FaqSchema).min(1).max(4) }),
   contactBand: ContactBandSchema,
 });
 

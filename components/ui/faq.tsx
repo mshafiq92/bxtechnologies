@@ -40,7 +40,7 @@ export function Faq({
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpen(isOpen ? null : i)}
-                className="flex min-h-16 w-full items-center justify-between gap-6 py-4 text-left text-body-lg font-semibold text-ink transition-colors hover:text-link"
+                className="flex min-h-16 w-full items-center justify-between gap-6 py-4 text-left text-body-lg font-medium text-ink transition-colors hover:text-link"
               >
                 {item.q}
                 <span

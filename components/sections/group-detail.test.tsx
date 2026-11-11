@@ -16,7 +16,6 @@ describe("Service group page (Cloud & DevOps)", () => {
       "deliver",
       "architecture",
       "delivery",
-      "fit",
       "projects",
       "faq",
       "contact",
@@ -45,8 +44,17 @@ describe("Service group page (Cloud & DevOps)", () => {
     expect(container.querySelector("[data-metric]")).toBeNull();
   });
 
+  it("keeps the questions compact: a short title, at most four, all closed", async () => {
+    for (const p of getGroupPages()) expect(p.faq.items.length, p.slug).toBeLessThanOrEqual(4);
+    await renderGroup("cloud-devops");
+    const faq = screen.getByRole("region", { name: "Common questions" });
+    for (const button of within(faq).getAllByRole("button")) {
+      expect(button).toHaveAttribute("aria-expanded", "false");
+    }
+  });
+
   it("leaves out the projects section when a group has no projects yet", async () => {
-    const { container } = await renderGroup("managed-it");
+    const { container } = await renderGroup("managed-it-services");
     expect(container.querySelector("section#projects")).toBeNull();
     const jump = screen.getByRole("navigation", { name: "Jump to" });
     expect(within(jump).queryByRole("link", { name: "Projects" })).toBeNull();

@@ -281,7 +281,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<Pa
               >
                 <span className="text-h4">{item.title}</span>
                 <span className="text-body text-muted">{item.text}</span>
-                <span className="inline-flex items-center gap-2 font-semibold text-link">
+                <span className="inline-flex items-center gap-2 font-ui font-medium text-link">
                   Explore <ArrowRightIcon size={16} />
                 </span>
               </SmartLink>

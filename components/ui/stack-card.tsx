@@ -47,7 +47,7 @@ export function StackCard({
                     signalDelay[i],
                   )}
                 >
-                  <span className="text-small font-semibold">{layer.title}</span>
+                  <span className="font-ui text-small font-medium">{layer.title}</span>
                   <span className="flex flex-wrap gap-1.5">
                     {layer.tags.map((tag) => (
                       <span
@@ -67,7 +67,9 @@ export function StackCard({
               href={side.href}
               className="flex flex-col gap-3 rounded-md border border-dashed border-deep-border px-3 py-3 transition-colors hover:border-brand-cyan"
             >
-              <span className="text-small font-semibold text-on-deep-accent">{side.title}</span>
+              <span className="font-ui text-small font-medium text-on-deep-accent">
+                {side.title}
+              </span>
               <span className="flex flex-wrap gap-x-3 gap-y-2 md:flex-col">
                 {side.items.map((item) => (
                   <span

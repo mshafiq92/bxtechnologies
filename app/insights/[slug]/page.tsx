@@ -188,7 +188,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
               <Eyebrow>{page.relatedService.eyebrow}</Eyebrow>
               <h2
                 id="cta-title"
-                className="text-[clamp(24px,2.6vw,30px)] leading-[1.2] font-semibold tracking-[-0.02em]"
+                className="text-[clamp(24px,2.6vw,30px)] leading-[1.2] font-medium tracking-[-0.02em]"
               >
                 {related.title}
               </h2>
@@ -205,7 +205,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
               </ButtonLink>
               <SmartLink
                 href={page.relatedService.moreLink.href}
-                className="inline-flex min-h-11 items-center font-semibold text-link transition-colors hover:text-ink"
+                className="inline-flex min-h-11 items-center font-ui font-medium text-link transition-colors hover:text-ink"
               >
                 {page.relatedService.moreLink.label}
               </SmartLink>

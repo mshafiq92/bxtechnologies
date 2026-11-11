@@ -48,7 +48,7 @@ function ProseList({ items }: { items: string[] }) {
 
 function ProseHeading({ children, first = false }: { children: string; first?: boolean }) {
   return (
-    <h2 className={`text-[28px] leading-9 font-semibold tracking-[-0.02em] ${first ? "" : "mt-6"}`}>
+    <h2 className={`text-[28px] leading-9 font-medium tracking-[-0.02em] ${first ? "" : "mt-6"}`}>
       {children}
     </h2>
   );
@@ -127,7 +127,7 @@ export default async function RoleDetailPage({ params }: { params: Promise<Param
               {detail.hiringSteps.map((step) => (
                 <li key={step.number} className="flex flex-col gap-2 border-t border-ink pt-5">
                   <span className="eyebrow text-link normal-case">{step.number}</span>
-                  <h3 className="text-[18px] leading-[26px] font-semibold">{step.title}</h3>
+                  <h3 className="text-h4">{step.title}</h3>
                   <p className="text-[15px] leading-6 text-muted">{step.text}</p>
                 </li>
               ))}
@@ -157,7 +157,7 @@ export default async function RoleDetailPage({ params }: { params: Promise<Param
                 </SmartLink>
                 <SmartLink
                   href={askHref}
-                  className="flex min-h-11 items-center justify-center text-[15px] font-semibold text-link transition-colors hover:text-ink"
+                  className="flex min-h-11 items-center justify-center font-ui text-[15px] font-medium text-link transition-colors hover:text-ink"
                 >
                   {page.askQuestion}
                 </SmartLink>
@@ -189,7 +189,7 @@ export default async function RoleDetailPage({ params }: { params: Promise<Param
                   href={roleHref(other)}
                   className="flex min-h-16 flex-wrap items-center justify-between gap-x-6 gap-y-2 py-3 text-ink transition-colors hover:text-link"
                 >
-                  <span className="text-[18px] leading-[26px] font-semibold">{other.title}</span>
+                  <span className="text-h4">{other.title}</span>
                   <span className="flex items-center gap-4 text-small text-muted">
                     {other.location} · {other.employmentType}
                     <ArrowRightIcon size={18} className="text-link" />

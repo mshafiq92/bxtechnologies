@@ -37,6 +37,11 @@ Keep these even where the handoff or the `.dc.html` designs say otherwise; don't
   panel are navy too, styled like the footer (owner decision 2026-11-09). Height 84px from 900px, 72px below. Jump bar top, anchor offsets and
   sticky side columns derive from `--header-height` in `styles/tokens.css`; change the height only there.
   Phone browser bar colour (`themeColor`) matches the navy.
+- **Fonts (2026-11-11, final)**: IBM Plex Sans for headings, text, menus, buttons and links (replaces Inter);
+  JetBrains Mono only for eyebrows, chips, labels, step numbers, figures and diagram detail lines. Both self-hosted
+  variable woff2 from Fontsource in `app/fonts/`. Faces are tokens in `styles/tokens.css` (`--font-text`, `--font-ui`).
+  Moderate sizes, medium (500) at most, never bold headings. Keep page copy short; only Insights articles and legal
+  pages are text heavy.
 - Plans: `docs/01` analysis · `02` stack · `03` implementation · `04` deployment · `05` ordered tasks (T00 to T52)
 
 ## Build rules

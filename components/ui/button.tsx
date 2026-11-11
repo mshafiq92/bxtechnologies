@@ -13,7 +13,7 @@ import { SmartLink } from "./smart-link";
  */
 
 const base =
-  "inline-flex flex-none items-center justify-center gap-2 whitespace-nowrap rounded-md font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex flex-none items-center justify-center gap-2 whitespace-nowrap rounded-md font-ui font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60";
 
 const variants = {
   primary: "bg-brand-cyan text-on-brand hover:bg-brand-cyan-hover",

@@ -85,9 +85,9 @@ describe("Article page", () => {
 
   it("links the related service and keeps unwritten articles unlinked", async () => {
     const { container } = await renderArticle();
-    expect(screen.getByRole("link", { name: /AI & Autonomy services/ })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /AI Engineering services/ })).toHaveAttribute(
       "href",
-      "/services/ai-autonomy#agentic-ai",
+      "/services/ai-engineering#ai-agent-development",
     );
     const keepReading = container.querySelector("section#more ul")!;
     expect(keepReading.querySelectorAll("li")).toHaveLength(3);

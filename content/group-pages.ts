@@ -21,14 +21,14 @@ const band = (title: string, text: string): ContactBandContent => ({
 });
 
 export const groupPages: GroupPageInput[] = [
-  // DRAFT: AI & Autonomy.
+  // DRAFT: AI Engineering.
   {
     group: "ai",
-    slug: "ai-autonomy",
-    eyebrow: "AI & Autonomy",
+    slug: "ai-engineering",
+    eyebrow: "AI Engineering",
     title: "AI that works inside the systems you already run",
     intro:
-      "Agents, generative AI, machine learning and MLOps, tested against your own cases and wired into your ERP, CRM and data with guardrails.",
+      "Agents, generative AI, chatbots, machine learning, computer vision and forecasting, tested against your own cases and wired into your systems with guardrails.",
     primaryCta: "Book a technical call",
     heroDiagram: agenticAiDetail.heroDiagram,
     deliver: {
@@ -38,12 +38,19 @@ export const groupPages: GroupPageInput[] = [
     },
     architecture: agenticAiDetail.architecture,
     engagement: agenticAiDetail.engagement,
-    fit: agenticAiDetail.fit,
     projects: {
       title: "AI work in production",
-      slugs: ["tender-drafting-assistant", "admissions-assistant"],
+      slugs: ["tender-drafting-assistant", "admissions-assistant", "demand-forecasting-pipeline"],
     },
-    faq: agenticAiDetail.faq,
+    faq: {
+      title: "Common questions",
+      items: [
+        agenticAiDetail.faq.items[0]!,
+        agenticAiDetail.faq.items[1]!,
+        agenticAiDetail.faq.items[3]!,
+        agenticAiDetail.faq.items[4]!,
+      ],
+    },
     contactBand: band(
       "Discuss your AI use case with our engineers",
       "A 30-minute call about the workflow you have in mind, the data behind it and how we would test whether AI helps.",
@@ -57,7 +64,7 @@ export const groupPages: GroupPageInput[] = [
     eyebrow: "Data & Analytics",
     title: "Data your reports and AI can rely on",
     intro:
-      "Data engineering, pipelines, analytics and IoT data, built so every number traces back to its source and arrives on time.",
+      "Data engineering, pipelines and BI, built so every number traces back to its source and arrives on time.",
     primaryCta: "Book a technical call",
     heroDiagram: {
       caption: "From source systems to decisions",
@@ -108,34 +115,12 @@ export const groupPages: GroupPageInput[] = [
         },
       ],
     },
-    fit: {
-      title: "When it is worth calling us",
-      intro: "Usually the same report is being rebuilt by hand, and nobody fully trusts it.",
-      items: [
-        {
-          sector: "eCommerce",
-          title: "Stock and sales disagree",
-          text: "Reports from the store, the warehouse and finance that never quite match.",
-        },
-        {
-          sector: "SaaS",
-          title: "Month-end takes a week",
-          text: "Reporting assembled by hand from exports, every month, by the same few people.",
-        },
-        {
-          sector: "Fintech",
-          title: "Figures you must be able to prove",
-          text: "Numbers that auditors and regulators need traced back to their source.",
-        },
-      ],
-    },
     projects: {
       title: "Data work in production",
       slugs: ["demand-forecasting-pipeline", "online-store-inventory-sync"],
     },
     faq: {
-      title: "The ones buyers actually ask",
-      intro: "If yours is not here, put it in the first call.",
+      title: "Common questions",
       items: [
         {
           q: "Which tools do you use?",
@@ -150,8 +135,8 @@ export const groupPages: GroupPageInput[] = [
           a: "You do. Code, metric definitions and documentation live in your repository.",
         },
         {
-          q: "Can you connect device and IoT data?",
-          a: "Yes. Device telemetry is collected through message brokers into time-series storage, with alerting and dashboards on top.",
+          q: "Can you help us agree definitions and ownership?",
+          a: "Yes. We agree who owns each data set and how each metric is defined, then write it down so every report uses the same rules.",
         },
       ],
     },
@@ -168,7 +153,7 @@ export const groupPages: GroupPageInput[] = [
     eyebrow: "Cloud & DevOps",
     title: "Cloud platforms your team can change with confidence",
     intro:
-      "Deployment, migration, monitoring and CI/CD on AWS and Azure, written as code in your own account and handed over with the runbooks.",
+      "Infrastructure, migration, DevOps, managed cloud and MLOps on AWS and Azure, written as code in your own account and handed over with the runbooks.",
     primaryCta: "Book a technical call",
     heroDiagram: cloudDevopsDetail.heroDiagram,
     deliver: {
@@ -178,26 +163,33 @@ export const groupPages: GroupPageInput[] = [
     },
     architecture: cloudDevopsDetail.architecture,
     engagement: cloudDevopsDetail.engagement,
-    fit: cloudDevopsDetail.fit,
     projects: {
       title: "Cloud work in production",
       slugs: ["cloud-migration-cicd", "demand-forecasting-pipeline"],
     },
-    faq: cloudDevopsDetail.faq,
+    faq: {
+      title: "Common questions",
+      items: [
+        cloudDevopsDetail.faq.items[0]!,
+        cloudDevopsDetail.faq.items[1]!,
+        cloudDevopsDetail.faq.items[2]!,
+        cloudDevopsDetail.faq.items[4]!,
+      ],
+    },
     contactBand: band(
       "Discuss your cloud platform with our engineers",
       "A 30-minute call about your current setup, where it costs you time or money, and how we would approach it.",
     ),
   },
 
-  // DRAFT: Managed IT. CONFIRM: on-site coverage; no country or region is named here.
+  // DRAFT: Managed IT Services. CONFIRM: on-site coverage; no country or region is named here.
   {
     group: "managed",
-    slug: "managed-it",
-    eyebrow: "Managed IT",
+    slug: "managed-it-services",
+    eyebrow: "Managed IT Services",
     title: "IT support that keeps your people working",
     intro:
-      "Device support, field engineering, technical support and network troubleshooting, with same or next business day response.",
+      "Service desk, device support, on-site IT support and network management, with same or next business day response.",
     primaryCta: "Book a technical call",
     heroDiagram: {
       caption: "One support desk, on site when needed",
@@ -247,31 +239,8 @@ export const groupPages: GroupPageInput[] = [
         },
       ],
     },
-    fit: {
-      title: "When it is worth calling us",
-      intro:
-        "Usually there is no one on site when equipment fails, or the in-house team is stretched.",
-      items: [
-        {
-          sector: "Facilities",
-          title: "Sites without IT staff",
-          text: "Locations where someone has to be on site when equipment or the network fails.",
-        },
-        {
-          sector: "Education",
-          title: "Devices across buildings",
-          text: "Laptops, printers and network equipment spread over several buildings or campuses.",
-        },
-        {
-          sector: "Professional services",
-          title: "A team that cannot stop",
-          text: "Offices where a broken laptop or a network outage means lost client hours.",
-        },
-      ],
-    },
     faq: {
-      title: "The ones buyers actually ask",
-      intro: "If yours is not here, put it in the first call.",
+      title: "Common questions",
       items: [
         {
           q: "Can you send someone on site?",
@@ -297,23 +266,23 @@ export const groupPages: GroupPageInput[] = [
     ),
   },
 
-  // DRAFT: Product & Quality.
+  // DRAFT: Software Engineering.
   {
-    group: "product",
-    slug: "product-quality",
-    eyebrow: "Product & Quality",
+    group: "software",
+    slug: "software-engineering",
+    eyebrow: "Software Engineering",
     title: "Software built to last and to be handed over",
     intro:
-      "Custom software, web and mobile apps, testing and security, built with the documentation and tests your own team needs to take it on.",
+      "Custom software, web and mobile apps, IoT, testing and blockchain, built with the documentation and tests your own team needs to take it on.",
     primaryCta: "Book a technical call",
     heroDiagram: customSoftwareDetail.heroDiagram,
     deliver: {
       title: "What we deliver",
-      intro: "From the first build to testing and security review, delivered by the same team.",
+      intro:
+        "From the first build to independent testing and release, each service can start on its own.",
     },
     architecture: customSoftwareDetail.architecture,
     engagement: customSoftwareDetail.engagement,
-    fit: customSoftwareDetail.fit,
     projects: {
       title: "Software in production",
       slugs: [
@@ -322,120 +291,103 @@ export const groupPages: GroupPageInput[] = [
         "provisioning-test-automation",
       ],
     },
-    faq: customSoftwareDetail.faq,
+    faq: {
+      title: "Common questions",
+      items: [
+        customSoftwareDetail.faq.items[0]!,
+        customSoftwareDetail.faq.items[1]!,
+        customSoftwareDetail.faq.items[2]!,
+        customSoftwareDetail.faq.items[3]!,
+      ],
+    },
     contactBand: band(
       "Discuss your software project with our engineers",
       "A 30-minute call about what you need to build or fix, and how we would approach it.",
     ),
   },
 
-  // DRAFT: Teams & Advisory.
+  // DRAFT: IT Consulting (new page copy 2026-11-11).
   {
-    group: "teams",
-    slug: "teams-advisory",
-    eyebrow: "Teams & Advisory",
-    title: "Engineers and advisers when you need them",
+    group: "consulting",
+    slug: "it-consulting",
+    eyebrow: "IT Consulting",
+    title: "Advice from the engineers who deliver it",
     intro:
-      "Dedicated teams, digital transformation, project management and blockchain specialists, working in your process with one accountable lead.",
+      "Digital transformation, project management and cybersecurity, from the first assessment and roadmap to the delivery that follows.",
     primaryCta: "Book a technical call",
     heroDiagram: {
-      caption: "Your team, extended",
-      entry: { t: "Your roadmap", d: "backlog · priorities" },
-      core: { t: "Named engineers", d: "your process · your tools" },
+      caption: "From assessment to delivery",
+      entry: { t: "Current state", d: "systems · risks · costs" },
+      core: { t: "Assessment", d: "review · prioritise" },
       support: [
+        { t: "Security review", d: "findings · fixes" },
         { t: "Project lead", d: "plan · report" },
-        { t: "Specialists", d: "when needed" },
       ],
       outcomes: [
-        { t: "Releases", d: "in your repository" },
-        { t: "Handover", d: "documented" },
+        { t: "Roadmap", d: "costed · sequenced" },
+        { t: "Delivery", d: "one accountable lead" },
       ],
-      status: { t: "Scaled month by month", d: "no hiring overhead" },
+      status: { t: "Reviewed at every stage", d: "scope · risk · cost" },
     },
     deliver: {
       title: "What we deliver",
-      intro: "Add capacity, direction or a specialist skill, for as long as the work needs it.",
+      intro:
+        "Each service can start on its own, and every recommendation comes with a plan our engineers can deliver.",
     },
     engagement: {
       eyebrow: "The engagement",
       jumpLabel: "The engagement",
-      title: "Choose, start, then scale",
+      title: "Assess, plan, then deliver",
       intro:
-        "You choose the engineers and keep your process. We handle employment, equipment and cover.",
+        "We start with a short assessment and end with a plan you can act on, whether or not we deliver it.",
       cta: "Book a technical call",
       steps: [
         {
-          label: "SELECT",
-          title: "Interview and choose",
-          text: "You interview the engineers and pick the ones who fit your team.",
+          label: "ASSESS",
+          title: "Review what you run",
+          text: "Systems, costs, risks and the workflows that matter most, reviewed with your team.",
         },
         {
-          label: "START",
-          title: "Join your process",
-          text: "They join your standups, your board and your repository from the first week.",
+          label: "PLAN",
+          title: "Agree the roadmap",
+          text: "A costed, sequenced plan with priorities, owners and the first step defined.",
         },
         {
-          label: "SCALE",
-          title: "Grow or reduce monthly",
-          text: "Add or reduce people month by month as the roadmap changes.",
+          label: "DELIVER",
+          title: "Lead the work",
+          text: "A project manager leads delivery, with scope, change control and progress reporting.",
         },
         {
-          label: "AFTER",
-          title: "Hand over",
-          text: "When the work is done, the documentation and access stay with you.",
+          label: "REVIEW",
+          title: "Check the results",
+          text: "Progress is reviewed against the plan, and the roadmap is updated as you learn.",
         },
       ],
-    },
-    fit: {
-      title: "When it is worth calling us",
-      intro: "Usually the gap is capacity or direction rather than a defined build.",
-      items: [
-        {
-          sector: "SaaS",
-          title: "The roadmap outgrew the team",
-          text: "More planned work than engineers, and hiring takes months.",
-        },
-        {
-          sector: "Fintech",
-          title: "A specialist skill for one programme",
-          text: "Blockchain, security or data expertise needed for a project, not permanently.",
-        },
-        {
-          sector: "Construction",
-          title: "Moving off spreadsheets",
-          text: "A transformation that needs planning and delivery from one accountable team.",
-        },
-      ],
-    },
-    projects: {
-      title: "Team work in production",
-      slugs: ["settlement-contracts-indexer", "infotainment-validation-suite"],
     },
     faq: {
-      title: "The ones buyers actually ask",
-      intro: "If yours is not here, put it in the first call.",
+      title: "Common questions",
       items: [
         {
-          q: "Can we interview the engineers?",
-          a: "Yes. You interview and choose every engineer who joins your team.",
+          q: "Do we have to use you for delivery?",
+          a: "No. The roadmap and findings are yours, and the plan is written so any capable team can follow it.",
         },
         {
-          q: "How soon can a team start?",
-          a: "It depends on the skills you need. We agree a start date once you have chosen the engineers.",
+          q: "What does a cybersecurity review cover?",
+          a: "Vulnerability assessments, penetration testing and a review of code and infrastructure, with findings ranked and remediation guidance.",
         },
         {
-          q: "Which hours do they work?",
-          a: "An agreed overlap with your working day, so standups, reviews and questions happen in real time.",
+          q: "Can you review our technology stack?",
+          a: "Yes. Stack selection and review are part of digital transformation consulting, with a target architecture and a costed roadmap.",
         },
         {
-          q: "Can you also run the project?",
-          a: "Yes. A project manager can lead delivery, from planning and scope to reporting and release.",
+          q: "Can you manage a project our own team builds?",
+          a: "Yes. A project manager can lead planning, scope, reporting and release across your team and ours.",
         },
       ],
     },
     contactBand: band(
-      "Discuss your team with our engineers",
-      "A 30-minute call about the work ahead, the skills you need and how we would support you.",
+      "Discuss your plans with our engineers",
+      "A 30-minute call about the decision in front of you, what we would review first and how we would approach it.",
     ),
   },
 ];

@@ -37,20 +37,20 @@ export const homePage = {
       title: "Engineering for AI that runs in production.",
       intro:
         "We design, build and operate AI, data and cloud systems, from the first architecture review to day to day operations.",
-      tags: ["Managed IT", "Data & Analytics", "Product & Quality"],
+      tags: ["Managed IT Services", "Data & Analytics", "Software Engineering"],
       primaryCta: { label: "Book a technical call", href: "#contact" },
       secondaryCta: { label: "See how we work", href: "#process" },
       caption: "What we build and run",
       // Tags per group in the panel (a group without tags is not a layer).
       // Names and links come from content/services.ts.
       layers: {
-        ai: ["Agents", "Gen AI", "AI/ML", "MLOps"],
-        data: ["Engineering", "Pipelines", "Analytics"],
-        cloud: ["Deployment", "Migration", "Monitoring"],
-        managed: ["Device support", "Field engineering", "Technical support"],
+        ai: ["AI agents", "Gen AI", "Chatbots", "ML"],
+        data: ["Engineering", "Pipelines", "BI"],
+        cloud: ["Infrastructure", "Migration", "DevOps", "MLOps"],
+        managed: ["Service desk", "Device support", "On-site support"],
       } as Partial<Record<ServiceGroup["key"], string[]>>,
       // The band beside the layers: this group touches all of them.
-      side: ["Custom software", "Web and mobile", "QA", "Cybersecurity"],
+      side: ["Custom software", "Web and mobile", "QA", "Blockchain"],
     },
   },
   clients: { label: "Clients & partners" },

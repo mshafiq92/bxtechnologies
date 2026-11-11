@@ -148,32 +148,41 @@
   --breakpoint-*: initial;
 
   /* Fonts (variables set by next/font in app/fonts.ts) */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-ibm-plex-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
 
-  /* Type scale: text-<role> sets size, line-height, letter-spacing and weight */
-  --text-display: clamp(40px, 4.6vw, 64px);
-  --text-display--line-height: 1.063;
-  --text-display--letter-spacing: -0.035em;
-  --text-display--font-weight: 600;
-  --text-h1: clamp(34px, 4vw, 48px);
-  --text-h1--line-height: 1.125;
-  --text-h1--letter-spacing: -0.03em;
-  --text-h1--font-weight: 600;
-  --text-h2: clamp(28px, 3vw, 36px);
-  --text-h2--line-height: 1.1667;
-  --text-h2--letter-spacing: -0.025em;
-  --text-h2--font-weight: 600;
-  --text-h3: 24px;
-  --text-h3--line-height: 32px;
-  --text-h3--letter-spacing: -0.015em;
-  --text-h3--font-weight: 600;
-  --text-h4: 20px;
-  --text-h4--line-height: 28px;
-  --text-h4--letter-spacing: -0.01em;
-  --text-h4--font-weight: 600;
-  --text-body-lg: 18px;
-  --text-body-lg--line-height: 28px;
+  /* Text face for paragraphs and all other text: IBM Plex Sans (owner decision 2026-11-11). */
+  --font-text: var(--font-sans);
+
+  /* UI face for headings, card titles, menus, buttons and links: IBM Plex Sans (owner decision
+     2026-11-11). Eyebrows, chips, labels, step numbers and figures use JetBrains Mono. */
+  --font-ui: var(--font-sans);
+
+  /* Type scale: text-<role> sets size, line-height, letter-spacing and weight. */
+
+  /* Headings: IBM Plex Sans, medium (500) at most. */
+  --text-display: clamp(34px, 3.6vw, 48px);
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 500;
+  --text-h1: clamp(30px, 3.4vw, 42px);
+  --text-h1--line-height: 1.15;
+  --text-h1--letter-spacing: -0.025em;
+  --text-h1--font-weight: 500;
+  --text-h2: clamp(26px, 2.6vw, 32px);
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: -0.015em;
+  --text-h2--font-weight: 500;
+  --text-h3: 22px;
+  --text-h3--line-height: 30px;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h3--font-weight: 500;
+  --text-h4: 18px;
+  --text-h4--line-height: 26px;
+  --text-h4--letter-spacing: -0.005em;
+  --text-h4--font-weight: 500;
+  --text-body-lg: 17px;
+  --text-body-lg--line-height: 27px;
   --text-body: 16px;
   --text-body--line-height: 26px;
   --text-small: 14px;
@@ -184,14 +193,14 @@
   --text-label--font-weight: 500;
   --text-chip: 13px; /* mono 400 */
   --text-chip--line-height: 18px;
-  --text-metric: 48px;
-  --text-metric--line-height: 52px;
+  --text-metric: 44px;
+  --text-metric--line-height: 50px;
   --text-metric--letter-spacing: -0.03em;
-  --text-metric--font-weight: 600;
-  --text-metric-inline: 28px;
-  --text-metric-inline--line-height: 34px;
+  --text-metric--font-weight: 500;
+  --text-metric-inline: 26px;
+  --text-metric-inline--line-height: 32px;
   --text-metric-inline--letter-spacing: -0.02em;
-  --text-metric-inline--font-weight: 600;
+  --text-metric-inline--font-weight: 500;
   --text-prose: 18px; /* article prose */
   --text-prose--line-height: 30px;
   --text-legal: 17px; /* legal prose */

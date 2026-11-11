@@ -39,7 +39,7 @@ export const insights: InsightInput[] = [
     author: "ai-engineering-author",
     featured: true,
     hasBody: true,
-    relatedService: "agentic-ai",
+    relatedService: "ai-agent-development",
     keepReading: [
       "what-a-six-week-ai-pilot-actually-contains",
       "shadow-running-proving-automation-before-it-acts",

@@ -10,7 +10,7 @@ import type { ConsentCopy } from "@/content/consent";
 import { useConsent } from "./consent-provider";
 
 const textButton =
-  "inline-flex min-h-11 items-center font-semibold text-link transition-colors hover:text-ink";
+  "inline-flex min-h-11 items-center font-ui font-medium text-link transition-colors hover:text-ink";
 
 /**
  * Cookie banner: a bottom-left card (a bottom sheet under 560px) with two equal choices.

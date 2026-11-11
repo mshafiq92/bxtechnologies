@@ -112,8 +112,8 @@ describe("Home page", () => {
       container.querySelector('[aria-roledescription="slide"][aria-label="All services"]'),
     ).not.toBeNull();
     expect(hero.queryByRole("tab")).toBeNull();
-    expect(container.querySelector('#top a[href="/services#teams"]')).toBeNull();
-    for (const group of getServiceGroups().filter((g) => g.key !== "teams")) {
+    expect(container.querySelector('#top a[href="/services#consulting"]')).toBeNull();
+    for (const group of getServiceGroups().filter((g) => g.key !== "consulting")) {
       expect(container.querySelector(`#top a[href="/services#${group.key}"]`)).toHaveTextContent(
         group.name,
       );
@@ -133,19 +133,19 @@ describe("Home page", () => {
     const services = within(container.querySelector<HTMLElement>("#capabilities")!);
     expect(services.getAllByRole("article")).toHaveLength(6);
     for (const [name, key] of [
-      ["AI & Autonomy", "ai"],
+      ["AI Engineering", "ai"],
       ["Data & Analytics", "data"],
       ["Cloud & DevOps", "cloud"],
-      ["Managed IT", "managed"],
-      ["Product & Quality", "product"],
-      ["Teams & Advisory", "teams"],
+      ["Managed IT Services", "managed"],
+      ["Software Engineering", "software"],
+      ["IT Consulting", "consulting"],
     ]) {
       expect(services.getByRole("link", { name: `Explore ${name}` })).toHaveAttribute(
         "href",
         groupHref(key as Parameters<typeof groupHref>[0]),
       );
     }
-    expect(services.getByText("Technical support (L1-L3)")).toBeInTheDocument();
+    expect(services.getByText("IT service desk (L1-L3)")).toBeInTheDocument();
   });
 
   it("shows the success state when the enquiry action succeeds", async () => {

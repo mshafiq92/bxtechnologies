@@ -17,7 +17,7 @@ export function TextLink({
   return (
     <SmartLink
       className={cn(
-        "inline-flex min-h-11 items-center gap-2 font-semibold transition-colors",
+        "inline-flex min-h-11 items-center gap-2 font-ui font-medium transition-colors",
         tone === "light" ? "text-link hover:text-ink" : "text-on-deep-accent hover:text-on-deep",
         className,
       )}
